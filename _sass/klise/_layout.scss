@@ -215,13 +215,6 @@
   }
 }
 
-   .social-media  {
-   margin-left: 10px;
-   margin-right: 10px;
-
-
-}
-
 // Content
 .posts-item-note {
   font-weight: 700;
@@ -326,4 +319,9 @@
   .solution:hover {
     color: $text-link-blue-active;
   }
+
+    .fa {
+    margin-right:10px;
+}
+
 }
