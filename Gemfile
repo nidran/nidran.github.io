@@ -25,6 +25,8 @@ group :jekyll_plugins do
   gem 'jekyll-compose'
   gem 'jekyll-postfiles', '~> 3.0'
   gem 'rouge', '3.3.0'
+  gem 'jekyll-font-awesome-sass'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -32,3 +34,4 @@ end
 
 # Performance-booster for watching directories on Windows
 # gem "wdm", "~> 0.1.0" if Gem.win_platform?
+

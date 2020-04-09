@@ -1,22 +1,3 @@
-- title: home
-  url: /
-  external: false
-
-- title: about
-  url: /about/
-  external: false
-
-- title: notes
-  url: /notes/
-  external: false # set true if you using external link, see bellow
-
-- title: projects
-  url: /projects/
-  external: false
-
-- title: resume
-  url: /about/
-  external: false
 email:
   id: 'your.name@yoursite.com'
   href: 'mailto:'
@@ -41,8 +22,3 @@ github:
   title: 'GitHub'
   fa-icon: 'fa-github-square'
 
-
-# Example:
-# - title: github
-#   url: https://github.com/piharpi/jekyll-klise
-#   external: true

@@ -2,6 +2,8 @@
 layout: compress
 ---
 <!DOCTYPE html>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 <html lang="{{ page.lang | default: site.lang | default: " en " }}">
 {% include header.html %}
 
@@ -10,6 +12,7 @@ layout: compress
   <div class="wrapper">
     {% include author.html %}
     {% include snslinks.html %}
+    {% include social-media-links.html %}
     <main aria-label="Content">
       {{ content }}
     </main>
