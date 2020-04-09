@@ -24,3 +24,8 @@ linkedin:
   href: "https://www.linkedin.com/in/"
   id: nidran
   title: Linkedin
+medium:
+  fa-icon: fa-medium
+  href: "https://www.medium.com/in/"
+  id: nidran
+  title: Medium
