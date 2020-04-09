@@ -189,11 +189,10 @@
   }
 
   .author-avatar {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 100%;
     user-select: none;
-    background-color: $black;
     -ms-user-select: none;
     -webkit-user-select: none;
     -webkit-animation: 0.5s ease-in forwards fadein;
@@ -202,8 +201,9 @@
   }
 
   .author-name {
-    font-size: 1.7em;
-    margin-bottom: 2px;
+   font-size: 3em;
+   margin-bottom: 5px;
+   margin-top: 1em;
   }
 
   .author-bio {
@@ -211,7 +211,15 @@
     opacity: 0.9;
     max-width: 393px;
     line-height: 1.688;
+    font-size: 1.3em;
   }
+}
+
+   .social-media  {
+   margin-left: 10px;
+   margin-right: 10px;
+
+
 }
 
 // Content
