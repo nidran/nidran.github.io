@@ -4,21 +4,11 @@ email:
   href: "mailto:"
   id: nidhi.nitg@gmail.com
   title: Email
-facebook:
-  fa-icon: fa-facebook
-  href: "https://www.facebook.com/"
-  id: nidhi
-  title: Facebook
 github:
   fa-icon: fa-github
   href: "https://github.com/nidran"
   id: nidran
   title: GitHub
-twitter:
-  fa-icon: fa-twitter
-  href: "https://www.twitter.com/"
-  id: your-twitter-name
-  title: Twitter
 linkedin:
   fa-icon: fa-linkedin
   href: "https://www.linkedin.com/in/"
