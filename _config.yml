@@ -4,20 +4,16 @@ description: Software Engineer
 lang: en-US
 timezone: Asia/India
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
-repo: https://github.com/piharpi/mahendrata.now.sh
+repo: https://github.com/nidran/nidrangithub.io.sh
 mode: dark # default theme "dark" | "light"
 
 # Profile settings
 author:
   name: Nidhi Ranjan
   bio: Software Engineer
-  username: Nidhi Ranjan
-  email: nidhi.nitg@gmail.com
+  username: nidran
   avatar: /assets/img/avatar.jpg
 
-linkedin_username: nidran
-github_username: nidran
-twitter_username: nidran
 # Url settings
 url:
 baseurl:
@@ -65,6 +61,7 @@ include:
 
 exclude:
   - CNAME
+  - Gemfile
   - Gemfile.lock
   - LICENSE
   - CHANGELOG.md
