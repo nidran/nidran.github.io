@@ -1,18 +1,25 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 {% comment %}
 @param {Boolean} center
 {% endcomment %}
 
+{% if include.center %}
+<ul class="list-inline text-center">
+    {% else %}
+    <ul class="list-inline">
+        {% endif %}
 {% if site.data.social-media %}
 <div id="social-media">
     {% assign sm = site.data.social-media %}
     {% for entry in sm %}
     {% assign key = entry | first %}
     {% if sm[key].id %}
-    {% if include.center %}
-    <ul class="list-inline text-center">
     <a href="{{ sm[key].href }}{{ sm[key].id }}" title="{{ sm[key].title }}"><i class="fa {{ sm[key].fa-icon }}"></i>" "</a>
-    </ul>
     {% endif %}
     {% endfor %}
-</div>s
+</div>
 {% endif %}
+</ul>
+</ul>
+

@@ -15,6 +15,3 @@ You can [report](http://github.com/piharpi/jekyll-klise/issues/new) if there is 
 ##### may u needs ✨
 
 - {{ site.author.email }}
-
-<main aria-label="Content">
-      {{ content }}</main>
