@@ -1,6 +1,6 @@
 # Site settings
 title: Nidhi Ranjan
-description: Software Engineer
+description: Software Engineer | Machine Learning Enthusiast
 lang: en-US
 timezone: Asia/India
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
@@ -11,7 +11,7 @@ blog: true
 # Profile settings
 author:
   name: Nidhi Ranjan
-  bio: Software Engineer
+  bio: Software Engineer | Machine Learning Enthusiast
   username: nidran
   avatar: /assets/img/avatar.jpg
 
