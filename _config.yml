@@ -54,7 +54,7 @@ jekyll_compose:
 
 # Build settings
 sass:
-  style: compressed
+  sass_dir: assets/css
 
 include:
   - _redirects
