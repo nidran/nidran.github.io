@@ -1,11 +1,9 @@
 ---
-title: About
+title: About me
 permalink: /about/
 layout: page
+excerpt: Hello! Hope you are having a good day! I am Nidhi, I am pursuing my master's at NYU Courant
 comments: false
 ---
 
-Hi folks, I am a student of National Institute of Technology, Goa. After graduation by the sea (Goaaa ), I started working at a International Bank, as a Graduate Analyst. 
-I am passionate about technology, coding and women rights.
-
-You can [report](https://github.com/nidran/nidran.github.io/issues) if there is an broken link(s) or somethings else :)
+Hello! Hope you are having a good day! I am Nidhi, I am pursuing my master's at NYU Courant. When I'm not binge watching, I'm usually sleeping. Hit me up if you wana grab coffee nextdoors, discuss ML, and women rights!

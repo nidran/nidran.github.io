@@ -1,39 +1,38 @@
-<!-- <footer class="fixed-bottom">
-
-  <span class="footer_theme-copyright">
-  
-    Made with <a
+<footer class="footer">
+  <a class="footer_item" href="/thanks">ack.</a>
+  <a class="footer_item" href="javascript::void(0)">resume</a>
+  <a class="footer_item" href="/feed.xml">rss</a>
+  <span class="footer_item">&copy; {{ site.time | date: "%Y" }}</span>
+  <small class="footer_copyright">
+    <!-- Klisé Theme: https://github.com/piharpi/jekyll-klise -->
+    <a
       href="https://github.com/piharpi/jekyll-klise"
       target="_blank"
       rel="noreferrer noopener"
-      >klisé</a>
+      >klisé</a
+    >
     theme on
-    <a href="https://jekyllrb.com" target="_blank" rel="noreferrer noopener">jekyll</a>
-    &copy; {{ site.time | date: "%Y" }}
-  </span>
+    <a href="https://jekyllrb.com" target="_blank" rel="noreferrer noopener"
+      >jekyll</a
+    >
+  </small>
 </footer>
 <script src="/assets/js/main.js" defer="defer"></script>
-<script src="/assets/js/galite.js"></script>
-<script>
-  var galite = galite || {};
-  galite.UA = "{{ site.google_analytics }}";
-</script> -->
 
-<!-- <footer class="fixed-bottom">
-  <div class="container-fluid">
-   <div class="row text-center">
-    <div class="col-lg-12">© 2019 - Apollo Scientific Ltd</div>
-   </div>
-   <div class="row justify-content-center text-center">
-    <div class="col-lg-4">
-     <a href="/">Terms and conditions</a>
-    </div>                        
-    <div class="col-lg-4">
-     <a href="/">Privacy policy</a>
-    </div>                        
-    <div class="col-lg-4">
-     <a href="/">Careers</a>
-    </div>
-   </div>
-  </div>        
- </footer> -->
+{%- if page.google_analytics -%}
+  <script src="/assets/js/galite.js"></script>
+  <script>
+    var galite = galite || {};
+    galite.UA = "{{ site.google_analytics }}";
+  </script>
+{%- endif -%}
+{%- if page.url == '/archive/' -%}
+  <script src="/assets/js/search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/search.json',
+    });
+  </script>
+{%- endif -%}
