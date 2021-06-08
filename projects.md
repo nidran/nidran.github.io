@@ -5,16 +5,15 @@ layout: page
 comments: false
 ---
 
-Hello! Hope you are having a good day! I am Nidhi, I am pursuing my master's at NYU Courant. When I'm not binge watching, I'm usually sleeping. Hit me up if you wana grab coffee nextdoors, discuss ML, and women rights!
+Feedbacks, suggestions are always welcome :)
 
-<ul>
-{% assign count = 1 %}
-{% for post in site.posts %}
-{% if post.categories contains "weekly miscellany" %}
-{% if post.url != page.url and count < 6 %}
-<li><a href="{{ post.url }}">{{ post.issue }}: {{ post.title }}</a></li>
-{% assign count = count | plus: 1 %}
-{% endif %}
-{% endif %}
-{% endfor %}
-</ul>
+
+<h3 class="posts-item-note" aria-label="Recent Projects">Recent Projects</h3>
+{%- for post in site.posts limit: site.number_of_posts -%}
+<article class="post-item">
+  <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
+  <h4 class="post-item-title">
+    <a href="{{ post.url }}">{{ post.title | escape }}</a>
+  </h4>
+</article>
+{%- endfor -%}
