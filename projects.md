@@ -5,10 +5,11 @@ layout: page
 comments: false
 ---
 
-Feedbacks, suggestions are always welcome :)
+<center>A little list of some of the projects that I'v done</center>
 
 
 <h3 class="posts-item-note" aria-label="Recent Projects">Recent Projects</h3>
+<center>
 {%- for post in site.posts limit: site.number_of_posts -%}
 <article class="post-item">
   <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
@@ -17,3 +18,4 @@ Feedbacks, suggestions are always welcome :)
   </h4>
 </article>
 {%- endfor -%}
+</center>

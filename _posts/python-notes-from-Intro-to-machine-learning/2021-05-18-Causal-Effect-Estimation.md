@@ -1,7 +1,7 @@
 ---
-title: Python Notes from Intro to Machine Learning
-date: 2018-04-14 10:00:00 +07:00
-tags: [python, machine-learning]
+title: Causal Effect Estimation on MIMIC IV
+date: 2021-05-18 10:00:00 +07:00
+tags: [python, machine-learning, causal-inference]
 description: Notes and code snippets of Python that I've been collecting so far throughout the "Intro to Machine Learning" course.
 ---
 
