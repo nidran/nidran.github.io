@@ -6,4 +6,4 @@ excerpt: Hello! Hope you are having a good day! I am Nidhi, I am pursuing my mas
 comments: false
 ---
 
-Hello! Hope you are having a good day! I am Nidhi, I am pursuing my master's at NYU Courant. When I'm not binge watching, I'm usually sleeping. Hit me up if you wana grab coffee nextdoors, discuss ML, and women rights!
+Hello! Hope you are having a good day! I am Nidhi, I am pursuing my master's at NYU Courant. When I'm not binge watching, I'm usually sleeping. <a href ="http://linkedin.com/in/nidran/">Hit me up</a> if you wana grab coffee nextdoors, discuss ML, and women rights!
