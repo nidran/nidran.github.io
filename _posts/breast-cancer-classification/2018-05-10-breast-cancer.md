@@ -3,62 +3,30 @@ title: Breast Cancer Classification
 date: 2018-05-28 09:45:47 +07:00
 modified: 2018-05-28 09:45:47 +07:00
 tags: [ml, mlforhealthcare, imageclassification]
-description: All the services are free, a source code this site placed on github repository and intergration with netlify service, another service that you can use is github page for hosting your own static site.
+description: Breast Cancer classification
+image: bach.png
 ---
 
-The website was made using Jekyll the one of open source static sites generator, and using my own simple theme, I called [klisé](https://github.com/piharpi/klise).
+Breast cancer is one of the leading cancer-related death causes worldwide, specially on women. However, early diagnosis significantly increases treatment success. For the purpose of early diagnosis, proper analysis of histology images is essential. Specifically, during the diagnosis procedure, specialists evaluate both overall and local tissue organization via whole-slide and microscopy images. However, the large amount of data and complexity of the images makes this task time consuming and non-trivial. Because of this, the development of automatic detection and diagnosis tools is challenging but also essential for the field.
 
 <hr>
 
-All the services are free, source code the site was placed on my [github](https://github.com/piharpi/mahendrata.now.sh) repository and intergration with ~~[netlify](https://netlify.com)~~ service, another service that you can use is [github page](https://pages.github.com/) for hosting your own static site.
+#### Dataset
 
-<hr>
+The dataset is composed of Hematoxylin and eosin (H&E) stained breast histology microscopy and whole-slide images. Challenge participants were expected to evaluate the performance of their method on either/both sets of images.
 
-#### Let's do this
+#### Approach
+ A CNN-based hierarchical classifier to classify histopathology images  into  4  classes  namely,  Normal,  Benign,  InSitu  and  Invasive  is  proposed.
+ In the first level of the hierarchical classifier, a two class CNN-based classifieris built to discriminate images of Normal class from the images of the rest ofthe classes. In the second stage of hierarchy we built a majority voting basedclassifier where the votes are given by the 3 binary CNN-based classifiers. The binary  CNN-based  classifiers  are  built  in  one-vs-one  way  to  discriminate  oneclass from another. The studies were performed on the dataset provided in theBACH challenge. The proposed hierarchical classifier is found to perform good in classifying histopathology images into Normal, Invasive, Benign and InSituclasses. In future, the proposed approach may be extended to classification of other histopathology image
 
-So, before we start create a site, you need some tools, you can self paced for how to installing each tools, on this guide i'm just want to show you how to install jekyll and deploying in netlify, but make sure you have each tools below.
+<figure>
+<img src="{{ page.image }}" alt="ilustrasi repo yang mau diupdate">
+<figcaption>Fig 1. Confusion Matrix </figcaption>
+</figure>
 
-#### Prerequisites
 
-Requirements before we doing magic show.
+More details and code can be found <a href = "https://github.com/nidran/bach">here </a>
+Direct Link to the paper can be found <a href ="https://github.com/nidran/bach/blob/master/bach_paper2_NIPS%20(3).pdf "> here </a>The link for the challenge can be found <a href ="https://iciar2018-challenge.grand-challenge.org"> here</a>
 
-- [Ruby](https://www.ruby-lang.org/en/downloads/) programming language
-- [Git](https://git-scm.com) (version control)
-- [Netlify](https://netlify.com) and [Github](https://github.com) account
-- [Bundler](https://bundler.io)
 
-#### Installation
 
-First, you need some [SSG](https://www.staticgen.com/), there are many kind ssg, but in case i'm using Jekyll cause i'm already familiar with it, open your terminal and type command on below
-
-```bash
-$ bundle install jekyll # installing jekyll in your machine
-$ jekyll new my-site && cd my-site # create new jekyll project
-$ jekyll s # run jekyll server
-```
-
-Now, jekyll is running on your local machine, open your browser and go to `localhost:4000` is default address from jekyll, press <kbd>CTRL</kbd> + <kbd>C</kbd> to stop the jekyll server.
-
-#### Adding remote repository
-
-Before we adding remote repository, you must have [github](https://github.com/new) repository, if already have repository, just add github remote address to your local folder, with the following commands
-
-```bash
-$ git init # initializing project folder
-$ git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git # change UPPERCASE with your own!
-$ git add -A && git commit -m "Initialize" && git push -u origin master # push code to github
-```
-
-Now check your github repository, make sure the files is uploaded correctly.
-
-#### Deploying to netlify
-
-Go [netlify](https://netlify.com) dashboard, and following this step.
-
-1. click `new site from git`, then choose `Github`.
-2. then choose your repository where is the jekyll sources uploaded.
-3. netlify smart enough to configuring, we just need's are hosting's are hosting's are hosting's are hosting to click `Deploy site button`.
-
-Wait for moment, and voila..! your site's are hosting and using `.netlify.com` tld, if your website wants to look professional, just buy a domain from your favorite domain store. or if you the first time, I advice using namecheap.com*(isn't sponsor)* \*based on my experienced it provides good service and have various TLDs.
-
-So, what you waiting for, just create your own website for free.
