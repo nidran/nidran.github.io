@@ -1,7 +1,7 @@
 # Site settings
 title: Nidhi Ranjan # site title
 description: >- # site description
-  I am currently pursuing my Master's at Courant Institute of Mathematical Sciences. <a href="https://github.com/nidran" target="_blank" rel="noopener">@github</a>.
+  I am currently pursuing my Master's at Courant Institute of Mathematical Sciences. I am passionate about using Machine Learning for improving lifes.
 lang: en-US # default lang
 repo: https://github.com/piharpi/jekyll-klise # site repo [optional]
 mode: dark # default theme "dark" | "light"
