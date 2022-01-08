@@ -1,14 +1,11 @@
 ---
 layout: post
 title:  Abstractive and Extractive Text Summarisation
-date:   2020-12-10 09:29:20 +0700
+date:   2021-12-10 09:29:20 +0700
 categories: jekyll update
 ---
 
-With the uprise of COVID 19 cases in India, it becomes very essential to maintain social distance, find hotspots, contact tracing to find and contain the spread.
-
-[![ko-fi](kartavya.jpg)](https://ko-fi.com/W7W7MJ4X) 
-
+The project files can be found at https://github.com/Arnab-Gupta/nlp-summarizer
 
 We propose a AI based surveillance system, which feed input from the CCTV camera's in realtime and leverages transfer learning for being able to accurately predict areas where social distancing has been abandoned.
 
