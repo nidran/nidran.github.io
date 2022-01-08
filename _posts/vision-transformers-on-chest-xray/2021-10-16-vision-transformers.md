@@ -11,10 +11,7 @@ Vision Transformers on a sample of Chest Xray Dataset
 
 In this project, we evaluate Vision Transformers performance on Chest Xray Dataset. For our baseline, we use DCNN networks such as VGG16, and RESNET 34, which were pretrained on ImageNet. The project files can be found at - https://github.com/aish1795/CV-project
 
-<figure>
-<img src="{{ page.image }}">
-<figcaption>Fig 1.Results of experiment</figcaption>
-</figure>
+![image info](./trainingloss.png)
 
 
 We use Vision Transformers in three different setups
