@@ -3,7 +3,7 @@ layout: post
 title:  Vision Transformers on Chest Xray
 date:   2020-12-13 09:45:20 +0700
 categories: jekyll update
-image: trainingloss.jpg
+image: trainingloss.png
 ---
 
 ### Problem Statement 
@@ -11,8 +11,7 @@ Vision Transformers on a sample of Chest Xray Dataset
 
 In this project, we evaluate Vision Transformers performance on Chest Xray Dataset. For our baseline, we use DCNN networks such as VGG16, and RESNET 34, which were pretrained on ImageNet. The project files can be found at - https://github.com/aish1795/CV-project
 
-![image info](./trainingloss.png)
-
+![image info](assets/img/vision-transformers/trainingloss.png)
 
 We use Vision Transformers in three different setups
 1. Vision Transformers pretrained on ImageNet
