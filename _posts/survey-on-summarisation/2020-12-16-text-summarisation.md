@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Survey on Abstractive and Extractive Text Summarisation"
-date:   2021-12-12 09:29:20 +0700
+title:  Survey on Abstractive and Extractive Text Summarisation
+date:   2021-12-12 12:29:20 +0700
 categories: jekyll update
 image: kartavya.jpg
 ---

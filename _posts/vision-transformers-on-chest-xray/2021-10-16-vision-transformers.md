@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Vision Transformers on Chest Xray"
-date:   2020-12-16 09:29:20 +0700
+title:  Vision Transformers on Chest Xray
+date:   2020-12-13 09:45:20 +0700
 categories: jekyll update
 image: kartavya.jpg
 ---
