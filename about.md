@@ -10,4 +10,4 @@ Hello! Hope you are having a good day! I am Nidhi, I am pursuing my master's at 
 
 
 
-"Do your best you can until you know better, when you know better do better  - Maya Angelou"
+"Do the best you can until you know better, when you know better do better  - Maya Angelou"
