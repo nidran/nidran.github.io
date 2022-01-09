@@ -8,7 +8,7 @@ tag:
   - bigdata
   - apache-spark
   - diabetes-prediction
-image: bdad.png
+image: /diabetes-prediction/bdad.png
 ---
 ### Problem Statement 
 With health concerns arising in every aspects of our daily lives, it is natural to look out for potential possibilities of getting certain diseases when you age. One of those diseases, that could also be lethal, is diabetes. 
