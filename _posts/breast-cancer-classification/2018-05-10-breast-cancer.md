@@ -4,7 +4,7 @@ date: 2018-05-28 09:45:47 +07:00
 modified: 2018-05-28 09:45:47 +07:00
 tags: [ml, mlforhealthcare, imageclassification]
 description: Breast Cancer classification
-image: bach.png
+image: /breast-cancer-classification/bach.png
 ---
 
 Breast cancer is one of the leading cancer-related death causes worldwide, specially on women. However, early diagnosis significantly increases treatment success. For the purpose of early diagnosis, proper analysis of histology images is essential. Specifically, during the diagnosis procedure, specialists evaluate both overall and local tissue organization via whole-slide and microscopy images. However, the large amount of data and complexity of the images makes this task time consuming and non-trivial. Because of this, the development of automatic detection and diagnosis tools is challenging but also essential for the field.
