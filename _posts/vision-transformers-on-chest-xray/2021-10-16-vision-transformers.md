@@ -3,7 +3,7 @@ layout: post
 title:  Vision Transformers on Chest Xray
 date:   2021-12-13 09:45:20 +0700
 categories: jekyll update
-tags: ['ml', 'vision-transformers', 'chest-x-ray', 'medical-image-analysis']
+tags: ['ml', 'vision-transformers', 'chest-x-ray', 'medical-image-analysis', 'image-classification']
 image: trainingloss.png
 ---
 
@@ -20,20 +20,20 @@ We use Vision Transformers in three different setups
 We will be using the National Institutes of Health Chest X-Ray Dataset (link) which comprises of 112,120 X-ray images of size 1024 x 1024 with disease labels from 30,805 unique patients.There are 15 classes (14 diseases, and one for "No findings"). Images can be classified as "No findings" or one or more disease classes. The labels were created using Natural Language Processing to text-mine disease classifications from the associated radiological reports. The original dataset size is ~45 GB. However, considering the project time and resource availability, we will be using a smaller sample
  to the data set.
 
- <br>
+
 <p align="center">
   <img alt="img-name" src="1.png" width="50%">
   <br>
     <em>Sample Image 1</em>
 </p>
 
- <br>
+
 <p align="center">
   <img alt="img-name" src="2.png" width="50%">
   <br>
     <em>Sample Image 2</em>
 </p>
- <br>
+
 <p align="center">
   <img alt="img-name" src="8.png" width="50%">
   <br>

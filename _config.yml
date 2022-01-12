@@ -19,7 +19,7 @@ author:
 
 # URL settings
 url: "https://nidran.github.io/" #
-baseurl:
+baseurl: "https://nidran.github.io/"
 permalink: /:title/
 google_analytics: # leave it blank if not wish
 fb_appid:

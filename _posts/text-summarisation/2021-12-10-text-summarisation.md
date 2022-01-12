@@ -4,7 +4,7 @@ title:  Abstractive and Extractive Text Summarisation
 date:   2021-12-10 09:29:20 +0700
 categories: jekyll update
 ---
-
+### Problem Statemnet
 The project files can be found at https://github.com/Arnab-Gupta/nlp-summarizer
 
 We propose a AI based surveillance system, which feed input from the CCTV camera's in realtime and leverages transfer learning for being able to accurately predict areas where social distancing has been abandoned.
