@@ -23,16 +23,16 @@ We will be using the National Institutes of Health Chest X-Ray Dataset (link) wh
 
 <figure>
 <img src="{{ site.imgsrc.sample1 }}">
-<figcaption>Fig 1.Results of experiment</figcaption>
+<figcaption> Sample image 1</figcaption>
 </figure>
 <figure>
 <img src="{{ site.imgsrc.sample2 }}">
-<figcaption>Fig 1.Results of experiment</figcaption>
+<figcaption>Sample image 2</figcaption>
 </figure>
 
 <figure>
 <img src="{{ site.imgsrc.sample3 }}">
-<figcaption>Fig 1.Results of experiment</figcaption>
+<figcaption>Sample image 3</figcaption>
 </figure>
 
 
@@ -50,13 +50,13 @@ We will be using the National Institutes of Health Chest X-Ray Dataset (link) wh
 | Vision Transformer Without Pretraining | 45.33%   | 43.33%|
 
 <figure>
-<img src="{{ site.imgsrc.trainloss }}">
-<figcaption>Fig 1.Results of experiment</figcaption>
+<img src="{{ site.imgsrc.trainloss }}" width = 50%>
+<figcaption> Training Loss</figcaption>
 </figure>
 
 <figure>
-<img src="{{ site.imgsrc.valloss }}">
-<figcaption>Fig 1.Results of experiment</figcaption>
+<img src="{{ site.imgsrc.valloss }}" width = 50%>
+<figcaption> Validation Loss </figcaption>
 </figure>
 
 ### Conclusion
