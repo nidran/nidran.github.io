@@ -26,6 +26,7 @@ imgsrc:
   sample3 : /assets/img/8.png
   trainloss : /assets/img/trainingloss.png
   valloss : /assets/img/valloss.png
+  bach : /assets/img/bach.png
 # URL settings
 url: "https://nidran.github.io/" #
 baseurl: ""
