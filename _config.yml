@@ -16,7 +16,11 @@ author:
   twitter: NidhiRanjan # twitter username
   email: nidhi.ranjan@nyu.edu # email adress
   avatar: /assets/img/avatar.jpg # change with your own avatar
+
+imgsrc:
   kartavya : /assets/img/kartavya.jpg
+  bdad : /assets/img/bdad.png
+  repo : /assets/img/repo.png
 # URL settings
 url: "https://nidran.github.io/" #
 baseurl: ""

@@ -27,9 +27,8 @@ Graphics of the data distributions are done in Python using Matplotlib and Seabo
 1. We then probailitiically assigned the correct outcome 90% of the times, ie, 10% noise was assigned at outcome assignment as well
 
 
-
 <figure>
-<img src="{{ page.image }}" alt="">
+<img src="{{ site.imgsrc.bdad }}">
 <figcaption>Fig 1.Results of experiment</figcaption>
 </figure>
 
