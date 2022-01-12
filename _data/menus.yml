@@ -11,7 +11,7 @@
   external: false # set true if you using external link, see below
 
 - title: Skills
-  url: /skills/
+  url: /tags/
   external: false 
 # Example:
 # - title: github
