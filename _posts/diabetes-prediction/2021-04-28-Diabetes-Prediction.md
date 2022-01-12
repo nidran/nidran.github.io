@@ -29,7 +29,7 @@ Graphics of the data distributions are done in Python using Matplotlib and Seabo
 
 
 <figure>
-<img src="{{ page.image }}" alt="ilustrasi repo yang mau diupdate">
+<img src="{{ page.image }}" alt="">
 <figcaption>Fig 1.Results of experiment</figcaption>
 </figure>
 

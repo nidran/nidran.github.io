@@ -4,7 +4,7 @@ date: 2018-05-28 09:45:47 +07:00
 modified: 2018-05-28 09:45:47 +07:00
 tags: [ml, mlforhealthcare, imageclassification]
 description: Breast Cancer classification
-image: /breast-cancer-classification/bach.png
+image: /breast-cancer/bach.png
 ---
 
 Breast cancer is one of the leading cancer-related death causes worldwide, specially on women. However, early diagnosis significantly increases treatment success. For the purpose of early diagnosis, proper analysis of histology images is essential. Specifically, during the diagnosis procedure, specialists evaluate both overall and local tissue organization via whole-slide and microscopy images. However, the large amount of data and complexity of the images makes this task time consuming and non-trivial. Because of this, the development of automatic detection and diagnosis tools is challenging but also essential for the field.
@@ -20,7 +20,7 @@ The dataset is composed of Hematoxylin and eosin (H&E) stained breast histology 
  In the first level of the hierarchical classifier, a two class CNN-based classifieris built to discriminate images of Normal class from the images of the rest ofthe classes. In the second stage of hierarchy we built a majority voting basedclassifier where the votes are given by the 3 binary CNN-based classifiers. The binary  CNN-based  classifiers  are  built  in  one-vs-one  way  to  discriminate  oneclass from another. The studies were performed on the dataset provided in theBACH challenge. The proposed hierarchical classifier is found to perform good in classifying histopathology images into Normal, Invasive, Benign and InSituclasses. In future, the proposed approach may be extended to classification of other histopathology image
 
 <figure>
-<img src="{{site.baseurl}}/breast-cancer/bach.png" alt="ilustrasi repo yang mau diupdate">
+<img src="{{page.image}}" alt="">
 <figcaption>Fig 1. Confusion Matrix </figcaption>
 </figure>
 
