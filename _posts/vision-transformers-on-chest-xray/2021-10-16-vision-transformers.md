@@ -22,20 +22,20 @@ We will be using the National Institutes of Health Chest X-Ray Dataset (link) wh
 
 
 <p align="center">
-  <img alt="img-name" src="1.png" width="50%">
+  <img alt="{{site.imgsrc.sample1}}"src="1.png" width="50%">
   <br>
     <em>Sample Image 1</em>
 </p>
 
 
 <p align="center">
-  <img alt="img-name" src="2.png" width="50%">
+  <img alt="{{site.imgsrc.sample2}}" src="2.png" width="50%">
   <br>
     <em>Sample Image 2</em>
 </p>
 
 <p align="center">
-  <img alt="img-name" src="8.png" width="50%">
+  <img alt="{{site.imgsrc.sample3}}" src="8.png" width="50%">
   <br>
     <em>Sample Image 3</em>
 </p>
@@ -55,7 +55,7 @@ We will be using the National Institutes of Health Chest X-Ray Dataset (link) wh
 
 <br>
 <p align="center">
-  <img alt="img-name" src="trainingloss.png" width="50%">
+  <img alt="img-name" src="{{site.imgsrc.trainloss}}" width="50%">
   <br>
     <em>Training Loss</em>
 </p>

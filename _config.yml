@@ -21,6 +21,11 @@ imgsrc:
   kartavya : /assets/img/kartavya.jpg
   bdad : /assets/img/bdad.png
   repo : /assets/img/repo.png
+  sample1 : /assets/img/1.png
+  sample2 : /assets/img/2.png
+  sample3 : /assets/img/8.png
+  trainloss : /assets/img/trainingloss.png
+  valloss : /assets/img/validationloss.png
 # URL settings
 url: "https://nidran.github.io/" #
 baseurl: ""
