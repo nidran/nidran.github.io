@@ -3,8 +3,8 @@ layout: post
 title:  Vision Transformers on Chest Xray
 date:   2021-12-13 09:45:20 +0700
 categories: jekyll update
-tags: ['ml', 'vision-transformers', 'chest-x-ray', 'medical-image-analysis', 'image-classification']
-image: trainingloss.png
+tags: ['ml', 'vision-transformers', 'chest-x-ray', 'medical-image-analysis', 'image-classification', 'resent', 'vgg']
+image: 
 ---
 
 ### Problem Statement 
@@ -50,12 +50,12 @@ We will be using the National Institutes of Health Chest X-Ray Dataset (link) wh
 | Vision Transformer Without Pretraining | 45.33%   | 43.33%|
 
 <figure>
-<img src="{{ site.imgsrc.trainloss }}" width = 50%>
+<img src="{{ site.imgsrc.trainloss }}">
 <figcaption> Training Loss</figcaption>
 </figure>
 
 <figure>
-<img src="{{ site.imgsrc.valloss }}" width = 50%>
+<img src="{{ site.imgsrc.valloss }}" >
 <figcaption> Validation Loss </figcaption>
 </figure>
 

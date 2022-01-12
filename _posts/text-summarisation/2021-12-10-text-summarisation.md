@@ -5,43 +5,27 @@ date:   2021-12-10 09:29:20 +0700
 categories: jekyll update
 ---
 ### Problem Statemnet
-The project files can be found at https://github.com/Arnab-Gupta/nlp-summarizer
+The volume of scientific literature published eachyear is overwhelming for students and researchers,and one needs to get through all this informationquickly.  At the same time, it is vital to not missout on any critical information. The solution to thisdilemma of trading time for information coverageis the advent of Text Summarization.Implementing automatic summarization can en-hance the readability of documents and reduce thetime spent researching for information. While ab-stractive methods have a higher chance of capturingmore information working within a word-limit, inthe case of research papers, it is important to some-times capture certain information verbatim. Thereare well-established SOTA models for both kindsof text summarization that we will apply to datasetsof scientific papers and conduct a comparative anal-ysis of the results from those experiment.
 
-We propose a AI based surveillance system, which feed input from the CCTV camera's in realtime and leverages transfer learning for being able to accurately predict areas where social distancing has been abandoned.
+### Dataset
+We downloaded the datasetof scientific research papers from Science Direct which contains a lot of publications.  We had togenerate an API key using the NYU institutionalemail address on Elsevier and connect to the NYUVPN to make requests to the API to download thefull content of the scientific paper. We downloadedaround∼10Kscientific  papers  for  our  experi-ments which were in XML format and convertedto a text format which is mentioned in the nextsection
 
-CCTV cameras - the algorithm runs on the live feed, and predicts the number of people in a frame. The threshold for people allowed in a particular place is to be determined by the zone of the area ( red/ orange/green) { This is yet to be done} Accordingly, a set Trigger alarm will be raised whenever the threshold is crossed. The alerts can include but not limited to -
-Email
-Daily Logs
-Monitor Alert
-Which will defintely help the local authorities to take cognizance of the incident. This will remove the manual need for viewing the footage.
+### Extraction Based Summarisation 
+Extraction Based Summarisation approaches generate a summary by selecting important existing words, phrases, or sentences from the original text. The words or phrases are rearranged slightly to give the sentence a structure. This method is analogous to using a highlighter to highlight important sentences in a paper, as most of us often do in a manual setting. This method maintains the information from the original paper verbatim, introducing no unseen words or phrases. The extraction-based summarization algorithm firstly generates an importance score for each sentence. The TextRank algorithm is a graph-based unsupervised text summarization algorithm, where sentences are modeled as vertices and the ranking of vertices follows the same algorithm as the PageRank algorithm. The highest-ranked vertices are then selected to form the summary.
+Alongside this, we use BERT sentence embeddings to build an extractive summarizer taking supervised approaches which would incorporate sequential information. BERT (Bidirectional transformer) is a pre-trained bidirectional transformer model that jointly conditions on both left and right contexts, with attention mechanism. It is used to overcome the limitations of RNN and other neural networks as Long term dependencies are well handled without increasing the computation cost. 
 
-Models with various precisions can be implemented, once trained on the India data set. However, due to the lack of resources, for the demo we've used a a pretrained YOLOv3 or this problem statement.
+### Abstractive Based Summarisation
+Abstraction-based summarization approach, which generates a summary by taking out the important word, phrase, or sentence from an original text document and rephrasing it with proper synonyms. This method is analogous to reading the paper and writing in your own words a summary combining the most important points. It tends to be more complicated than the extraction-based technique due to the involvement of figuring out the correct synonyms and correctly rephrasing the sentence. In this category, we train and analyse the xlnet model and pointer generator models
 
-On the existing approach, we can apply a detector to see the count for people wearing masks in a region as well. Which will help give more dynamics of the situtation to the local authorities.
+### Results
 
-A IAAS ( IDentity as a Service) layer can very well be applied to the output layer, to help identify people.
+| Model   | Rouge - 1  | Rouge - 2 | Rouge - L | BLEU |
+| --------| --------------------|------------------|
+| TextRank   | 0.447                | 0.245             | 0.257 | 0.206 |
+| BERT  |   0.510     | 0.277          | 0.305 | 0.268 | 
+| XLNet| 0.443  | 0.236   | 0.241 | 0.168 |
+| PGN | 0.502   | 0.284 | 0.313 | 0.252 |
 
-Satelitie Imagery - We propose to run the same model for satelite imagery as well, which will follow similar steps in case a law breaking situtation arises.
-The resouces that have helped us -
 
-[https://www.analyticsvidhya.com/blog/2019/02/building-crowd-counting-model-python/](https://www.analyticsvidhya.com/blog/2019/02/building-crowd-counting-model-python/)
-
-[https://nanonets.com/blog/crowd-counting-review/](https://nanonets.com/blog/crowd-counting-review/)
-
-Datasets
-
-[https://gjy3035.github.io/GCC-CL/](https://gjy3035.github.io/GCC-CL/)
-
-Object Detection
-
-[https://paperswithcode.com/paper/efficientdet-scalable-and-efficient-object](https://paperswithcode.com/paper/efficientdet-scalable-and-efficient-object)
-
-[https://paperswithcode.com/paper/a-simple-baseline-for-multi-object-tracking](https://paperswithcode.com/paper/a-simple-baseline-for-multi-object-tracking)
-
-[https://paperswithcode.com/paper/tracking-objects-as-points](https://paperswithcode.com/paper/tracking-objects-as-points)
-
-[https://motchallenge.net](https://motchallenge.net)
-
-[https://towardsdatascience.com/kalman-filter-an-algorithm-for-making-sense-from-the-insights-of-various-sensors-fused-together-ddf67597f35e](https://towardsdatascience.com/kalman-filter-an-algorithm-for-making-sense-from-the-insights-of-various-sensors-fused-together-ddf67597f35e)
-
-More information, and code base can be found at [github/kartavya](https://github.com/nidran/kartavya)
+### Conclusion
+Although the results from our experiment are as expected, we can improve them with some other approaches in future. We can work on the data preprocessing of the scientific papers to better handle the equations or tables present in the paper. Further, we can consider to use paragraph embedding for better representation of the document which can then be fed into the models for better results. Moreover, we can try to gather a large dataset of scientific research papers and train the models for a longer period of time to improve the results. Lastly, we should devise a new metric that compares the semantics between the gold and generated summary as compared to overlap of words that occur in both gold and generated summary.
