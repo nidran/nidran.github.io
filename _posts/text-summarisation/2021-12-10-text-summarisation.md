@@ -4,7 +4,7 @@ title:  Abstractive and Extractive Text Summarisation
 date:   2021-12-10 09:29:20 +0700
 categories: jekyll update
 ---
-### Problem Statemnet
+### Problem Statement
 The volume of scientific literature published eachyear is overwhelming for students and researchers,and one needs to get through all this informationquickly.  At the same time, it is vital to not missout on any critical information. The solution to thisdilemma of trading time for information coverageis the advent of Text Summarization.Implementing automatic summarization can en-hance the readability of documents and reduce thetime spent researching for information. While ab-stractive methods have a higher chance of capturingmore information working within a word-limit, inthe case of research papers, it is important to some-times capture certain information verbatim. Thereare well-established SOTA models for both kindsof text summarization that we will apply to datasetsof scientific papers and conduct a comparative anal-ysis of the results from those experiment.
 
 ### Dataset
