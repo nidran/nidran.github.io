@@ -21,24 +21,20 @@ We will be using the National Institutes of Health Chest X-Ray Dataset (link) wh
  to the data set.
 
 
-<p align="center">
-  <img alt="{{site.imgsrc.sample1}}"src="1.png" width="50%">
-  <br>
-    <em>Sample Image 1</em>
-</p>
+<figure>
+<img src="{{ site.imgsrc.sample1 }}">
+<figcaption>Fig 1.Results of experiment</figcaption>
+</figure>
+<figure>
+<img src="{{ site.imgsrc.sample2 }}">
+<figcaption>Fig 1.Results of experiment</figcaption>
+</figure>
 
+<figure>
+<img src="{{ site.imgsrc.sample3 }}">
+<figcaption>Fig 1.Results of experiment</figcaption>
+</figure>
 
-<p align="center">
-  <img alt="{{site.imgsrc.sample2}}" src="2.png" width="50%">
-  <br>
-    <em>Sample Image 2</em>
-</p>
-
-<p align="center">
-  <img alt="{{site.imgsrc.sample3}}" src="8.png" width="50%">
-  <br>
-    <em>Sample Image 3</em>
-</p>
 
 ### Results
 
@@ -53,12 +49,15 @@ We will be using the National Institutes of Health Chest X-Ray Dataset (link) wh
 | Vision Transformer Pretrained using Supervised Learning | 46.5%     | 48.7%  |
 | Vision Transformer Without Pretraining | 45.33%   | 43.33%|
 
-<br>
-<p align="center">
-  <img alt="img-name" src="{{site.imgsrc.trainloss}}" width="50%">
-  <br>
-    <em>Training Loss</em>
-</p>
+<figure>
+<img src="{{ site.imgsrc.trainloss }}">
+<figcaption>Fig 1.Results of experiment</figcaption>
+</figure>
+
+<figure>
+<img src="{{ site.imgsrc.valloss }}">
+<figcaption>Fig 1.Results of experiment</figcaption>
+</figure>
 
 ### Conclusion
 Pre-trained vision transformers have shown promising results when fine-tuned with small-medium sized datasets. Vision Transformer  attains excellent results when pre-trained at sufficient scale and transferred to tasks with fewer datapoints. The key idea is increase test accuracy with small sizes of fine-tuning datasets. Based on our experiments, we can conclude that vision transformers have immense potential to achieve this. Further experiments need to be performed to solidify our results. Similar surveys can be done with larger samples of this dataset. Models pretrained on different sizes and different kinds of data, especially medical images should be explored. 
