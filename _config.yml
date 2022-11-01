@@ -1,7 +1,7 @@
 # Site settings
 title: Nidhi Ranjan # site title
 description: >- # site description
-  I am currently pursuing my Master's at Courant Institute of Mathematical Sciences. I am passionate about using Machine Learning for improving lifes.
+  I am currently pursuing my Master's at Courant Institute of Mathematical Sciences, graduating December 2022. I have around 3 years of previous work experience, at companies likle Meta, Barclays. I am passionate Backend Engineering, and Machine Learning.
 lang: en-US # default lang
 repo: https://github.com/piharpi/jekyll-klise # site repo [optional]
 mode: dark # default theme "dark" | "light"
