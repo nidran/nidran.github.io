@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Multi Modal Multi Environment Performance Comparison on Google Cloud Platform
+title:  Multi Modal Multi Environment Performance Comparison on GCP
 date:   2022-05-13 09:45:20 +0700
 categories: jekyll update
 tags: ['google-cloud', 'cnn', 'rnn', 'docker', 'singularity', 'virtual-machine', 'sentiment-analysis']

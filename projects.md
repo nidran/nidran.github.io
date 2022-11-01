@@ -5,7 +5,7 @@ layout: page
 comments: false
 ---
 
-<center>A little list of some of the projects that I've done</center>
+<!-- <center>A little list of some of the projects that I've done</center> -->
 
 
 <!-- <h3 class="posts-item-note" aria-label="Recent Projects">Recent Projects</h3>

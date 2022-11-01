@@ -6,6 +6,10 @@
   url: /projects/
   external: false
 
+- title: Experience
+  url: /experience/
+  external: false # set true if you using external link, see below
+
 
 - title: Skills
   url: /tags/
