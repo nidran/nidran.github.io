@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Why Fast LLMs Are Really a Memory Problem"
-date:   2026-06-16 09:00:00 +0700
-categories: jekyll update
+date:   2026-06-15 09:00:00 +0530
+categories: blog
 tags: [LLM, Inference, Efficiency, Systems]
 ---
 
