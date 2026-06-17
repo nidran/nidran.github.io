@@ -1,9 +1,9 @@
 # Site settings
 title: Nidhi Ranjan # site title
 description: >- # site description
-  I'm a Machine Learning Engineer at Meta, working on ML for growth and monetization. Previously I built ML systems at Bloomberg and Barclays, and I hold an M.S. in Computer Science from NYU's Courant Institute. I'm passionate about machine learning, ranking and recommendation systems, and LLMs.
+  I'm a Machine Learning Engineer at Meta, working on ML for growth and monetization. Previously I worked on ML modeling at Bloomberg and software engineering at Barclays, and I hold an M.S. in Computer Science from NYU's Courant Institute. I'm passionate about machine learning, ranking and recommendation systems, and LLMs.
 lang: en-US # default lang
-repo: https://github.com/piharpi/jekyll-klise # site repo [optional]
+repo: https://github.com/nidran/nidran.github.io # site repo [optional]
 mode: dark # default theme "dark" | "light"
 
 # Profile settings
@@ -11,7 +11,7 @@ author:
   name: Nidhi Ranjan # author name
   bio: >- # tell to the world
    Hello, good to see you here!
-  username: username # general username
+  username: Nidhi Ranjan # general username
   github: nidran # github username
   twitter: NidhiRanjan # twitter username
   email: nr2387@nyu.edu # email adress

@@ -2,8 +2,8 @@
 layout: post
 title: Big Data Generation for Diabetes and Disease Prediction
 date: 2021-04-28 01:00 +0700
-modified: 22021-04-28 01:00 +0700
-description: Ada dua cara untuk memperbarui forked repository menggunakan web interface yang disediakan oleh github tapi ribet, atau melalui terminal yang lebih ribet lagi.
+modified: 2021-04-28 01:00 +0700
+description: A distributed big-data pipeline for diabetes and disease prediction using Apache Spark.
 tag:
   - bigdata
   - apache-spark

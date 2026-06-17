@@ -1,0 +1,68 @@
+---
+title: Reading
+permalink: /blog/read/
+layout: page
+excerpt: A post from Medium.
+comments: false
+---
+
+<style>
+  #reader-body { line-height: 1.7; margin-top: 1em; }
+  #reader-body img { max-width: 100%; height: auto; border-radius: 6px; }
+  #reader-body figure { margin: 1em 0; }
+  #reader-body pre { overflow-x: auto; padding: 1em; border-radius: 6px; background: rgba(128,128,128,.12); }
+  .reader-meta { font-size: .9em; opacity: .7; margin-bottom: 1em; }
+  .reader-orig { margin: 1.5em 0; font-size: .9em; }
+  .reader-back { display: inline-block; margin-bottom: 1em; font-size: .9em; }
+</style>
+
+<a class="reader-back" href="/blog/">← Back to all posts</a>
+<h1 id="reader-title">Loading…</h1>
+<div class="reader-meta" id="reader-meta"></div>
+<div id="reader-body"></div>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var target = params.get("u");
+  var feed = "https://medium.com/feed/@nidran";
+  var url = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feed);
+
+  var titleEl = document.getElementById("reader-title");
+  var metaEl = document.getElementById("reader-meta");
+  var bodyEl = document.getElementById("reader-body");
+
+  function fmtDate(s) {
+    var d = new Date(s);
+    return isNaN(d) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" });
+  }
+  function mediumLink(u) {
+    return '<p class="reader-orig"><a href="' + u + '" target="_blank" rel="noopener">View original on Medium →</a></p>';
+  }
+
+  if (!target) {
+    titleEl.textContent = "Post not found";
+    bodyEl.innerHTML = '<p><a href="/blog/">← Back to all posts</a></p>';
+    return;
+  }
+
+  fetch(url)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var item = (data.items || []).filter(function (it) { return it.link === target || it.guid === target; })[0];
+      if (!item) {
+        titleEl.textContent = "Couldn't load this post";
+        bodyEl.innerHTML = mediumLink(target);
+        return;
+      }
+      document.title = item.title;
+      titleEl.textContent = item.title;
+      metaEl.textContent = fmtDate(item.pubDate);
+      bodyEl.innerHTML = (item.content || item.description || "") + mediumLink(item.link);
+    })
+    .catch(function () {
+      titleEl.textContent = "Couldn't load this post";
+      bodyEl.innerHTML = mediumLink(target);
+    });
+})();
+</script>
