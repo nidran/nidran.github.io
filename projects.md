@@ -20,12 +20,20 @@ comments: false
 {%- endfor -%}
 </center> -->
 <h3 class="posts-item-note" aria-label="Recent projects">Some of the prominent works that I have done.</h3>
-{%- for post in site.categories.projects limit: site.number_of_posts -%}
+{%- for post in site.categories.projects -%}
 <article class="post-item">
   <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
   <h4 class="post-item-title">
     <a href="{{ post.url }}">{{ post.title | escape }}</a>
   </h4>
+  {%- if post.tag -%}
+  <div class="item-skills">{% for t in post.tag %}<span class="item-skill">{{ t }}</span>{% endfor %}</div>
+  {%- endif -%}
 </article>
 {%- endfor -%}
+
+<style>
+  .item-skills { display: flex; flex-wrap: wrap; gap: .4em; margin: .2em 0 1.4em; }
+  .item-skill { display: inline-block; padding: .12em .6em; border: 1px solid currentColor; border-radius: 999px; font-size: .78em; opacity: .75; }
+</style>
 

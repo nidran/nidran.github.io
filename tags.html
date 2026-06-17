@@ -5,6 +5,18 @@ layout: page
 excerpt: Sorted article by tags.
 ---
 
+<style>
+  .archive-tags { display: flex; flex-wrap: wrap; gap: .5em; margin: 1.2em 0 2em; }
+  .archive-tags .tag-item {
+    display: inline-block; padding: .25em .7em; border-radius: 999px;
+    border: 1px solid currentColor; font-size: .85em; text-decoration: none;
+    opacity: .85; line-height: 1.4;
+  }
+  .archive-tags .tag-item:hover { opacity: 1; text-decoration: none; }
+  .skills-page h2 { margin-top: 1.6em; text-transform: uppercase; font-size: 1.1em; opacity: .75; letter-spacing: .04em; }
+</style>
+
+<div class="skills-page">
 <div class="archive-tags">
   <a class="tag-item" href="#">all</a>
   {%- for tag in site.tags -%} 
@@ -13,15 +25,4 @@ excerpt: Sorted article by tags.
   {%- endfor -%}
 </div>
 
-{%- for tag in site.tags -%}
-  {%- capture name -%}{{ tag | first }}{%- endcapture -%}
-  <h2 id="{{ name }}">{{ name | upcase }}</h2>
-  {%- for post in site.tags[name] -%}
-    <article class="post-item" id="results-container">
-      <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
-      <h3 class="post-item-title">
-        <a href="{{ post.url }}">{{ post.title | escape }}</a>
-      </h3> 
-    </article>
-  {%- endfor -%}
-{%- endfor -%}
+</div>

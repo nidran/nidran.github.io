@@ -27,5 +27,13 @@ comments: false
       </td>
     </tr>
   </table>
+  {%- if work.tags -%}
+  <div class="item-skills">{% for t in work.tags %}<span class="item-skill">{{ t }}</span>{% endfor %}</div>
+  {%- endif -%}
 </article>
 {%- endfor -%}
+
+<style>
+  .item-skills { display: flex; flex-wrap: wrap; gap: .4em; margin: .2em 0 1.4em; }
+  .item-skill { display: inline-block; padding: .12em .6em; border: 1px solid currentColor; border-radius: 999px; font-size: .78em; opacity: .75; }
+</style>
