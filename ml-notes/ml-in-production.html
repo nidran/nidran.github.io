@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ML in Production: Serving, Monitoring &amp; MLOps · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="active" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+
+</details></nav>
+  <main>
+    <article data-slug="ml-in-production">
+      <div class="crumb">ML System Design · chapter · 14 min read</div>
+      <h1>ML in Production: Serving, Monitoring &amp; MLOps</h1>
+      <p><em>Training is a batch job; production is a streaming system with customers attached — skew, drift, and delayed labels are the default, not the exception.</em></p>
+<p>Shipping a model is the beginning. The interview version of MLOps is not a tool name-drop checklist — it is the ability to trace a user request through features, model version, business metric, and back to the training data snapshot that produced the weights, then say what you would check when any link in that chain weakens. The failure modes that dominate mature teams are not &quot;wrong architecture&quot; but <strong>training-serving skew</strong>, <strong>point-in-time violations</strong> in the feature store, <strong>silent drift</strong>, and <strong>metrics that look fine while revenue moves</strong>. This chapter covers inference modes, deployment patterns, registries and reproducibility, drift taxonomy and detection (including PSI), retraining strategy, latency/cost levers, fairness checks, and an incident playbook when live metrics drop. Pair with <a class="wikilink" href="ml-system-design-framework.html">ML System Design Framework</a> and <a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>.</p>
+<aside class="callout success"><div class="callout-title">What you'll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Choose batch vs online vs streaming inference from latency and freshness requirements.</li>
+<li>Define point-in-time correctness and list three causes of training-serving skew.</li>
+<li>Compare shadow, canary, blue/green, and A/B deployment with rollback triggers.</li>
+<li>Separate covariate shift, prior shift, and concept drift — and name PSI, KS, and KL/JS as detectors.</li>
+<li>Explain delayed labels, proxy metrics, and when scheduled vs triggered retrain wins.</li>
+<li>Walk the incident checklist when production metrics drop without panicking.</li>
+</ul>
+</div></aside>
+<h2 id="inference-modes-batch-online-streaming"><a class="anchor" href="#inference-modes-batch-online-streaming">#</a>Inference modes: batch, online, streaming</h2>
+<p><strong>Batch inference</strong> scores a large corpus on a schedule (nightly ad propensities, churn scores for CRM). Pros: cheap amortization, heavy models OK. Cons: scores stale until the next run — bad when events matter in minutes.</p>
+<p><strong>Online (real-time) inference</strong> computes predictions per request with a <strong>latency SLO</strong> (p99 &lt; 100ms common for ranking/ads). Needs <strong>feature serving</strong> from caches/stores, horizontal autoscaling, and often <strong>model distillation</strong> or smaller architectures.</p>
+<p><strong>Streaming inference</strong> updates features and sometimes model state on an event stream (Kafka → Flink). Use when features are volatile (last-5-minute clicks) or when you fuse batch baselines with real-time deltas.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Mode</th>
+<th style="text-align:left">Freshness</th>
+<th style="text-align:left">Cost profile</th>
+<th style="text-align:left">Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Batch</td>
+<td style="text-align:left">Hours–days</td>
+<td style="text-align:left">Low $/prediction at scale</td>
+<td style="text-align:left">Churn lists, catalog tags</td>
+</tr>
+<tr>
+<td style="text-align:left">Online</td>
+<td style="text-align:left">Sub-second</td>
+<td style="text-align:left">Per-QPS infra + cache</td>
+<td style="text-align:left">Search rank, fraud score</td>
+</tr>
+<tr>
+<td style="text-align:left">Streaming</td>
+<td style="text-align:left">Event-driven</td>
+<td style="text-align:left">Pipeline ops + state</td>
+<td style="text-align:left">Session features, counters</td>
+</tr>
+</tbody>
+</table></div><p>Hybrid <strong>lambda/kappa</strong> patterns are the norm: batch user embeddings daily, stream session counters per request, merge at the ranker.</p>
+<p><strong>Request path (mental model).</strong> Client → API gateway → feature fetch (parallel RPCs) → model server (batched GPU) → post-processing (calibration, business rules) → response. Each hop consumes budget; feature stores are often parallelized with a hard timeout — missing features fall back to defaults that must match training sentinels.</p>
+<p><strong>SLO example:</strong> p99 80ms rank, 99.9% availability, error budget 0.1%/week. Violations trigger autoscale, circuit breakers to a simpler model, or traffic shed to popularity fallback — state the fallback explicitly in interviews (rules beat a timing-out DCN).</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Batch = cheap and stale; online = fresh and expensive; streaming = fresh features without scoring everything offline.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Ask latency and freshness before picking inference. Recsys at 100ms almost always means precomputed item side + online user side.</p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Inference</div><div class="callout-body"><p>Batch for scale and staleness tolerance. Online for request-time decisions with SLOs. Streaming for evolving counters/state. Most systems blend batch + real-time features.</p>
+</div></aside>
+<h2 id="feature-stores-and-point-in-time-correctness"><a class="anchor" href="#feature-stores-and-point-in-time-correctness">#</a>Feature stores and point-in-time correctness</h2>
+<p>A <strong>feature store</strong> serves the same feature definitions in training and serving, keyed by entity ID and timestamp. <strong>Point-in-time correctness</strong> means: for a label at time <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>, every feature must reflect only information <strong>available before</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>. Violations are <a class="wikilink" href="data-leakage.html">Data Leakage</a> — the model learns the future.</p>
+<p>Implementation pattern: store <strong>feature snapshots</strong> or <strong>event-time aggregations</strong> with <code>as_of</code> joins in training SQL; in serving, read the <strong>latest committed</strong> feature vector up to <code>request_time</code>. Offline backfills must use the same transformation code path (often packaged as a shared library).</p>
+<p>Typical layout: <strong>offline store</strong> (warehouse tables for training sets) + <strong>online store</strong> (Redis/Dynamo for low-latency reads) fed by the same stream processors. <strong>Time-travel APIs</strong> let researchers request <code>get_features(entity_id, timestamp=t)</code> for backtests without rewriting SQL.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concern</th>
+<th style="text-align:left">Training</th>
+<th style="text-align:left">Serving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Join key</td>
+<td style="text-align:left"><code>(user_id, event_time)</code></td>
+<td style="text-align:left"><code>(user_id, request_id)</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Aggregation window</td>
+<td style="text-align:left">Closed intervals ending at label time</td>
+<td style="text-align:left">Rolling &quot;as of now&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">Freshness</td>
+<td style="text-align:left">Backfill OK</td>
+<td style="text-align:left">SLO-driven (seconds–hours)</td>
+</tr>
+</tbody>
+</table></div><p>Feature ownership matters organizationally: central platform teams ship transforms; product teams own entity definitions. Version features in the model registry next to weights so rollback reverts both.</p>
+<aside class="callout warning"><div class="callout-title">Common mistake</div><div class="callout-body"><p>Joining &quot;current user profile&quot; to historical labels — profiles were updated after the label event; offline metrics inflate.</p>
+</div></aside>
+<h2 id="training-serving-skew"><a class="anchor" href="#training-serving-skew">#</a>Training-serving skew</h2>
+<p><strong>Skew</strong> is any systematic difference between the distribution or computation of features at train vs serve time.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Cause</th>
+<th style="text-align:left">Example</th>
+<th style="text-align:left">Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Different code paths</td>
+<td style="text-align:left">Python training, Java serving</td>
+<td style="text-align:left">Shared feature lib; CI contract tests</td>
+</tr>
+<tr>
+<td style="text-align:left">Missing defaults</td>
+<td style="text-align:left">Null imputation differs</td>
+<td style="text-align:left">Explicit default sentinel; monitoring</td>
+</tr>
+<tr>
+<td style="text-align:left">Logging vs live features</td>
+<td style="text-align:left">Trained on stale batch only</td>
+<td style="text-align:left">Serve what you logged; parity checks</td>
+</tr>
+<tr>
+<td style="text-align:left">Normalization drift</td>
+<td style="text-align:left">Stats from old window</td>
+<td style="text-align:left">Versioned stats; refresh job</td>
+</tr>
+<tr>
+<td style="text-align:left">Candidate universe</td>
+<td style="text-align:left">Train on exposed items only</td>
+<td style="text-align:left">Importance weight or multi-stage replay</td>
+</tr>
+</tbody>
+</table></div><p><strong>Prevention:</strong> snapshot serving features in logs, daily <strong>train-serve parity</strong> jobs comparing distributions, and <strong>shadow mode</strong> deployment (see below). Deep dive card: <a class="wikilink" href="training-serving-skew.html">Training-Serving Skew</a>.</p>
+<p>Add <strong>golden request tests</strong>: replay recorded production payloads through offline transform code and assert bitwise or epsilon equality on numerics before each release. This catches the subtle bugs — timezone on &quot;day of week,&quot; off-by-one in sequence windows, off-by-float in embedding norms — that dashboards miss until revenue moves.</p>
+<p>For ranking, log the <strong>candidate set ID list</strong> and retrieval scores at serve time so offline replay evaluates the same slate distribution the ranker saw live; retraining on reshuffled candidates without matching retrieval is a silent skew source.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Skew</div><div class="callout-body"><p>Same transforms, same defaults, same time semantics. Log served features for training replay. Parity tests between offline batch and online RPC.</p>
+</div></aside>
+<h2 id="deployment-patterns-and-rollback"><a class="anchor" href="#deployment-patterns-and-rollback">#</a>Deployment patterns and rollback</h2>
+<p><strong>Shadow deployment:</strong> new model runs in parallel, predictions discarded or compared — zero user risk; validates latency and skew.</p>
+<p><strong>Canary:</strong> small % of traffic on new model; watch error rate, latency, business metrics; auto-rollback on breach.</p>
+<p><strong>Blue/green:</strong> two full stacks; instant switch; rollback = flip traffic back — good when infra allows duplicate capacity.</p>
+<p><strong>A/B test:</strong> randomized experiment for <strong>causal</strong> metric lift — required when claiming improvement, not just safety. See <a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Experimentation</a>.</p>
+<p>Rollback triggers: SLO latency regression, error spikes, guardrail metrics (fraud FP, toxicity reports), and <strong>pre-agreed</strong> business KPI floors. Keep <strong>previous model version</strong> hot in the registry.</p>
+<p><strong>Experimentation ethics:</strong> ramp canaries slowly on revenue-critical paths; pre-define <strong>duration</strong> and <strong>stopping rules</strong> to avoid p-hacking. When offline and online disagree, trust online for product metrics but mine offline for <strong>regression localization</strong> (which slice broke).</p>
+<p>For batch systems, deployment is often <strong>pointer flip</strong> on output tables (Blue dataset / Green dataset) with downstream consumers reading versioned paths — same conceptual pattern as online blue/green.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Shadow = observe; canary = trust a little; blue/green = switch; A/B = prove causally.</p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Deploy</div><div class="callout-body"><p>Shadow for parity; canary for gradual risk; blue/green for fast revert; A/B for proof. Roll back on latency, errors, guardrails — not vibes.</p>
+</div></aside>
+<h2 id="model-registry-versioning-reproducibility"><a class="anchor" href="#model-registry-versioning-reproducibility">#</a>Model registry, versioning, reproducibility</h2>
+<p>A <strong>model registry</strong> stores artifacts: weights, feature manifest, training data hash, hyperparameters, metrics, and approval state. <strong>Semantic versioning</strong> or content hashes tie a served endpoint to an immutable artifact.</p>
+<p>Reproducibility checklist: seed control, pinned dependencies, logged data snapshots, git SHA of training code, and documented <strong>data filters</strong> (time windows, bot removal). For regulated domains, retain <strong>lineage</strong> from prediction → model version → training set.</p>
+<p><strong>Promotion workflow.</strong> Train job completes → offline metrics on holdout → comparison to champion → human approval for high-risk domains → artifact upload → integration tests (schema of features, max latency dry-run) → canary deploy. Reject promotion if <strong>slice regressions</strong> appear even when global AUC rises — a classic fairness and robustness trap.</p>
+<p><strong>Champion/challenger</strong> terminology: production serves champion; challenger runs in shadow or small canary until statistically significant lift on pre-registered metrics. Document <strong>minimum detectable effect</strong> so you do not ship noise.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Name the registry when asked &quot;how do you roll back?&quot; — &quot;serve v42 from registry while v43 trains&quot; beats vague &quot;we keep old weights.&quot;</p>
+</div></aside>
+<h2 id="monitoring-drift-labels-and-proxies"><a class="anchor" href="#monitoring-drift-labels-and-proxies">#</a>Monitoring: drift, labels, and proxies</h2>
+<p>Production monitoring spans <strong>data</strong>, <strong>model</strong>, <strong>infrastructure</strong>, and <strong>business</strong> layers.</p>
+<h3 id="drift-taxonomy"><a class="anchor" href="#drift-taxonomy">#</a>Drift taxonomy</h3>
+<ul>
+<li><strong>Covariate shift (data drift):</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0785em;">X</span><span class="mclose">)</span></span></span></span> changes; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Y</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Y|X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0785em;">X</span><span class="mclose">)</span></span></span></span> stable — e.g. new user geography after marketing campaign.</li>
+<li><strong>Prior shift (label drift):</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span><span class="mclose">)</span></span></span></span> changes — e.g. fraud rate spikes in holiday season.</li>
+<li><strong>Concept drift:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Y</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Y|X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0785em;">X</span><span class="mclose">)</span></span></span></span> changes — the same feature vector means something different (new fraud tactic, UI redesign).</li>
+</ul>
+<p>Card: <a class="wikilink" href="data-drift.html">Data Drift vs Concept Drift</a>.</p>
+<h3 id="detection-methods"><a class="anchor" href="#detection-methods">#</a>Detection methods</h3>
+<p>Compare reference window (training or last week) to production on marginals or predictions:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Idea</th>
+<th style="text-align:left">Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>PSI</strong></td>
+<td style="text-align:left">Bucketed distribution shift</td>
+<td style="text-align:left">Categorical / binned numerics</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>KS test</strong></td>
+<td style="text-align:left">Max CDF gap</td>
+<td style="text-align:left">Continuous univariate</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>KL / JS divergence</strong></td>
+<td style="text-align:left">Information distance between distributions</td>
+<td style="text-align:left">Embedding or score distributions</td>
+</tr>
+</tbody>
+</table></div><p><strong>Population Stability Index (PSI)</strong> on bins <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">B_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> with reference proportion <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">E_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and actual <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">I</mi></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><mo stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>−</mo><msub><mi>E</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mtext> </mtext><mi>ln</mi><mo>⁡</mo><mfrac><msub><mi>A</mi><mi>i</mi></msub><msub><mi>E</mi><mi>i</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\mathrm{PSI} = \sum_{i=1}^{k} (A_i - E_i)\,\ln\frac{A_i}{E_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">PSI</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:3.1138em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8361em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p>Rule of thumb: PSI &lt; 0.1 stable; 0.1–0.25 watch; &gt; 0.25 investigate (thresholds vary by domain). PSI is one-dimensional — pair with multivariate tests and <strong>slice monitors</strong> (country, app version).</p>
+<p><strong>Prediction drift</strong> (score distribution shift) often precedes label drift — cheap early warning when labels are delayed.</p>
+<p><strong>Multivariate drift.</strong> Univariate PSI on 500 features triggers false alarms; use <strong>random projections</strong>, <strong>PCA subspace</strong> tests, or tree-based drift detectors (e.g. classifying &quot;reference vs production&quot; on features — AUC <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≫</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\gg 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">≫</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span> means separable shift). In interviews, say you'd combine univariate PSI for alerting with multivariate triage on top movers.</p>
+<p><strong>KS test</strong> uses the supremum of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>F</mi><mtext>ref</mtext></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>F</mi><mtext>act</mtext></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|F_{\text{ref}}(x) - F_{\text{act}}(x)|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ref</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">act</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord">∣</span></span></span></span>; sensitive to location/scale shifts in continuous scores. <strong>Jensen–Shannon</strong> is symmetric and bounded compared to raw KL, useful when comparing softmax score vectors bucketed over impressions.</p>
+<h3 id="delayed-labels-and-proxy-metrics"><a class="anchor" href="#delayed-labels-and-proxy-metrics">#</a>Delayed labels and proxy metrics</h3>
+<p>Fraud, churn, and LTV labels arrive days or weeks late. Operate on <strong>proxy metrics</strong> (click, session start) with known lag structure while backfilling true labels. <strong>Counterfactual evaluation</strong> on exploration traffic helps when logs are biased.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Strong: distinguish <em>input</em> drift from <em>concept</em> drift and say what you'd retrain vs what you'd revert (bad deploy vs world change).</p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Monitoring</div><div class="callout-body"><p>Covariate = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0785em;">X</span><span class="mclose">)</span></span></span></span>; prior = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span><span class="mclose">)</span></span></span></span>; concept = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Y</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Y|X)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0785em;">X</span><span class="mclose">)</span></span></span></span>. PSI on binned features; KS on continuous; JS for scores. Prediction drift is the fast signal. Proxies when labels lag.</p>
+</div></aside>
+<h2 id="retraining-strategies"><a class="anchor" href="#retraining-strategies">#</a>Retraining strategies</h2>
+<p><strong>Scheduled retrain</strong> (daily/weekly): simple ops; risks learning stale patterns between runs.</p>
+<p><strong>Triggered retrain</strong> when PSI/KS breaches, online metric drop, or data volume threshold — saves compute but needs automation.</p>
+<p><strong>Continual learning</strong> updates weights online; rare in regulation-heavy or non-stationary-tabular settings due to <strong>catastrophic forgetting</strong> and audit requirements — more common in ads with incremental linear models or small adapter updates.</p>
+<p>Cadence trade-off: faster domains (short-video, ads) → daily + streaming features; slow domains (credit) → monthly with heavy validation.</p>
+<p><strong>Data volume triggers:</strong> retrain when new labeled volume crosses a threshold or when <strong>active learning</strong> queues human labels for uncertain slices — common in moderation and fraud.</p>
+<p><strong>Evaluation before promote:</strong> hold out the most recent time window (for time-series, never random split — see <a class="wikilink" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>). For classifiers, check <a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a> at the production threshold, not only <a class="wikilink" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>.</p>
+<h2 id="observability-and-the-feedback-loop"><a class="anchor" href="#observability-and-the-feedback-loop">#</a>Observability and the feedback loop</h2>
+<p>Log <strong>request_id</strong>, <strong>model_version</strong>, <strong>feature_version</strong>, inputs (hashed or bucketed), outputs, and downstream outcomes when labels arrive. Pipelines: clickstream → label joiner → training table → registry → serve — close the loop deliberately, not accidentally amplifying bias.</p>
+<p>Dashboards worth naming in interviews: feature null rate, score distribution, latency p50/p99, cache hit rate, GPU utilization, and business KPI by model slice. Alert on <strong>compound conditions</strong> (PSI high <em>and</em> CTR down), not single metrics alone.</p>
+<p>Connect training to <a class="wikilink" href="regularization.html">Regularization</a> and data freshness: retraining on stale windows without reweighting recent events behaves like an overly strong prior.</p>
+<h2 id="latency-and-cost-optimization"><a class="anchor" href="#latency-and-cost-optimization">#</a>Latency and cost optimization</h2>
+<p>Levers interviewers recognize:</p>
+<ul>
+<li><strong>Distillation</strong> — teacher → student with softer targets (<a class="wikilink" href="llm-inference.html">LLM Inference</a> patterns apply at scale).</li>
+<li><strong>Quantization</strong> (INT8) and <strong>pruning</strong> for GPU/CPU throughput.</li>
+<li><strong>Caching</strong> — user embeddings, frequent queries, partial ranker outputs.</li>
+<li><strong>Batching</strong> — dynamic batching on GPU serving (TensorRT/Triton).</li>
+<li><strong>Two-stage</strong> — cheap retrieve, expensive rank on thousands not billions (see <a class="wikilink" href="recommender-systems.html">Recommender Systems</a>).</li>
+</ul>
+<p>Cost-aware serving picks model size to <strong>p99 latency</strong>, not mean — tail drives time-outs.</p>
+<h3 id="serving-topologies"><a class="anchor" href="#serving-topologies">#</a>Serving topologies</h3>
+<p><strong>Embedded in app</strong> (mobile on-device): tiny models, INT8, no network — drift handled via OTA model bundle updates. <strong>Sidecar / microservice:</strong> language-agnostic RPC (gRPC), autoscaling replicas per model. <strong>Multi-model bin packing:</strong> Triton schedules heterogeneous models on shared GPUs. <strong>LLM-specific:</strong> continuous batching, prefix caching, speculative decoding — see <a class="wikilink" href="llm-inference.html">LLM Inference</a>; analogies (cache KV, batch requests) apply to rankers at smaller scale.</p>
+<p><strong>Testing before prod:</strong> contract tests on feature schemas, <strong>load tests</strong> at peak QPS, and chaos drills (feature store timeout → defaults). Load test the <strong>p99 tail</strong>, not average QPS alone.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Efficiency</div><div class="callout-body"><p>Distill, quantize, cache embeddings, batch GPU calls. Funnel cheap stages before expensive cross-models. Optimize p99, not average.</p>
+</div></aside>
+<h2 id="fairness-and-explainability-checks"><a class="anchor" href="#fairness-and-explainability-checks">#</a>Fairness and explainability checks</h2>
+<p>Pre-launch and ongoing: <strong>slice metrics</strong> (demographic, region, new vs power users), <strong>disparate impact</strong> on allocation rates (ads, loans, moderation), and <strong>explainability</strong> where regulated (SHAP on tabular, attention ≠ explanation for deep nets — state limits).</p>
+<p>Fairness fixes intersect product policy: thresholds per slice, human review queues, and <strong>constraint optimization</strong> in re-ranking — not only &quot;train a fairer model.&quot;</p>
+<p>Explainability in interviews: for tree models, <strong>SHAP</strong> for local attributions; for deep models, admit limitations — surface-level attention weights are not faithful explanations. Regulated use cases may require <strong>adverse action</strong> notices tied to top features.</p>
+<h3 id="batch-vs-online-retraining-coordination"><a class="anchor" href="#batch-vs-online-retraining-coordination">#</a>Batch vs online retraining coordination</h3>
+<p>Many stacks run <strong>nightly batch retrain</strong> while serving <strong>hourly refreshed</strong> linear calibration layers on top — decouple slow full retrains from fast adapter updates. Document which artifact each layer reads so rollback does not leave mismatched pairs.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — MLOps loop</div><div class="callout-body"><p>Log → label → feature store → train → evaluate → register → canary → monitor → trigger/schedule retrain. Version everything. Never promote without slice checks.</p>
+</div></aside>
+<h2 id="incident-checklist-metrics-dropped-what-now"><a class="anchor" href="#incident-checklist-metrics-dropped-what-now">#</a>Incident checklist: metrics dropped — what now?</h2>
+<p>Structured response beats retraining randomly:</p>
+<ol>
+<li><strong>Confirm the signal</strong> — not a dashboard bug, seasonal weekday effect, or external outage (ads inventory, upstream API).</li>
+<li><strong>Segment</strong> — which metric, which slice (platform, country, model version), start time vs deploy time.</li>
+<li><strong>Infra</strong> — latency, error rate, feature store freshness, null rates on key features.</li>
+<li><strong>Skew check</strong> — compare logged serve features to training distributions (PSI per feature).</li>
+<li><strong>Model version</strong> — correlate with canary/rollback; if post-deploy, <strong>rollback first</strong>, analyze second.</li>
+<li><strong>Data pipeline</strong> — broken ETL, changed schema, bot traffic spike.</li>
+<li><strong>Concept drift</strong> — real world changed (competitor, UI test) → needs retrain or policy fix, not rollback.</li>
+<li><strong>Communication</strong> — incident owner, ETA, guardrails if disabling ML fallback to rules.</li>
+</ol>
+<p><strong>Playbook extensions for ranking/recsys</strong> (ties to <a class="wikilink" href="recommender-systems.html">Recommender Systems</a>): check retrieval ANN health (index version, empty recall), explore rate changes, and creator-level impression drops. For ads, verify auction inputs and calibration layer — metric drops may be <strong>revenue mix</strong> not model quality.</p>
+<p>Post-incident: write a blameless note capturing detection gap (why PSI did not fire), fix (registry rollback vs retrain), and preventive monitor. Interviewers love hearing &quot;we added a null-rate alert on feature X after incident Y.&quot;</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Roll back deploys before you retrain the world.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Walk the checklist out loud — interviewers reward operational muscle, not &quot;I'd retrain on more data.&quot;</p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Incidents</div><div class="callout-body"><p>Validate alert → slice → infra → feature PSI → version correlation → rollback if deploy → pipeline → concept drift → comms. Rollback beats blind retrain.</p>
+</div></aside>
+<h2 id="putting-it-together-ads-click-model-slice"><a class="anchor" href="#putting-it-together-ads-click-model-slice">#</a>Putting it together: ads click model slice</h2>
+<p>Walk a concrete path: training reads impression logs from the warehouse with point-in-time user stats; positives are clicks within 24h; features include creative embedding (batch), user segment (batch), and session counters (stream). Serving fetches the same three families from the online store; a logistic or shallow DNN runs at 30ms p99. Shadow a new GBDT champion against the live linear model; canary at 2% traffic; monitor CTR, revenue per mille, and PSI on bid floor features. Labels delay hours — early warning from <strong>predicted CTR distribution</strong> shift. Roll back if canary RPM drops beyond a pre-set guardrail while global latency stays green.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — End-to-end slice</div><div class="callout-body"><p>Warehouse labels + streaming counters → shared transforms → registry versions → shadow → canary → PSI on inputs and scores → delayed label refresh → scheduled daily retrain.</p>
+</div></aside>
+<h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-page summary</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concept</th>
+<th style="text-align:left">The one thing to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Inference modes</td>
+<td style="text-align:left">Batch cheap/stale; online fresh/expensive; streaming for live features.</td>
+</tr>
+<tr>
+<td style="text-align:left">Feature store</td>
+<td style="text-align:left">Point-in-time joins — features only from before label time.</td>
+</tr>
+<tr>
+<td style="text-align:left">Skew</td>
+<td style="text-align:left">Train and serve must share code, defaults, and semantics.</td>
+</tr>
+<tr>
+<td style="text-align:left">Deploy</td>
+<td style="text-align:left">Shadow observe; canary risk; blue/green revert; A/B prove.</td>
+</tr>
+<tr>
+<td style="text-align:left">Registry</td>
+<td style="text-align:left">Immutable artifacts + lineage for audit and rollback.</td>
+</tr>
+<tr>
+<td style="text-align:left">Drift</td>
+<td style="text-align:left">Covariate vs prior vs concept — different fixes.</td>
+</tr>
+<tr>
+<td style="text-align:left">PSI</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mo stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>−</mo><msub><mi>E</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mi>ln</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mi mathvariant="normal">/</mi><msub><mi>E</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum (A_i-E_i)\ln(A_i/E_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> on bins; investigate &gt; ~0.25.</td>
+</tr>
+<tr>
+<td style="text-align:left">Retrain</td>
+<td style="text-align:left">Scheduled vs triggered; proxies when labels lag.</td>
+</tr>
+<tr>
+<td style="text-align:left">Efficiency</td>
+<td style="text-align:left">Distill, quantize, cache, funnel before heavy rank.</td>
+</tr>
+<tr>
+<td style="text-align:left">Incidents</td>
+<td style="text-align:left">Rollback deploys first; PSI features; don't panic-retrain.</td>
+</tr>
+</tbody>
+</table></div><h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="ml-system-design-framework.html">ML System Design Framework</a></li>
+<li><a class="wikilink" href="training-serving-skew.html">Training-Serving Skew</a></li>
+<li><a class="wikilink" href="data-drift.html">Data Drift vs Concept Drift</a></li>
+<li><a class="wikilink" href="data-leakage.html">Data Leakage</a></li>
+<li><a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a></li>
+<li><a class="wikilink" href="calibration.html">Calibration</a></li>
+<li><a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Experimentation</a></li>
+<li><a class="wikilink" href="recommender-systems.html">Recommender Systems</a></li>
+<li><a class="wikilink" href="llm-inference.html">LLM Inference</a></li>
+</ul>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="responsible-ml.html"><small>← Previous</small>Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="r" href="models-and-loss-functions-reference.html"><small>Next →</small>Models and Loss Functions Reference</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#inference-modes-batch-online-streaming">Inference modes: batch, online, streaming</a><a class="l2" href="#feature-stores-and-point-in-time-correctness">Feature stores and point-in-time correctness</a><a class="l2" href="#training-serving-skew">Training-serving skew</a><a class="l2" href="#deployment-patterns-and-rollback">Deployment patterns and rollback</a><a class="l2" href="#model-registry-versioning-reproducibility">Model registry, versioning, reproducibility</a><a class="l2" href="#monitoring-drift-labels-and-proxies">Monitoring: drift, labels, and proxies</a><a class="l3" href="#drift-taxonomy">Drift taxonomy</a><a class="l3" href="#detection-methods">Detection methods</a><a class="l3" href="#delayed-labels-and-proxy-metrics">Delayed labels and proxy metrics</a><a class="l2" href="#retraining-strategies">Retraining strategies</a><a class="l2" href="#observability-and-the-feedback-loop">Observability and the feedback loop</a><a class="l2" href="#latency-and-cost-optimization">Latency and cost optimization</a><a class="l3" href="#serving-topologies">Serving topologies</a><a class="l2" href="#fairness-and-explainability-checks">Fairness and explainability checks</a><a class="l3" href="#batch-vs-online-retraining-coordination">Batch vs online retraining coordination</a><a class="l2" href="#incident-checklist-metrics-dropped-what-now">Incident checklist: metrics dropped — what now?</a><a class="l2" href="#putting-it-together-ads-click-model-slice">Putting it together: ads click model slice</a><a class="l2" href="#one-page-summary">One-page summary</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+</body></html>

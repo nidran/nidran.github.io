@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LLM Eval · ML Interview Handbook</title>
+<title>LLM Evaluation · ML Interview Handbook</title>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
 </head><body>
 <header class="top">
   <button id="menu" aria-label="Menu">☰</button>
@@ -13,20 +13,20 @@
   <div id="results" hidden></div>
 </header>
 <div class="layout">
-  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
 <a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
-<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
 <a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
-<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
 <div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
-</details>
-<details class="nav-sec"><summary><span class="ico">📊</span>Statistics &amp; Experimentation</summary>
-<a class="moc" data-slug="moc-statistics" href="moc-statistics.html">Overview: Statistics</a>
-<div class="grp">Chapters</div><a class="" data-slug="a-b-testing-and-experimentation" href="a-b-testing-and-experimentation.html">A-B Testing &amp; Experimentation</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a>
-
 </details>
 <details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
 <a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
@@ -35,111 +35,563 @@
 </details>
 <details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
 <a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
-<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="decision-trees-and-gradient-boosting" href="decision-trees-and-gradient-boosting.html">Decision Trees and Gradient Boosting</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
-</details>
-<details class="nav-sec"><summary><span class="ico">🧭</span>Unsupervised Learning</summary>
-<a class="moc" data-slug="moc-unsupervised" href="moc-unsupervised.html">Overview: Unsupervised</a>
-<div class="grp">Chapters</div><a class="" data-slug="anomaly-detection" href="anomaly-detection.html">Anomaly Detection</a><a class="" data-slug="clustering-and-dimensionality-reduction" href="clustering-and-dimensionality-reduction.html">Clustering &amp; Dimensionality Reduction</a>
-
-</details>
-<details class="nav-sec"><summary><span class="ico">🧹</span>Data &amp; Features</summary>
-<a class="moc" data-slug="moc-data-and-features" href="moc-data-and-features.html">Overview: Data &amp; Features</a>
-<div class="grp">Chapters</div><a class="" data-slug="data-preprocessing-and-feature-engineering" href="data-preprocessing-and-feature-engineering.html">Data Preprocessing &amp; Feature Engineering</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
 <a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
-<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
 <a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
-<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="training-deep-networks" href="training-deep-networks.html">Training Deep Networks</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
 </details>
 <details class="nav-sec" open><summary><span class="ico">💬</span>LLMs</summary>
 <a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
-<div class="grp">Chapters</div><a class=" active" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a><a class="" data-slug="llm-training-fine-tuning-and-rag" href="llm-training-fine-tuning-and-rag.html">LLM Training, Fine-tuning &amp; RAG</a><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="active" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
 <a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
 <div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
-
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
 <a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
-<div class="grp">Chapters</div><a class="" data-slug="bandits-and-reinforcement-learning-basics" href="bandits-and-reinforcement-learning-basics.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="ml-in-production-and-monitoring" href="ml-in-production-and-monitoring.html">ML in Production &amp; Monitoring</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
 </details>
-<details class="nav-sec"><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
 
-<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
 
-</details><details class="nav-sec" ><summary><span class="ico">🧰</span>Cheatsheets</summary><a class="" data-slug="sklearn-cheatsheet" href="sklearn-cheatsheet.html">sklearn Cheat Sheet</a></details></nav>
+</details></nav>
   <main>
     <article data-slug="llm-eval">
-      <div class="crumb">LLMs · chapter · 2 min read</div>
-      <h1>LLM Eval</h1>
-      <h3 id="automated-metrics-reference-based"><a class="anchor" href="#automated-metrics-reference-based">#</a>Automated Metrics (Reference-Based)</h3><ul>
-<li><strong>Exact Match / Token F1</strong> — overlap with gold answer (e.g., SQuAD-style)  </li>
-<li><strong>BLEU</strong> — n-gram precision of generated text vs reference  </li>
-<li><strong>ROUGE</strong> — n-gram recall of generated text vs reference  </li>
-<li><strong>BERTScore</strong> — cosine similarity of contextual embeddings; captures paraphrases better than n-gram methods</li>
+      <div class="crumb">LLMs · chapter · 16 min read</div>
+      <h1>LLM Evaluation</h1>
+      <p><em>Offline scores are cheap lies unless you know what they measure and what they miss.</em></p>
+<p>Language models do not output a single correct label; they output open-ended text under prompts you chose, decoded with knobs that inject randomness. <strong>LLM evaluation</strong> is the discipline of turning that mess into decisions: ship or hold, model A or B, safe enough for this surface. The interview version is not reciting benchmark names—it is naming a <strong>hierarchy of evals</strong> (cheap regression → benchmarks → judges → humans → online experiments), picking metrics that match the failure mode, and reporting uncertainty so a 0.5-point leaderboard twitch does not fool anyone.</p>
+<aside class="callout success"><div class="callout-title">What you'll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Explain why n-gram scores, perplexity, and static benchmarks each <strong>break</strong> for instruction-tuned chat models.</li>
+<li>Design a <strong>versioned golden set</strong> from production logs without contaminating training or the test pool.</li>
+<li>Compute <strong>pass@k</strong> with the unbiased estimator and defend execution-based code eval.</li>
+<li>Run <strong>LLM-as-judge</strong> with rubrics, bias probes, and human agreement metrics (κ, Spearman, win-rate/Elo).</li>
+<li>Split <strong>RAG</strong> and <strong>agent</strong> evals into component vs end-to-end, with links to retrieval metrics and faithfulness.</li>
+<li>Size an offline comparison: confidence intervals on accuracy and <strong>~1,200 paired items</strong> for a 2-point lift under McNemar.</li>
+<li>Close with <strong>online</strong> guardrails and point to <a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a> for causal launch decisions.</li>
 </ul>
-<h3 id="automated-metrics-reference-free"><a class="anchor" href="#automated-metrics-reference-free">#</a>Automated Metrics (Reference-Free)</h3><ul>
-<li><strong>Perplexity</strong> — model&#39;s surprise at the next token; lower = more fluent, but doesn&#39;t measure correctness  </li>
-<li><strong>LLM-as-Judge</strong> — stronger model scores outputs on rubric dimensions (helpfulness, accuracy, safety); can be pointwise (rate 1-5) or pairwise (A vs B)</li>
+</div></aside>
+<h2 id="why-llm-evaluation-is-hard"><a class="anchor" href="#why-llm-evaluation-is-hard">#</a>Why LLM evaluation is hard</h2>
+<p>Classical <a class="wikilink" href="model-evaluation-and-validation.html">model evaluation</a> assumes a fixed label space and a loss you can average. LLMs violate every convenience:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Difficulty</th>
+<th style="text-align:left">What breaks</th>
+<th style="text-align:left">Practical consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Open-ended outputs</strong></td>
+<td style="text-align:left">Many strings are equally good</td>
+<td style="text-align:left">Reference metrics need gold answers or rubrics</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Multiple valid answers</strong></td>
+<td style="text-align:left">Paraphrase, style, language</td>
+<td style="text-align:left">Exact match punishes correct but differently worded replies</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Non-determinism</strong></td>
+<td style="text-align:left">Sampling (<code>temperature</code>, top-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>)</td>
+<td style="text-align:left">Same prompt → different scores unless you fix the seed or use greedy decode</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Prompt sensitivity</strong></td>
+<td style="text-align:left">Small wording changes swing quality</td>
+<td style="text-align:left">You must version <strong>prompts</strong> with <strong>datasets</strong> ([[decoding-strategies</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Distribution shift</strong></td>
+<td style="text-align:left">Prod queries ≠ academic benchmarks</td>
+<td style="text-align:left">High MMLU, low user satisfaction</td>
+</tr>
+</tbody>
+</table></div><p>Evaluation is therefore not one number—it is a <strong>stack</strong> of complementary checks, each trading cost, coverage, and fidelity.</p>
+<pre class="mermaid">flowchart TB
+  U[Unit tests / regression suite] --&gt; B[Offline benchmarks]
+  B --&gt; J[LLM-as-judge]
+  J --&gt; H[Human evaluation]
+  H --&gt; O[Online A/B &amp; guardrails]
+</pre>
+<p><strong>Unit tests / regression suites</strong> are tiny, hand-written cases you run on every merge: JSON schema, citation format, refusal on a known jailbreak, “don’t call tool X without user confirm.” They are the CI of LLM products—fast, brittle if neglected, invaluable for catching regressions.</p>
+<p><strong>Offline benchmarks</strong> (MMLU, HumanEval, etc.) give broad coverage cheaply but saturate and leak (see below).</p>
+<p><strong>LLM-as-judge</strong> scales subjective quality when humans are too slow—at the cost of judge biases you must measure.</p>
+<p><strong>Human eval</strong> remains the reference for preference alignment (<a class="wikilink" href="rlhf-vs-dpo.html">RLHF vs DPO</a>, <a class="wikilink" href="llm-training-and-alignment.html">LLM Training &amp; Alignment</a>).</p>
+<p><strong>Online A/B</strong> measures what users and revenue actually do—see <a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a>.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p><strong>Cheap tests catch regressions; benchmarks catch breadth; judges catch nuance; humans catch truth; A/B catches reality.</strong></p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Weak: “We’d look at perplexity and BLEU.” Strong: <em>regression suite on every deploy, task-specific golden set with versioning, LLM-judge with position-bias controls, human spot-check on disagreements, powered online test on downstream metric with safety/latency guardrails.</em></p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Why &amp; hierarchy</div><div class="callout-body"><p>Open outputs, many valid answers, sampling noise, prompt sensitivity. Eval stack: unit/regression → benchmarks → LLM judge → human → online A/B. No single metric is sufficient. Version prompts with datasets. Prod ≠ benchmark distribution.</p>
+</div></aside>
+<h2 id="building-an-evaluation-set"><a class="anchor" href="#building-an-evaluation-set">#</a>Building an evaluation set</h2>
+<p>Metrics are only as honest as the <strong>items</strong> you score.</p>
+<h3 id="golden-sets-and-production-mining"><a class="anchor" href="#golden-sets-and-production-mining">#</a>Golden sets and production mining</h3>
+<p>A <strong>golden set</strong> is a frozen collection of (prompt, optional context, reference or rubric) with expected behavior. Sources:</p>
+<ul>
+<li><strong>Hand-authored</strong> — edge cases you know users hit (pricing policy, medical disclaimer).</li>
+<li><strong>Production logs</strong> — sample real queries; <strong>stratify</strong> by intent, difficulty, language, and failure tags from support tickets.</li>
+<li><strong>Adversarial buckets</strong> — jailbreaks, injection attempts, trick questions with known wrong answers.</li>
 </ul>
-<h3 id="rag-specific-evals"><a class="anchor" href="#rag-specific-evals">#</a>RAG-Specific Evals</h3><ul>
-<li><strong>Faithfulness / Groundedness</strong> — does the answer follow from retrieved context, or is it hallucinated?  </li>
-<li><strong>Context Relevance</strong> — did the retriever pull chunks that actually contain the answer?  </li>
-<li><strong>Answer Relevance</strong> — does the response address the question asked?  </li>
-<li><strong>Retrieval Metrics</strong> — Recall@k, MRR, NDCG on the retrieval step alone</li>
+<p>Turn logs into labels with human annotators or SME review; never auto-label with the model you are shipping.</p>
+<h3 id="stratification-and-difficulty"><a class="anchor" href="#stratification-and-difficulty">#</a>Stratification and difficulty</h3>
+<p>Report metrics <strong>per slice</strong> (easy/medium/hard, domain, tool-use vs chit-chat). Aggregate accuracy hides “great on head traffic, catastrophic on refunds.” Use explicit difficulty tags or model-based pre-labeling, then human audit of the hard bucket.</p>
+<h3 id="versioning-and-contamination"><a class="anchor" href="#versioning-and-contamination">#</a>Versioning and contamination</h3>
+<p>Treat <strong>prompt template</strong>, <strong>model checkpoint</strong>, <strong>judge model</strong>, and <strong>dataset version</strong> as a single artifact. When you fine-tune or distill, scrub training data for <strong>benchmark leakage</strong> and near-duplicates of your golden set (<a class="wikilink" href="data-leakage.html">data leakage</a>). Holding out a “private” eval that never touches training is the same golden rule as <a class="wikilink" href="fundamentals.html">Fundamentals</a>: test once, honestly.</p>
+<aside class="callout warning"><div class="callout-title">Contamination</div><div class="callout-body"><p>Public benchmarks appear in pretraining corpora. Leaderboard gains may be memorization, not capability. Prefer <strong>held-in-house</strong> sets and periodic refresh from fresh prod traffic.</p>
+</div></aside>
+<aside class="callout info"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p>For RAG, golden sets need <strong>retrieved contexts</strong> frozen per question—otherwise you are evaluating generation and retrieval drift in one number. See <a class="wikilink" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a>.</p>
+</div></aside>
+<h2 id="reference-based-text-metrics"><a class="anchor" href="#reference-based-text-metrics">#</a>Reference-based text metrics</h2>
+<p>When you have a <strong>reference answer</strong>, overlap metrics are cheap baselines. They correlate with humans on narrow tasks (short QA, extraction) and fail on creative or long-form generation.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Metric</th>
+<th style="text-align:left">What it measures</th>
+<th style="text-align:left">When it works</th>
+<th style="text-align:left">When it lies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Exact match (EM)</strong></td>
+<td style="text-align:left">Normalized string equality</td>
+<td style="text-align:left">Single-span answers (e.g. SQuAD-style)</td>
+<td style="text-align:left">Any paraphrase fails</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Token F1</strong></td>
+<td style="text-align:left">Token overlap precision/recall vs gold</td>
+<td style="text-align:left">QA with flexible phrasing</td>
+<td style="text-align:left">Synonyms, word order, extra explanation</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>BLEU</strong></td>
+<td style="text-align:left">Weighted n-gram <strong>precision</strong> vs reference; <strong>brevity penalty</strong> punishes short outputs</td>
+<td style="text-align:left">MT with close references</td>
+<td style="text-align:left">Rewards generic fluent text; poor on dialogue</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ROUGE-N</strong></td>
+<td style="text-align:left">N-gram <strong>recall</strong> vs reference</td>
+<td style="text-align:left">Summarization (cover reference phrases)</td>
+<td style="text-align:left">Ignores coherence and factuality</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ROUGE-L</strong></td>
+<td style="text-align:left">Longest common subsequence F1</td>
+<td style="text-align:left">Summary ordering</td>
+<td style="text-align:left">Same factuality blind spot</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>chrF</strong></td>
+<td style="text-align:left">Character n-gram F-score</td>
+<td style="text-align:left">Morphologically rich languages</td>
+<td style="text-align:left">Still reference-dependent</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>BERTScore</strong></td>
+<td style="text-align:left">Cosine similarity of contextual embeddings (per token, matched)</td>
+<td style="text-align:left">Paraphrase-tolerant QA</td>
+<td style="text-align:left">Can score fluent <strong>wrong</strong> facts highly</td>
+</tr>
+</tbody>
+</table></div><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>If asked “BLEU vs ROUGE”: <em>BLEU emphasizes precision (did you copy reference n-grams?); ROUGE emphasizes recall (did you cover reference content?). Neither checks truth—pair with execution, retrieval faithfulness, or human/LLM rubrics for <a class="wikilink" href="hallucination.html">hallucination</a>.</em></p>
+</div></aside>
+<p>Detokenize before scoring (<a class="wikilink" href="tokenization.html">tokenization</a>); otherwise token F1 is not comparable across models.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Reference metrics</div><div class="callout-body"><p>EM/F1 for short QA spans. BLEU = n-gram precision + brevity penalty (MT). ROUGE-N/L = n-gram/LCS recall (summaries). chrF = character F1. BERTScore = embedding similarity—better paraphrase, not better facts. All need gold references; weak on open-ended chat.</p>
+</div></aside>
+<h2 id="code-and-math-evaluation"><a class="anchor" href="#code-and-math-evaluation">#</a>Code and math evaluation</h2>
+<h3 id="passk-and-the-unbiased-estimator"><a class="anchor" href="#passk-and-the-unbiased-estimator">#</a>pass@k and the unbiased estimator</h3>
+<p>For code, draw <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> completions per problem; the problem is <strong>solved</strong> if any of the first <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> passes unit tests. If <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> samples pass, the unbiased <strong>pass@k</strong> estimator (when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">n \ge k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>) is:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>pass@k</mtext><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mrow><mi>n</mi><mo>−</mo><mi>c</mi></mrow><mi>k</mi></mfrac><mo fence="true">)</mo></mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>n</mi><mi>k</mi></mfrac><mo fence="true">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{pass@k} = 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">pass@k</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.6824em;vertical-align:-1.09em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5923em;"><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8523em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.09em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p><strong>Worked example:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">n=20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">20</span></span></span></span> independent samples, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">c=5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span> pass tests, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>pass@1</mtext><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mn>15</mn><mn>1</mn></mfrac><mo fence="true">)</mo></mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mn>20</mn><mn>1</mn></mfrac><mo fence="true">)</mo></mrow></mfrac><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mn>15</mn><mn>20</mn></mfrac><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\text{pass@1} = 1 - \frac{\binom{15}{1}}{\binom{20}{1}} = 1 - \frac{15}{20} = 0.25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">pass@1</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.7702em;vertical-align:-1.1351em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6351em;"><span style="top:-2.2149em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8951em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">20</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8951em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">15</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1351em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">20</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">15</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.25</span></span></span></span></span></div>
+<p>For <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">n=100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">c=30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">30</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">k=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>pass@10</mtext><mo>≈</mo><mn>0.977</mn></mrow><annotation encoding="application/x-tex">\text{pass@10} \approx 0.977</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">pass@10</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.977</span></span></span></span>—most problems are solved if at least one of ten tries can succeed when 30% of single draws pass.</p>
+<p>HumanEval and MBPP report pass@1 with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">n \ge 200</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">200</span></span></span></span> for stable estimates on hard tasks.</p>
+<h3 id="execution-sandboxes-and-extraction"><a class="anchor" href="#execution-sandboxes-and-extraction">#</a>Execution sandboxes and extraction</h3>
+<ul>
+<li>Run tests in an <strong>isolated sandbox</strong> (no network, time/memory caps)—latency and security are part of eval design (<a class="wikilink" href="llm-inference.html">LLM Inference</a>).</li>
+<li><strong>Answer extraction</strong> matters: models wrap code in markdown or prose; brittle parsers create <strong>format sensitivity</strong>—measure with and without a canonical extractor.</li>
+<li><strong>Math</strong>: sympy/numeric checks, or LLM graders on equivalence classes; beware LaTeX formatting games.</li>
 </ul>
-<h3 id="agent-specific-evals"><a class="anchor" href="#agent-specific-evals">#</a>Agent-Specific Evals</h3><ul>
-<li><strong>Task Completion Rate</strong> — did the agent accomplish the end goal?  </li>
-<li><strong>Tool Use Accuracy</strong> — right tool, right arguments?  </li>
-<li><strong>Planning Quality</strong> — sensible task decomposition vs going in circles?  </li>
-<li><strong>Failure Mode Categorization</strong> — hallucination, retrieval miss, planning failure, tool misuse (track rates of each)  </li>
-<li><strong>Step Efficiency</strong> — solved in 3 steps or 15?  </li>
-<li><strong>Trajectory Evals</strong> — evaluate the full action sequence, not just the final answer</li>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p><strong>pass@k</strong> answers: “If my user gets <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> tries, what fraction of tasks succeed at least once?”</p>
+</div></aside>
+<h2 id="perplexity"><a class="anchor" href="#perplexity">#</a>Perplexity</h2>
+<p><strong>Perplexity</strong> is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mover accent="true"><mi>H</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(\bar{H})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.0701em;vertical-align:-0.25em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0813em;">H</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>H</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8201em;"></span><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0813em;">H</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span> is average token negative log-likelihood on a corpus—equivalently, the perplexity of a held-out text under the model (<a class="wikilink" href="cross-entropy-loss.html">cross-entropy loss</a>):</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>PPL</mtext><mo>=</mo><mi>exp</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mo>−</mo><mfrac><mn>1</mn><mi>T</mi></mfrac><munderover><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></munderover><mi>log</mi><mo>⁡</mo><mi>p</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>∣</mo><msub><mi>x</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\text{PPL} = \exp\left(-\frac{1}{T}\sum_{t=1}^{T}\log p(x_t \mid x_{&lt;t})\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">PPL</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:3.0954em;vertical-align:-1.2671em;"></span><span class="mop">exp</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">(</span></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size4">)</span></span></span></span></span></span></span></div>
+<p>Lower perplexity means the model assigns higher probability to the actual next tokens—<strong>fluency under the training distribution</strong>.</p>
+<p><strong>Do not compare perplexity across tokenizers</strong>—different BPE merges change <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span></span></span></span> and the partition of probability mass (<a class="wikilink" href="tokenization.html">Tokenization</a>).</p>
+<p>After instruction tuning, perplexity on web text poorly tracks <strong>helpfulness, safety, or factuality</strong>; use task evals instead. Perplexity remains useful for <strong>pretraining comparisons</strong> on the same tokenizer/vocab and for catching catastrophic corruption after quantization.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — PPL</div><div class="callout-body"><p>PPL = exp(average token CE). Lower = better fit to eval text. Same tokenizer/vocab only. Weak proxy for chat quality post-alignment. Good for pretrain/quant sanity checks.</p>
+</div></aside>
+<h2 id="llm-as-judge"><a class="anchor" href="#llm-as-judge">#</a>LLM-as-judge</h2>
+<p>When references are missing or subjective, a <strong>stronger model</strong> (or ensemble) scores outputs against a rubric.</p>
+<h3 id="modes"><a class="anchor" href="#modes">#</a>Modes</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Mode</th>
+<th style="text-align:left">How</th>
+<th style="text-align:left">Pros</th>
+<th style="text-align:left">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Pointwise</strong></td>
+<td style="text-align:left">Rate one response 1–5 on dimensions</td>
+<td style="text-align:left">Simple aggregation</td>
+<td style="text-align:left">Absolute scores drift</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Pairwise</strong></td>
+<td style="text-align:left">Which of A or B is better?</td>
+<td style="text-align:left">Stable for preferences</td>
+<td style="text-align:left">Needs two samples</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reference-guided</strong></td>
+<td style="text-align:left">Score against gold / retrieved context</td>
+<td style="text-align:left">Grounds factuality</td>
+<td style="text-align:left">Needs references</td>
+</tr>
+</tbody>
+</table></div><p>Design <strong>rubrics</strong> with observable criteria (“ cites source,” “arithmetic correct,” “refuses policy violation”) not vague “quality.” <strong>Chain-of-thought judging</strong> (judge reasons before score) often improves consistency—hide reasoning from the user-facing model.</p>
+<h3 id="known-biases-and-mitigations"><a class="anchor" href="#known-biases-and-mitigations">#</a>Known biases and mitigations</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Bias</th>
+<th style="text-align:left">Symptom</th>
+<th style="text-align:left">Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Position</strong></td>
+<td style="text-align:left">First answer wins in pairwise</td>
+<td style="text-align:left"><strong>Swap order</strong>, average; reject inconsistent judges</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Verbosity</strong></td>
+<td style="text-align:left">Longer = better</td>
+<td style="text-align:left">Rubric cap on length; <strong>length-normalized</strong> pairwise; strip preambles</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Self-preference</strong></td>
+<td style="text-align:left">Judge favors own family</td>
+<td style="text-align:left">Use third-party judge; blend judges; calibrate on gold</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Anchoring</strong></td>
+<td style="text-align:left">Early dimension skews later</td>
+<td style="text-align:left">Separate calls per dimension or blind ordering</td>
+</tr>
+</tbody>
+</table></div><p><strong>Measure</strong> bias with <strong>position tests</strong> (same pair, swapped), <strong>length-matched pairs</strong>, and <strong>known-answer probes</strong> (one response clearly wrong).</p>
+<h3 id="agreement-with-humans"><a class="anchor" href="#agreement-with-humans">#</a>Agreement with humans</h3>
+<ul>
+<li><strong>Cohen's κ</strong> for categorical ratings (chance-corrected agreement).</li>
+<li><strong>Spearman / Kendall</strong> for rankings across models vs human panels.</li>
+<li><strong>Win rates</strong> and <strong>Bradley–Terry / Elo</strong> from pairwise outcomes—<strong>Chatbot Arena</strong> style: update <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mtext>rating</mtext></mrow><annotation encoding="application/x-tex">\Delta\text{rating}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">Δ</span><span class="mord text"><span class="mord">rating</span></span></span></span></span> from expected vs actual wins.</li>
 </ul>
-<h3 id="human-evals"><a class="anchor" href="#human-evals">#</a>Human Evals</h3><ul>
-<li><strong>Side-by-Side Preference</strong> — show two outputs, pick the better one (basis for RLHF)  </li>
-<li><strong>Likert Scale Ratings</strong> — rate helpfulness, accuracy, tone on 1-5  </li>
-<li><strong>Red Teaming</strong> — adversarial probing for safety, jailbreaks, prompt injection  </li>
-<li><strong>Domain Expert Review</strong> — subject matter experts judge real-world usefulness</li>
+<p>Disagreements flag items for human adjudication—do not silently average conflicting judges.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Strong judges answer: <em>which mode (pairwise for prefs), rubric dimensions, swap-order protocol, third-party judge to fight self-preference, κ vs human on a 200-item anchor set, escalate ties to humans.</em></p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Judges</div><div class="callout-body"><p>Pointwise / pairwise / reference-guided. Concrete rubrics + optional CoT. Position → swap &amp; average. Verbosity → length controls. Self-preference → external judge mix. Validate with κ, Spearman, win rates, Elo. Disagreements → human.</p>
+</div></aside>
+<h3 id="meta-evaluation-of-judges"><a class="anchor" href="#meta-evaluation-of-judges">#</a>Meta-evaluation of judges</h3>
+<p>Treat the judge as a model with its own QA bar:</p>
+<ul>
+<li><strong>Test–retest reliability</strong> — same item, same rubric, multiple draws; unstable judges get temperature cuts or structured JSON outputs.</li>
+<li><strong>Inter-judge agreement</strong> — multiple LLM or human judges; low agreement surfaces hard items for adjudication.</li>
+<li><strong>Adversarial probes</strong> — pairs where one response is clearly worse (injected factual error); judges should not tie.</li>
+<li><strong>Stratified analysis</strong> — accuracy of the judge <strong>by difficulty, domain, and failure type</strong>, mirroring how you slice model metrics.</li>
 </ul>
-<h3 id="benchmarks"><a class="anchor" href="#benchmarks">#</a>Benchmarks</h3><ul>
-<li><strong>MMLU, HellaSwag, ARC</strong> — general knowledge and reasoning  </li>
-<li><strong>HumanEval, MBPP</strong> — code generation  </li>
-<li><strong>GSM8K</strong> — math reasoning  </li>
-<li><strong>MT-Bench</strong> — multi-turn conversation quality</li>
+<h3 id="human-evaluation"><a class="anchor" href="#human-evaluation">#</a>Human evaluation</h3>
+<p>Humans remain the anchor when stakes are high or labels are subjective:</p>
+<ul>
+<li><strong>Side-by-side preference</strong> — show two completions; pick better (foundation of RLHF preference data).</li>
+<li><strong>Likert ratings</strong> — helpfulness, accuracy, tone on 1–5; use clear anchors (“3 = acceptable, not delightful”).</li>
+<li><strong>Domain expert review</strong> — lawyers, clinicians, finance SMEs judge real workflows, not toy prompts.</li>
+<li><strong>Red teaming</strong> — adversarial sessions probing safety (overlaps with safety evals below).</li>
 </ul>
-<h3 id="evaluating-the-judge-meta-evaluation"><a class="anchor" href="#evaluating-the-judge-meta-evaluation">#</a>Evaluating the Judge (Meta-Evaluation)</h3><ul>
-<li><strong>Human Agreement</strong> — Cohen&#39;s Kappa, Spearman/Kendall rank correlation against human labels  </li>
-<li><strong>Position Bias Test</strong> — swap order of A/B; verdict should stay the same  </li>
-<li><strong>Verbosity Bias Test</strong> — does the judge prefer longer responses regardless of quality?  </li>
-<li><strong>Self-Preference Bias</strong> — does GPT-4 prefer GPT-4 outputs, Claude prefer Claude?  </li>
-<li><strong>Test-Retest Reliability</strong> — same input multiple times; score should be stable  </li>
-<li><strong>Inter-Judge Agreement</strong> — multiple LLM judges; disagreements flag hard cases for human review  </li>
-<li><strong>Adversarial Probes</strong> — known-answer pairs, injected subtle errors, rubric sensitivity checks  </li>
-<li><strong>Stratified Analysis</strong> — break down accuracy by difficulty, domain, failure type</li>
+<p>Sample enough items per slice for powered comparisons; blind models when possible to avoid brand bias.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Human &amp; meta-eval</div><div class="callout-body"><p>Side-by-side for prefs; Likert with anchored rubrics; SMEs for domain truth. Judge QA: test–retest, inter-judge agreement, adversarial probes, stratified breakdown. Blinding reduces brand bias.</p>
+</div></aside>
+<h2 id="rag-and-agent-evaluation"><a class="anchor" href="#rag-and-agent-evaluation">#</a>RAG and agent evaluation</h2>
+<h3 id="rag-component-vs-end-to-end"><a class="anchor" href="#rag-component-vs-end-to-end">#</a>RAG: component vs end-to-end</h3>
+<p><a class="wikilink" href="retrieval-augmented-generation.html">RAG</a> fails in two places—<strong>retrieval</strong> and <strong>generation</strong>—so split metrics:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Layer</th>
+<th style="text-align:left">What to measure</th>
+<th style="text-align:left">Typical metrics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Retriever</strong></td>
+<td style="text-align:left">Did relevant evidence appear in top-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>?</td>
+<td style="text-align:left">Recall@<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>, MRR, NDCG ([[ranking-metrics</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Generator</strong></td>
+<td style="text-align:left">Faithful to context? On-topic?</td>
+<td style="text-align:left"><strong>Faithfulness / groundedness</strong>, <strong>answer relevance</strong>, <strong>context precision/recall</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>End-to-end</strong></td>
+<td style="text-align:left">User question answered correctly</td>
+<td style="text-align:left">Human or rubric on final output; cite entity match</td>
+</tr>
+</tbody>
+</table></div><p><strong>Faithfulness</strong> catches intrinsic hallucination (answer contradicts or adds beyond context); <strong>answer relevance</strong> catches answers that quote docs but ignore the question. Link generation faithfulness to <a class="wikilink" href="hallucination.html">Hallucination</a> mitigation.</p>
+<h3 id="agents-trajectory-vs-outcome"><a class="anchor" href="#agents-trajectory-vs-outcome">#</a>Agents: trajectory vs outcome</h3>
+<p><strong>Agents</strong> call tools over multiple steps (<a class="wikilink" href="transformers-and-attention.html">Transformers &amp; Attention</a> for long contexts, <a class="wikilink" href="llm-inference.html">LLM Inference</a> for latency budgets):</p>
+<ul>
+<li><strong>Task success</strong> — did the user goal complete (ticket filed, chart rendered)?</li>
+<li><strong>Tool-call validity</strong> — right tool, schema-valid args, no hallucinated APIs.</li>
+<li><strong>Planning quality</strong> — sensible decomposition vs circular re-planning; often judged in trajectory eval.</li>
+<li><strong>Trajectory eval</strong> — score each step (plan quality, recovery after error) vs <strong>outcome-only</strong> (cheap but misses unsafe paths).</li>
+<li><strong>Step efficiency</strong> — solved in 3 steps vs 15 affects cost and user patience.</li>
+<li><strong>Budgets</strong> — cap <strong>latency</strong>, <strong>token cost</strong>, and <strong>tool side effects</strong> as first-class metrics alongside success rate.</li>
 </ul>
-<hr>
-<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2><ul>
+<p><strong>Failure mode categorization</strong> — track rates for hallucination, retrieval miss, planning failure, tool misuse, policy violation—not one aggregate accuracy.</p>
+<p>Failure mode dashboards feed the next golden-set slice and regression tests.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — RAG &amp; agents</div><div class="callout-body"><p>Split retrieval (recall/MRR/NDCG) from generation (faithfulness, relevance). End-to-end for product truth. Agents: success, valid tools, trajectory vs outcome, step count, cost/latency guardrails.</p>
+</div></aside>
+<h2 id="safety-evaluation"><a class="anchor" href="#safety-evaluation">#</a>Safety evaluation</h2>
+<p>Safety is not binary “refuse all”—<strong>over-refusal</strong> breaks product (refusing benign medical FAQs) while under-refusal risks harm.</p>
+<ul>
+<li><strong>Red teaming</strong> — adversarial personas, multi-turn escalation, automated attack generators.</li>
+<li><strong>Jailbreak / prompt-injection suites</strong> — static transcripts plus <strong>dynamic</strong> tests with untrusted retrieved content (RAG injection).</li>
+<li><strong>Toxicity / bias</strong> — slice by demographic descriptors; measure rates and severity, not single scalar “toxicity score.”</li>
+<li><strong>Refusal quality</strong> — correct refusals on policy violations; <strong>false refusal rate</strong> on in-scope help requests.</li>
+</ul>
+<p>Log incidents in prod as new regression cases. Pair offline suites with <strong>guardrail metrics</strong> online (reports per 1k sessions, escalation rate).</p>
+<aside class="callout warning"><div class="callout-title">Over-refusal</div><div class="callout-body"><p>Optimizing refusal rate alone teaches models to say “I can’t help” everywhere. Report <strong>conditional</strong> accuracy: helpfulness given safe queries, refusal given unsafe.</p>
+</div></aside>
+<h2 id="benchmark-literacy-and-skepticism"><a class="anchor" href="#benchmark-literacy-and-skepticism">#</a>Benchmark literacy (and skepticism)</h2>
+<p>Know the headline benchmarks—and why leaders distrust them alone:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Benchmark</th>
+<th style="text-align:left">What it tests</th>
+<th style="text-align:left">Caveat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>MMLU</strong></td>
+<td style="text-align:left">Multi-subject multiple-choice knowledge</td>
+<td style="text-align:left">Saturating; contamination sensitive</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>HellaSwag</strong></td>
+<td style="text-align:left">Commonsense sentence completion</td>
+<td style="text-align:left">Format hacks; less chat-relevant</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ARC (Easy/Challenge)</strong></td>
+<td style="text-align:left">Grade-school science MC</td>
+<td style="text-align:left">Narrow reasoning style</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>GSM8K</strong></td>
+<td style="text-align:left">Math word problems</td>
+<td style="text-align:left">Parser/format sensitivity</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>HumanEval / MBPP</strong></td>
+<td style="text-align:left">Code synthesis</td>
+<td style="text-align:left">pass@k depends on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>; sandbox discipline</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>MT-Bench</strong></td>
+<td style="text-align:left">Multi-turn dialogue</td>
+<td style="text-align:left">LLM-judge heavy; domain drift</td>
+</tr>
+</tbody>
+</table></div><p>Static benchmarks <strong>saturate</strong> as models train on similar data; <strong>leaderboard overfitting</strong> chases points without user value. <strong>HELM-style</strong> reporting—many scenarios, metrics, and calibration slices—is the antidote: report <strong>accuracy, robustness, fairness, efficiency</strong> together, not one heroic number.</p>
+<p>Refresh public-facing numbers with <strong>private</strong> holdouts and prod-sampled evals.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Benchmarks</div><div class="callout-body"><p>MMLU/ARC/HellaSwag = knowledge/commonsense MC. GSM8K = math. HumanEval/MBPP = code (pass@k). MT-Bench = multi-turn chat. Saturate + leak → trust in-house refresh + multi-metric HELM mindset.</p>
+</div></aside>
+<h2 id="statistics-of-evaluation"><a class="anchor" href="#statistics-of-evaluation">#</a>Statistics of evaluation</h2>
+<p>A finite eval set gives a <strong>sample</strong> of accuracy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord katex-accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span>; treat uncertainty explicitly (<a class="wikilink" href="p-values-and-statistical-power.html">p-values &amp; statistical power</a>, <a class="wikilink" href="calibration.html">Calibration</a> for probability quality elsewhere).</p>
+<h3 id="confidence-intervals-on-accuracy"><a class="anchor" href="#confidence-intervals-on-accuracy">#</a>Confidence intervals on accuracy</h3>
+<p>If <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> items are correct, Wilson score 95% CI is tighter than naive <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo>±</mo><mn>1.96</mn><msqrt><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>n</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">\hat{p} \pm 1.96\sqrt{\hat{p}(1-\hat{p})/n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord katex-accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">±</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord">1.96</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord katex-accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord katex-accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">n</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span></span></span>. <strong>Example:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>850</mn><mi mathvariant="normal">/</mi><mn>1000</mn></mrow><annotation encoding="application/x-tex">850/1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">850/1000</span></span></span></span> correct → <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo>=</mo><mn>0.85</mn></mrow><annotation encoding="application/x-tex">\hat{p}=0.85</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord katex-accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.85</span></span></span></span>, Wilson interval <strong>approximately <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0.827</mn><mo separator="true">,</mo><mn>0.871</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0.827, 0.871]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0.827</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.871</span><span class="mclose">]</span></span></span></span></strong>—about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>2.2</mn></mrow><annotation encoding="application/x-tex">\pm 2.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">±</span><span class="mord">2.2</span></span></span></span> points at <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">n=1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">1000</span></span></span></span>.</p>
+<p>Bootstrap resampling of items also works when metrics are non-smooth (e.g. custom rubric scores).</p>
+<h3 id="paired-comparison-on-the-same-items"><a class="anchor" href="#paired-comparison-on-the-same-items">#</a>Paired comparison on the same items</h3>
+<p>Compare models A and B on <strong>identical prompts</strong>—use <strong>McNemar</strong> on discordant pairs (B right/A wrong vs A right/B wrong), not two independent proportion tests.</p>
+<p><strong>Worked sizing:</strong> Suppose A is 85% accurate, B is 87% on the same <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> items, with 4% “only B correct” and 2% “only A correct” (discordant rates). For two-sided <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha=0.05</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span>, 80% power:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo>≈</mo><mfrac><mrow><mo stretchy="false">(</mo><msub><mi>z</mi><mrow><mi>α</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msub><mo>+</mo><msub><mi>z</mi><mi>β</mi></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">(</mo><msub><mi>p</mi><mn>01</mn></msub><mo>+</mo><msub><mi>p</mi><mn>10</mn></msub><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mn>10</mn></msub><mo>−</mo><msub><mi>p</mi><mn>01</mn></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>≈</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>1.96</mn><mo>+</mo><mn>0.84</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>⋅</mo><mn>0.06</mn></mrow><msup><mn>0.02</mn><mn>2</mn></msup></mfrac><mo>≈</mo><mn>1,176</mn></mrow><annotation encoding="application/x-tex">n \approx \frac{(z_{\alpha/2}+z_{\beta})^2 (p_{01}+p_{10})}{(p_{10}-p_{01})^2} \approx \frac{(1.96+0.84)^2 \cdot 0.06}{0.02^2} \approx 1{,}176</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4831em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.4953em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5593em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">01</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.7452em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="mord mtight">/2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0528em;">β</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">01</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0.0</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1.96</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.84</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.06</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">176</span></span></span></span></span></div>
+<p>You need on the order of <strong>1,200 labeled examples</strong> to reliably detect a <strong>2 percentage point</strong> paired accuracy lift under those discordant rates. (If you evaluated arms on <strong>independent</strong> random halves of traffic, required <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> per arm is far larger—roughly <strong>4,700+</strong> per model for similar gaps—another reason paired item design wins offline.)</p>
+<h3 id="variance-from-sampling"><a class="anchor" href="#variance-from-sampling">#</a>Variance from sampling</h3>
+<p>With <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T&gt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>, rerun stochastic evals with fixed seeds or report <strong>mean ± std</strong> over <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span></span></span></span> samples. For regression suites, prefer <strong>greedy</strong> decode (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>) for determinism unless the product is explicitly stochastic.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>When someone cites “85.3% vs 85.1%”: ask <em><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>, paired or not, CI width, and whether prompts matched</em>. Reject point deltas smaller than the Wilson half-width.</p>
+</div></aside>
+<h2 id="online-evaluation"><a class="anchor" href="#online-evaluation">#</a>Online evaluation</h2>
+<p>Offline wins do not guarantee prod wins—latency, UX, and user adaptation matter. Complement offline stacks with:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Signal</th>
+<th style="text-align:left">What it tells you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Thumbs up/down, regenerations</strong></td>
+<td style="text-align:left">Implicit preference; biased by UI placement</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Edits / copy rate</strong></td>
+<td style="text-align:left">User fixes model output—strong quality signal</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Downstream KPIs</strong></td>
+<td style="text-align:left">Conversion, resolution time, ticket reopen rate</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>A/B tests</strong></td>
+<td style="text-align:left">Causal lift on primary metric—design in [[ab-testing-and-experimentation</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Guardrails</strong></td>
+<td style="text-align:left">Latency p99, cost per session, safety incidents, [[precision-and-recall</td>
+</tr>
+</tbody>
+</table></div><p>Pre-register primary and guardrail metrics before launch. Offline <a class="wikilink" href="model-evaluation-and-validation.html">evaluation</a> screens; online proves value.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Online</div><div class="callout-body"><p>Implicit feedback is noisy but cheap. Edits = strong dissatisfaction signal. A/B for causality with guardrails. Monitor latency, cost, safety—not just quality thumbs.</p>
+</div></aside>
+<h2 id="how-would-you-evaluate-x-answer-template"><a class="anchor" href="#how-would-you-evaluate-x-answer-template">#</a>How would you evaluate X? (answer template)</h2>
+<p>Use this one-page skeleton in system-design and ML rounds:</p>
+<ol>
+<li><strong>Objective &amp; surface</strong> — chat, RAG over KB, agent with tools, code assistant; failure cost (money, safety, brand).</li>
+<li><strong>Success definition</strong> — task success rate, user resolution, cite-or-abstain policy, max latency/cost.</li>
+<li><strong>Offline stack</strong> — regression CI → versioned golden set (sourced how, stratified how) → benchmarks only for screening.</li>
+<li><strong>Metrics per modality</strong> — reference metrics if gold exists; execution for code; retrieval + faithfulness for RAG; tool validity for agents.</li>
+<li><strong>Human / judge layer</strong> — when humans enter, rubric, pairwise vs pointwise, bias controls, κ on anchor set.</li>
+<li><strong>Statistics</strong> — report <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord katex-accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span> with CI; paired tests for model comparisons; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> needed for target MDE.</li>
+<li><strong>Online</strong> — primary KPI, guardrails, experiment duration, rollback triggers.</li>
+<li><strong>Ops</strong> — log prompts/retrieval IDs, refresh eval monthly, contamination hygiene.</li>
+</ol>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p><strong>I-O-M-G-H-S-O:</strong> Intent, Offline stack, Metrics, Judges, Humans, Statistics, Online.</p>
+</div></aside>
+<h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-page summary</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concept</th>
+<th style="text-align:left">The one thing to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Why it's hard</td>
+<td style="text-align:left">Open outputs, many valid answers, prompt + sampling sensitivity</td>
+</tr>
+<tr>
+<td style="text-align:left">Hierarchy</td>
+<td style="text-align:left">Regression → benchmarks → LLM judge → human → online A/B</td>
+</tr>
+<tr>
+<td style="text-align:left">Golden set</td>
+<td style="text-align:left">Version prompts + data; stratify; avoid leakage/contamination</td>
+</tr>
+<tr>
+<td style="text-align:left">Reference metrics</td>
+<td style="text-align:left">EM/F1/BLEU/ROUGE/chrF/BERTScore—overlap, not truth</td>
+</tr>
+<tr>
+<td style="text-align:left">pass@k</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mrow><mi>n</mi><mo>−</mo><mi>c</mi></mrow><mi>k</mi></mfrac><mo fence="true">)</mo></mrow><mi mathvariant="normal">/</mi><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>n</mi><mi>k</mi></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">1 - \binom{n-c}{k}/\binom{n}{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.2023em;vertical-align:-0.35em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8523em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mord">/</span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span>; sandboxed execution</td>
+</tr>
+<tr>
+<td style="text-align:left">Perplexity</td>
+<td style="text-align:left">Token CE exp; same tokenizer only; weak for chat quality</td>
+</tr>
+<tr>
+<td style="text-align:left">LLM judge</td>
+<td style="text-align:left">Rubrics; swap-order; length control; κ / rank / Elo vs humans</td>
+</tr>
+<tr>
+<td style="text-align:left">RAG / agents</td>
+<td style="text-align:left">Split retrieve vs generate; faithfulness; tool + trajectory + budgets</td>
+</tr>
+<tr>
+<td style="text-align:left">Safety</td>
+<td style="text-align:left">Red team + injection; toxicity slices; over-refusal is a failure</td>
+</tr>
+<tr>
+<td style="text-align:left">Benchmarks</td>
+<td style="text-align:left">Useful screen; saturate/leak—multi-metric, private holdouts</td>
+</tr>
+<tr>
+<td style="text-align:left">Statistics</td>
+<td style="text-align:left">Wilson CI; McNemar paired ~1.2k <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> for 2pp lift (illustrative discordance)</td>
+</tr>
+<tr>
+<td style="text-align:left">Online</td>
+<td style="text-align:left">Implicit signals + powered A/B + latency/cost/safety guardrails</td>
+</tr>
+<tr>
+<td style="text-align:left">Interview template</td>
+<td style="text-align:left">Objective → offline stack → metrics → judges → stats → online</td>
+</tr>
+</tbody>
+</table></div><hr>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a></li>
+<li><a class="wikilink" href="hallucination.html">Hallucination</a></li>
+<li><a class="wikilink" href="llm-training-and-alignment.html">LLM Training &amp; Alignment</a></li>
+<li><a class="wikilink" href="rlhf-vs-dpo.html">RLHF vs DPO</a></li>
+<li><a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a></li>
+<li><a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a></li>
 <li><a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a></li>
+<li><a class="wikilink" href="ranking-metrics.html">Ranking Metrics</a></li>
+<li><a class="wikilink" href="p-values-and-statistical-power.html">P-values &amp; Statistical Power</a></li>
+<li><a class="wikilink" href="calibration.html">Calibration</a></li>
+<li><a class="wikilink" href="cross-entropy-loss.html">Cross-Entropy Loss</a></li>
+<li><a class="wikilink" href="decoding-strategies.html">Decoding Strategies</a></li>
+<li><a class="wikilink" href="llm-inference.html">LLM Inference</a></li>
+<li><a class="wikilink" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a></li>
+<li><a class="wikilink" href="transformers-and-attention.html">Transformers &amp; Attention</a></li>
+<li><a class="wikilink" href="tokenization.html">Tokenization</a></li>
+<li><a class="wikilink" href="data-leakage.html">Data Leakage</a></li>
 </ul>
 
       <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
-      <div class="pager"><a href="moc-llms.html"><small>← Previous</small>LLMs</a><a class="r" href="llm-training-fine-tuning-and-rag.html"><small>Next →</small>LLM Training, Fine-tuning &amp; RAG</a></div>
+      <div class="pager"><a href="retrieval-augmented-generation.html"><small>← Previous</small>Retrieval-Augmented Generation (RAG)</a><a class="r" href="self-attention.html"><small>Next →</small>Self-Attention</a></div>
     </article>
   </main>
-  <aside id="toc"><div class="toc-h">On this page</div><a class="l3" href="#automated-metrics-reference-based">Automated Metrics (Reference-Based)</a><a class="l3" href="#automated-metrics-reference-free">Automated Metrics (Reference-Free)</a><a class="l3" href="#rag-specific-evals">RAG-Specific Evals</a><a class="l3" href="#agent-specific-evals">Agent-Specific Evals</a><a class="l3" href="#human-evals">Human Evals</a><a class="l3" href="#benchmarks">Benchmarks</a><a class="l3" href="#evaluating-the-judge-meta-evaluation">Evaluating the Judge (Meta-Evaluation)</a><a class="l2" href="#related">Related</a></aside>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#why-llm-evaluation-is-hard">Why LLM evaluation is hard</a><a class="l2" href="#building-an-evaluation-set">Building an evaluation set</a><a class="l3" href="#golden-sets-and-production-mining">Golden sets and production mining</a><a class="l3" href="#stratification-and-difficulty">Stratification and difficulty</a><a class="l3" href="#versioning-and-contamination">Versioning and contamination</a><a class="l2" href="#reference-based-text-metrics">Reference-based text metrics</a><a class="l2" href="#code-and-math-evaluation">Code and math evaluation</a><a class="l3" href="#passk-and-the-unbiased-estimator">pass@k and the unbiased estimator</a><a class="l3" href="#execution-sandboxes-and-extraction">Execution sandboxes and extraction</a><a class="l2" href="#perplexity">Perplexity</a><a class="l2" href="#llm-as-judge">LLM-as-judge</a><a class="l3" href="#modes">Modes</a><a class="l3" href="#known-biases-and-mitigations">Known biases and mitigations</a><a class="l3" href="#agreement-with-humans">Agreement with humans</a><a class="l3" href="#meta-evaluation-of-judges">Meta-evaluation of judges</a><a class="l3" href="#human-evaluation">Human evaluation</a><a class="l2" href="#rag-and-agent-evaluation">RAG and agent evaluation</a><a class="l3" href="#rag-component-vs-end-to-end">RAG: component vs end-to-end</a><a class="l3" href="#agents-trajectory-vs-outcome">Agents: trajectory vs outcome</a><a class="l2" href="#safety-evaluation">Safety evaluation</a><a class="l2" href="#benchmark-literacy-and-skepticism">Benchmark literacy (and skepticism)</a><a class="l2" href="#statistics-of-evaluation">Statistics of evaluation</a><a class="l3" href="#confidence-intervals-on-accuracy">Confidence intervals on accuracy</a><a class="l3" href="#paired-comparison-on-the-same-items">Paired comparison on the same items</a><a class="l3" href="#variance-from-sampling">Variance from sampling</a><a class="l2" href="#online-evaluation">Online evaluation</a><a class="l2" href="#how-would-you-evaluate-x-answer-template">How would you evaluate X? (answer template)</a><a class="l2" href="#one-page-summary">One-page summary</a><a class="l2" href="#related">Related</a></aside>
 </div>
 <div id="bar"></div>
-
 <script src="assets/app.js"></script>
+<script src="assets/mermaid.min.js"></script>
+<script>(function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;mermaid.initialize({startOnLoad:true,theme:dark?'dark':'default',securityLevel:'strict'})})()</script>
 </body></html>

@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Study: Fraud and Abuse Detection · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="active" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+
+</details></nav>
+  <main>
+    <article data-slug="case-fraud-detection">
+      <div class="crumb">ML System Design · chapter · 17 min read</div>
+      <h1>Case Study: Fraud and Abuse Detection</h1>
+      <p><em>Fraud detection is a classification problem where positives are rare, labels arrive late and are partly missing, the adversary adapts to your model, and the right threshold is a business cost, not a statistic.</em></p>
+<p>This case study designs a real-time fraud and abuse system for a payments and marketplace platform: every transaction is scored before it is approved, and a smaller set of account-level events (signups, logins, payouts) are scored for abuse. The same architecture, with different features, serves other abuse problems such as fake accounts and promo exploitation. The core difficulties are the ones named in the framing line, and they interact: because the model blocks transactions, it also changes which labels it will ever see.</p>
+<aside class="callout success"><div class="callout-title">What you'll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Scope a fraud problem with prevalence, volume, review capacity, and cost-of-error numbers, and verify the arithmetic.</li>
+<li>Explain why a layered design (rules, model, graph and review) beats a single model.</li>
+<li>Handle extreme class imbalance without breaking calibration, and handle delayed and selection-biased labels with time-based splits.</li>
+<li>Choose a decision threshold from costs and capacity, and report precision at a fixed review capacity.</li>
+<li>Describe graph features, adversarial adaptation, drift monitoring, and active learning for the review queue.</li>
+<li>Discuss explainability and the cost of false positives to legitimate customers.</li>
+</ul>
+</div></aside>
+<h2 id="problem-statement-and-clarifying-questions"><a class="anchor" href="#problem-statement-and-clarifying-questions">#</a>Problem statement and clarifying questions</h2>
+<p><strong>Prompt.</strong> Design a system that detects fraudulent transactions on a platform processing around 200 million transactions per day, deciding in real time whether to approve, challenge, hold, or decline each one.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Question</th>
+<th style="text-align:left">Why it matters</th>
+<th style="text-align:left">Assumption used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">What counts as fraud, and who confirms it?</td>
+<td style="text-align:left">Defines labels</td>
+<td style="text-align:left">Chargebacks, confirmed analyst decisions, and customer reports</td>
+</tr>
+<tr>
+<td style="text-align:left">Prevalence?</td>
+<td style="text-align:left">Drives metrics and sampling</td>
+<td style="text-align:left">About 0.1 percent of transactions</td>
+</tr>
+<tr>
+<td style="text-align:left">Latency budget at authorization time?</td>
+<td style="text-align:left">Bounds model and feature complexity</td>
+<td style="text-align:left">100 ms p99 for the scoring call</td>
+</tr>
+<tr>
+<td style="text-align:left">Cost of a missed fraud versus a wrongly blocked good transaction?</td>
+<td style="text-align:left">Sets threshold</td>
+<td style="text-align:left">Missed fraud about 80 currency units, false positive about 5 (friction, support, lost sale)</td>
+</tr>
+<tr>
+<td style="text-align:left">Review capacity?</td>
+<td style="text-align:left">Bounds the queue</td>
+<td style="text-align:left">400 analysts, about 100 cases each per day</td>
+</tr>
+<tr>
+<td style="text-align:left">Label delay?</td>
+<td style="text-align:left">Shapes training and evaluation</td>
+<td style="text-align:left">Chargebacks arrive 30 to 60 days later</td>
+</tr>
+<tr>
+<td style="text-align:left">Are there regulatory explanation duties?</td>
+<td style="text-align:left">Model class and logging</td>
+<td style="text-align:left">Yes: reason codes for declines</td>
+</tr>
+<tr>
+<td style="text-align:left">Is the adversary adaptive?</td>
+<td style="text-align:left">Retraining and rule agility</td>
+<td style="text-align:left">Yes, organized rings probe and adapt</td>
+</tr>
+</tbody>
+</table></div><h2 id="requirements-and-back-of-envelope-scale"><a class="anchor" href="#requirements-and-back-of-envelope-scale">#</a>Requirements and back-of-envelope scale</h2>
+<p><strong>Traffic.</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>200</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup><mi mathvariant="normal">/</mi><mn>86,400</mn><mo>≈</mo><mn>2,315</mn></mrow><annotation encoding="application/x-tex">200\times10^6 / 86{,}400 \approx 2{,}315</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">200</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mord">/86</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">400</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">315</span></span></span></span> transactions per second on average. With a peak factor of 4 (evening and event spikes), plan for about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9,260</mn></mrow><annotation encoding="application/x-tex">9{,}260</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">9</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">260</span></span></span></span> per second.</p>
+<p><strong>Fraud volume.</strong> At 0.1 percent prevalence, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>200</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup><mo>×</mo><mn>0.001</mn><mo>=</mo><mn>200,000</mn></mrow><annotation encoding="application/x-tex">200\times10^6 \times 0.001 = 200{,}000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">200</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.001</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">200</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000</span></span></span></span> fraudulent transactions per day. A classifier that approves everything is 99.9 percent accurate, which is why accuracy is useless here (<a class="wikilink" href="class-imbalance.html">Class Imbalance</a>).</p>
+<p><strong>Review capacity.</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>400</mn><mo>×</mo><mn>100</mn><mo>=</mo><mn>40,000</mn></mrow><annotation encoding="application/x-tex">400 \times 100 = 40{,}000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">400</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">100</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">40</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000</span></span></span></span> cases per day, which is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40,000</mn><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mn>200</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>0.02</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">40{,}000 / (200\times10^6) = 0.02\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">40</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000/</span><span class="mopen">(</span><span class="mord">200</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">0.02%</span></span></span></span> of transactions. If analysts were the only defense, even perfect precision would catch at most <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40,000</mn><mi mathvariant="normal">/</mi><mn>200,000</mn><mo>=</mo><mn>20</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">40{,}000/200{,}000 = 20\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">40</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000/200</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">20%</span></span></span></span> of fraud; at 60 percent precision, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24,000</mn></mrow><annotation encoding="application/x-tex">24{,}000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">24</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000</span></span></span></span> confirmed cases, or 12 percent of the day's fraud. The consequence is the central design principle: <strong>automation must handle the bulk, and humans are reserved for the ambiguous middle</strong>.</p>
+<p><strong>Feature lookups.</strong> If each decision needs around 40 online features, peak lookups are <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9,260</mn><mo>×</mo><mn>40</mn><mo>≈</mo><mn>370,000</mn></mrow><annotation encoding="application/x-tex">9{,}260 \times 40 \approx 370{,}000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">9</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">260</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">40</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">370</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000</span></span></span></span> reads per second, which dictates a low-latency key-value store with precomputed aggregates rather than on-the-fly warehouse queries.</p>
+<p><strong>Training data size.</strong> Over a 90-day window there are <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>90</mn><mo>×</mo><mn>200,000</mn><mo>=</mo><mn>18</mn><mtext>M</mtext></mrow><annotation encoding="application/x-tex">90 \times 200{,}000 = 18\text{M}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">90</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">200</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">18</span><span class="mord text"><span class="mord">M</span></span></span></span></span> positives and about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>17.98</mn><mtext>B</mtext></mrow><annotation encoding="application/x-tex">17.98\text{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">17.98</span><span class="mord text"><span class="mord">B</span></span></span></span></span> negatives. Keeping all positives and 1 percent of negatives gives roughly <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn><mtext>M</mtext><mo>+</mo><mn>180</mn><mtext>M</mtext><mo>≈</mo><mn>198</mn><mtext>M</mtext></mrow><annotation encoding="application/x-tex">18\text{M} + 180\text{M} \approx 198\text{M}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord">18</span><span class="mord text"><span class="mord">M</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">180</span><span class="mord text"><span class="mord">M</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">198</span><span class="mord text"><span class="mord">M</span></span></span></span></span> rows, a size that trains comfortably on a cluster, at the price of a calibration correction (below).</p>
+<h2 id="architecture"><a class="anchor" href="#architecture">#</a>Architecture</h2>
+<pre class="mermaid">flowchart LR
+  EV[&quot;Transaction / event&quot;] --&gt; FE[&quot;Feature assembly&lt;br/&gt;online store + request context&quot;]
+  FE --&gt; RU[&quot;Rules layer&lt;br/&gt;hard blocks, allow lists, velocity caps&quot;]
+  RU --&gt; MD[&quot;Model layer&lt;br/&gt;GBDT / NN score&quot;]
+  GR[(&quot;Graph store&lt;br/&gt;accounts, devices, cards, addresses&quot;)] --&gt; FE
+  MD --&gt; DEC{&quot;Decision&lt;br/&gt;by score band&quot;}
+  DEC --&gt;|&quot;low&quot;| AP[&quot;Approve&quot;]
+  DEC --&gt;|&quot;middle&quot;| CH[&quot;Challenge or hold&lt;br/&gt;step-up auth, review queue&quot;]
+  DEC --&gt;|&quot;high&quot;| DL[&quot;Decline&quot;]
+  CH --&gt; RQ[&quot;Review queue&lt;br/&gt;prioritized, capacity-aware&quot;]
+  RQ --&gt; LB[(&quot;Labels&lt;br/&gt;analyst + chargebacks + reports&quot;)]
+  AP --&gt; LB
+  LB --&gt; TR[&quot;Training + backtesting&quot;]
+  TR --&gt; MD
+  STR[&quot;Streaming aggregates&lt;br/&gt;velocity, counters&quot;] --&gt; FE
+  MON[&quot;Monitoring&lt;br/&gt;drift, precision, capacity&quot;] --&gt; MD
+</pre>
+<p><strong>Decision bands.</strong> Scores are mapped to actions, not to a single approve or decline. Low scores are approved; high scores are declined or blocked; the middle band triggers step-up authentication (for example a one-time code), a hold, or review. Step-up is valuable because it converts a probabilistic decision into evidence, and it generates labels cheaply.</p>
+<h2 id="layering-rules-model-graph-and-humans"><a class="anchor" href="#layering-rules-model-graph-and-humans">#</a>Layering: rules, model, graph, and humans</h2>
+<p>A single model is rarely the right design. Each layer has a distinct job:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Layer</th>
+<th style="text-align:left">Role</th>
+<th style="text-align:left">Strength</th>
+<th style="text-align:left">Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rules</td>
+<td style="text-align:left">Hard policy (sanctions lists, known-bad devices, velocity caps) and fast emergency response</td>
+<td style="text-align:left">Instant to deploy, transparent, no training lag</td>
+<td style="text-align:left">Brittle, accumulate, hard to retire</td>
+</tr>
+<tr>
+<td style="text-align:left">Model</td>
+<td style="text-align:left">Learns interactions across hundreds of signals, produces a calibrated risk score</td>
+<td style="text-align:left">Generalizes beyond known patterns</td>
+<td style="text-align:left">Label lag, needs retraining, opaque</td>
+</tr>
+<tr>
+<td style="text-align:left">Graph</td>
+<td style="text-align:left">Detects rings through shared devices, cards, addresses, payout accounts</td>
+<td style="text-align:left">Catches coordinated behavior invisible per-transaction</td>
+<td style="text-align:left">Computation cost, risk of guilt by association</td>
+</tr>
+<tr>
+<td style="text-align:left">Human review</td>
+<td style="text-align:left">Resolves ambiguity, produces high-quality labels</td>
+<td style="text-align:left">Judgment, context</td>
+<td style="text-align:left">Scarce, slow, inconsistent</td>
+</tr>
+</tbody>
+</table></div><p>Rules and models are complementary in time: when a new attack appears, a rule can be live in minutes, while the model needs fresh labeled examples. A good practice is to treat every rule as a hypothesis with a measured precision and an owner, retire rules the model has absorbed, and feed rule outputs in as model features (with care to avoid the model simply copying a rule).</p>
+<h2 id="data-and-labels"><a class="anchor" href="#data-and-labels">#</a>Data and labels</h2>
+<p>Labels are the hardest part of this problem, and they are flawed in four distinct ways.</p>
+<ol>
+<li><strong>Delay.</strong> A chargeback may arrive 30 to 60 days after the transaction. Recent data is therefore <strong>right-censored</strong>: a transaction from last week labeled &quot;not fraud&quot; may simply not have matured. Training on it injects false negatives. The fix is a <strong>maturation window</strong>: train only on transactions old enough that most fraud has surfaced (for example 45 days), and use faster proxy labels (analyst decisions, customer reports, step-up failures) for recent weeks, with their different noise characteristics recorded.</li>
+<li><strong>Selection bias.</strong> The system only observes outcomes for what it approved. A declined fraudulent transaction yields no chargeback, and a declined good one yields no complaint that gets recorded. A model trained only on approved traffic learns a distorted distribution, and the bias tends to grow as the model's decisions shape which transactions are ever observed. Mitigations: a small <strong>random-approve holdout</strong> (approve some borderline transactions despite a high score, bounded by cost), reject inference techniques with their assumptions stated, and using labels from step-up flows and review.</li>
+<li><strong>Noise.</strong> Chargebacks include &quot;friendly fraud&quot; (a genuine customer disputes a legitimate purchase), and analysts disagree. Keep label provenance as a column and consider weighting or separate heads.</li>
+<li><strong>Incomplete coverage.</strong> Fraud that is never detected is labeled negative. Estimates of true prevalence from audits of random samples give a sanity check on the labeled rate.</li>
+</ol>
+<p><strong>Time-based splitting.</strong> Random splits leak: the same card, device, or ring appears in both train and test, and patterns from the future inform the past (<a class="wikilink" href="data-leakage.html">Data Leakage</a>). Split by time with a gap equal to the maturation window, and evaluate on the most recent matured period, as in <a class="wikilink" href="time-series-validation.html">Time Series Validation</a>. For account-level abuse, also split by entity so a ring is entirely in train or entirely in test when measuring generalization to new rings.</p>
+<p><strong>Point-in-time features.</strong> Velocity counters and aggregates must be computed as of the decision time, not from a later snapshot; see <a class="wikilink" href="ml-in-production.html">ML in Production</a> on point-in-time joins and <a class="wikilink" href="training-serving-skew.html">Training-Serving Skew</a>.</p>
+<h2 id="features"><a class="anchor" href="#features">#</a>Features</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Family</th>
+<th style="text-align:left">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Transaction</td>
+<td style="text-align:left">Amount, currency, merchant category, time of day, payment method, shipping versus billing mismatch</td>
+</tr>
+<tr>
+<td style="text-align:left">Entity history</td>
+<td style="text-align:left">Account age, historical spend mean and variance, past disputes, ratio of amount to account norm</td>
+</tr>
+<tr>
+<td style="text-align:left">Velocity</td>
+<td style="text-align:left">Count and sum of attempts per card, device, IP, account in the last 1 minute, 1 hour, 24 hours, 7 days</td>
+</tr>
+<tr>
+<td style="text-align:left">Device and network</td>
+<td style="text-align:left">Device fingerprint age, emulator or proxy signals, IP reputation, geolocation distance from last event</td>
+</tr>
+<tr>
+<td style="text-align:left">Behavioral</td>
+<td style="text-align:left">Session telemetry, typing and navigation patterns, time from signup to first high-value action</td>
+</tr>
+<tr>
+<td style="text-align:left">Graph</td>
+<td style="text-align:left">Degree and connected-component size of shared identifiers, fraction of neighbors flagged, embeddings from a graph model</td>
+</tr>
+<tr>
+<td style="text-align:left">Context</td>
+<td style="text-align:left">Merchant risk score, event or promotion periods</td>
+</tr>
+</tbody>
+</table></div><p>Streaming aggregates are central: velocity features computed in a stream processor and written to the online store at second-level freshness. Ratios against the entity's own history (for example the amount as a multiple of the 30-day median) are usually more informative than raw values because they normalize between small and large spenders.</p>
+<p><strong>Graph features.</strong> Fraud rings reuse infrastructure: several accounts share a device, a payout account, or a shipping address. Useful graph signals are connected-component size and age, the number of distinct accounts per device or card, the proportion of neighbors with confirmed fraud (label propagation), and learned node embeddings from a graph neural network (<a class="wikilink" href="graph-neural-networks.html">Graph Neural Networks</a>). Two cautions: neighbor-label features leak if the neighbors' labels were determined after the decision time, so compute them point in time; and shared infrastructure can be innocent (a household, a university network), so guilt by association needs thresholds and secondary evidence. Heavy graph computation usually runs near-real-time on a graph store and publishes compact features to the online store rather than traversing the graph inside the 100 ms path.</p>
+<h2 id="model-choices"><a class="anchor" href="#model-choices">#</a>Model choices</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Option</th>
+<th style="text-align:left">Fit</th>
+<th style="text-align:left">Trade-off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Logistic regression</td>
+<td style="text-align:left">Baseline, easy reason codes</td>
+<td style="text-align:left">Limited interactions</td>
+</tr>
+<tr>
+<td style="text-align:left">Gradient boosted trees</td>
+<td style="text-align:left">Strong default on tabular, fast inference, handles missing values and mixed scale</td>
+<td style="text-align:left">Needs feature engineering; interactions are tree-limited</td>
+</tr>
+<tr>
+<td style="text-align:left">Deep models (sequence models over event history, entity embeddings)</td>
+<td style="text-align:left">Learn from raw behavior sequences</td>
+<td style="text-align:left">More data and serving cost, harder to explain</td>
+</tr>
+<tr>
+<td style="text-align:left">Graph neural network</td>
+<td style="text-align:left">Captures ring structure</td>
+<td style="text-align:left">Heavier infrastructure, staleness</td>
+</tr>
+<tr>
+<td style="text-align:left">Anomaly detection (isolation forest, autoencoder)</td>
+<td style="text-align:left">Unsupervised signal for new attack types</td>
+<td style="text-align:left">High false positive rate; best as a feature or alert, not the sole gate</td>
+</tr>
+</tbody>
+</table></div><p>A reasonable stack: gradient boosted trees (<a class="wikilink" href="gradient-boosting.html">Gradient Boosting</a>) as the primary scorer, with graph-derived and sequence-derived features as inputs and an unsupervised anomaly score as an additional input. Multiple models can specialize by segment (card-present versus online, new versus established accounts) when the base rates and attack types differ, at the cost of more models to maintain.</p>
+<p><strong>Imbalance handling.</strong> Options, in order of how often they are enough: (a) no resampling, with class weights or a metric suited to imbalance; (b) <strong>downsampling negatives</strong>, which cuts training cost but distorts probabilities; (c) oversampling or synthetic positives, which risks overfitting to duplicated points and is often unnecessary with boosted trees. If negatives are kept with probability <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0528em;">β</span></span></span></span>, scores must be corrected to recover the true probability:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>p</mi><mo>=</mo><mfrac><mrow><mi>β</mi><mtext> </mtext><msub><mi>p</mi><mi>s</mi></msub></mrow><mrow><mi>β</mi><mtext> </mtext><msub><mi>p</mi><mi>s</mi></msub><mo>−</mo><msub><mi>p</mi><mi>s</mi></msub><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">p = \frac{\beta\, p_s}{\beta\, p_s - p_s + 1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p>where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">p_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the model's output on the sampled data. With <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">\beta = 0.01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0528em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.01</span></span></span></span>, a sampled score of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.5</mn></mrow><annotation encoding="application/x-tex">0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span> corresponds to a true probability of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.01</mn><mo>⋅</mo><mn>0.5</mn><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mn>0.005</mn><mo>−</mo><mn>0.5</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>0.0099</mn></mrow><annotation encoding="application/x-tex">0.01 \cdot 0.5 / (0.005 - 0.5 + 1) \approx 0.0099</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.01</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.5/</span><span class="mopen">(</span><span class="mord">0.005</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.0099</span></span></span></span>, about 1 percent, not 50 percent. Skipping this step makes thresholds meaningless and breaks cost-based decisions; verify with a reliability check on an un-resampled validation window (<a class="wikilink" href="calibration.html">Calibration</a>).</p>
+<aside class="callout warning"><div class="callout-title">Common mistake</div><div class="callout-body"><p>Evaluating on a resampled, balanced validation set. Precision on a 50/50 set bears no relation to precision at 0.1 percent prevalence.</p>
+</div></aside>
+<h2 id="thresholding-by-business-cost-and-capacity"><a class="anchor" href="#thresholding-by-business-cost-and-capacity">#</a>Thresholding by business cost and capacity</h2>
+<p>Given a calibrated probability <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> of fraud, declining a transaction is better than approving it when the expected loss from fraud exceeds the expected loss from friction:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>p</mi><mo>⋅</mo><msub><mi>C</mi><mrow><mi>F</mi><mi>N</mi></mrow></msub><mo>&gt;</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo><mo>⋅</mo><msub><mi>C</mi><mrow><mi>F</mi><mi>P</mi></mrow></msub><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>p</mi><mo>&gt;</mo><mfrac><msub><mi>C</mi><mrow><mi>F</mi><mi>P</mi></mrow></msub><mrow><msub><mi>C</mi><mrow><mi>F</mi><mi>P</mi></mrow></msub><mo>+</mo><msub><mi>C</mi><mrow><mi>F</mi><mi>N</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">p \cdot C_{FN} &gt; (1 - p)\cdot C_{FP} \;\Longrightarrow\; p &gt; \frac{C_{FP}}{C_{FP}+C_{FN}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p>With <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>F</mi><mi>P</mi></mrow></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">C_{FP}=5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>F</mi><mi>N</mi></mrow></msub><mo>=</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">C_{FN}=80</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">80</span></span></span></span>, the threshold is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi mathvariant="normal">/</mi><mn>85</mn><mo>≈</mo><mn>0.059</mn></mrow><annotation encoding="application/x-tex">5/85 \approx 0.059</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5/85</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.059</span></span></span></span>. This is a statement about <strong>calibrated probabilities</strong>; with a miscalibrated model, the same score threshold encodes a different risk. In practice the costs vary by amount (a missed 5,000-unit fraud is not an 80-unit loss), so the threshold is per-transaction, using the amount as a multiplier on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>F</mi><mi>N</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p><strong>Capacity constraint.</strong> The review queue limits how many borderline cases can be examined. Two operating modes:</p>
+<ul>
+<li><strong>Cost-optimal</strong>: apply the formula, then check that the middle band fits capacity.</li>
+<li><strong>Capacity-constrained</strong>: rank by expected value of review (risk times amount) and review the top <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span></span></span></span> per day. The metric is then <strong>precision at capacity</strong> (precision among the top 40,000 daily cases) together with recall of fraud value captured.</li>
+</ul>
+<p>Because the queue is small relative to the problem, scoring bands need an auto-resolve path (step-up authentication) to avoid sending everything uncertain to people. Thresholds are revisited whenever costs, fraud mix, or capacity change, and should be separable from model training so operations can adjust them quickly.</p>
+<h2 id="real-time-versus-batch"><a class="anchor" href="#real-time-versus-batch">#</a>Real-time versus batch</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Path</th>
+<th style="text-align:left">Latency</th>
+<th style="text-align:left">Uses</th>
+<th style="text-align:left">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Real-time scoring</td>
+<td style="text-align:left">Under 100 ms</td>
+<td style="text-align:left">Decide at authorization with online features</td>
+<td style="text-align:left">Transaction approve, challenge, decline</td>
+</tr>
+<tr>
+<td style="text-align:left">Near-real-time</td>
+<td style="text-align:left">Seconds to minutes</td>
+<td style="text-align:left">Stream aggregates, graph updates, account-level triggers</td>
+<td style="text-align:left">Velocity counters, ring detection on new links</td>
+</tr>
+<tr>
+<td style="text-align:left">Batch</td>
+<td style="text-align:left">Hours to days</td>
+<td style="text-align:left">Deep behavior models, full-graph analysis, backfills, retrospective review</td>
+<td style="text-align:left">Nightly sweep of approved transactions, payout holds</td>
+</tr>
+</tbody>
+</table></div><p>Batch detection catches fraud the real-time path missed, enabling actions such as delaying a payout, freezing an account, or recalling a shipment. It also serves as a second chance where the cost of waiting is low. Keep the feature definitions shared between paths to limit skew. Fail-open versus fail-closed behavior must be an explicit policy when the scoring service is unavailable (for example approve low-value transactions and hold high-value ones), with rules still applied as a safety net.</p>
+<h2 id="adversarial-adaptation-and-drift"><a class="anchor" href="#adversarial-adaptation-and-drift">#</a>Adversarial adaptation and drift</h2>
+<p>Fraudsters probe: they test small amounts, vary devices, and adapt to whatever gets blocked. This changes how the system must be run.</p>
+<ul>
+<li><strong>Concept drift is the default.</strong> The relationship between features and fraud shifts as tactics change, not only the input distribution; see <a class="wikilink" href="data-drift.html">Data Drift vs Concept Drift</a>. Retrain frequently (daily or weekly for fast-moving segments) on matured labels plus fresh proxy labels, and keep a champion-challenger setup.</li>
+<li><strong>Avoid revealing the decision boundary.</strong> Generic decline messages, randomized step-up, and delayed decisions give attackers less information. Rate-limit probing.</li>
+<li><strong>Feature robustness.</strong> Prefer signals that are costly to fake (account tenure, long-lived device history, payment instrument age) over easily spoofed ones. Monitor feature importance shifts as an attack indicator.</li>
+<li><strong>Rapid response lane.</strong> Rules, deny lists, and per-segment threshold changes act within minutes while a retrained model takes longer.</li>
+<li><strong>Red teaming.</strong> Periodically simulate attacks against the staging system to find weak features.</li>
+<li><strong>Monitoring.</strong> Track score distribution, decline and challenge rates by segment, step-up pass rates, approval rate, chargeback rate by cohort once matured, and the precision of each rule. A sudden drop in the fraud rate may mean the attackers moved to a segment you do not measure, not that the problem is solved.</li>
+</ul>
+<h2 id="review-queues-and-active-learning"><a class="anchor" href="#review-queues-and-active-learning">#</a>Review queues and active learning</h2>
+<p>The review queue is both an operational process and the best source of high-quality labels. Design it deliberately:</p>
+<ul>
+<li><strong>Prioritization.</strong> Rank cases by expected loss avoided, risk times amount, not by score alone; break ties by case age to meet service levels.</li>
+<li><strong>Active learning.</strong> Reserve a portion of review capacity for <strong>uncertain</strong> cases (scores near the threshold) and for a <strong>random sample</strong> of lower scores. Uncertainty sampling improves the labels where the model is least certain, and the random sample gives unbiased performance estimates and covers blind spots. Mixing the two avoids a feedback loop where only the model's confident cases are ever examined.</li>
+<li><strong>Analyst tooling.</strong> Show the model's reason codes, linked entities from the graph, and prior decisions to speed decisions and improve consistency.</li>
+<li><strong>Quality control.</strong> Double-review a sample to measure analyst agreement, and track label turnaround so that fast labels can feed retraining.</li>
+<li><strong>Capacity feedback.</strong> If the middle band overflows capacity, tighten the band or add automated step-up; if it underflows, widen the band to harvest more labels.</li>
+</ul>
+<h2 id="evaluation"><a class="anchor" href="#evaluation">#</a>Evaluation</h2>
+<p><strong>Offline.</strong></p>
+<ul>
+<li>Use <strong>PR-AUC and precision at a fixed recall or capacity</strong>, not accuracy or ROC-AUC alone; ROC-AUC can look excellent at extreme imbalance while precision is poor (<a class="wikilink" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>, <a class="wikilink" href="precision-and-recall.html">Precision and Recall</a>). At 0.1 percent prevalence a random scorer has precision 0.001, which is the baseline to compare against.</li>
+<li>Evaluate <strong>value-weighted</strong> metrics: fraud dollars caught, false-positive dollars, and net savings under the cost model, in addition to counts.</li>
+<li>Evaluate on a <strong>time-based hold-out</strong> with a maturation gap, reported per segment (new accounts, payment types, geographies).</li>
+<li>Check <strong>calibration</strong> by reliability curve and expected calibration error (<a class="wikilink" href="calibration.html">Calibration</a>), since thresholds depend on it.</li>
+<li>Run <strong>backtests</strong>: replay the last several weeks day by day with the deployed policy and the candidate policy, applying the capacity constraint, to estimate net savings and queue load.</li>
+</ul>
+<p><strong>Online.</strong></p>
+<ul>
+<li>A/B tests are possible but slow because the main outcome (chargebacks) is delayed and rare; use leading indicators (decline and challenge rates, step-up pass rate, analyst confirmed-fraud rate in review) for early read and the matured chargeback rate for the final read (<a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Experimentation</a>).</li>
+<li>Randomize at the entity level (account or card) where possible, since a ring touching both arms contaminates the comparison.</li>
+<li>Guardrails: approval rate, customer complaints, support contacts, conversion on challenged flows, and latency.</li>
+<li><strong>Shadow mode</strong> for a new model: score without acting, compare with the incumbent and with later labels, then ramp.</li>
+</ul>
+<h2 id="explainability-and-false-positive-cost"><a class="anchor" href="#explainability-and-false-positive-cost">#</a>Explainability and false-positive cost</h2>
+<p>Declines have costs beyond the 5-unit placeholder: lost customer lifetime value, support load, and trust. Good customers who are wrongly declined may not return, so the cost can be skewed toward high-value, high-frequency customers. Design implications:</p>
+<ul>
+<li>Track <strong>false positive rate by customer segment</strong>, including a fairness check so that the model does not systematically burden certain regions or groups; see the fairness checks in <a class="wikilink" href="ml-in-production.html">ML in Production</a>.</li>
+<li>Provide <strong>reason codes</strong> for each decision (top contributing features through SHAP-style attributions or a surrogate), logged for audit and shown to analysts. Tree models make this practical at serving cost. Reason codes shown to customers should be generic enough not to teach attackers.</li>
+<li>Prefer <strong>step-up over decline</strong> in the gray zone, since a customer who passes a challenge is retained and a fraudster often fails.</li>
+<li>Provide an <strong>appeal path</strong> and use appeals as labels.</li>
+<li>Keep a decision log (inputs, score, rule hits, model version, action) for audit and reproducibility.</li>
+</ul>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Weak answers say &quot;use SMOTE and optimize F1&quot;. Strong answers state the cost matrix, derive the threshold from calibrated probabilities, name the label delay and selection bias, and mention step-up authentication and review capacity as part of the decision policy.</p>
+</div></aside>
+<h2 id="failure-modes"><a class="anchor" href="#failure-modes">#</a>Failure modes</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Failure</th>
+<th style="text-align:left">Symptom</th>
+<th style="text-align:left">Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Label delay misread as improvement</td>
+<td style="text-align:left">Recent fraud rate looks low</td>
+<td style="text-align:left">Maturation window, cohort-based reporting</td>
+</tr>
+<tr>
+<td style="text-align:left">Selection bias</td>
+<td style="text-align:left">Model degrades as it improves; blind spot where it declines</td>
+<td style="text-align:left">Random-approve holdout, step-up labels, review sampling</td>
+</tr>
+<tr>
+<td style="text-align:left">Uncalibrated scores after downsampling</td>
+<td style="text-align:left">Thresholds trigger too many or too few cases</td>
+<td style="text-align:left">Prior correction, reliability check on natural distribution</td>
+</tr>
+<tr>
+<td style="text-align:left">Leakage via random splits or future aggregates</td>
+<td style="text-align:left">Offline AUC unrealistically high</td>
+<td style="text-align:left">Time-based splits with gap, point-in-time features</td>
+</tr>
+<tr>
+<td style="text-align:left">Adversarial adaptation</td>
+<td style="text-align:left">Sudden spike in a segment, rule precision decays</td>
+<td style="text-align:left">Rapid-response rules, frequent retraining, red teaming</td>
+</tr>
+<tr>
+<td style="text-align:left">Guilt by association</td>
+<td style="text-align:left">Innocent households or networks blocked</td>
+<td style="text-align:left">Graph thresholds, corroborating evidence, appeals</td>
+</tr>
+<tr>
+<td style="text-align:left">Queue overflow</td>
+<td style="text-align:left">Slow decisions, stale labels</td>
+<td style="text-align:left">Capacity-aware bands, auto-resolve via step-up</td>
+</tr>
+<tr>
+<td style="text-align:left">Skew between train and serve</td>
+<td style="text-align:left">Production precision below backtest</td>
+<td style="text-align:left">Shared feature code, skew monitoring</td>
+</tr>
+<tr>
+<td style="text-align:left">Service outage</td>
+<td style="text-align:left">No scoring</td>
+<td style="text-align:left">Defined fail-open or fail-closed policy by value, rules as fallback</td>
+</tr>
+<tr>
+<td style="text-align:left">Rule accumulation</td>
+<td style="text-align:left">Conflicting, unexplained rules</td>
+<td style="text-align:left">Owners, precision tracking, scheduled review and retirement</td>
+</tr>
+</tbody>
+</table></div><h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-page summary</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concept</th>
+<th style="text-align:left">The one thing to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Scale</td>
+<td style="text-align:left">200M transactions/day is about 2.3k per second average, 9.3k peak; 0.1 percent prevalence is 200k frauds/day.</td>
+</tr>
+<tr>
+<td style="text-align:left">Capacity</td>
+<td style="text-align:left">40k reviews/day cover 0.02 percent of traffic, so automation must handle the bulk.</td>
+</tr>
+<tr>
+<td style="text-align:left">Layering</td>
+<td style="text-align:left">Rules for speed, model for generalization, graph for rings, humans for ambiguity.</td>
+</tr>
+<tr>
+<td style="text-align:left">Imbalance</td>
+<td style="text-align:left">Use metrics and costs for the real prevalence; correct probabilities after downsampling.</td>
+</tr>
+<tr>
+<td style="text-align:left">Labels</td>
+<td style="text-align:left">Delayed, censored, selection-biased, noisy: use maturation windows and a random holdout.</td>
+</tr>
+<tr>
+<td style="text-align:left">Splits</td>
+<td style="text-align:left">Time-based with a gap; entity-based for ring generalization.</td>
+</tr>
+<tr>
+<td style="text-align:left">Threshold</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&gt;</mo><msub><mi>C</mi><mrow><mi>F</mi><mi>P</mi></mrow></msub><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><msub><mi>C</mi><mrow><mi>F</mi><mi>P</mi></mrow></msub><mo>+</mo><msub><mi>C</mi><mrow><mi>F</mi><mi>N</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p &gt; C_{FP}/(C_{FP}+C_{FN})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> on calibrated probabilities, scaled by amount.</td>
+</tr>
+<tr>
+<td style="text-align:left">Metrics</td>
+<td style="text-align:left">PR-AUC, precision at capacity, value-weighted net savings, calibration.</td>
+</tr>
+<tr>
+<td style="text-align:left">Real time</td>
+<td style="text-align:left">Under 100 ms with precomputed aggregates; batch catches the rest.</td>
+</tr>
+<tr>
+<td style="text-align:left">Adversary</td>
+<td style="text-align:left">Concept drift is the default; fast rules plus frequent retraining.</td>
+</tr>
+<tr>
+<td style="text-align:left">Review</td>
+<td style="text-align:left">Prioritize by expected loss; mix uncertainty and random sampling.</td>
+</tr>
+<tr>
+<td style="text-align:left">Explainability</td>
+<td style="text-align:left">Reason codes, step-up over decline, track false-positive cost by segment.</td>
+</tr>
+</tbody>
+</table></div><aside class="callout abstract"><div class="callout-title">Rapid fire: fraud and abuse</div><div class="callout-body"><ul>
+<li>Accuracy is meaningless at 0.1 percent prevalence; compare against the random-scorer precision of 0.001.</li>
+<li>Downsampling negatives requires a probability correction before thresholding.</li>
+<li>Train only on transactions old enough for chargebacks to arrive.</li>
+<li>Approved traffic is the only traffic with labels; keep a small random-approve holdout.</li>
+<li>Step-up authentication turns uncertainty into labels.</li>
+<li>Graph features need point-in-time computation to avoid leakage.</li>
+<li>Precision at review capacity is the operational metric.</li>
+<li>A falling fraud rate can mean attackers moved, so monitor unmeasured segments.</li>
+</ul>
+</div></aside>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="ml-system-design-framework.html">ML System Design Framework</a></li>
+<li><a class="wikilink" href="class-imbalance.html">Class Imbalance</a></li>
+<li><a class="wikilink" href="data-leakage.html">Data Leakage</a></li>
+<li><a class="wikilink" href="calibration.html">Calibration</a></li>
+<li><a class="wikilink" href="precision-and-recall.html">Precision and Recall</a></li>
+<li><a class="wikilink" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a></li>
+<li><a class="wikilink" href="graph-neural-networks.html">Graph Neural Networks</a></li>
+<li><a class="wikilink" href="time-series-validation.html">Time Series Validation</a></li>
+<li><a class="wikilink" href="data-drift.html">Data Drift vs Concept Drift</a></li>
+<li><a class="wikilink" href="training-serving-skew.html">Training-Serving Skew</a></li>
+<li><a class="wikilink" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a></li>
+<li><a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Experimentation</a></li>
+</ul>
+<p><a class="wikilink" href="moc-system-design.html">MOC - System Design</a></p>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="case-search-ranking.html"><small>← Previous</small>Case Study: Search Ranking</a><a class="r" href="case-rag-assistant.html"><small>Next →</small>Case Study: A RAG Question-Answering Assistant</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#problem-statement-and-clarifying-questions">Problem statement and clarifying questions</a><a class="l2" href="#requirements-and-back-of-envelope-scale">Requirements and back-of-envelope scale</a><a class="l2" href="#architecture">Architecture</a><a class="l2" href="#layering-rules-model-graph-and-humans">Layering: rules, model, graph, and humans</a><a class="l2" href="#data-and-labels">Data and labels</a><a class="l2" href="#features">Features</a><a class="l2" href="#model-choices">Model choices</a><a class="l2" href="#thresholding-by-business-cost-and-capacity">Thresholding by business cost and capacity</a><a class="l2" href="#real-time-versus-batch">Real-time versus batch</a><a class="l2" href="#adversarial-adaptation-and-drift">Adversarial adaptation and drift</a><a class="l2" href="#review-queues-and-active-learning">Review queues and active learning</a><a class="l2" href="#evaluation">Evaluation</a><a class="l2" href="#explainability-and-false-positive-cost">Explainability and false-positive cost</a><a class="l2" href="#failure-modes">Failure modes</a><a class="l2" href="#one-page-summary">One-page summary</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+<script src="assets/mermaid.min.js"></script>
+<script>(function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;mermaid.initialize({startOnLoad:true,theme:dark?'dark':'default',securityLevel:'strict'})})()</script>
+</body></html>

@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data Preparation &amp; Feature Engineering · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec" open><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="active" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+
+</details></nav>
+  <main>
+    <article data-slug="data-preparation-and-feature-engineering">
+      <div class="crumb">Foundations · chapter · 14 min read</div>
+      <h1>Data Preparation &amp; Feature Engineering</h1>
+      <p><em>Models learn from what you feed them — garbage features beat clever algorithms every time.</em></p>
+<p>Feature work is where many interviews go deep: not because formulas are hard, but because <strong>judgment</strong> is — knowing when a transform helps, when it leaks, and when imbalance demands a different loss and metric. The best candidates narrate a pipeline end to end: audit the table, define the label at the right time, split without cheating, encode for the model family, and pick metrics that match the business asymmetry — then show the sklearn <code>Pipeline</code> that enforces it. This chapter walks data quality through encoding, transforms, selection, <strong>leakage</strong> (<a class="wikilink" href="data-leakage.html">Data Leakage</a>), <strong>class imbalance</strong> (<a class="wikilink" href="class-imbalance.html">Class Imbalance</a>), and honest <strong>train/validation/test</strong> splits aligned with <a class="wikilink" href="cross-validation.html">cross-validation</a> and <a class="wikilink" href="model-evaluation-and-validation.html">evaluation</a> practice.</p>
+<aside class="callout success"><div class="callout-title">What you'll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Run a <strong>data quality</strong> checklist before modeling.</li>
+<li>Handle <strong>missing data</strong> (MCAR/MAR/MNAR) and pick imputation vs missing indicators.</li>
+<li><strong>Scale</strong> and <strong>encode</strong> features for the right model family without leakage.</li>
+<li>Engineer numeric, text, and datetime signals; select features with filter/wrapper/embedded tools.</li>
+<li>Classify <strong>leakage</strong> types with examples and prevent them with pipelines.</li>
+<li>Address <strong>imbalance</strong> and split data by <strong>groups</strong> and <strong>time</strong> correctly.</li>
+</ul>
+</div></aside>
+<h2 id="data-quality-checks"><a class="anchor" href="#data-quality-checks">#</a>Data quality checks</h2>
+<p>Before featurizing, interrogate the table:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Check</th>
+<th style="text-align:left">What to look for</th>
+<th style="text-align:left">Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Schema &amp; types</td>
+<td style="text-align:left">IDs stored as floats, dates as strings</td>
+<td style="text-align:left">Silent coercion bugs in training</td>
+</tr>
+<tr>
+<td style="text-align:left">Duplicates</td>
+<td style="text-align:left">Exact dupes, same user-timestamp</td>
+<td style="text-align:left">Inflated metrics, wrong splits</td>
+</tr>
+<tr>
+<td style="text-align:left">Cardinality</td>
+<td style="text-align:left">Constant columns, near-unique junk</td>
+<td style="text-align:left">Zero information or memorization</td>
+</tr>
+<tr>
+<td style="text-align:left">Outliers &amp; range</td>
+<td style="text-align:left">Negative ages, 10⁹ &quot;seconds&quot;</td>
+<td style="text-align:left">Breaks scaling and linear models</td>
+</tr>
+<tr>
+<td style="text-align:left">Label sanity</td>
+<td style="text-align:left">Prevalence, temporal gaps</td>
+<td style="text-align:left">Wrong baseline, wrong metric</td>
+</tr>
+<tr>
+<td style="text-align:left">Join integrity</td>
+<td style="text-align:left">Orphan keys after merges</td>
+<td style="text-align:left">Missing-not-at-random bias</td>
+</tr>
+</tbody>
+</table></div><p>Profile train and (future) production separately — <a class="wikilink" href="data-drift.html">drift</a> in quality often precedes drift in model scores.</p>
+<p>Automate checks in a <strong>validation gate</strong> before each training run: assert label column never null, assert timestamp monotonicity for event streams, and alert when categorical cardinality jumps (new enum values in production). These gates catch silent schema breaks that models cannot learn around.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;Walk me through starting a new tabular problem.&quot; Open with data quality and label definition, not &quot;I'll try XGBoost.&quot;</p>
+</div></aside>
+<h2 id="target-definition-and-label-hygiene"><a class="anchor" href="#target-definition-and-label-hygiene">#</a>Target definition and label hygiene</h2>
+<p>Before featurizing, freeze <strong>what</strong> you predict and <strong>when</strong> the label is known. Churn at 30 days is not the same problem as churn at 7 days — horizons change prevalence and feature eligibility. Document inclusion rules (active users only, minimum activity) so train and serve use the same population. Wrong labels poison every downstream step; no amount of <a class="wikilink" href="regularization.html">regularization</a> fixes a label that encodes the wrong business question.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;How do you predict churn?&quot; — answer with label definition and prediction time first, then features. Interviewers listen for eligibility filters and whether features exist at scoring time.</p>
+</div></aside>
+<h2 id="missing-data"><a class="anchor" href="#missing-data">#</a>Missing data</h2>
+<p><strong>MCAR</strong> (missing completely at random): drop or simple impute without much bias. <strong>MAR</strong> (missing at random): missingness depends on observed columns — model it or impute with care. <strong>MNAR</strong> (not at random): missingness depends on the hidden value itself — no imputation is unbiased without extra structure (e.g. Tobit, explicit missingness model).</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Strategy</th>
+<th style="text-align:left">When</th>
+<th style="text-align:left">Caveat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Listwise delete</td>
+<td style="text-align:left">MCAR, few missing</td>
+<td style="text-align:left">Wastes data if not MCAR</td>
+</tr>
+<tr>
+<td style="text-align:left">Mean / median impute</td>
+<td style="text-align:left">Quick baseline</td>
+<td style="text-align:left">Shrinks variance; use + <strong>missing indicator</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Model-based (KNN, MICE)</td>
+<td style="text-align:left">MAR, structured</td>
+<td style="text-align:left">Fit <strong>inside CV folds</strong> only</td>
+</tr>
+<tr>
+<td style="text-align:left">Learned &quot;missing&quot; token</td>
+<td style="text-align:left">Trees, deep nets</td>
+<td style="text-align:left">Let splits handle absent values</td>
+</tr>
+<tr>
+<td style="text-align:left">Separate category <code>Unknown</code></td>
+<td style="text-align:left">Categoricals</td>
+<td style="text-align:left">Don't confuse with a real level</td>
+</tr>
+</tbody>
+</table></div><p>A <strong>missing-indicator</strong> feature (1 if imputed) lets linear models recover different slopes for imputed rows.</p>
+<p><strong>Decision rule of thumb</strong>: if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>5</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">&lt;5\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">5%</span></span></span></span> missing and MCAR plausible, median impute + indicator is fine for tree/linear baselines. If missingness correlates with the label (MNAR suspicion), model whether missingness is informative — or drop features you cannot defend at inference time.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>MCAR = dropped coins; MAR = missingness you can explain from other columns; MNAR = the secret itself drives absence.</p>
+</div></aside>
+<h2 id="scaling-numeric-features"><a class="anchor" href="#scaling-numeric-features">#</a>Scaling numeric features</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Formula (per column)</th>
+<th style="text-align:left">Robust to outliers?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Standardization</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>σ</mi></mrow><annotation encoding="application/x-tex">(x - \mu) / \sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">μ</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span></td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Min–max</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mi>max</mi><mo>⁡</mo><mo>−</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x - \min) / (\max - \min)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mclose">)</span><span class="mord">/</span><span class="mopen">(</span><span class="mop">max</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">min</span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:left">No — dominated by extremes</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Robust</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">Q</mi><mi mathvariant="normal">R</mi></mrow></mrow><annotation encoding="application/x-tex">(x - \mathrm{median}) / \mathrm{IQR}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">median</span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord"><span class="mord mathrm">IQR</span></span></span></span></span></td>
+<td style="text-align:left">Better for heavy tails</td>
+</tr>
+</tbody>
+</table></div><p><strong>Needs scaling</strong>: distance models (k-NN, SVM RBF), neural nets, linear/logistic with gradient descent, k-means. <strong>Often indifferent</strong>: tree ensembles (splits are rank-invariant). <strong>Rule</strong>: if the algorithm cares about magnitude or dot products, scale; fit scaler on <strong>training only</strong>.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Missing &amp; scale</div><div class="callout-body"><p>Name MCAR/MAR/MNAR before imputing. Indicators + imputation for MAR tabular. Robust scaling when outliers matter. Trees don't need scale; linear and NN do. Fit transforms on train.</p>
+</div></aside>
+<h2 id="encoding-categoricals"><a class="anchor" href="#encoding-categoricals">#</a>Encoding categoricals</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Encoding</th>
+<th style="text-align:left">High-cardinality?</th>
+<th style="text-align:left">Leakage risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>One-hot</strong></td>
+<td style="text-align:left">Poor if thousands of levels</td>
+<td style="text-align:left">Low if fit on train categories only</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Ordinal</strong></td>
+<td style="text-align:left">When order is real</td>
+<td style="text-align:left">Wrong order hurts linear models</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Target / mean encoding</strong></td>
+<td style="text-align:left">Strong for high card</td>
+<td style="text-align:left"><strong>High</strong> — needs <strong>out-of-fold</strong> stats</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Hashing</strong></td>
+<td style="text-align:left">Very high card, streaming</td>
+<td style="text-align:left">Collisions trade bias for memory</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Embeddings</strong></td>
+<td style="text-align:left">Very high card, deep nets</td>
+<td style="text-align:left">Learned; watch rare levels</td>
+</tr>
+</tbody>
+</table></div><p><strong>Target encoding</strong> replaces category <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> with smoothed mean label <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>μ</mi><mo>~</mo></mover><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">\tilde\mu_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord katex-accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">μ</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">~</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> estimated on training rows with label <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> only — compute per fold on the other folds' training portion (K-fold target encoding) to avoid label leakage into validation. Add smoothing toward global mean for rare categories.</p>
+<p>For <strong>high cardinality</strong> (user ids, zip codes): hash, frequency encoding, bucket rare levels to <code>Other</code>, or embeddings in <a class="wikilink" href="trees-and-ensembles.html">tree/NN</a> hybrids.</p>
+<p><strong>Frequency encoding</strong> maps a level to its training count or log-count — smooth for trees, leaky if computed on train+val together. <strong>Embedding layers</strong> learn dense vectors for sparse IDs in neural nets; rare levels need min-frequency cutoffs or a shared <code>UNK</code> bucket. In interviews, tie encoding choice to <strong>data volume and model family</strong>: one-hot blows up sparse linear models; target encoding helps GBDT on categoricals when done out-of-fold.</p>
+<aside class="callout warning"><div class="callout-title">Target encoding on full train before CV</div><div class="callout-body"><p>The validation fold sees its own labels in the encoding — classic leakage. Always out-of-fold.</p>
+</div></aside>
+<h2 id="numeric-transforms-interactions-and-binning"><a class="anchor" href="#numeric-transforms-interactions-and-binning">#</a>Numeric transforms, interactions, and binning</h2>
+<ul>
+<li><strong>Log / Box–Cox</strong>: right-skewed counts, multiplicative effects → approximate normality for linear models.</li>
+<li><strong>Binning</strong>: capture nonlinearities for linear models; trees do this implicitly.</li>
+<li><strong>Interactions</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>×</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_1 \times x_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> when domain says joint effect (price × discount); explosive dimension — prefer models that learn interactions (GBDT, NNs) when data is ample.</li>
+</ul>
+<p>Pair transforms with <strong>interpretability</strong> needs: stakeholders may want monotonic bins; NNs may want raw + embeddings.</p>
+<h2 id="text-and-datetime-features"><a class="anchor" href="#text-and-datetime-features">#</a>Text and datetime features</h2>
+<p><strong>Text</strong>: tokenization, n-grams, TF–IDF for classical baselines; pretrained embeddings or fine-tuned encoders for depth (<a class="wikilink" href="classification-methods.html">classification</a> pipelines). Normalize case and unicode consistently with production.</p>
+<p><strong>Datetime</strong>: decompose into <strong>hour, day-of-week, month</strong>, holidays, time-since-event; for series, lags and rolling stats with strict <strong>causal</strong> windows (only past data). See <a class="wikilink" href="time-series-stationarity.html">time series</a> splitting below.</p>
+<p>Cyclic encoding helps linear models respect wrap-around: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>h</mi><mi mathvariant="normal">/</mi><mn>24</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>h</mi><mi mathvariant="normal">/</mi><mn>24</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sin(2\pi h/24), \cos(2\pi h/24)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mord mathnormal">h</span><span class="mord">/24</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mord mathnormal">h</span><span class="mord">/24</span><span class="mclose">)</span></span></span></span> for hour, same for day-of-week. Raw integers imply hour 23 is far from hour 0. For <strong>recency</strong> features, compute <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>=</mo><msub><mi>t</mi><mtext>now</mtext></msub><mo>−</mo><msub><mi>t</mi><mtext>last event</mtext></msub></mrow><annotation encoding="application/x-tex">\Delta t = t_{\text{now}} - t_{\text{last event}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">now</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">last event</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> using the same clock as serving — training backfills with warehouse <code>as_of</code> timestamps prevent subtle future peeking.</p>
+<h3 id="text-feature-ladder"><a class="anchor" href="#text-feature-ladder">#</a>Text feature ladder</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Stage</th>
+<th style="text-align:left">Representation</th>
+<th style="text-align:left">When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Bag-of-words / TF–IDF</td>
+<td style="text-align:left">Sparse n-grams</td>
+<td style="text-align:left">Strong baseline, interpretable</td>
+</tr>
+<tr>
+<td style="text-align:left">Char n-grams</td>
+<td style="text-align:left">Subword robustness</td>
+<td style="text-align:left">Typos, morphology</td>
+</tr>
+<tr>
+<td style="text-align:left">Pretrained embeddings</td>
+<td style="text-align:left">Average or pool token vectors</td>
+<td style="text-align:left">Medium data, transfer</td>
+</tr>
+<tr>
+<td style="text-align:left">Fine-tuned encoder</td>
+<td style="text-align:left">End-to-end task loss</td>
+<td style="text-align:left">Enough labels, compute budget</td>
+</tr>
+</tbody>
+</table></div><p>Start simple: TF–IDF + logistic regression often beats an under-trained BERT in interviews because it's fast, debuggable, and pairs with <a class="wikilink" href="logistic-regression.html">logistic regression</a> intuition. Move up the ladder when offline metrics plateau and latency budget allows.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;Features for fraud?&quot; Mix velocity (counts in 1h), device graph signals, and <strong>time since last event</strong> — always ask what's known <strong>at decision time</strong> (<a class="wikilink" href="data-leakage.html">leakage</a>).</p>
+</div></aside>
+<h2 id="feature-selection"><a class="anchor" href="#feature-selection">#</a>Feature selection</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Family</th>
+<th style="text-align:left">Idea</th>
+<th style="text-align:left">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Filter</strong></td>
+<td style="text-align:left">Correlation, mutual information, chi-square</td>
+<td style="text-align:left">Cheap; ignores model</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Wrapper</strong></td>
+<td style="text-align:left">Forward/backward stepwise on validation score</td>
+<td style="text-align:left">Expensive; overfits small <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Embedded</strong></td>
+<td style="text-align:left">L1 (lasso paths), tree importance</td>
+<td style="text-align:left">Built into training</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Permutation importance</strong></td>
+<td style="text-align:left">Shuffle one column, measure metric drop</td>
+<td style="text-align:left">Model-aware; compute on validation</td>
+</tr>
+</tbody>
+</table></div><p>Drop collinear features for linear models; trees tolerate redundancy but importance gets muddy. Permutation on <strong>test</strong> once at the end; tune selection on <strong>validation</strong> inside CV.</p>
+<p><strong>Wrapper vs embedded trade-off</strong>: stepwise selection with logistic regression can overfit when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is small — each added feature is tuned on the same validation slice. <strong>L1</strong> (<a class="wikilink" href="regularization.html">lasso</a>) path gives a sparse model in one shot; <strong>gradient boosting importance</strong> is fast but favors high-cardinality columns — use permutation importance to sanity-check. For interviews, name one filter method (mutual information), one embedded (L1), and permutation as the honest check.</p>
+<h2 id="data-leakage"><a class="anchor" href="#data-leakage">#</a>Data leakage</h2>
+<p>Full taxonomy — see <a class="wikilink" href="data-leakage.html">Data Leakage</a> card:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Example</th>
+<th style="text-align:left">Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Target leakage</strong></td>
+<td style="text-align:left">&quot;Refund issued&quot; predicting purchase</td>
+<td style="text-align:left">Drop post-outcome fields</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Train–test contamination</strong></td>
+<td style="text-align:left">Same user in train and test</td>
+<td style="text-align:left"><strong>Group split</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Temporal leakage</strong></td>
+<td style="text-align:left">Random shuffle on time series</td>
+<td style="text-align:left">Time-based split</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preprocessing leakage</strong></td>
+<td style="text-align:left"><code>StandardScaler</code> on all data before split</td>
+<td style="text-align:left"><code>Pipeline</code> fit on train only</td>
+</tr>
+</tbody>
+</table></div><p><strong>Aggregate leakage</strong>: target encoding or global counts computed including test users — fix with per-fold or streaming estimators.</p>
+<p>Walk the same checklist when tuning <strong>hyperparameters</strong>: if each trial refits encoders on train+validation labels, you leak selection signal. Nested cross-validation separates outer honest estimation from inner tuning — expensive but correct when stakes are high (<a class="wikilink" href="cross-validation.html">Cross-Validation</a>, <a class="wikilink" href="overfitting-and-underfitting.html">overfitting</a>).</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Leakage</div><div class="callout-body"><p>Features must exist at prediction time. Split before fit. Groups and time are not optional. Target encoding = out-of-fold only. Suspicious offline AUC → audit joins first.</p>
+</div></aside>
+<h2 id="class-imbalance"><a class="anchor" href="#class-imbalance">#</a>Class imbalance</h2>
+<p>Rare positives break accuracy and default thresholds (<a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a>, <a class="wikilink" href="roc-auc-vs-pr-auc.html">PR-AUC</a>):</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Technique</th>
+<th style="text-align:left">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Class weights</strong></td>
+<td style="text-align:left">Reweight loss — cheap, no duplicate rows</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Undersample majority</strong></td>
+<td style="text-align:left">Faster training; loses data</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Oversample / SMOTE</strong></td>
+<td style="text-align:left">Synthetic minority points along borders — <strong>overuse blurs boundaries</strong>; only inside train folds</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Threshold move</strong></td>
+<td style="text-align:left">Tune on PR curve on validation</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Focal loss</strong></td>
+<td style="text-align:left">Down-weight easy negatives in deep nets ([[loss-functions</td>
+</tr>
+</tbody>
+</table></div><p>Pick metrics that reflect the business: PR-AUC, recall at fixed precision, cost-sensitive utility. After resampling, recalibrate if probabilities matter (<a class="wikilink" href="calibration.html">Calibration</a>).</p>
+<h3 id="smote-caveats-expanded"><a class="anchor" href="#smote-caveats-expanded">#</a>SMOTE caveats (expanded)</h3>
+<p><strong>SMOTE</strong> interpolates between a minority point and its k nearest minority neighbors — synthetic points lie on chords in feature space. It helps when the minority class is tiny and the boundary is smooth; it hurts when features are mostly categorical or when noise dimensions dominate (synthetic points land in nonsense regions). Never apply SMOTE before splitting — duplicates the minority into validation. Prefer <strong>class weights</strong> first on large data; SMOTE is a scalpel for small tabular sets with continuous features.</p>
+<p><strong>Cost-sensitive learning</strong> bakes business asymmetry into the loss: false negative cost 100× false positive → weight positives 100× or optimize a custom utility at a chosen threshold. This is cleaner than resampling when costs are asymmetric but known (<a class="wikilink" href="loss-functions.html">Loss Functions</a>).</p>
+<h2 id="train-validation-and-test-splitting"><a class="anchor" href="#train-validation-and-test-splitting">#</a>Train, validation, and test splitting</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Problem type</th>
+<th style="text-align:left">Split strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i.i.d. tabular</td>
+<td style="text-align:left">Random 60/20/20 or nested CV ([[cross-validation</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Grouped</strong> (user, patient)</td>
+<td style="text-align:left"><code>GroupKFold</code> — all rows of a group in one fold</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Temporal</strong></td>
+<td style="text-align:left">Train on past, validate on future; expanding window</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Spatial / market</strong></td>
+<td style="text-align:left">Hold out geos for true generalization</td>
+</tr>
+</tbody>
+</table></div><p><a class="wikilink" href="fundamentals.html">Fundamentals</a> golden rule: touch <strong>test</strong> once. Hyperparameters and thresholds consume <strong>validation</strong> only.</p>
+<h3 id="leakage-safe-sklearn-pipeline"><a class="anchor" href="#leakage-safe-sklearn-pipeline">#</a>Leakage-safe sklearn pipeline</h3>
+<p>Fit preprocessors on training data only; chain with the estimator:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.compose <span class="hljs-keyword">import</span> ColumnTransformer
+<span class="hljs-keyword">from</span> sklearn.pipeline <span class="hljs-keyword">import</span> Pipeline
+<span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> StandardScaler, OneHotEncoder
+<span class="hljs-keyword">from</span> sklearn.impute <span class="hljs-keyword">import</span> SimpleImputer
+<span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LogisticRegression
+
+num_cols = [<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;income&quot;</span>]
+cat_cols = [<span class="hljs-string">&quot;country&quot;</span>]
+
+preprocess = ColumnTransformer(
+    transformers=[
+        (
+            <span class="hljs-string">&quot;num&quot;</span>,
+            Pipeline([
+                (<span class="hljs-string">&quot;imputer&quot;</span>, SimpleImputer(strategy=<span class="hljs-string">&quot;median&quot;</span>)),
+                (<span class="hljs-string">&quot;scaler&quot;</span>, StandardScaler()),
+            ]),
+            num_cols,
+        ),
+        (
+            <span class="hljs-string">&quot;cat&quot;</span>,
+            Pipeline([
+                (<span class="hljs-string">&quot;imputer&quot;</span>, SimpleImputer(strategy=<span class="hljs-string">&quot;constant&quot;</span>, fill_value=<span class="hljs-string">&quot;Unknown&quot;</span>)),
+                (<span class="hljs-string">&quot;onehot&quot;</span>, OneHotEncoder(handle_unknown=<span class="hljs-string">&quot;ignore&quot;</span>)),
+            ]),
+            cat_cols,
+        ),
+    ]
+)
+
+model = Pipeline(steps=[
+    (<span class="hljs-string">&quot;preprocess&quot;</span>, preprocess),
+    (<span class="hljs-string">&quot;clf&quot;</span>, LogisticRegression(max_iter=<span class="hljs-number">1000</span>)),
+])
+
+<span class="hljs-comment"># X_train, y_train only — never fit on validation or test</span>
+model.fit(X_train, y_train)
+y_val = model.predict(X_val)
+</code></pre>
+<p>In cross-validation, wrap the <strong>entire</strong> pipeline in <code>cross_val_score</code> so each fold refits imputer and scaler on that fold's train slice only.</p>
+<h3 id="leakage-stories-interviewers-love"><a class="anchor" href="#leakage-stories-interviewers-love">#</a>Leakage stories interviewers love</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Scenario</th>
+<th style="text-align:left">Leakage type</th>
+<th style="text-align:left">One-line fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Predicting hospital readmission using &quot;length of stay after discharge&quot;</td>
+<td style="text-align:left">Target</td>
+<td style="text-align:left">Feature not known at discharge scoring time</td>
+</tr>
+<tr>
+<td style="text-align:left">Email spam with duplicate forwards in train and test</td>
+<td style="text-align:left">Contamination</td>
+<td style="text-align:left">Split by message id or hash</td>
+</tr>
+<tr>
+<td style="text-align:left">Stock prediction with random 80/20 row split</td>
+<td style="text-align:left">Temporal</td>
+<td style="text-align:left">Walk-forward validation</td>
+</tr>
+<tr>
+<td style="text-align:left">Feature selection ranked by correlation on full dataset</td>
+<td style="text-align:left">Preprocessing</td>
+<td style="text-align:left">Select inside each CV train fold</td>
+</tr>
+</tbody>
+</table></div><h3 id="feature-engineering-vs-feature-stores"><a class="anchor" href="#feature-engineering-vs-feature-stores">#</a>Feature engineering vs feature stores</h3>
+<p>In production (<a class="wikilink" href="ml-system-design-framework.html">ML system design</a>), <strong>point-in-time correct</strong> features come from a feature store: every training row joins attributes as they were <strong>known at that timestamp</strong>, not today's snapshot of the user. Training on current aggregates (total lifetime spend) to predict past events is subtle temporal leakage — offline AUC soars, live model flatlines.</p>
+<aside class="callout info"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p><strong>Polynomial features</strong> explode dimension on wide tables; use only with strong regularization or low-dimensional domain picks. <strong>Entity embeddings</strong> pre-trained on co-occurrence can transfer cold-start signal for recommender-style problems (<a class="wikilink" href="recommender-systems.html">Recommender Systems</a>).</p>
+</div></aside>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Pipeline = &quot;every transform is part of the model, trained where the model is trained.&quot;</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;How do you prevent leakage in sklearn?&quot; — <code>ColumnTransformer</code> + <code>Pipeline</code>, fit on train or inside CV; never <code>fit</code> on concatenated train+val.</p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Splits &amp; imbalance</div><div class="callout-body"><p>Group split for repeated entities. Time split for series. SMOTE only in train folds. Class weights often enough. Threshold ≠ 0.5. Pipeline fit on train.</p>
+</div></aside>
+<h2 id="model-aware-feature-choices"><a class="anchor" href="#model-aware-feature-choices">#</a>Model-aware feature choices</h2>
+<p>Different learners expose different failure modes — feature prep should match.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Model family</th>
+<th style="text-align:left">Encoding / scaling notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Linear / logistic</strong></td>
+<td style="text-align:left">Scale continuous; one-hot or OOF target encode; watch multicollinearity</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>k-NN, SVM (RBF)</strong></td>
+<td style="text-align:left">Scale mandatory; distance metrics suffer from mixed units</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tree / GBDT</strong></td>
+<td style="text-align:left">Unscaled OK; target encoding helps high-cardinality categoricals</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Neural nets</strong></td>
+<td style="text-align:left">Standardize inputs; embeddings for sparse IDs; watch embedding dimension vs data</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Naive Bayes</strong></td>
+<td style="text-align:left">Discretize heavy tails; independence assumption hates redundant copies</td>
+</tr>
+</tbody>
+</table></div><p><a class="wikilink" href="classification-methods.html">Classification</a> and <a class="wikilink" href="regression-methods.html">regression</a> chapters assume these prep choices; mismatches (linear on unscaled dollar amounts) show up as &quot;the model didn't learn&quot; when the pipeline was wrong.</p>
+<h3 id="worked-split-example-groups-time"><a class="anchor" href="#worked-split-example-groups-time">#</a>Worked split example (groups + time)</h3>
+<p>E-commerce click prediction: rows are impression-level, but users repeat. <strong>Wrong</strong>: random 80/20 row split — same shopper in train and test. <strong>Right</strong>: <code>GroupKFold</code> by <code>user_id</code> for validation; hold out the last 7 days globally for test so features use only past behavior. Imputation and scaling live in the pipeline fitted on train users only; future users with unseen countries hit <code>handle_unknown='ignore'</code> on the one-hot encoder.</p>
+<aside class="callout warning"><div class="callout-title">Validation optimism on grouped data</div><div class="callout-body"><p>If groups are huge (enterprise accounts), a single fold may contain entire whales — report variance across folds, not one lucky split.</p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Model-aware prep</div><div class="callout-body"><p>Linear needs scale + careful categoricals. Trees eat raw-ish tables with good encodings. NNs need normalized inputs + embeddings. Match prep to the inductive bias. Group+time splits for behavioral data.</p>
+</div></aside>
+<h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-page summary</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concept</th>
+<th style="text-align:left">The one thing to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Data quality</td>
+<td style="text-align:left">Profile types, dupes, label prevalence before modeling.</td>
+</tr>
+<tr>
+<td style="text-align:left">Missingness</td>
+<td style="text-align:left">MCAR/MAR/MNAR drives strategy; add missing indicators.</td>
+</tr>
+<tr>
+<td style="text-align:left">Scaling</td>
+<td style="text-align:left">For distance/linear/NN; fit on train; robust if heavy tails.</td>
+</tr>
+<tr>
+<td style="text-align:left">Encoding</td>
+<td style="text-align:left">One-hot for low card; hashed/target/emb for high card — OOF for target.</td>
+</tr>
+<tr>
+<td style="text-align:left">Transforms</td>
+<td style="text-align:left">Log/Box–Cox for skew; interactions when domain demands.</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/datetime</td>
+<td style="text-align:left">TF–IDF or embeddings; causal lags for time.</td>
+</tr>
+<tr>
+<td style="text-align:left">Selection</td>
+<td style="text-align:left">Filters cheap; L1/permutation model-aware; avoid test peeking.</td>
+</tr>
+<tr>
+<td style="text-align:left">Leakage</td>
+<td style="text-align:left">Time, group, target, and preprocessing — pipeline fixes the last.</td>
+</tr>
+<tr>
+<td style="text-align:left">Imbalance</td>
+<td style="text-align:left">Weights, resampling, threshold, PR metrics — not accuracy.</td>
+</tr>
+<tr>
+<td style="text-align:left">Splits</td>
+<td style="text-align:left">Random vs group vs time; test locked until the end.</td>
+</tr>
+<tr>
+<td style="text-align:left">Model-aware prep</td>
+<td style="text-align:left">Scale for distance/linear/NN; trees need encoding more than scaling.</td>
+</tr>
+</tbody>
+</table></div><p>Document each feature in a <strong>feature contract</strong>: dtype, null policy, allowed range, and whether it exists at serve time. Contracts ride with <a class="wikilink" href="ml-system-design-framework.html">system design</a> reviews so batch backfills and online routers apply the same rules — otherwise you debug metric drops that are just inconsistent null handling.</p>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="data-leakage.html">Data Leakage</a></li>
+<li><a class="wikilink" href="class-imbalance.html">Class Imbalance</a></li>
+<li><a class="wikilink" href="fundamentals.html">Fundamentals</a></li>
+<li><a class="wikilink" href="cross-validation.html">Cross-Validation</a></li>
+<li><a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a></li>
+<li><a class="wikilink" href="classification-methods.html">Classification Methods</a></li>
+<li><a class="wikilink" href="regression-methods.html">Regression Methods</a></li>
+<li><a class="wikilink" href="logistic-regression.html">Logistic Regression</a></li>
+<li><a class="wikilink" href="regularization.html">Regularization</a></li>
+<li><a class="wikilink" href="trees-and-ensembles.html">Trees &amp; Ensembles</a></li>
+<li><a class="wikilink" href="time-series-stationarity.html">Time Series Stationarity</a></li>
+<li><a class="wikilink" href="ml-system-design-framework.html">ML System Design Framework</a></li>
+</ul>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="fundamentals.html"><small>← Previous</small>Fundamentals</a><a class="r" href="bias-variance-tradeoff.html"><small>Next →</small>Bias-Variance Tradeoff</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#data-quality-checks">Data quality checks</a><a class="l2" href="#target-definition-and-label-hygiene">Target definition and label hygiene</a><a class="l2" href="#missing-data">Missing data</a><a class="l2" href="#scaling-numeric-features">Scaling numeric features</a><a class="l2" href="#encoding-categoricals">Encoding categoricals</a><a class="l2" href="#numeric-transforms-interactions-and-binning">Numeric transforms, interactions, and binning</a><a class="l2" href="#text-and-datetime-features">Text and datetime features</a><a class="l3" href="#text-feature-ladder">Text feature ladder</a><a class="l2" href="#feature-selection">Feature selection</a><a class="l2" href="#data-leakage">Data leakage</a><a class="l2" href="#class-imbalance">Class imbalance</a><a class="l3" href="#smote-caveats-expanded">SMOTE caveats (expanded)</a><a class="l2" href="#train-validation-and-test-splitting">Train, validation, and test splitting</a><a class="l3" href="#leakage-safe-sklearn-pipeline">Leakage-safe sklearn pipeline</a><a class="l3" href="#leakage-stories-interviewers-love">Leakage stories interviewers love</a><a class="l3" href="#feature-engineering-vs-feature-stores">Feature engineering vs feature stores</a><a class="l2" href="#model-aware-feature-choices">Model-aware feature choices</a><a class="l3" href="#worked-split-example-groups-time">Worked split example (groups + time)</a><a class="l2" href="#one-page-summary">One-page summary</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+</body></html>

@@ -1,0 +1,10 @@
+:root{--hk:#8250df;--hs:#0a7d38;--hn:#b35900;--hc:#6e7781;--hf:#0550ae;--hb:#953800}
+:root[data-theme=dark]{--hk:#d2a8ff;--hs:#a5d6a7;--hn:#ffb86c;--hc:#8b949e;--hf:#79c0ff;--hb:#ffa657}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--hk:#d2a8ff;--hs:#a5d6a7;--hn:#ffb86c;--hc:#8b949e;--hf:#79c0ff;--hb:#ffa657}}
+.hljs-keyword,.hljs-built_in,.hljs-literal,.hljs-meta .hljs-keyword{color:var(--hk)}
+.hljs-string,.hljs-regexp,.hljs-meta .hljs-string{color:var(--hs)}
+.hljs-number,.hljs-attr,.hljs-variable,.hljs-params{color:var(--hn)}
+.hljs-comment,.hljs-quote{color:var(--hc);font-style:italic}
+.hljs-title,.hljs-title.function_,.hljs-section{color:var(--hf)}
+.hljs-type,.hljs-title.class_,.hljs-meta,.hljs-decorator{color:var(--hb)}
+.tex-error{color:var(--danger)}

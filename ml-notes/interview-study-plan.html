@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interview Study Plan · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec" open><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="active" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+
+</details></nav>
+  <main>
+    <article data-slug="interview-study-plan">
+      <div class="crumb">Start Here · chapter · 5 min read</div>
+      <h1>Interview Study Plan</h1>
+      <p><em>How to use this handbook: what to read for which interview round, in what order, and how to know you're ready.</em></p>
+<p>ML interviews are not one exam. Most loops have four or five distinct rounds, each graded on something different: breadth of fundamentals, depth on models, coding, open-ended system design, and (increasingly) LLMs. The notes here are organized by topic, but you should study by <strong>round</strong>. This page maps one to the other.</p>
+<aside class="callout success"><div class="callout-title">What you'll get from this page</div><div class="callout-body"><ul>
+<li>A reading order for each interview round, from must-know to nice-to-have.</li>
+<li>Three priority tiers so you know what to cut when time is short.</li>
+<li>A self-test for each round: if you can answer these out loud, you're ready.</li>
+</ul>
+</div></aside>
+<h2 id="how-the-notes-are-built"><a class="anchor" href="#how-the-notes-are-built">#</a>How the notes are built</h2>
+<p>Every topic comes in two sizes:</p>
+<ul>
+<li><strong>Chapters</strong> go deep: intuition, math, worked examples, interview angles, and a one-page summary at the end. Read these once, carefully.</li>
+<li><strong>Quick answers</strong> are one-minute cards with a &quot;say it in 30 seconds&quot; answer, key points, and the follow-ups interviewers ask. Re-read these the night before.</li>
+</ul>
+<p>Tick <strong>Mark as reviewed</strong> at the bottom of a page to track progress; the sidebar greys out what you've finished. Press <kbd>/</kbd> to search.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Interviewers rarely ask &quot;define X&quot;. They ask &quot;why X and not Y?&quot; and &quot;what breaks X?&quot;. Every chapter ends with traps and trade-offs for exactly this reason. Practise answering out loud, not just reading.</p>
+</div></aside>
+<h2 id="round-by-round-reading-order"><a class="anchor" href="#round-by-round-reading-order">#</a>Round-by-round reading order</h2>
+<h3 id="ml-fundamentals-breadth-round"><a class="anchor" href="#ml-fundamentals-breadth-round">#</a>ML fundamentals / breadth round</h3>
+<p>The &quot;rapid-fire&quot; round: 20–30 short questions across the whole field.</p>
+<ol>
+<li><a class="wikilink" href="fundamentals.html">Fundamentals</a> — ERM, generalization, bias-variance, problem framing.</li>
+<li><a class="wikilink" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a>, <a class="wikilink" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a>, <a class="wikilink" href="regularization.html">Regularization</a>, <a class="wikilink" href="generalization.html">Generalization</a> — the four cards you'll use in every other round.</li>
+<li><a class="wikilink" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a> with <a class="wikilink" href="data-leakage.html">Data Leakage</a> and <a class="wikilink" href="class-imbalance.html">Class Imbalance</a>.</li>
+<li><a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a> with <a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a>, <a class="wikilink" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>, <a class="wikilink" href="cross-validation.html">Cross-Validation</a>, <a class="wikilink" href="calibration.html">Calibration</a>.</li>
+<li><a class="wikilink" href="loss-functions.html">Loss Functions</a> and <a class="wikilink" href="cross-entropy-loss.html">Cross-Entropy Loss</a>.</li>
+</ol>
+<h3 id="theory-math-round"><a class="anchor" href="#theory-math-round">#</a>Theory / math round</h3>
+<ol>
+<li><a class="wikilink" href="math.html">Math</a> — linear algebra, probability, statistics, optimization, information theory.</li>
+<li><a class="wikilink" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a> and <a class="wikilink" href="gradient-descent.html">Gradient Descent</a>.</li>
+<li><a class="wikilink" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>.</li>
+<li><a class="wikilink" href="probability-and-statistics.html">Probability &amp; Statistics</a> and <a class="wikilink" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a> — statistics questions show up in almost every loop.</li>
+<li><a class="wikilink" href="probability-and-math-drills.html">Probability &amp; Math Drills</a> — practise out loud.</li>
+</ol>
+<h3 id="models-round"><a class="anchor" href="#models-round">#</a>Models round</h3>
+<ol>
+<li><a class="wikilink" href="regression-methods.html">Regression Methods</a> and <a class="wikilink" href="classification-methods.html">Classification Methods</a>.</li>
+<li><a class="wikilink" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a> — the most-asked model family for tabular data.</li>
+<li><a class="wikilink" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>.</li>
+<li>Cards to drill: <a class="wikilink" href="logistic-regression.html">Logistic Regression</a>, <a class="wikilink" href="support-vector-machines.html">Support Vector Machines</a>, <a class="wikilink" href="naive-bayes.html">Naive Bayes</a>, <a class="wikilink" href="k-nearest-neighbors.html">k-Nearest Neighbors</a>, <a class="wikilink" href="decision-trees.html">Decision Trees</a>, <a class="wikilink" href="bagging-vs-boosting.html">Bagging vs Boosting</a>, <a class="wikilink" href="gradient-boosting.html">Gradient Boosting</a>, <a class="wikilink" href="k-means-clustering.html">k-Means Clustering</a>, <a class="wikilink" href="generative-vs-discriminative.html">Generative vs Discriminative</a>.</li>
+</ol>
+<h3 id="coding-round"><a class="anchor" href="#coding-round">#</a>Coding round</h3>
+<p>Implement-from-scratch problems, usually in numpy or PyTorch.</p>
+<ol>
+<li><a class="wikilink" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a> — 14 problems (regression, k-means, attention, AUC, training loop) with tested solutions.</li>
+<li><a class="wikilink" href="pytorch.html">PyTorch</a> and <a class="wikilink" href="tensorgym-study-notes.html">TensorGym Study Notes</a> — tensor shapes, <code>eval()</code> vs <code>no_grad()</code>, mixed precision.</li>
+<li><a class="wikilink" href="cheatsheets.html">Cheatsheets</a> — the scikit-learn reference for tabular work.</li>
+</ol>
+<h3 id="deep-learning-round"><a class="anchor" href="#deep-learning-round">#</a>Deep learning round</h3>
+<ol>
+<li><a class="wikilink" href="training-neural-networks.html">Training Neural Networks</a> — activations, backprop, optimizers, normalization, debugging.</li>
+<li><a class="wikilink" href="pytorch.html">PyTorch</a> and <a class="wikilink" href="tensorgym-study-notes.html">TensorGym Study Notes</a> — for the implementation round.</li>
+<li>Architectures: <a class="wikilink" href="computer-vision-beyond-cnns.html">Vision beyond CNNs</a>, <a class="wikilink" href="convolutional-neural-networks.html">CNNs</a>, <a class="wikilink" href="recurrent-neural-networks.html">RNNs</a> → <a class="wikilink" href="long-short-term-memory.html">LSTM</a> / <a class="wikilink" href="gated-recurrent-unit.html">GRU</a>, <a class="wikilink" href="graph-neural-networks.html">GNNs</a>.</li>
+<li>Cards: <a class="wikilink" href="backpropagation.html">Backpropagation</a>, <a class="wikilink" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a>, <a class="wikilink" href="normalization-layers.html">BatchNorm vs LayerNorm</a>, <a class="wikilink" href="dropout.html">Dropout</a>, <a class="wikilink" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a>, <a class="wikilink" href="activation-functions.html">Activation Functions</a>.</li>
+</ol>
+<h3 id="llm-genai-round"><a class="anchor" href="#llm-genai-round">#</a>LLM / GenAI round</h3>
+<ol>
+<li><a class="wikilink" href="transformers-and-attention.html">Transformers &amp; Attention</a> — non-negotiable for any modern ML role.</li>
+<li><a class="wikilink" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a>.</li>
+<li><a class="wikilink" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a>.</li>
+<li><a class="wikilink" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation</a>.</li>
+<li><a class="wikilink" href="llm-eval.html">LLM Evaluation</a>.</li>
+<li>Cards: <a class="wikilink" href="self-attention.html">Self-Attention</a>, <a class="wikilink" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a>, <a class="wikilink" href="decoding-strategies.html">Decoding Strategies</a>, <a class="wikilink" href="kv-cache.html">KV Cache</a>, <a class="wikilink" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a>, <a class="wikilink" href="rlhf-vs-dpo.html">RLHF vs DPO</a>, <a class="wikilink" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a>, <a class="wikilink" href="hallucination.html">Hallucination</a>.</li>
+</ol>
+<h3 id="ml-system-design-round"><a class="anchor" href="#ml-system-design-round">#</a>ML system design round</h3>
+<ol>
+<li><a class="wikilink" href="ml-system-design-framework.html">ML System Design Framework</a> — the six-step spine to drive every answer.</li>
+<li><a class="wikilink" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a> — each stage in depth.</li>
+<li><a class="wikilink" href="recommender-systems.html">Recommender Systems</a> — the most common prompt family (feeds, ads, search).</li>
+<li><a class="wikilink" href="ml-in-production.html">ML in Production</a> — serving, monitoring, drift, retraining.</li>
+<li><a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a> — how you prove the system works.</li>
+<li><a class="wikilink" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a> — the lookup table.
+Worked cases: <a class="wikilink" href="case-search-ranking.html">Search Ranking</a>, <a class="wikilink" href="case-fraud-detection.html">Fraud and Abuse Detection</a>, <a class="wikilink" href="case-rag-assistant.html">RAG Assistant</a>; also <a class="wikilink" href="responsible-ml.html">Responsible ML</a>, <a class="wikilink" href="bandits-and-reinforcement-learning.html">Bandits &amp; RL</a>, <a class="wikilink" href="causal-inference.html">Causal Inference</a>.</li>
+<li>Cards: <a class="wikilink" href="two-tower-retrieval.html">Two-Tower Retrieval</a>, <a class="wikilink" href="cold-start.html">Cold Start</a>, <a class="wikilink" href="training-serving-skew.html">Training-Serving Skew</a>, <a class="wikilink" href="data-drift.html">Data Drift vs Concept Drift</a>, <a class="wikilink" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a>.</li>
+</ol>
+<h3 id="forecasting-role-dependent"><a class="anchor" href="#forecasting-role-dependent">#</a>Forecasting (role-dependent)</h3>
+<p><a class="wikilink" href="time-series-stationarity.html">Time Series Stationarity</a>, then <a class="wikilink" href="stationarity.html">Stationarity</a>, <a class="wikilink" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a>, <a class="wikilink" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>.</p>
+<h2 id="priority-tiers"><a class="anchor" href="#priority-tiers">#</a>Priority tiers</h2>
+<p>When time is short, cut from the bottom.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Tier</th>
+<th style="text-align:left">Read</th>
+<th style="text-align:left">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>1 — Must know</strong></td>
+<td style="text-align:left">Fundamentals, Model Evaluation, Loss Functions, Trees &amp; Ensembles, Training Neural Networks, Transformers &amp; Attention, ML System Design Framework, and every quick answer</td>
+<td style="text-align:left">Asked in nearly every loop; weak answers here are disqualifying</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2 — Expected for mid/senior</strong></td>
+<td style="text-align:left">Math, Regression/Classification Methods, A/B Testing, Recommender Systems, ML in Production, LLM Training, RAG, Data Preparation</td>
+<td style="text-align:left">Separates &quot;knows the words&quot; from &quot;has shipped models&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>3 — Role-dependent</strong></td>
+<td style="text-align:left">CNN/RNN/LSTM/GRU/GNN, LLM Inference, LLM Eval, Unsupervised Learning, Time Series, PCA/SVD</td>
+<td style="text-align:left">Go deep only if the job description points there</td>
+</tr>
+</tbody>
+</table></div><aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Breadth first, then depth where the job is. One shallow pass over Tier 1 beats a perfect read of one chapter.</p>
+</div></aside>
+<h2 id="self-test-are-you-ready"><a class="anchor" href="#self-test-are-you-ready">#</a>Self-test: are you ready?</h2>
+<p>Answer each out loud in under two minutes, without notes.</p>
+<p><strong>Fundamentals</strong></p>
+<ul>
+<li>Decompose expected squared error into bias, variance, and noise. What moves each term?</li>
+<li>Your validation AUC is great and production performance is poor. List five causes.</li>
+<li>Why is accuracy the wrong metric at 1% prevalence, and what would you use?</li>
+</ul>
+<p><strong>Models</strong></p>
+<ul>
+<li>Walk through how gradient boosting fits the next tree. What does XGBoost add?</li>
+<li>Why do random forests rarely overfit as you add trees, but boosting can?</li>
+<li>When would you pick logistic regression over gradient boosting in production?</li>
+</ul>
+<p><strong>Deep learning</strong></p>
+<ul>
+<li>Why does Adam need bias correction? What does AdamW change?</li>
+<li>What does BatchNorm do differently at train and eval time, and why do transformers use LayerNorm?</li>
+<li>Your loss is NaN after 200 steps. What do you check, in order?</li>
+</ul>
+<p><strong>LLMs</strong></p>
+<ul>
+<li>Write scaled dot-product attention and explain the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><msub><mi>d</mi><mi>k</mi></msub></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{d_k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.04em;vertical-align:-0.1828em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8572em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8172em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1828em;"><span></span></span></span></span></span></span></span></span>.</li>
+<li>What is stored in the KV cache, how big is it, and how does GQA shrink it?</li>
+<li>RLHF vs DPO: what does DPO remove, and what does it give up?</li>
+<li>Your RAG system answers confidently but wrong. How do you find out whether retrieval or generation is at fault?</li>
+</ul>
+<p><strong>System design</strong></p>
+<ul>
+<li>Design a feed recommender: objective, metrics, candidate generation, ranking, serving, and how you'd A/B test it.</li>
+<li>How do you detect and respond to data drift when labels arrive two weeks late?</li>
+<li>How many users per arm do you need to detect a 1-point lift on a 10% conversion rate?</li>
+</ul>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — How to study</div><div class="callout-body"><ul>
+<li>Study by round, not by chapter order.</li>
+<li>Chapters once, deeply; quick answers repeatedly.</li>
+<li>Say answers out loud; interviews grade explanation, not recognition.</li>
+<li>For every concept, know one trade-off and one failure mode.</li>
+<li>In system design, drive the structure yourself.</li>
+</ul>
+</div></aside>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="moc-foundations.html">Overview: Foundations</a> · <a class="wikilink" href="moc-models.html">Overview: Models</a> · <a class="wikilink" href="moc-deep-learning.html">Overview: Deep Learning</a> · <a class="wikilink" href="moc-llms.html">Overview: LLMs</a> · <a class="wikilink" href="moc-system-design.html">Overview: System Design</a></li>
+</ul>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><span></span><a class="r" href="moc-foundations.html"><small>Next →</small>Foundations</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#how-the-notes-are-built">How the notes are built</a><a class="l2" href="#round-by-round-reading-order">Round-by-round reading order</a><a class="l3" href="#ml-fundamentals-breadth-round">ML fundamentals / breadth round</a><a class="l3" href="#theory-math-round">Theory / math round</a><a class="l3" href="#models-round">Models round</a><a class="l3" href="#coding-round">Coding round</a><a class="l3" href="#deep-learning-round">Deep learning round</a><a class="l3" href="#llm-genai-round">LLM / GenAI round</a><a class="l3" href="#ml-system-design-round">ML system design round</a><a class="l3" href="#forecasting-role-dependent">Forecasting (role-dependent)</a><a class="l2" href="#priority-tiers">Priority tiers</a><a class="l2" href="#self-test-are-you-ready">Self-test: are you ready?</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+</body></html>

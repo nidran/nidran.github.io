@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Study: A RAG Question-Answering Assistant · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="active" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+
+</details></nav>
+  <main>
+    <article data-slug="case-rag-assistant">
+      <div class="crumb">ML System Design · chapter · 20 min read</div>
+      <h1>Case Study: A RAG Question-Answering Assistant</h1>
+      <p><em>A retrieval-augmented assistant is a search system whose last stage is a language model: quality is capped by what retrieval finds, safety is capped by what the prompt lets through, and cost is capped by how many tokens each answer drags along.</em></p>
+<p>This case study designs an internal knowledge assistant for a large organization: employees ask natural-language questions and receive grounded answers with citations drawn from documents they are allowed to see (policies, wikis, tickets, design docs, slide decks). The concepts behind the pieces are in <a class="wikilink" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation</a>, <a class="wikilink" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a>, and <a class="wikilink" href="llm-eval.html">LLM Evaluation</a>; this note assembles them into one system with numbers, trade-offs, and failure modes.</p>
+<aside class="callout success"><div class="callout-title">What you'll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Scope a RAG assistant with corpus size, query load, token budget, and cost arithmetic.</li>
+<li>Describe the ingestion pipeline and justify chunking choices.</li>
+<li>Explain hybrid retrieval plus reranking and the difference between retrieval metrics and answer metrics.</li>
+<li>Construct a prompt that supports citations and handles missing evidence, and describe defenses against prompt injection.</li>
+<li>Enforce document permissions at retrieval time and keep the index fresh.</li>
+<li>Design an evaluation suite (recall@k, faithfulness, answer relevance, human review) and an observability loop.</li>
+</ul>
+</div></aside>
+<h2 id="problem-statement-and-clarifying-questions"><a class="anchor" href="#problem-statement-and-clarifying-questions">#</a>Problem statement and clarifying questions</h2>
+<p><strong>Prompt.</strong> Design a question-answering assistant over an organization's internal documents. It should answer in natural language, cite its sources, respect access controls, and say so when the documents do not contain the answer.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Question</th>
+<th style="text-align:left">Why it matters</th>
+<th style="text-align:left">Assumption used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Who are the users and what do they ask?</td>
+<td style="text-align:left">Query mix drives retrieval and eval design</td>
+<td style="text-align:left">100,000 employees; policy lookups, how-to, troubleshooting, summarization of specific documents</td>
+</tr>
+<tr>
+<td style="text-align:left">Corpus size and formats</td>
+<td style="text-align:left">Ingestion, chunking, index size</td>
+<td style="text-align:left">2 million documents; text, tables, slides, PDFs, some scanned</td>
+</tr>
+<tr>
+<td style="text-align:left">Document sensitivity and permissions</td>
+<td style="text-align:left">Retrieval filtering</td>
+<td style="text-align:left">Per-document and per-folder ACLs that change daily</td>
+</tr>
+<tr>
+<td style="text-align:left">Freshness</td>
+<td style="text-align:left">Ingestion path</td>
+<td style="text-align:left">Changes visible within about an hour</td>
+</tr>
+<tr>
+<td style="text-align:left">Answer latency tolerance</td>
+<td style="text-align:left">Streaming and model choice</td>
+<td style="text-align:left">First token under 2 s, full answer within about 10 s</td>
+</tr>
+<tr>
+<td style="text-align:left">Is a wrong answer costly?</td>
+<td style="text-align:left">Guardrail strictness</td>
+<td style="text-align:left">Moderate to high in HR, legal, security topics</td>
+</tr>
+<tr>
+<td style="text-align:left">Languages</td>
+<td style="text-align:left">Embedding model choice</td>
+<td style="text-align:left">A few major languages</td>
+</tr>
+<tr>
+<td style="text-align:left">Is the assistant allowed to take actions?</td>
+<td style="text-align:left">Injection blast radius</td>
+<td style="text-align:left">Read-only: no tools beyond retrieval</td>
+</tr>
+</tbody>
+</table></div><p>The task is <strong>grounded generation</strong>: produce an answer whose claims are supported by retrieved passages, with the option to abstain. The success criteria are three-part: the right evidence was retrieved, the answer is faithful to it, and the answer addresses the question asked.</p>
+<h2 id="requirements-and-back-of-envelope-scale"><a class="anchor" href="#requirements-and-back-of-envelope-scale">#</a>Requirements and back-of-envelope scale</h2>
+<p><strong>Corpus.</strong> With 2 million documents averaging 15 chunks each, the index holds <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup><mo>×</mo><mn>15</mn><mo>=</mo><mn>30</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">2\times10^6\times15 = 30\times10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span> chunks.</p>
+<p><strong>Vector memory.</strong> For a 1,024-dimensional embedding:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Representation</th>
+<th style="text-align:left">Size for 30M vectors</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">float32</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>30</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup><mo>×</mo><mn>1024</mn><mo>×</mo><mn>4</mn><mtext> B</mtext><mo>≈</mo><mn>123</mn><mtext> GB</mtext></mrow><annotation encoding="application/x-tex">30\times10^6 \times 1024 \times 4\ \text{B} \approx 123\ \text{GB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1024</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">4</span><span class="mspace"> </span><span class="mord text"><span class="mord">B</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">123</span><span class="mspace"> </span><span class="mord text"><span class="mord">GB</span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">float16</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>61</mn><mtext> GB</mtext></mrow><annotation encoding="application/x-tex">\approx 61\ \text{GB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">61</span><span class="mspace"> </span><span class="mord text"><span class="mord">GB</span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">int8</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>31</mn><mtext> GB</mtext></mrow><annotation encoding="application/x-tex">\approx 31\ \text{GB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">31</span><span class="mspace"> </span><span class="mord text"><span class="mord">GB</span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">float16 at 768-d</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>46</mn><mtext> GB</mtext></mrow><annotation encoding="application/x-tex">\approx 46\ \text{GB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">46</span><span class="mspace"> </span><span class="mord text"><span class="mord">GB</span></span></span></span></span></td>
+</tr>
+</tbody>
+</table></div><p>An ANN index adds graph overhead on top. Quantized or smaller embeddings, or a disk-backed index, keep memory manageable, with a small recall cost to be measured rather than assumed.</p>
+<p><strong>Query load.</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100,000</mn></mrow><annotation encoding="application/x-tex">100{,}000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">100</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">000</span></span></span></span> users <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span> 5 questions/day <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>5</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">= 5\times10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> questions per day, which is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup><mi mathvariant="normal">/</mi><mn>86,400</mn><mo>≈</mo><mn>5.8</mn></mrow><annotation encoding="application/x-tex">5\times10^5/86{,}400 \approx 5.8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mord">/86</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">400</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">5.8</span></span></span></span> QPS on average and, with a peak factor of 4 for the working-day shape, about 23 QPS. That is small for retrieval; the cost and latency are dominated by the generator.</p>
+<p><strong>Tokens per request.</strong> Six retrieved chunks of about 400 tokens each, plus a 300-token system prompt and a 200-token question and history:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>6</mn><mo>×</mo><mn>400</mn><mo>+</mo><mn>300</mn><mo>+</mo><mn>200</mn><mo>=</mo><mn>2,900</mn><mtext> input tokens</mtext></mrow><annotation encoding="application/x-tex">6\times400 + 300 + 200 = 2{,}900\ \text{input tokens}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">400</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">300</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">200</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">900</span><span class="mspace"> </span><span class="mord text"><span class="mord">input tokens</span></span></span></span></span></span></div>
+<p>With a typical answer around 350 output tokens, daily volume is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup><mo>×</mo><mn>2,900</mn><mo>=</mo><mn>1.45</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">5\times10^5 \times 2{,}900 = 1.45\times10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">900</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.45</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span> input tokens (1.45 billion) and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.75</mn><mo>×</mo><msup><mn>10</mn><mn>8</mn></msup></mrow><annotation encoding="application/x-tex">1.75\times10^8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.75</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span> output tokens.</p>
+<p><strong>Illustrative cost.</strong> Using placeholder prices of 3 units per million input tokens and 15 units per million output tokens (substitute real prices):</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>2,900</mn><mo>×</mo><mfrac><mn>3</mn><msup><mn>10</mn><mn>6</mn></msup></mfrac><mo>+</mo><mn>350</mn><mo>×</mo><mfrac><mn>15</mn><msup><mn>10</mn><mn>6</mn></msup></mfrac><mo>≈</mo><mn>0.0087</mn><mo>+</mo><mn>0.00525</mn><mo>≈</mo><mn>0.014</mn><mtext> per query</mtext></mrow><annotation encoding="application/x-tex">2{,}900\times\frac{3}{10^6} + 350\times\frac{15}{10^6} \approx 0.0087 + 0.00525 \approx 0.014\ \text{per query}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">900</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">350</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">15</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.0087</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.00525</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0.014</span><span class="mspace"> </span><span class="mord text"><span class="mord">per query</span></span></span></span></span></span></div>
+<p>or about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6,975</mn></mrow><annotation encoding="application/x-tex">6{,}975</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">6</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">975</span></span></span></span> units per day at <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">5\times10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> queries. If a cache absorbs 30 percent of queries, daily cost drops to roughly <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4,880</mn></mrow><annotation encoding="application/x-tex">4{,}880</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">4</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">880</span></span></span></span> units. Input tokens (context) are the lever you control most directly: fewer, better chunks reduce both cost and latency.</p>
+<p><strong>Latency.</strong> A rough budget: query rewrite 150 ms, retrieval 80 ms, rerank 120 ms, prompt assembly 10 ms, generator time to first token 600 ms, then streaming decode. At about 60 tokens per second, 350 output tokens take roughly 5.8 s, so a full answer completes in about 6 to 7 s while the user sees text after under 1.5 s. Streaming is therefore part of the design, not polish; see <a class="wikilink" href="llm-inference.html">LLM Inference</a> and <a class="wikilink" href="kv-cache.html">KV Cache</a> for serving details.</p>
+<p><strong>Ingestion load.</strong> If 2 percent of documents change per day, that is 40,000 documents or about 600,000 chunks to re-embed daily, around 7 chunks per second: a small, steady load. The initial backfill of 30 million chunks is the heavy job and is run as a batch.</p>
+<h2 id="architecture"><a class="anchor" href="#architecture">#</a>Architecture</h2>
+<pre class="mermaid">flowchart TB
+  subgraph Ingest[&quot;Ingestion (async)&quot;]
+    SRC[&quot;Sources: wiki, drive, tickets&quot;] --&gt; PARSE[&quot;Parse + clean&lt;br/&gt;layout, tables, OCR&quot;]
+    PARSE --&gt; CHUNK[&quot;Chunk + metadata&lt;br/&gt;doc id, section, ACL, timestamps&quot;]
+    CHUNK --&gt; EMB[&quot;Embed&quot;]
+    EMB --&gt; VIDX[(&quot;Vector index&quot;)]
+    CHUNK --&gt; LIDX[(&quot;Lexical index BM25&quot;)]
+  end
+  subgraph Serve[&quot;Query path&quot;]
+    U[&quot;User question + identity&quot;] --&gt; RW[&quot;Rewrite / contextualize&quot;]
+    RW --&gt; RET[&quot;Hybrid retrieval&lt;br/&gt;dense + BM25, ACL filter&quot;]
+    VIDX --&gt; RET
+    LIDX --&gt; RET
+    RET --&gt; RR[&quot;Rerank&lt;br/&gt;cross-encoder, top 6&quot;]
+    RR --&gt; PR[&quot;Prompt builder&lt;br/&gt;instructions, evidence, citations&quot;]
+    PR --&gt; LLM[&quot;Generator&quot;]
+    LLM --&gt; GR[&quot;Output checks&lt;br/&gt;citation + groundedness + policy&quot;]
+    GR --&gt; ANS[&quot;Answer with citations&quot;]
+  end
+  CACHE[(&quot;Semantic + exact cache&quot;)] --&gt; RET
+  ANS --&gt; OBS[(&quot;Traces, feedback, eval sets&quot;)]
+  OBS --&gt; EVAL[&quot;Offline eval + dashboards&quot;]
+</pre>
+<h2 id="ingestion-and-chunking"><a class="anchor" href="#ingestion-and-chunking">#</a>Ingestion and chunking</h2>
+<p><strong>Parsing</strong> decides what the model can ever know. PDFs with multi-column layouts, tables, and scanned pages are common failure sources: a table flattened into text can become unreadable, and OCR errors become retrieval misses. Preserve structure (headings, list items, table rows) as metadata, extract tables into a text form that keeps row and column labels, and track a parse-quality signal per document so failures are visible.</p>
+<p><strong>Chunking</strong> is the highest-leverage ingestion decision. Options:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Strategy</th>
+<th style="text-align:left">Pros</th>
+<th style="text-align:left">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Fixed size with overlap (for example 400 tokens, 15 percent overlap)</td>
+<td style="text-align:left">Simple, predictable</td>
+<td style="text-align:left">Cuts across sentences and sections</td>
+</tr>
+<tr>
+<td style="text-align:left">Structure-aware (split on headings and paragraphs, merge small pieces)</td>
+<td style="text-align:left">Chunks match meaning units</td>
+<td style="text-align:left">Variable size, needs reliable parsing</td>
+</tr>
+<tr>
+<td style="text-align:left">Hierarchical (small chunks for retrieval, parent section for context)</td>
+<td style="text-align:left">Precise retrieval with enough context for the generator</td>
+<td style="text-align:left">More storage, extra logic</td>
+</tr>
+<tr>
+<td style="text-align:left">Semantic or model-based boundaries</td>
+<td style="text-align:left">Adaptive</td>
+<td style="text-align:left">Cost, harder to debug</td>
+</tr>
+</tbody>
+</table></div><p>A solid default is structure-aware chunks of a few hundred tokens with a heading breadcrumb prepended (&quot;Policy &gt; Travel &gt; Reimbursement&quot;) so that a chunk is interpretable on its own, plus a retrieve-small, expand-to-parent step for context. Too-small chunks lose the antecedent of pronouns and the conditions of rules; too-large chunks dilute the embedding and waste tokens. Tune chunk size by retrieval recall on a labeled question set rather than by intuition.</p>
+<p><strong>Metadata</strong> to store with every chunk: document ID and URL, title, section path, author, created and modified timestamps, document type, language, ACL identifiers, and a content hash for deduplication and change detection. Deduplicate near-identical documents (copies, versions), or retrieval will return five copies of one policy.</p>
+<h2 id="embeddings-and-hybrid-retrieval"><a class="anchor" href="#embeddings-and-hybrid-retrieval">#</a>Embeddings and hybrid retrieval</h2>
+<p><strong>Embedding model choice.</strong> Compare candidate models on your own question and passage set, not only on public leaderboards. Factors: quality in the corpus's domain and languages, dimension (index size and speed), maximum input length, inference cost, and whether queries and documents use different prefixes or instructions. Fine-tuning on in-domain pairs (questions with clicked or judged passages) can help when vocabulary is specialized, but start by measuring a strong off-the-shelf model.</p>
+<p><strong>Why hybrid.</strong> Dense retrieval handles paraphrase; lexical retrieval (BM25) handles exact tokens such as error codes, product names, policy identifiers, and acronyms that embeddings blur. Retrieve the top 50 from each and fuse, using reciprocal rank fusion or learned weights, to produce about 50 to 100 candidates. See <a class="wikilink" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a> for ANN index types (graph-based, inverted-file with quantization) and their recall, memory, and latency trade-offs.</p>
+<p><strong>Query rewriting.</strong> Multi-turn conversations contain references (&quot;what about for contractors?&quot;) that are meaningless to a retriever. A small model rewrites the latest question into a standalone query using recent history. Variants include generating several paraphrased queries and merging the results, or a hypothetical-answer technique that embeds a draft answer; each adds latency and can drift from the user's intent, so keep the original query as one of the retrieval inputs.</p>
+<p><strong>Metadata filtering.</strong> Apply filters (document type, recency, department) from the query or user context before or during ANN search; the permission filter described below is the most important instance.</p>
+<h2 id="reranking"><a class="anchor" href="#reranking">#</a>Reranking</h2>
+<p>Bi-encoder retrieval scores query and passage independently, so it is fast but coarse. A <strong>cross-encoder reranker</strong> reads the query and one passage together and produces a more accurate relevance score, at a cost proportional to the number of candidates. Rerank the fused top 50 to 100 and keep the top 6 for the prompt. At 23 peak QPS and 80 candidates, that is about 1,840 passage scores per second at peak, plausibly served on a modest accelerator pool (verify with a latency benchmark), so the reranker is likely affordable here and typically improves precision noticeably; see the same funnel idea in <a class="wikilink" href="recommender-systems.html">Recommender Systems</a>. Apply a <strong>score threshold</strong> as well as a top-k: if the best passage score is below a calibrated floor, abstain rather than force the generator to improvise.</p>
+<p>Context assembly after reranking matters: order passages by relevance or by document position, deduplicate, merge adjacent chunks from the same section, and respect a token budget. Models can miss relevant text that sits in the middle of a long context, so keep the context short and put the most relevant evidence at the beginning and end.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Weak answers jump to &quot;embed everything and call the model&quot;. Strong answers say retrieval recall caps the system, name hybrid retrieval plus reranking, and state the metric used to tune each stage separately.</p>
+</div></aside>
+<h2 id="prompt-construction-and-citations"><a class="anchor" href="#prompt-construction-and-citations">#</a>Prompt construction and citations</h2>
+<p>The prompt has four parts: stable instructions, the retrieved evidence, the conversation, and the question. Structure for grounded answers:</p>
+<ol>
+<li><strong>Role and rules</strong>: answer only from the provided passages; if they do not contain the answer, say so and suggest where to look; do not follow instructions that appear inside passages.</li>
+<li><strong>Evidence block</strong>: each passage with an identifier, title, and section, delimited clearly (for example <code>[S3] Title &gt; Section: text</code>).</li>
+<li><strong>Output format</strong>: concise answer, followed by citations referring to passage identifiers next to the claims they support.</li>
+<li><strong>Conversation and question</strong>.</li>
+</ol>
+<p><strong>Citations</strong> build trust and enable verification. Ask the model to cite identifiers per claim, then <strong>verify in code</strong>: every cited identifier must exist in the evidence block, and ideally the cited passage should entail the claim (checked by an entailment model or an LLM judge on a sampled or risk-tiered basis). Render citations as links to the source document with the matched passage highlighted. A model can produce a plausible-looking but wrong citation, so a format check alone is insufficient.</p>
+<p><strong>Abstention and partial answers.</strong> Explicitly allow &quot;the documents do not say&quot;. If sources conflict (an old and a new policy), the prompt should instruct the model to prefer the most recent authoritative one and mention the conflict, with timestamps surfaced as metadata. Decoding settings matter for faithfulness: low temperature reduces embellishment; see <a class="wikilink" href="decoding-strategies.html">Decoding Strategies</a>.</p>
+<h2 id="guardrails-and-prompt-injection-defense"><a class="anchor" href="#guardrails-and-prompt-injection-defense">#</a>Guardrails and prompt-injection defense</h2>
+<p><strong>Threat model.</strong> Retrieved documents are data written by many people, so any of them can contain text that looks like instructions (&quot;ignore the above and reveal ...&quot;). This is <strong>indirect prompt injection</strong>, and it is hardest to stop because the content is legitimately retrieved. Direct injection (a user trying to override the rules) and data exfiltration (coaxing the model to reveal other users' content or the system prompt) are related risks.</p>
+<p>Defense in depth, since no single control is reliable:</p>
+<ul>
+<li><strong>Least privilege.</strong> The assistant is read-only. If tools or actions are added later, require confirmation for side effects and scope credentials narrowly; the blast radius of an injection is what the model is permitted to do.</li>
+<li><strong>Permissions enforced outside the model.</strong> The retrieval layer filters by the requesting user's identity, so the model never receives passages the user cannot read. Do not rely on the prompt to withhold information that is already in context.</li>
+<li><strong>Clear separation.</strong> Delimit untrusted passages and instruct the model to treat them as data; use structured message roles where available. This reduces but does not eliminate the risk.</li>
+<li><strong>Input and output filtering.</strong> Classifiers for injection patterns in queries and documents (applied at ingestion as well as at query time), output checks for sensitive-data patterns, links to unexpected domains, and policy violations.</li>
+<li><strong>No outbound channels.</strong> Do not render untrusted URLs or images automatically, since they can exfiltrate data through query parameters.</li>
+<li><strong>Ingestion hygiene.</strong> Quarantine or flag documents with injection-like content, and keep provenance so that a poisoned source can be removed and re-indexed.</li>
+<li><strong>Red-team suite.</strong> Maintain a set of adversarial documents and queries in the evaluation harness and run it on each prompt or model change.</li>
+</ul>
+<p>Additional guardrails: topic policies for sensitive domains (route legal and HR questions to a cautious mode with stronger abstention and disclaimers), PII redaction in logs, and rate limits.</p>
+<aside class="callout warning"><div class="callout-title">Common mistake</div><div class="callout-body"><p>Putting access control in the system prompt (&quot;only answer from documents the user may see&quot;). Once a restricted passage is in the context window, the model can leak it. Filter before retrieval results reach the prompt.</p>
+</div></aside>
+<h2 id="permissions-aware-retrieval-and-freshness"><a class="anchor" href="#permissions-aware-retrieval-and-freshness">#</a>Permissions-aware retrieval and freshness</h2>
+<p><strong>Permissions.</strong> Each chunk stores the ACL of its source document (user, group, and organization identifiers). At query time, the user's group memberships are resolved and applied as a filter in the index query. Two implementation patterns: <strong>pre-filtering</strong> inside the ANN search (correct, but filtered ANN can be slower or lose recall when filters are very selective) and <strong>post-filtering</strong> after retrieving a larger top-k (simple, but can return too few results if most hits are restricted, so over-fetch and test). Permissions change faster than content: a user removed from a group must lose access promptly, so ACL updates propagate through a dedicated, high-priority path (metadata update without re-embedding), and caches keyed by query must include the permission scope or be disabled for restricted content. A permissions test suite with users of different access levels is part of the release checks.</p>
+<p><strong>Freshness.</strong> Use change data capture or webhooks from sources to trigger incremental re-ingestion, with periodic full crawls as a safety net to catch missed events. Use content hashes to skip unchanged chunks, soft-delete removed documents immediately (a tombstone filter) rather than waiting for compaction, and track an <strong>index lag</strong> metric (time from source change to searchable). Versioned documents need a policy: keep only the current version, or keep history with an &quot;as of&quot; filter. When the embedding model changes, re-embed everything into a new index and switch over atomically; mixing embeddings from different models in one index makes similarity scores meaningless.</p>
+<h2 id="caching-latency-and-cost"><a class="anchor" href="#caching-latency-and-cost">#</a>Caching, latency, and cost</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Technique</th>
+<th style="text-align:left">What it saves</th>
+<th style="text-align:left">Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Exact-match response cache (normalized query and permission scope)</td>
+<td style="text-align:left">Entire pipeline for repeated questions</td>
+<td style="text-align:left">Stale answers; scope leakage if keys omit permissions</td>
+</tr>
+<tr>
+<td style="text-align:left">Semantic cache (nearby query embeddings reuse an answer)</td>
+<td style="text-align:left">Generation cost for paraphrases</td>
+<td style="text-align:left">False hits on questions that differ in a key detail; tune similarity threshold conservatively</td>
+</tr>
+<tr>
+<td style="text-align:left">Retrieval cache</td>
+<td style="text-align:left">Retrieval and rerank for frequent queries</td>
+<td style="text-align:left">Staleness after document updates</td>
+</tr>
+<tr>
+<td style="text-align:left">Prompt prefix caching</td>
+<td style="text-align:left">Repeated system prompt and shared prefix tokens</td>
+<td style="text-align:left">Requires stable prompt prefix ordering</td>
+</tr>
+<tr>
+<td style="text-align:left">Context trimming (rerank threshold, fewer chunks, compression)</td>
+<td style="text-align:left">Input tokens</td>
+<td style="text-align:left">Lower recall of needed evidence</td>
+</tr>
+<tr>
+<td style="text-align:left">Model routing (smaller model for easy or high-confidence queries)</td>
+<td style="text-align:left">Cost and latency</td>
+<td style="text-align:left">Quality drop if routing misclassifies</td>
+</tr>
+<tr>
+<td style="text-align:left">Streaming</td>
+<td style="text-align:left">Perceived latency</td>
+<td style="text-align:left">None significant</td>
+</tr>
+</tbody>
+</table></div><p>Cost control starts with the arithmetic above: input tokens dominate, so six well-chosen chunks beat twelve mediocre ones. Track cost per answered question and cost per resolved question, which differ when users re-ask. Apply timeouts and a fallback path (return the top passages with links if the generator is unavailable).</p>
+<h2 id="evaluation"><a class="anchor" href="#evaluation">#</a>Evaluation</h2>
+<p>RAG has two failure sources, retrieval and generation, so evaluate them separately and then together. General principles of LLM evaluation, judge reliability, and contamination are in <a class="wikilink" href="llm-eval.html">LLM Evaluation</a>.</p>
+<p><strong>Evaluation set.</strong> Build 300 to 1,000 questions covering the real mix (look up a fact, multi-step, multi-document, ambiguous, unanswerable, adversarial), each with reference passages and, where feasible, a reference answer. Sources: sampled production queries (with privacy review), subject-matter expert writing, and synthetic questions generated from documents then filtered by humans. Include a deliberate share of unanswerable questions to measure abstention. The set needs enough size to be informative: with 300 questions and a pass rate near 80 percent, the 95 percent confidence interval is about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>4.5</mn></mrow><annotation encoding="application/x-tex">\pm 4.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">±</span><span class="mord">4.5</span></span></span></span> percentage points (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.96</mn><msqrt><mrow><mn>0.8</mn><mo>⋅</mo><mn>0.2</mn><mi mathvariant="normal">/</mi><mn>300</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">1.96\sqrt{0.8\cdot0.2/300}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord">1.96</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">0.8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.2/300</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span></span></span>), so small differences between variants are noise.</p>
+<p><strong>Retrieval metrics.</strong></p>
+<ul>
+<li><strong>Recall@k</strong>: fraction of questions for which at least one (or all) of the needed passages appear in the top <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>. Track recall at the candidate stage (top 50 to 100) and after rerank (top 6).</li>
+<li><strong>MRR and NDCG</strong> for ordering quality (<a class="wikilink" href="ranking-metrics.html">Ranking Metrics</a>).</li>
+<li><strong>Context precision</strong>: fraction of the passages placed in the prompt that were actually useful, which affects cost and distraction.</li>
+</ul>
+<p><strong>Generation metrics.</strong></p>
+<ul>
+<li><strong>Faithfulness (groundedness)</strong>: are all claims supported by the retrieved passages? Typically measured by decomposing the answer into claims and verifying each against the evidence with an entailment model or LLM judge. Unfaithful answers are the form of <a class="wikilink" href="hallucination.html">Hallucination</a> that RAG is meant to prevent.</li>
+<li><strong>Answer relevance</strong>: does the answer address the question asked?</li>
+<li><strong>Answer correctness</strong> against the reference, when one exists.</li>
+<li><strong>Citation accuracy</strong>: do citations point to passages that support the claim?</li>
+<li><strong>Abstention quality</strong>: correct refusal on unanswerable questions, and low false-refusal rate on answerable ones.</li>
+</ul>
+<p><strong>Why the decomposition matters.</strong> End-to-end success is roughly bounded by the product of stages. If the needed passage is in the candidate set 90 percent of the time, survives reranking 95 percent of the time, and the generator uses it correctly 90 percent of the time, success is about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.9</mn><mo>×</mo><mn>0.95</mn><mo>×</mo><mn>0.9</mn><mo>≈</mo><mn>0.77</mn></mrow><annotation encoding="application/x-tex">0.9\times0.95\times0.9\approx 0.77</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.9</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.95</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.9</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0.77</span></span></span></span>, and the per-stage numbers tell you where to invest.</p>
+<p><strong>Judges and humans.</strong> LLM judges scale but have biases (favoring longer answers, their own style) and need calibration: score a sample with humans, measure agreement, and keep the judge prompt and model fixed while comparing variants. Human review stays essential for high-risk topics, for new failure categories, and for periodically auditing the judge. Report results with confidence intervals and per-category breakdowns.</p>
+<p><strong>Online.</strong> Thumbs up and down, copy or click-through on citations, follow-up and rephrase rate (a rephrase soon after an answer often signals failure), escalation to a human or ticket creation, and task-level outcomes where measurable. Run A/B tests for prompt, retriever, or model changes (<a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Experimentation</a>), with latency, cost, and a safety or abstention rate as guardrails. Feedback is biased toward extreme experiences, so combine it with sampled human review rather than relying on it alone.</p>
+<h2 id="observability-and-feedback-loops"><a class="anchor" href="#observability-and-feedback-loops">#</a>Observability and feedback loops</h2>
+<p>Log a <strong>trace</strong> per request: user and permission scope (hashed or access-controlled), original and rewritten query, retrieved candidate IDs with scores from each retriever, reranker scores, the final context, the prompt version, model version and parameters, the answer, citations, guardrail outcomes, token counts, and per-stage latencies. With traces you can answer &quot;why did it say that&quot; by replaying the pipeline.</p>
+<p>Dashboards and alerts:</p>
+<ul>
+<li><strong>Quality proxies</strong>: share of answers with citations, abstention rate, mean reranker top score, groundedness on a sampled set judged continuously.</li>
+<li><strong>Retrieval health</strong>: zero-result rate, share of queries where the top reranker score is below the floor, index lag, ingestion failures per source.</li>
+<li><strong>Cost and latency</strong>: tokens per query, cache hit rate, p50 and p99 per stage.</li>
+<li><strong>Safety</strong>: injection detector hits, policy-filter triggers, permission-test results.</li>
+<li><strong>Drift</strong>: shifts in query topics (new product launch, new policy), embedding distribution of queries versus the corpus, and corpus changes; see <a class="wikilink" href="data-drift.html">Data Drift vs Concept Drift</a> and the monitoring practices in <a class="wikilink" href="ml-in-production.html">ML in Production</a>.</li>
+</ul>
+<p><strong>Feedback loop.</strong> Negative feedback and abstentions cluster into topics; each cluster is triaged to a cause: missing document (content gap, report to document owners), bad parse, chunking problem, retrieval miss (add to eval set, consider fine-tuning or synonym handling), reranker error, or prompt and generation problem. Failures become regression tests in the evaluation set, so each fix is locked in. Use confirmed good question and passage pairs as training data for retriever and reranker fine-tuning, with the usual caution that feedback signal is biased by what was shown.</p>
+<h2 id="failure-modes"><a class="anchor" href="#failure-modes">#</a>Failure modes</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Failure</th>
+<th style="text-align:left">Symptom</th>
+<th style="text-align:left">Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Retrieval miss</td>
+<td style="text-align:left">Answer says &quot;not found&quot; or hallucinates</td>
+<td style="text-align:left">Hybrid retrieval, query rewrite, chunking tuned on recall@k, content-gap reports</td>
+</tr>
+<tr>
+<td style="text-align:left">Poor parsing</td>
+<td style="text-align:left">Garbled tables, missing text</td>
+<td style="text-align:left">Parse-quality metrics, table-aware extraction, OCR checks</td>
+</tr>
+<tr>
+<td style="text-align:left">Chunk boundary errors</td>
+<td style="text-align:left">Rule without its exception</td>
+<td style="text-align:left">Structure-aware chunks, parent expansion, heading breadcrumbs</td>
+</tr>
+<tr>
+<td style="text-align:left">Unfaithful generation</td>
+<td style="text-align:left">Claims absent from sources</td>
+<td style="text-align:left">Strict prompt, low temperature, claim-level verification, abstention</td>
+</tr>
+<tr>
+<td style="text-align:left">Wrong or fabricated citations</td>
+<td style="text-align:left">Citation does not support claim</td>
+<td style="text-align:left">Programmatic ID check plus entailment check</td>
+</tr>
+<tr>
+<td style="text-align:left">Outdated answer</td>
+<td style="text-align:left">Superseded policy cited</td>
+<td style="text-align:left">Timestamps in metadata, recency preference, low index lag, tombstones</td>
+</tr>
+<tr>
+<td style="text-align:left">Permission leak</td>
+<td style="text-align:left">User sees restricted content</td>
+<td style="text-align:left">Retrieval-time ACL filter, cache scope keys, permission test suite</td>
+</tr>
+<tr>
+<td style="text-align:left">Prompt injection</td>
+<td style="text-align:left">Behavior changes after retrieving a poisoned document</td>
+<td style="text-align:left">Least privilege, delimiting, filters, ingestion scanning, red-team suite</td>
+</tr>
+<tr>
+<td style="text-align:left">Over-abstention</td>
+<td style="text-align:left">Refuses answerable questions</td>
+<td style="text-align:left">Calibrate score floor, measure false refusals</td>
+</tr>
+<tr>
+<td style="text-align:left">Context overload</td>
+<td style="text-align:left">Long contexts hide key evidence</td>
+<td style="text-align:left">Fewer, better chunks; position evidence deliberately</td>
+</tr>
+<tr>
+<td style="text-align:left">Cost or latency creep</td>
+<td style="text-align:left">Rising tokens per query</td>
+<td style="text-align:left">Trimming, caching, routing, budgets and alerts</td>
+</tr>
+<tr>
+<td style="text-align:left">Embedding or index drift</td>
+<td style="text-align:left">Recall drop after a model or data change</td>
+<td style="text-align:left">Versioned indices, canary evaluation before switching</td>
+</tr>
+<tr>
+<td style="text-align:left">Judge bias</td>
+<td style="text-align:left">Metrics improve, users unhappy</td>
+<td style="text-align:left">Human audits of the judge, online metrics alongside</td>
+</tr>
+</tbody>
+</table></div><h2 id="deployment"><a class="anchor" href="#deployment">#</a>Deployment</h2>
+<p>Release in stages: offline evaluation on the golden set including the adversarial and permissions suites, a pilot with a friendly group and prominent feedback controls, then a gradual rollout with the A/B guardrails above. Version prompts, retriever and reranker models, index builds, and the generator together so any answer can be reproduced and any change rolled back independently. Treat prompt and model changes with the same discipline as code: each is evaluated against the regression set before release. Provide a fallback chain (generator unavailable: return ranked passages; retrieval unavailable: say the assistant is degraded). Document the limits to users: the assistant cites its sources and can be wrong, and the cited document is the authority.</p>
+<h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-page summary</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concept</th>
+<th style="text-align:left">The one thing to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Task</td>
+<td style="text-align:left">Grounded generation: right evidence, faithful answer, relevant to the question, abstain when unsupported.</td>
+</tr>
+<tr>
+<td style="text-align:left">Scale math</td>
+<td style="text-align:left">30M chunks is about 123 GB in float32 at 1024-d (about 31 GB in int8); 5.8 QPS average, about 23 peak; about 2,900 input tokens per query.</td>
+</tr>
+<tr>
+<td style="text-align:left">Cost</td>
+<td style="text-align:left">Input tokens dominate; roughly 0.014 units per query at the placeholder prices, lower with caching.</td>
+</tr>
+<tr>
+<td style="text-align:left">Chunking</td>
+<td style="text-align:left">Structure-aware, a few hundred tokens, heading breadcrumbs, expand to parent; tune on recall@k.</td>
+</tr>
+<tr>
+<td style="text-align:left">Retrieval</td>
+<td style="text-align:left">Hybrid dense plus BM25, fused; rewrite multi-turn queries; filter by metadata.</td>
+</tr>
+<tr>
+<td style="text-align:left">Reranking</td>
+<td style="text-align:left">Cross-encoder on the top 50 to 100, keep about 6, apply a score floor to abstain.</td>
+</tr>
+<tr>
+<td style="text-align:left">Prompt</td>
+<td style="text-align:left">Evidence with IDs, answer only from sources, cite per claim, verify citations in code.</td>
+</tr>
+<tr>
+<td style="text-align:left">Security</td>
+<td style="text-align:left">Indirect injection is expected; least privilege, permissions enforced outside the model, filters, red-team suite.</td>
+</tr>
+<tr>
+<td style="text-align:left">Permissions</td>
+<td style="text-align:left">ACL filter at retrieval, propagate ACL changes fast, scope cache keys.</td>
+</tr>
+<tr>
+<td style="text-align:left">Freshness</td>
+<td style="text-align:left">Incremental ingestion plus periodic full crawl, tombstones, index-lag metric, versioned embeddings.</td>
+</tr>
+<tr>
+<td style="text-align:left">Evaluation</td>
+<td style="text-align:left">Recall@k, context precision, faithfulness, answer relevance, citation accuracy, abstention, human audits; stages multiply.</td>
+</tr>
+<tr>
+<td style="text-align:left">Observability</td>
+<td style="text-align:left">Full per-request traces, feedback triage to root causes, failures become regression tests.</td>
+</tr>
+</tbody>
+</table></div><aside class="callout abstract"><div class="callout-title">Rapid fire: RAG assistant</div><div class="callout-body"><ul>
+<li>Retrieval recall is the ceiling; measure it separately from answer quality.</li>
+<li>Hybrid retrieval covers both paraphrase and exact identifiers.</li>
+<li>A reranker with a score floor improves precision and enables abstention.</li>
+<li>Enforce permissions before passages reach the model, not through instructions.</li>
+<li>Verify citations in code and check that the cited text supports the claim.</li>
+<li>Faithfulness is claim-level support by the context, a different thing from correctness against the world.</li>
+<li>Semantic caches need conservative thresholds and permission-scoped keys.</li>
+<li>Changing the embedding model means re-embedding the corpus into a new index.</li>
+<li>Small evaluation sets give wide confidence intervals; report them.</li>
+</ul>
+</div></aside>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="ml-system-design-framework.html">ML System Design Framework</a></li>
+<li><a class="wikilink" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation</a></li>
+<li><a class="wikilink" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a></li>
+<li><a class="wikilink" href="llm-eval.html">LLM Evaluation</a></li>
+<li><a class="wikilink" href="hallucination.html">Hallucination</a></li>
+<li><a class="wikilink" href="ranking-metrics.html">Ranking Metrics</a></li>
+<li><a class="wikilink" href="llm-inference.html">LLM Inference</a></li>
+<li><a class="wikilink" href="kv-cache.html">KV Cache</a></li>
+<li><a class="wikilink" href="decoding-strategies.html">Decoding Strategies</a></li>
+<li><a class="wikilink" href="data-drift.html">Data Drift vs Concept Drift</a></li>
+<li><a class="wikilink" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a></li>
+<li><a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Experimentation</a></li>
+</ul>
+<p><a class="wikilink" href="moc-system-design.html">MOC - System Design</a></p>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="case-fraud-detection.html"><small>← Previous</small>Case Study: Fraud and Abuse Detection</a><a class="r" href="bandits-and-reinforcement-learning.html"><small>Next →</small>Bandits &amp; Reinforcement Learning Basics</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#problem-statement-and-clarifying-questions">Problem statement and clarifying questions</a><a class="l2" href="#requirements-and-back-of-envelope-scale">Requirements and back-of-envelope scale</a><a class="l2" href="#architecture">Architecture</a><a class="l2" href="#ingestion-and-chunking">Ingestion and chunking</a><a class="l2" href="#embeddings-and-hybrid-retrieval">Embeddings and hybrid retrieval</a><a class="l2" href="#reranking">Reranking</a><a class="l2" href="#prompt-construction-and-citations">Prompt construction and citations</a><a class="l2" href="#guardrails-and-prompt-injection-defense">Guardrails and prompt-injection defense</a><a class="l2" href="#permissions-aware-retrieval-and-freshness">Permissions-aware retrieval and freshness</a><a class="l2" href="#caching-latency-and-cost">Caching, latency, and cost</a><a class="l2" href="#evaluation">Evaluation</a><a class="l2" href="#observability-and-feedback-loops">Observability and feedback loops</a><a class="l2" href="#failure-modes">Failure modes</a><a class="l2" href="#deployment">Deployment</a><a class="l2" href="#one-page-summary">One-page summary</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+<script src="assets/mermaid.min.js"></script>
+<script>(function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;mermaid.initialize({startOnLoad:true,theme:dark?'dark':'default',securityLevel:'strict'})})()</script>
+</body></html>

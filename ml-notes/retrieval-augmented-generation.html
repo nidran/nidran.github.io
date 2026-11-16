@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Retrieval-Augmented Generation (RAG) · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="active" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+
+</details></nav>
+  <main>
+    <article data-slug="retrieval-augmented-generation">
+      <div class="crumb">LLMs · chapter · 14 min read</div>
+      <h1>Retrieval-Augmented Generation (RAG)</h1>
+      <p><em>Ground the model in evidence you control instead of whatever it memorized in pretraining.</em></p>
+<p><strong>Retrieval-augmented generation</strong> answers user questions by <strong>retrieving</strong> relevant documents, then <strong>generating</strong> conditioned on that context. It attacks the three production headaches of raw LLMs: <strong>knowledge cutoff</strong>, <strong>hallucination</strong>, and <strong>unverifiable claims</strong>. Done well, you get cite-able answers and cheaper updates than retraining—swap the index, not the weights.</p>
+<aside class="callout success"><div class="callout-title">What you'll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Draw the RAG pipeline from ingestion to grounded answer and name where latency and quality trade off.</li>
+<li>Choose <strong>chunking</strong>, <strong>embedding</strong> training (bi-encoder + InfoNCE), and <strong>ANN vs sparse</strong> retrieval—and when to <strong>hybrid</strong> with BM25 and <strong>rerank</strong> with a cross-encoder.</li>
+<li>Split evaluation into <strong>retrieval</strong> (recall@k, MRR, NDCG) vs <strong>generation</strong> (faithfulness, relevance)—and point to <a class="wikilink" href="llm-eval.html">LLM Eval</a> for the full rubric.</li>
+<li>Diagnose failure modes (bad chunks, wrong docs, lost-in-the-middle) and pick fixes from a systems table.</li>
+<li>Contrast <strong>RAG vs fine-tuning vs long context</strong> for facts, freshness, and cost.</li>
+</ul>
+</div></aside>
+<h2 id="why-rag-exists"><a class="anchor" href="#why-rag-exists">#</a>Why RAG exists</h2>
+<p>Parametric knowledge in an LLM is <strong>implicit</strong>, <strong>static</strong> (training cutoff), and <strong>uncalibrated</strong>—the model sounds equally sure when wrong. RAG externalizes knowledge into a <strong>corpus you can version</strong>, audit, and delete. Product wins:</p>
+<ul>
+<li><strong>Freshness</strong> — re-index docs hourly; no full retrain.</li>
+<li><strong>Attribution</strong> — show sources; users trust and verify.</li>
+<li><strong>Hallucination control</strong> — when retrieval is good, you can measure <strong>faithfulness</strong> to context (see <a class="wikilink" href="hallucination.html">Hallucination</a>).</li>
+<li><strong>Cost</strong> — updating facts via FT or continued pretrain dwarfs embedding + index maintenance for many enterprise KBs.</li>
+</ul>
+<p>RAG does not replace alignment or instruction following; it feeds the <strong>evidence slot</strong> in a prompt assembled by your orchestration layer (<a class="wikilink" href="llm-inference.html">LLM Inference</a>, <a class="wikilink" href="decoding-strategies.html">Decoding Strategies</a>). Treat the retriever as a <strong>recall subsystem</strong> with its own SLIs—never as a black box bolted onto an otherwise unchanged chatbot.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p><strong>Weights = fuzzy memory. Index = filing cabinet with page numbers.</strong></p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Weak: &quot;RAG searches Google then GPT answers.&quot; Strong: <em>bi-encoder retrieval over chunked embeddings, optional sparse hybrid + cross-encoder rerank, context assembly with faithfulness eval—FT only when behavior must change, not when a PDF updated.</em></p>
+</div></aside>
+<h2 id="pipeline-overview"><a class="anchor" href="#pipeline-overview">#</a>Pipeline overview</h2>
+<pre class="mermaid">flowchart LR
+  A[Documents] --&gt; B[Ingest &amp; chunk]
+  B --&gt; C[Embed]
+  C --&gt; D[(Vector index)]
+  Q[User query] --&gt; E[Query rewrite / HyDE]
+  E --&gt; F[Retrieve top-k]
+  D --&gt; F
+  F --&gt; G[Rerank]
+  G --&gt; H[Assemble context]
+  H --&gt; I[LLM generate]
+  I --&gt; J[Answer + citations]
+  F --&gt; K[Sparse BM25]
+  K --&gt; L[Hybrid merge RRF]
+  L --&gt; G
+</pre>
+<p>Stages map cleanly to ownership: data engineering (ingest/chunk), search (embed/index/retrieve), and LLM (prompt + decode). Latency budgets usually spend <strong>30–60%</strong> on retrieval+rereank, <strong>40–70%</strong> on generation for single-hop QA.</p>
+<h3 id="production-concerns-beyond-the-diagram"><a class="anchor" href="#production-concerns-beyond-the-diagram">#</a>Production concerns beyond the diagram</h3>
+<ul>
+<li><strong>Versioned indexes</strong> — blue/green re-embed when the encoder changes; never mix incompatible vector spaces in one index.</li>
+<li><strong>Access control</strong> — filter by <code>tenant_id</code> / ACL at retrieval time; the LLM must never see unauthorized chunks.</li>
+<li><strong>Caching</strong> — embed frequent queries; cache reranker results for head traffic.</li>
+<li><strong>Observability</strong> — log retrieved chunk IDs with each answer for replay when users flag wrong responses.</li>
+<li><strong>Prompt injection</strong> — untrusted docs are attackers; delimit untrusted text, strip instructions, and optionally run a lightweight harmful-instruction detector on retrieved content.</li>
+</ul>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Why &amp; shape</div><div class="callout-body"><p>RAG fixes cutoff, hallucination risk, and missing citations. Cheaper factual updates than FT. Pipeline: ingest → chunk → embed → index → retrieve → (rerank) → prompt → generate. Hybrid adds BM25 for lexical matches. Evaluate retrieval and generation separately (<a class="wikilink" href="llm-eval.html">LLM Eval</a>).</p>
+</div></aside>
+<h2 id="ingestion-and-chunking"><a class="anchor" href="#ingestion-and-chunking">#</a>Ingestion and chunking</h2>
+<p><strong>Ingestion</strong> parses PDFs, HTML, tickets, slides into clean text—respect structure (headings, tables) where possible. Metadata (title, section, ACL, timestamp) travels with each chunk for filtering and citations.</p>
+<p><strong>Chunking</strong> is the silent killer of recall. Tradeoffs:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Strategy</th>
+<th style="text-align:left">How</th>
+<th style="text-align:left">When it helps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Fixed token windows</td>
+<td style="text-align:left">256–512 tokens, overlap 10–20%</td>
+<td style="text-align:left">Simple baseline; overlap reduces boundary cuts</td>
+</tr>
+<tr>
+<td style="text-align:left">Structure-aware</td>
+<td style="text-align:left">Split on headings / paragraphs</td>
+<td style="text-align:left">Docs, policies, wikis</td>
+</tr>
+<tr>
+<td style="text-align:left">Semantic</td>
+<td style="text-align:left">Embed sentences; merge until similarity drops</td>
+<td style="text-align:left">Variable-density notes</td>
+</tr>
+<tr>
+<td style="text-align:left">Parent–child</td>
+<td style="text-align:left">Small child chunks for search; parent for context</td>
+<td style="text-align:left">Need precise hit + wide context</td>
+</tr>
+</tbody>
+</table></div><p>Too small → fragments lose meaning. Too large → dilute embedding, waste context window, bury the answer (<strong>lost-in-the-middle</strong>: models under-attend to middle chunks in long prompts).</p>
+<p><strong>Rule of thumb:</strong> start <strong>384–512 tokens</strong> with <strong>50–80 token overlap</strong> on English prose; shrink for structured logs, grow for legal contracts where sentences chain across pages. Validate by sweeping chunk size on retrieval recall@k—optimum is rarely the first guess.</p>
+<p><strong>Metadata for filtering</strong> — date, product SKU, geography, doc type—lets you run faceted retrieval (&quot;only policies effective in 2024&quot;) before vector search, improving precision without touching the LLM.</p>
+<aside class="callout warning"><div class="callout-title">Common mistake</div><div class="callout-body"><p>Embedding entire 10-page PDFs as one vector—retrieval returns the right <em>file</em> but the generator still cannot find the sentence.</p>
+</div></aside>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p><strong>Chunk for the retriever's eye; parent doc for the generator's brain.</strong></p>
+</div></aside>
+<h2 id="embeddings-and-indexing"><a class="anchor" href="#embeddings-and-indexing">#</a>Embeddings and indexing</h2>
+<h3 id="bi-encoders-vs-cross-encoders"><a class="anchor" href="#bi-encoders-vs-cross-encoders">#</a>Bi-encoders vs cross-encoders</h3>
+<p>A <strong>bi-encoder</strong> maps query <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span> and document <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> independently:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>q</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi></mrow><mo fence="false" stretchy="true" minsize="1.2em" maxsize="1.2em">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>g</mi><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo><mo fence="false" stretchy="true" minsize="1.2em" maxsize="1.2em">)</mo></mrow><annotation encoding="application/x-tex">s(q,d) = \mathrm{sim}\big(f(q), g(d)\big)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathrm">sim</span></span><span class="mord"><span class="delimsizing size1">(</span></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mord"><span class="delimsizing size1">)</span></span></span></span></span></span></div>
+<p>typically cosine after L2-normalization (dot product on unit vectors). Encode all documents <strong>offline</strong>, store in a vector database—query time is one embedding + ANN search. See <a class="wikilink" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a> and <a class="wikilink" href="two-tower-retrieval.html">Two-Tower Retrieval</a>.</p>
+<p>A <strong>cross-encoder</strong> jointly encodes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>q</mi><mo separator="true">;</mo><mi>d</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[q;d]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">]</span></span></span></span> through a transformer and outputs a scalar relevance score. Accurate for reranking <strong>tens</strong> of pairs, impossible for <strong>millions</strong> without a first stage.</p>
+<h3 id="contrastive-training-infonce"><a class="anchor" href="#contrastive-training-infonce">#</a>Contrastive training (InfoNCE)</h3>
+<p>Train <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo separator="true">,</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f,g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span></span></span></span> so positives are close and negatives far. With temperature <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi></mrow><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span></span></span></span>,</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">L</mi><mtext>InfoNCE</mtext></msub><mo>=</mo><mo>−</mo><mi>log</mi><mo>⁡</mo><mfrac><msup><mi>e</mi><mrow><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi></mrow><mo stretchy="false">(</mo><mi>q</mi><mo separator="true">,</mo><msup><mi>d</mi><mo>+</mo></msup><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>τ</mi></mrow></msup><mrow><munder><mo>∑</mo><mi>k</mi></munder><msup><mi>e</mi><mrow><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi></mrow><mo stretchy="false">(</mo><mi>q</mi><mo separator="true">,</mo><msub><mi>d</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>τ</mi></mrow></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\mathcal{L}_{\text{InfoNCE}} = -\log \frac{e^{\mathrm{sim}(q,d^+)/\tau}}{\sum_k e^{\mathrm{sim}(q,d_k)/\tau}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">InfoNCE</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.6371em;vertical-align:-1.0037em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6334em;"><span style="top:-2.296em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.814em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">sim</span></span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.0359em;">q</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="katex-sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9564em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">sim</span></span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.0359em;">q</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8477em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="katex-sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mclose mtight">)</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0037em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p>In-batch negatives are cheap; add <strong>hard negatives</strong> (BM25 top misses that are wrong) to avoid collapse. Same family as ranking losses in <a class="wikilink" href="loss-functions.html">Loss Functions</a> (§embeddings). Domain mismatch (legal vs chat) needs finetune or adapters on your corpus.</p>
+<p><strong>Embedding API choice:</strong> off-the-shelf models (E5, BGE, GTE, OpenAI embeddings) are fine to prototype; production on private jargon usually needs <strong>contrastive finetune</strong> on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>q</mi><mo separator="true">,</mo><msup><mi>d</mi><mo>+</mo></msup><mo separator="true">,</mo><msup><mi>d</mi><mo>−</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(q, d^+, d^-)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.0213em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> triples mined from click logs or SME-labeled pairs. Evaluate with the same recall@k slice you will gate in CI.</p>
+<p><strong>Two-tower symmetry:</strong> often <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f=g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span></span></span></span> (shared weights) for queries and docs; asymmetric towers help when queries are short questions and docs are long passages (<a class="wikilink" href="two-tower-retrieval.html">Two-Tower Retrieval</a>).</p>
+<h3 id="score-calibration-and-thresholds"><a class="anchor" href="#score-calibration-and-thresholds">#</a>Score calibration and thresholds</h3>
+<p>Raw cosine scores are not probabilities. For abstention (&quot;I don't know&quot;), fit a validation <strong>score threshold</strong> or small calibrator so precision on answered queries meets SLO. Hybrid RRF sidesteps calibration for merging ranks but you still need thresholds for <strong>whether to answer at all</strong>.</p>
+<h3 id="ann-indexes-hnsw-ivf-pq"><a class="anchor" href="#ann-indexes-hnsw-ivf-pq">#</a>ANN indexes: HNSW, IVF, PQ</h3>
+<p>Exact nearest neighbor does not scale. <strong>Approximate</strong> methods trade recall for speed:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Index</th>
+<th style="text-align:left">Idea</th>
+<th style="text-align:left">Knobs</th>
+<th style="text-align:left">Tradeoff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>HNSW</strong></td>
+<td style="text-align:left">Graph greedy search</td>
+<td style="text-align:left"><code>M</code>, <code>efConstruction</code>, <code>efSearch</code></td>
+<td style="text-align:left">High recall, RAM-heavy</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>IVF</strong></td>
+<td style="text-align:left">Cluster buckets, probe few</td>
+<td style="text-align:left"><code>nlist</code>, <code>nprobe</code></td>
+<td style="text-align:left">Fast at scale; needs training</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>PQ</strong></td>
+<td style="text-align:left">Compress vectors</td>
+<td style="text-align:left">subquantizers</td>
+<td style="text-align:left">Saves RAM; hurts recall</td>
+</tr>
+</tbody>
+</table></div><p>Tune until <strong>recall@k</strong> on a labeled dev set plateaus within latency SLO.</p>
+<h3 id="sparse-bm25-and-hybrid-search"><a class="anchor" href="#sparse-bm25-and-hybrid-search">#</a>Sparse BM25 and hybrid search</h3>
+<p><strong>BM25</strong> scores lexical overlap—excellent for SKUs, error codes, names dense retrievers miss. <strong>Hybrid</strong>: run dense + sparse, merge with <strong>reciprocal rank fusion (RRF)</strong>:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">R</mi><mi mathvariant="normal">F</mi></mrow><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mfrac><mn>1</mn><mrow><mi>k</mi><mo>+</mo><msub><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">k</mi></mrow><mi>i</mi></msub><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\mathrm{RRF}(d) = \sum_i \frac{1}{k + \mathrm{rank}_i(d)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">RRF</span></span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.5991em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">rank</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p>with constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> (often 60). No score calibration needed. <a class="wikilink" href="recommender-systems.html">Recommender Systems</a> intuition: two weak experts, one rank list.</p>
+<h3 id="reranking-query-rewriting-hyde"><a class="anchor" href="#reranking-query-rewriting-hyde">#</a>Reranking, query rewriting, HyDE</h3>
+<p>Retrieve top 50–200, <strong>cross-encode</strong> down to 5–15. <strong>Query rewriting</strong> expands acronyms or decomposes multi-part questions. <strong>HyDE</strong> (hypothetical document embeddings): LLM drafts a fake answer, embed <em>that</em> to search—helps lexical mismatch when used cautiously (adds latency + hallucination risk in the draft).</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Retrieval stack</div><div class="callout-body"><p>Bi-encoder: independent <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>g</mi><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(q), g(d)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span>; fast ANN. Cross-encoder: joint; rerank only. InfoNCE with in-batch + hard negs. ANN: HNSW/IVF/PQ recall–latency tradeoffs. BM25 + RRF hybrid. Rerank top-k'. HyDE/rewrite for query drift.</p>
+</div></aside>
+<h2 id="context-assembly-and-generation"><a class="anchor" href="#context-assembly-and-generation">#</a>Context assembly and generation</h2>
+<p>Pack reranked chunks into the prompt with <strong>clear delimiters</strong>, source titles, and (if possible) <strong>ordered by relevance</strong> with the best chunk near the <strong>start or end</strong>—not the middle—mitigating lost-in-the-middle. Instruct the model to <strong>cite</strong> chunk IDs and refuse when context is insufficient.</p>
+<p><strong>Prompt template sketch (interview whiteboard):</strong></p>
+<pre><code class="hljs language-text">System: Answer only from CONTEXT. Cite [id] after each claim. Say &quot;insufficient context&quot; if needed.
+
+CONTEXT:
+[1] title: …\n&lt;text&gt;
+[2] …
+
+USER: &lt;question&gt;
+</code></pre>
+<p>Variants add <strong>JSON output</strong> for downstream apps or force <strong>bullet + citation</strong> formatting for support macros. Keep system and user roles consistent with how the base model was SFT'd (<a class="wikilink" href="llm-training-and-alignment.html">LLM Training</a>).</p>
+<p>Decoding choices matter: lower <strong>temperature</strong> for factual extracts; require quotes for high-stakes domains. Chain with tools (<a class="wikilink" href="llm-inference.html">LLM Inference</a>) when answers need arithmetic or live APIs <em>in addition to</em> RAG.</p>
+<h3 id="open-vs-closed-domain"><a class="anchor" href="#open-vs-closed-domain">#</a>Open vs closed domain</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Setting</th>
+<th style="text-align:left">Corpus</th>
+<th style="text-align:left">Retrieval stance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Closed</td>
+<td style="text-align:left">Fixed approved KB</td>
+<td style="text-align:left">High precision; abstain aggressively</td>
+</tr>
+<tr>
+<td style="text-align:left">Open web</td>
+<td style="text-align:left">Internet + crawls</td>
+<td style="text-align:left">Hybrid + heavy safety filters</td>
+</tr>
+<tr>
+<td style="text-align:left">Internal + web</td>
+<td style="text-align:left">Blended indexes</td>
+<td style="text-align:left">Namespace separation; never mix ACLs</td>
+</tr>
+</tbody>
+</table></div><p>Closed-domain support bots should tune <strong>high precision@k</strong> even if recall suffers—wrong retrieved policy is worse than &quot;I don't know.&quot;</p>
+<h3 id="data-flywheel"><a class="anchor" href="#data-flywheel">#</a>Data flywheel</h3>
+<p>Production RAG improves when you log <strong>queries, retrieved IDs, clicks, and thumbs-down</strong>. Hard negatives for embedding finetune come from &quot;retrieved but user rejected.&quot; Golden sets grow from escalations. Without this loop, offline recall plateaus while user complaints climb.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Generation &amp; ops</div><div class="callout-body"><p>Delimit CONTEXT; cite IDs; abstain instruction. Best chunks at edges against lost-in-the-middle. Lower temperature for facts. Closed domain = precision over recall. Log retrieval for hard-negative mining. LoRA teaches cite-format, not the facts themselves.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>If they probe context limits: <em>retrieval quality dominates—stuffing 100k tokens of mediocre chunks loses to 8k of reranked gold.</em></p>
+</div></aside>
+<h2 id="evaluation"><a class="anchor" href="#evaluation">#</a>Evaluation</h2>
+<p>Split metrics—conflating them hides whether retrieval or generation failed.</p>
+<h3 id="retrieval"><a class="anchor" href="#retrieval">#</a>Retrieval</h3>
+<p>On queries with labeled relevant doc IDs:</p>
+<ul>
+<li><strong>Recall@k</strong> — fraction of queries with a hit in top <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> (<a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a>).</li>
+<li><strong>MRR</strong> — focuses on the rank of the <em>first</em> correct doc.</li>
+<li><strong>NDCG@k</strong> — graded relevance; see <a class="wikilink" href="ranking-metrics.html">Ranking Metrics</a>.</li>
+</ul>
+<p>Improve recall before touching the LLM.</p>
+<p><strong>Worked retrieval example (conceptual).</strong> Ten test queries; relevant doc appears in top-3 for seven queries → Recall@3 = 0.7. If the first relevant doc ranks 1,1,4,2,1,9,1,… positions, MRR averages <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mtext>rank</mtext></mrow><annotation encoding="application/x-tex">1/\text{rank}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mord text"><span class="mord">rank</span></span></span></span></span>. NDCG adds graded labels (&quot;partially relevant&quot; vs &quot;perfect&quot;). Report per-domain slices—support tickets often need higher <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> than executive FAQs.</p>
+<h3 id="generation"><a class="anchor" href="#generation">#</a>Generation</h3>
+<p>Reference-free checks aligned with <a class="wikilink" href="llm-eval.html">LLM Eval</a>:</p>
+<ul>
+<li><strong>Faithfulness / groundedness</strong> — answer entailed by provided context?</li>
+<li><strong>Answer relevance</strong> — addresses the question?</li>
+<li><strong>Context relevance</strong> — were retrieved chunks on-topic?</li>
+</ul>
+<p>Human side-by-side still gold for tone; LLM-as-judge scales regression tests.</p>
+<p>Pair with standard <a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a> hygiene: fixed dev/test splits, no query leakage from train chunks, and regression gates in CI when you change embedders.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p><strong>Retrieval metrics = did we fetch the right page? Generation metrics = did we read it honestly?</strong></p>
+</div></aside>
+<h2 id="building-the-system-latency-and-cost"><a class="anchor" href="#building-the-system-latency-and-cost">#</a>Building the system: latency and cost</h2>
+<p>Typical single-hop Q&amp;A serving path (numbers are illustrative):</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Stage</th>
+<th style="text-align:left">Latency share</th>
+<th style="text-align:left">Cost driver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Query embed</td>
+<td style="text-align:left">5–15 ms</td>
+<td style="text-align:left">GPU batching</td>
+</tr>
+<tr>
+<td style="text-align:left">ANN search</td>
+<td style="text-align:left">10–40 ms</td>
+<td style="text-align:left">index RAM, <code>efSearch</code></td>
+</tr>
+<tr>
+<td style="text-align:left">BM25 (optional)</td>
+<td style="text-align:left">5–20 ms</td>
+<td style="text-align:left">inverted index size</td>
+</tr>
+<tr>
+<td style="text-align:left">Cross-encoder rerank</td>
+<td style="text-align:left">50–200 ms</td>
+<td style="text-align:left">pairs × GPU</td>
+</tr>
+<tr>
+<td style="text-align:left">LLM generation</td>
+<td style="text-align:left">0.5–3 s</td>
+<td style="text-align:left">output tokens</td>
+</tr>
+</tbody>
+</table></div><p>If reranking dominates, cap candidates (50 not 500) or distill to a smaller cross-encoder. If generation dominates, shorten context (fewer chunks) after you have verified recall—<strong>never</strong> cut retrieval budget first without metrics.</p>
+<p><strong>Batch vs stream:</strong> retrieval can batch across users; generation often streams tokens. Separate autoscaling: search tier (CPU/GPU hybrid) vs LLM replica pool.</p>
+<h2 id="failure-modes-and-fixes"><a class="anchor" href="#failure-modes-and-fixes">#</a>Failure modes and fixes</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Symptom</th>
+<th style="text-align:left">Likely cause</th>
+<th style="text-align:left">Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Confident wrong answer</td>
+<td style="text-align:left">Retrieval miss + no abstain</td>
+<td style="text-align:left">Hybrid search, query rewrite, raise <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>, reranker</td>
+</tr>
+<tr>
+<td style="text-align:left">Answer ignores docs</td>
+<td style="text-align:left">Prompt/format; middle placement</td>
+<td style="text-align:left">Delimiters, move best chunk to edges, cite-or-abstain instruction</td>
+</tr>
+<tr>
+<td style="text-align:left">Contradictory sources</td>
+<td style="text-align:left">Stale/conflicting chunks</td>
+<td style="text-align:left">Metadata filters, recency boost, de-dup index</td>
+</tr>
+<tr>
+<td style="text-align:left">Right doc, wrong span</td>
+<td style="text-align:left">Chunk too large</td>
+<td style="text-align:left">Smaller chunks + parent summary</td>
+</tr>
+<tr>
+<td style="text-align:left">Slow p95</td>
+<td style="text-align:left">Big <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>, heavy cross-encoder</td>
+<td style="text-align:left">Two-stage retrieve→rerank, cache embeddings, HNSW tuning</td>
+</tr>
+<tr>
+<td style="text-align:left">Works in English only</td>
+<td style="text-align:left">Monolingual embeddings</td>
+<td style="text-align:left">Multilingual encoder or translate pipeline</td>
+</tr>
+<tr>
+<td style="text-align:left">Privacy leak</td>
+<td style="text-align:left">ACL not enforced at query</td>
+<td style="text-align:left">Per-tenant filters, doc-level security metadata</td>
+</tr>
+</tbody>
+</table></div><aside class="callout abstract"><div class="callout-title">Rapid fire — Eval &amp; failures</div><div class="callout-body"><p>Recall@k, MRR, NDCG on retrieval. Faithfulness + relevance on generation (<a class="wikilink" href="llm-eval.html">LLM Eval</a>). Missed retrieval → hybrid + rerank. Ignored context → prompt + lost-in-the-middle placement. Stale index → versioning. ACL at retrieve time, not post-hoc.</p>
+</div></aside>
+<h2 id="agentic-multi-hop-and-graphrag"><a class="anchor" href="#agentic-multi-hop-and-graphrag">#</a>Agentic, multi-hop, and GraphRAG</h2>
+<p><strong>Multi-hop RAG</strong> iterates: decompose question, retrieve subqueries, aggregate—agent loops tie to tool eval in <a class="wikilink" href="llm-eval.html">LLM Eval</a>. A classic pattern is <strong>ReAct</strong>-style: the model emits a search query, reads chunks, then decides the next hop. Risks: error compounding (wrong hop-1 doc poisons hop-2), cost explosions (each hop = retrieve + LLM), and eval difficulty (credit assignment per hop). Mitigations: max-hop limits, confidence gating (&quot;stop if score <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo></mrow><annotation encoding="application/x-tex">&lt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span></span></span></span> threshold&quot;), and logging intermediate queries for human review.</p>
+<p><strong>GraphRAG</strong> builds a knowledge graph (entities, relations) over the corpus for global questions (&quot;themes across 10k tickets&quot;) where flat chunk search fails. Community summaries on graph clusters support questions like &quot;what are the recurring outage causes?&quot; without retrieving 50 random chunks. Heavier offline build (entity extraction, resolution, graph layout); wins on <strong>holistic</strong> synthesis over connected evidence, not factoid lookup.</p>
+<p>Briefly: default to <strong>single-hop RAG</strong> until benchmarks prove multi-hop; add graphs when queries are inherently relational or require aggregate themes across many documents.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;Design enterprise RAG&quot; — narrate ACL-aware ingest, hybrid retrieval, rerank, cite-or-abstain prompt, split eval dashboards, and rollout via offline recall before online A/B—not &quot;we'll fine-tune GPT on all PDFs.&quot;</p>
+</div></aside>
+<h2 id="rag-vs-fine-tuning-vs-long-context"><a class="anchor" href="#rag-vs-fine-tuning-vs-long-context">#</a>RAG vs fine-tuning vs long context</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Approach</th>
+<th style="text-align:left">Best for</th>
+<th style="text-align:left">Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>RAG</strong></td>
+<td style="text-align:left">Fresh facts, citations, many docs</td>
+<td style="text-align:left">Retrieval errors; latency; orchestration</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fine-tune / LoRA</strong></td>
+<td style="text-align:left">Style, format, domain reasoning patterns</td>
+<td style="text-align:left">Catastrophic forgetting; stale facts; cost ([[llm-training-and-alignment</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Long context</strong></td>
+<td style="text-align:left">Many docs already in prompt; simpler stack</td>
+<td style="text-align:left">Quadratic attention cost; still attends poorly mid-context; no automatic cite</td>
+</tr>
+</tbody>
+</table></div><p>Practical stacks <strong>combine</strong>: RAG for evidence, modest LoRA for tone, long context for conversation history—not for whole corpora.</p>
+<p><strong>When long context displaces RAG:</strong> code assistants with open files in-repo, multi-turn legal review where the user pastes exhibits, or &quot;chat with this one PDF&quot; under ~100 pages. When the corpus is <strong>many</strong> documents, <strong>dynamic</strong>, or needs <strong>citations</strong>, RAG remains cheaper and more honest than stuffing context.</p>
+<p><strong>Fine-tuning complementary role:</strong> LoRA on <em>(instruction, grounded answer)</em> pairs teaches citation format and abstention <em>given</em> retrieved text in the prompt—it does not replace the index. Full FT to memorize product specs goes stale the week pricing changes.</p>
+<aside class="callout info"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p>Compression retrievers (LLMLingua), late interaction models (ColBERT), and learnable sparse-dense hybrids blur the clean bi-encoder story—mention if the role is search ML, not just LLM glue.</p>
+</div></aside>
+<h3 id="colbert-and-multi-vector-retrieval-sketch"><a class="anchor" href="#colbert-and-multi-vector-retrieval-sketch">#</a>ColBERT and multi-vector retrieval (sketch)</h3>
+<p>Classic bi-encoders compress a whole passage into <strong>one</strong> vector—cheap but lossy. <strong>ColBERT</strong> keeps a vector per token and scores with a <strong>late interaction</strong> (MaxSim): match query tokens to document tokens, sum best hits, then aggregate. You store more vectors per doc but retrieve with two-stage pruning. Interview one-liner: <em>ColBERT trades index size for finer overlap signals between query spans and doc spans—strong on keyword overlap inside long passages.</em></p>
+<h3 id="security-checklist-for-interviewed-designs"><a class="anchor" href="#security-checklist-for-interviewed-designs">#</a>Security checklist for interviewed designs</h3>
+<ol>
+<li><strong>Untrusted content is input</strong> — retrieved text can say &quot;ignore previous instructions.&quot;</li>
+<li><strong>Sanitize</strong> — XML/JSON delimiters; optional secondary classifier on chunks.</li>
+<li><strong>Grounding eval in CI</strong> — faithfulness regression on adversarial chunks that tempt override.</li>
+<li><strong>Least privilege</strong> — retrieval service credentials cannot exfiltrate unrelated tenants.</li>
+<li><strong>Citation verification</strong> — post-check that cited IDs appear in the prompt and support the claim (lightweight string/NLI).</li>
+</ol>
+<p>These sit alongside model-level alignment (<a class="wikilink" href="llm-training-and-alignment.html">LLM Training</a>)—RAG security is systems security.</p>
+<p><strong>Interview closure sentence:</strong> <em>&quot;I'd ship single-hop hybrid RAG with rerank, cite-or-abstain prompting, split retrieval and faithfulness evals per <a class="wikilink" href="llm-eval.html">LLM Eval</a>, and only fine-tune adapters for tone—not for facts.&quot;</em> That single sentence shows you understand the full stack end to end, from index freshness to grounded generation.</p>
+<aside class="callout abstract"><div class="callout-title">Rapid fire — Advanced &amp; security</div><div class="callout-body"><p>ColBERT: multi-vector late interaction, better span overlap, bigger index. Prompt injection via corpus is real; delimit and test. Citation verify in post-processing. Closed ACL at retrieve. Flywheel: logged rejects → hard negatives.</p>
+</div></aside>
+<h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-page summary</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concept</th>
+<th style="text-align:left">The one thing to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Purpose</td>
+<td style="text-align:left">Ground answers in an updatable corpus with citations</td>
+</tr>
+<tr>
+<td style="text-align:left">Chunking</td>
+<td style="text-align:left">256–512 tokens + overlap; structure-aware when possible</td>
+</tr>
+<tr>
+<td style="text-align:left">Encode</td>
+<td style="text-align:left">Bi-encoder + InfoNCE; domain-finetune if needed</td>
+</tr>
+<tr>
+<td style="text-align:left">Search</td>
+<td style="text-align:left">ANN (HNSW/IVF/PQ); tune recall@k vs latency</td>
+</tr>
+<tr>
+<td style="text-align:left">Hybrid</td>
+<td style="text-align:left">BM25 + dense, merge with RRF</td>
+</tr>
+<tr>
+<td style="text-align:left">Rerank</td>
+<td style="text-align:left">Cross-encoder on top 50–200</td>
+</tr>
+<tr>
+<td style="text-align:left">Context</td>
+<td style="text-align:left">Delimiters; best chunks at edges; cite-or-abstain</td>
+</tr>
+<tr>
+<td style="text-align:left">Eval</td>
+<td style="text-align:left">Retrieval: recall/MRR/NDCG; gen: faithfulness ([[llm-eval</td>
+</tr>
+<tr>
+<td style="text-align:left">vs FT</td>
+<td style="text-align:left">RAG for facts/freshness; FT for behavior</td>
+</tr>
+<tr>
+<td style="text-align:left">vs long ctx</td>
+<td style="text-align:left">Context window ≠ reliable memory over huge paste</td>
+</tr>
+</tbody>
+</table></div><hr>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a></li>
+<li><a class="wikilink" href="hallucination.html">Hallucination</a></li>
+<li><a class="wikilink" href="llm-eval.html">LLM Eval</a></li>
+<li><a class="wikilink" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a></li>
+<li><a class="wikilink" href="two-tower-retrieval.html">Two-Tower Retrieval</a></li>
+<li><a class="wikilink" href="loss-functions.html">Loss Functions</a></li>
+<li><a class="wikilink" href="ranking-metrics.html">Ranking Metrics</a></li>
+<li><a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a></li>
+<li><a class="wikilink" href="recommender-systems.html">Recommender Systems</a></li>
+<li><a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a></li>
+<li><a class="wikilink" href="llm-inference.html">LLM Inference</a></li>
+<li><a class="wikilink" href="decoding-strategies.html">Decoding Strategies</a></li>
+<li><a class="wikilink" href="transformers-and-attention.html">Transformers &amp; Attention</a></li>
+</ul>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="llm-inference.html"><small>← Previous</small>LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="r" href="llm-eval.html"><small>Next →</small>LLM Evaluation</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#why-rag-exists">Why RAG exists</a><a class="l2" href="#pipeline-overview">Pipeline overview</a><a class="l3" href="#production-concerns-beyond-the-diagram">Production concerns beyond the diagram</a><a class="l2" href="#ingestion-and-chunking">Ingestion and chunking</a><a class="l2" href="#embeddings-and-indexing">Embeddings and indexing</a><a class="l3" href="#bi-encoders-vs-cross-encoders">Bi-encoders vs cross-encoders</a><a class="l3" href="#contrastive-training-infonce">Contrastive training (InfoNCE)</a><a class="l3" href="#score-calibration-and-thresholds">Score calibration and thresholds</a><a class="l3" href="#ann-indexes-hnsw-ivf-pq">ANN indexes: HNSW, IVF, PQ</a><a class="l3" href="#sparse-bm25-and-hybrid-search">Sparse BM25 and hybrid search</a><a class="l3" href="#reranking-query-rewriting-hyde">Reranking, query rewriting, HyDE</a><a class="l2" href="#context-assembly-and-generation">Context assembly and generation</a><a class="l3" href="#open-vs-closed-domain">Open vs closed domain</a><a class="l3" href="#data-flywheel">Data flywheel</a><a class="l2" href="#evaluation">Evaluation</a><a class="l3" href="#retrieval">Retrieval</a><a class="l3" href="#generation">Generation</a><a class="l2" href="#building-the-system-latency-and-cost">Building the system: latency and cost</a><a class="l2" href="#failure-modes-and-fixes">Failure modes and fixes</a><a class="l2" href="#agentic-multi-hop-and-graphrag">Agentic, multi-hop, and GraphRAG</a><a class="l2" href="#rag-vs-fine-tuning-vs-long-context">RAG vs fine-tuning vs long context</a><a class="l3" href="#colbert-and-multi-vector-retrieval-sketch">ColBERT and multi-vector retrieval (sketch)</a><a class="l3" href="#security-checklist-for-interviewed-designs">Security checklist for interviewed designs</a><a class="l2" href="#one-page-summary">One-page summary</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+<script src="assets/mermaid.min.js"></script>
+<script>(function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;mermaid.initialize({startOnLoad:true,theme:dark?'dark':'default',securityLevel:'strict'})})()</script>
+</body></html>

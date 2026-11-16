@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ML System Design Interview Prep · ML Interview Handbook</title>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
 </head><body>
 <header class="top">
   <button id="menu" aria-label="Menu">☰</button>
@@ -13,20 +13,20 @@
   <div id="results" hidden></div>
 </header>
 <div class="layout">
-  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
 <a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
-<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
 <a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
-<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
 <div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
-</details>
-<details class="nav-sec"><summary><span class="ico">📊</span>Statistics &amp; Experimentation</summary>
-<a class="moc" data-slug="moc-statistics" href="moc-statistics.html">Overview: Statistics</a>
-<div class="grp">Chapters</div><a class="" data-slug="a-b-testing-and-experimentation" href="a-b-testing-and-experimentation.html">A-B Testing &amp; Experimentation</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a>
-
 </details>
 <details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
 <a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
@@ -35,55 +35,46 @@
 </details>
 <details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
 <a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
-<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="decision-trees-and-gradient-boosting" href="decision-trees-and-gradient-boosting.html">Decision Trees and Gradient Boosting</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
-</details>
-<details class="nav-sec"><summary><span class="ico">🧭</span>Unsupervised Learning</summary>
-<a class="moc" data-slug="moc-unsupervised" href="moc-unsupervised.html">Overview: Unsupervised</a>
-<div class="grp">Chapters</div><a class="" data-slug="anomaly-detection" href="anomaly-detection.html">Anomaly Detection</a><a class="" data-slug="clustering-and-dimensionality-reduction" href="clustering-and-dimensionality-reduction.html">Clustering &amp; Dimensionality Reduction</a>
-
-</details>
-<details class="nav-sec"><summary><span class="ico">🧹</span>Data &amp; Features</summary>
-<a class="moc" data-slug="moc-data-and-features" href="moc-data-and-features.html">Overview: Data &amp; Features</a>
-<div class="grp">Chapters</div><a class="" data-slug="data-preprocessing-and-feature-engineering" href="data-preprocessing-and-feature-engineering.html">Data Preprocessing &amp; Feature Engineering</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
 <a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
-<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
 <a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
-<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="training-deep-networks" href="training-deep-networks.html">Training Deep Networks</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
 <a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
-<div class="grp">Chapters</div><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a><a class="" data-slug="llm-training-fine-tuning-and-rag" href="llm-training-fine-tuning-and-rag.html">LLM Training, Fine-tuning &amp; RAG</a><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
 <a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
 <div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
-
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
 </details>
-<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<details class="nav-sec" open><summary><span class="ico">🏗</span>ML System Design</summary>
 <a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
-<div class="grp">Chapters</div><a class="" data-slug="bandits-and-reinforcement-learning-basics" href="bandits-and-reinforcement-learning-basics.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="ml-in-production-and-monitoring" href="ml-in-production-and-monitoring.html">ML in Production &amp; Monitoring</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+<div class="grp">Chapters</div><a class="active" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
 </details>
-<details class="nav-sec" open><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
 
-<div class="grp">Chapters</div><a class=" active" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
 
-</details><details class="nav-sec" ><summary><span class="ico">🧰</span>Cheatsheets</summary><a class="" data-slug="sklearn-cheatsheet" href="sklearn-cheatsheet.html">sklearn Cheat Sheet</a></details></nav>
+</details></nav>
   <main>
     <article data-slug="ml-system-design-interview-prep">
-      <div class="crumb">System Design Deep Dives · chapter · 9 min read</div>
+      <div class="crumb">ML System Design · chapter · 9 min read</div>
       <h1>ML System Design Interview Prep</h1>
       <hr>
-<h2 id="stage-1-business-objective"><a class="anchor" href="#stage-1-business-objective">#</a>Stage 1: Business Objective</h2><p>Goal: Understand WHY this system exists before touching anything technical. Interviewers want to see you think before building.</p>
+<h2 id="stage-1-business-objective"><a class="anchor" href="#stage-1-business-objective">#</a>Stage 1: Business Objective</h2>
+<p>Goal: Understand WHY this system exists before touching anything technical. Interviewers want to see you think before building.</p>
 <p><strong>Questions to ask:</strong></p>
 <ul>
 <li>What is the core business goal? (revenue, safety, engagement, retention?)</li>
@@ -92,7 +83,7 @@
 <li>What data freshness is needed? (model needs to reflect events from 5 min ago or 5 days ago?)</li>
 <li>Are there hard constraints? (regulatory, fairness, GDPR, COPPA, geographic)</li>
 <li>Which is worse: false positives or false negatives?</li>
-<li>Is there an existing system? What&#39;s broken about it?</li>
+<li>Is there an existing system? What's broken about it?</li>
 </ul>
 <p><strong>Business metrics to know:</strong></p>
 <ul>
@@ -101,7 +92,8 @@
 <li>Map FP/FN cost to business: fraud FN = money lost, fraud FP = user friction</li>
 </ul>
 <hr>
-<h2 id="stage-2-ml-objective"><a class="anchor" href="#stage-2-ml-objective">#</a>Stage 2: ML Objective</h2><p>Goal: Translate business goal → concrete ML problem.</p>
+<h2 id="stage-2-ml-objective"><a class="anchor" href="#stage-2-ml-objective">#</a>Stage 2: ML Objective</h2>
+<p>Goal: Translate business goal → concrete ML problem.</p>
 <p><strong>Task types:</strong></p>
 <ul>
 <li>Binary classification — spam, fraud, click prediction</li>
@@ -112,11 +104,14 @@
 <li>Generative — query rewriting, summarization</li>
 </ul>
 <p><strong>Business metric → ML proxy:</strong></p>
-<div class="table-wrap"><table><thead><tr>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Business Metric</th>
 <th>ML Proxy</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>CTR</td>
 <td>AUC-ROC, log loss</td>
 </tr>
@@ -136,12 +131,16 @@
 <td>Engagement</td>
 <td>Predicted watch time</td>
 </tr>
-</tbody></table></div><p><strong>Loss functions:</strong></p>
-<div class="table-wrap"><table><thead><tr>
+</tbody>
+</table></div><p><strong>Loss functions:</strong></p>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Problem</th>
 <th>Loss</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>Binary classification</td>
 <td>Binary cross-entropy (log loss)</td>
 </tr>
@@ -173,22 +172,26 @@
 <td>Distillation</td>
 <td>KL divergence + task loss</td>
 </tr>
-</tbody></table></div><p><strong>Key framing decisions:</strong></p>
+</tbody>
+</table></div><p><strong>Key framing decisions:</strong></p>
 <ul>
 <li>Point-wise vs. pairwise vs. listwise ranking</li>
 <li>Single-task vs. multi-task (shared bottom, mixture of experts)</li>
 <li>Do you need calibrated probabilities or just a good ranking?</li>
 </ul>
 <hr>
-<h2 id="stage-3-high-level-design"><a class="anchor" href="#stage-3-high-level-design">#</a>Stage 3: High-Level Design</h2><p>Goal: Sketch the end-to-end pipeline. Get the boxes and arrows right before going deep.</p>
+<h2 id="stage-3-high-level-design"><a class="anchor" href="#stage-3-high-level-design">#</a>Stage 3: High-Level Design</h2>
+<p>Goal: Sketch the end-to-end pipeline. Get the boxes and arrows right before going deep.</p>
 <p><strong>Standard pipeline:</strong></p>
-<pre><code class="hljs">Data sources → Feature engineering → Feature store
+<pre><code class="hljs language-text">Data sources → Feature engineering → Feature store
                                            ↓
                              Training pipeline → Model registry
                                            ↓
                              Serving layer → Prediction store / cache
                                            ↓
-                             Logging → Feedback loop</code></pre><p><strong>Common architecture patterns:</strong></p>
+                             Logging → Feedback loop
+</code></pre>
+<p><strong>Common architecture patterns:</strong></p>
 <p><strong>Two-tower (retrieval)</strong></p>
 <ul>
 <li>User tower + Item tower → dot product → ANN index</li>
@@ -210,7 +213,8 @@
 <li>Batch features (stable, cheap) + real-time features (fresh, expensive) merged at serving</li>
 </ul>
 <hr>
-<h2 id="stage-4-data-feature-engineering"><a class="anchor" href="#stage-4-data-feature-engineering">#</a>Stage 4: Data &amp; Feature Engineering</h2><p>Goal: Where does data come from, how do you label it, what features do you extract.</p>
+<h2 id="stage-4-data-feature-engineering"><a class="anchor" href="#stage-4-data-feature-engineering">#</a>Stage 4: Data &amp; Feature Engineering</h2>
+<p>Goal: Where does data come from, how do you label it, what features do you extract.</p>
 <p><strong>Data sources:</strong></p>
 <ul>
 <li>User interaction logs (clicks, watches, purchases, skips, dwell time)</li>
@@ -258,18 +262,22 @@
 <p><strong>Class imbalance:</strong></p>
 <ul>
 <li>Downsample negatives (very common in click prediction — 1:100 or worse)</li>
-<li>Calibration correction after downsampling negatives at keep-rate w: p = p_s / (p_s + (1-p_s)/w), equivalent to adding log(w) to the logit</li>
+<li>Calibration correction after downsampling negatives at keep-rate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span></span></span></span>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><msub><mi>p</mi><mi>s</mi></msub><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mi>s</mi></msub><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>s</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p = p_s / (p_s + (1-p_s)/w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="mclose">)</span></span></span></span>, equivalent to adding <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">\log w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span></span></span></span> to the logit (a negative shift, since <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">w &lt; 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>)</li>
 <li>Weighted loss</li>
 <li>Focal loss</li>
 </ul>
 <hr>
-<h2 id="stage-5-model"><a class="anchor" href="#stage-5-model">#</a>Stage 5: Model</h2><p>Goal: Choose and justify your model. Know the tradeoffs.</p>
+<h2 id="stage-5-model"><a class="anchor" href="#stage-5-model">#</a>Stage 5: Model</h2>
+<p>Goal: Choose and justify your model. Know the tradeoffs.</p>
 <p><strong>Model cheat sheet:</strong></p>
-<div class="table-wrap"><table><thead><tr>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Need</th>
 <th>Model</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>Fast baseline</td>
 <td>Logistic regression</td>
 </tr>
@@ -297,7 +305,8 @@
 <td>Multimodal (text + image)</td>
 <td>CLIP-style dual encoder</td>
 </tr>
-</tbody></table></div><p><strong>Model tradeoffs:</strong></p>
+</tbody>
+</table></div><p><strong>Model tradeoffs:</strong></p>
 <p><strong>Logistic Regression</strong></p>
 <ul>
 <li>Pros: fast, interpretable, calibrated, easy to debug</li>
@@ -307,7 +316,7 @@
 <p><strong>GBDT (XGBoost, LightGBM)</strong></p>
 <ul>
 <li>Pros: handles tabular data extremely well, no normalization needed, built-in feature importance</li>
-<li>Cons: doesn&#39;t handle embeddings, hard to do online learning</li>
+<li>Cons: doesn't handle embeddings, hard to do online learning</li>
 <li>When: ranking, fraud, structured tabular data</li>
 </ul>
 <p><strong>DNN / MLP</strong></p>
@@ -342,15 +351,19 @@
 <li>Exposure bias: model only sees items that were previously shown</li>
 </ul>
 <hr>
-<h2 id="stage-6-inference-serving"><a class="anchor" href="#stage-6-inference-serving">#</a>Stage 6: Inference &amp; Serving</h2><p>Goal: Get predictions to users at scale, efficiently.</p>
+<h2 id="stage-6-inference-serving"><a class="anchor" href="#stage-6-inference-serving">#</a>Stage 6: Inference &amp; Serving</h2>
+<p>Goal: Get predictions to users at scale, efficiently.</p>
 <p><strong>Batch vs. Real-time vs. Near-real-time:</strong></p>
-<div class="table-wrap"><table><thead><tr>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Mode</th>
 <th>Latency</th>
 <th>Freshness</th>
 <th>Use case</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>Batch</td>
 <td>0ms (precomputed)</td>
 <td>Stale (hours/days)</td>
@@ -368,7 +381,8 @@
 <td>Very fresh</td>
 <td>Feed ranking, search</td>
 </tr>
-</tbody></table></div><p><strong>Serving architectures:</strong></p>
+</tbody>
+</table></div><p><strong>Serving architectures:</strong></p>
 <ul>
 <li>Precomputed / lookup: store embeddings or scores in Redis, retrieve at serve time</li>
 <li>Online inference: feature retrieval → model scoring → post-processing in budget</li>
@@ -399,7 +413,8 @@
 <li>Multi-armed bandit: explore/exploit, useful when A/B is too slow</li>
 </ul>
 <hr>
-<h2 id="stage-7-deep-dives-improvements"><a class="anchor" href="#stage-7-deep-dives-improvements">#</a>Stage 7: Deep Dives &amp; Improvements</h2><p>Goal: Show depth by proactively naming hard problems and how you&#39;d solve them.</p>
+<h2 id="stage-7-deep-dives-improvements"><a class="anchor" href="#stage-7-deep-dives-improvements">#</a>Stage 7: Deep Dives &amp; Improvements</h2>
+<p>Goal: Show depth by proactively naming hard problems and how you'd solve them.</p>
 <p><strong>Cold Start</strong></p>
 <ul>
 <li>New user: popular items, context features (device, referral), demographic priors</li>
@@ -447,11 +462,16 @@
 <li>ID hashing = pseudonymization only; not a formal privacy guarantee</li>
 </ul>
 <hr>
-<h3 id="loss-functions"><a class="anchor" href="#loss-functions">#</a>Loss Functions</h3><div class="table-wrap"><table><thead><tr>
+<h2 id="quick-reference-cheat-sheets"><a class="anchor" href="#quick-reference-cheat-sheets">#</a>Quick Reference Cheat Sheets</h2>
+<h3 id="loss-functions"><a class="anchor" href="#loss-functions">#</a>Loss Functions</h3>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Problem</th>
 <th>Loss</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>Binary classification</td>
 <td>Binary cross-entropy</td>
 </tr>
@@ -464,11 +484,11 @@
 <td>Focal loss</td>
 </tr>
 <tr>
-<td>Regression (outlier sensitive)</td>
+<td>Regression (large errors costly)</td>
 <td>MSE</td>
 </tr>
 <tr>
-<td>Regression (robust)</td>
+<td>Regression (robust / outliers)</td>
 <td>MAE / Huber</td>
 </tr>
 <tr>
@@ -487,11 +507,16 @@
 <td>Distillation</td>
 <td>KL divergence</td>
 </tr>
-</tbody></table></div><h3 id="models"><a class="anchor" href="#models">#</a>Models</h3><div class="table-wrap"><table><thead><tr>
+</tbody>
+</table></div><h3 id="models"><a class="anchor" href="#models">#</a>Models</h3>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Need</th>
 <th>Model</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>Baseline</td>
 <td>Logistic regression</td>
 </tr>
@@ -519,11 +544,16 @@
 <td>Multimodal</td>
 <td>CLIP-style dual encoder</td>
 </tr>
-</tbody></table></div><h3 id="inference"><a class="anchor" href="#inference">#</a>Inference</h3><div class="table-wrap"><table><thead><tr>
+</tbody>
+</table></div><h3 id="inference"><a class="anchor" href="#inference">#</a>Inference</h3>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Need</th>
 <th>Approach</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>Sub-10ms</td>
 <td>Precomputed + Redis lookup</td>
 </tr>
@@ -547,11 +577,16 @@
 <td>Billion-scale retrieval</td>
 <td>ANN (FAISS, ScaNN, HNSW)</td>
 </tr>
-</tbody></table></div><h3 id="business-metric-ml-metric"><a class="anchor" href="#business-metric-ml-metric">#</a>Business Metric → ML Metric</h3><div class="table-wrap"><table><thead><tr>
+</tbody>
+</table></div><h3 id="business-metric-ml-metric"><a class="anchor" href="#business-metric-ml-metric">#</a>Business Metric → ML Metric</h3>
+<div class="table-wrap"><table><thead>
+<tr>
 <th>Business</th>
 <th>ML</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+<tbody>
+<tr>
 <td>CTR</td>
 <td>AUC-ROC, log loss</td>
 </tr>
@@ -571,14 +606,21 @@
 <td>Engagement</td>
 <td>Predicted watch time</td>
 </tr>
-</tbody></table></div>
+</tbody>
+</table></div><h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
+<li><a class="wikilink" href="recommender-systems.html">Recommender Systems</a></li>
+<li><a class="wikilink" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a></li>
+<li><a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a></li>
+<li><a class="wikilink" href="calibration.html">Calibration</a></li>
+</ul>
+
       <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
-      <div class="pager"><a href="ml-system-design-framework.html"><small>← Previous</small>ML System Design Framework</a><a class="r" href="models-and-loss-functions-reference.html"><small>Next →</small>Models and Loss Functions Reference</a></div>
+      <div class="pager"><a href="moc-system-design.html"><small>← Previous</small>System Design</a><a class="r" href="recommender-systems.html"><small>Next →</small>Recommender Systems</a></div>
     </article>
   </main>
-  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#stage-1-business-objective">Stage 1: Business Objective</a><a class="l2" href="#stage-2-ml-objective">Stage 2: ML Objective</a><a class="l2" href="#stage-3-high-level-design">Stage 3: High-Level Design</a><a class="l2" href="#stage-4-data-feature-engineering">Stage 4: Data  Feature Engineering</a><a class="l2" href="#stage-5-model">Stage 5: Model</a><a class="l2" href="#stage-6-inference-serving">Stage 6: Inference  Serving</a><a class="l2" href="#stage-7-deep-dives-improvements">Stage 7: Deep Dives  Improvements</a><a class="l3" href="#loss-functions">Loss Functions</a><a class="l3" href="#models">Models</a><a class="l3" href="#inference">Inference</a><a class="l3" href="#business-metric-ml-metric">Business Metric → ML Metric</a></aside>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#stage-1-business-objective">Stage 1: Business Objective</a><a class="l2" href="#stage-2-ml-objective">Stage 2: ML Objective</a><a class="l2" href="#stage-3-high-level-design">Stage 3: High-Level Design</a><a class="l2" href="#stage-4-data-feature-engineering">Stage 4: Data &amp; Feature Engineering</a><a class="l2" href="#stage-5-model">Stage 5: Model</a><a class="l2" href="#stage-6-inference-serving">Stage 6: Inference &amp; Serving</a><a class="l2" href="#stage-7-deep-dives-improvements">Stage 7: Deep Dives &amp; Improvements</a><a class="l2" href="#quick-reference-cheat-sheets">Quick Reference Cheat Sheets</a><a class="l3" href="#loss-functions">Loss Functions</a><a class="l3" href="#models">Models</a><a class="l3" href="#inference">Inference</a><a class="l3" href="#business-metric-ml-metric">Business Metric → ML Metric</a><a class="l2" href="#related">Related</a></aside>
 </div>
 <div id="bar"></div>
-
 <script src="assets/app.js"></script>
 </body></html>

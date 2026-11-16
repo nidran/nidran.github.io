@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Model Evaluation &amp; Validation · ML Interview Handbook</title>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
 </head><body>
 <header class="top">
   <button id="menu" aria-label="Menu">☰</button>
@@ -13,20 +13,20 @@
   <div id="results" hidden></div>
 </header>
 <div class="layout">
-  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
 <a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
-<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
 <a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
-<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
 <div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
-</details>
-<details class="nav-sec"><summary><span class="ico">📊</span>Statistics &amp; Experimentation</summary>
-<a class="moc" data-slug="moc-statistics" href="moc-statistics.html">Overview: Statistics</a>
-<div class="grp">Chapters</div><a class="" data-slug="a-b-testing-and-experimentation" href="a-b-testing-and-experimentation.html">A-B Testing &amp; Experimentation</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a>
-
 </details>
 <details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
 <a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
@@ -35,387 +35,444 @@
 </details>
 <details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
 <a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
-<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="decision-trees-and-gradient-boosting" href="decision-trees-and-gradient-boosting.html">Decision Trees and Gradient Boosting</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
-</details>
-<details class="nav-sec"><summary><span class="ico">🧭</span>Unsupervised Learning</summary>
-<a class="moc" data-slug="moc-unsupervised" href="moc-unsupervised.html">Overview: Unsupervised</a>
-<div class="grp">Chapters</div><a class="" data-slug="anomaly-detection" href="anomaly-detection.html">Anomaly Detection</a><a class="" data-slug="clustering-and-dimensionality-reduction" href="clustering-and-dimensionality-reduction.html">Clustering &amp; Dimensionality Reduction</a>
-
-</details>
-<details class="nav-sec"><summary><span class="ico">🧹</span>Data &amp; Features</summary>
-<a class="moc" data-slug="moc-data-and-features" href="moc-data-and-features.html">Overview: Data &amp; Features</a>
-<div class="grp">Chapters</div><a class="" data-slug="data-preprocessing-and-feature-engineering" href="data-preprocessing-and-feature-engineering.html">Data Preprocessing &amp; Feature Engineering</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
 </details>
 <details class="nav-sec" open><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
 <a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
-<div class="grp">Chapters</div><a class=" active" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+<div class="grp">Chapters</div><a class="active" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
 <a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
-<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="training-deep-networks" href="training-deep-networks.html">Training Deep Networks</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
 <a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
-<div class="grp">Chapters</div><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a><a class="" data-slug="llm-training-fine-tuning-and-rag" href="llm-training-fine-tuning-and-rag.html">LLM Training, Fine-tuning &amp; RAG</a><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a>
-
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
 <a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
 <div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
-
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
 </details>
 <details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
 <a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
-<div class="grp">Chapters</div><a class="" data-slug="bandits-and-reinforcement-learning-basics" href="bandits-and-reinforcement-learning-basics.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="ml-in-production-and-monitoring" href="ml-in-production-and-monitoring.html">ML in Production &amp; Monitoring</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a>
-<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
 </details>
-<details class="nav-sec"><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
 
-<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
 
-</details><details class="nav-sec" ><summary><span class="ico">🧰</span>Cheatsheets</summary><a class="" data-slug="sklearn-cheatsheet" href="sklearn-cheatsheet.html">sklearn Cheat Sheet</a></details></nav>
+</details></nav>
   <main>
     <article data-slug="model-evaluation-and-validation">
       <div class="crumb">Evaluation &amp; Metrics · chapter · 15 min read</div>
       <h1>Model Evaluation &amp; Validation</h1>
-      <p><strong>The Machine Learning Interview Bible</strong></p>
-<p><strong>Chapter 5 — Model Evaluation &amp; Validation</strong></p>
-<p>Building a model is half the job; <em>knowing whether it’s any good</em> is the other half, and it’s where most candidates are thinnest. This chapter is about measuring honestly. We start from the confusion matrix that every classification metric is built on, untangle precision from recall and the threshold that trades them, separate ROC-AUC from PR-AUC, cover calibration and ranking metrics, then turn to regression metrics and — crucially — how to split data so your estimate isn’t a lie. The recurring theme: <em>the metric is a modeling decision</em>, and choosing the wrong one is how good models get shipped to do the wrong thing.</p>
-<p><strong>What you’ll be able to say after this chapter</strong></p>
-<ul>
-<li>Read a <strong>confusion matrix</strong> and derive precision, recall, and F1 from it cold.  </li>
-<li>Explain the <strong>precision–recall tradeoff</strong> and how the threshold moves it.  </li>
-<li>Say exactly when <strong>PR-AUC beats ROC-AUC</strong> (hint: heavy imbalance).  </li>
-<li>Define <strong>calibration</strong> and why a well-ranked model can still be dishonest.  </li>
+      <p>Building a model is half the job; <em>knowing whether it’s any good</em> is the other half, and it’s where most candidates are thinnest. This chapter is about measuring honestly. We start from the confusion matrix that every classification metric is built on, untangle precision from recall and the threshold that trades them, separate ROC-AUC from PR-AUC, cover calibration and ranking metrics, then turn to regression metrics and — crucially — how to split data so your estimate isn’t a lie. The recurring theme: <em>the metric is a modeling decision</em>, and choosing the wrong one is how good models get shipped to do the wrong thing.</p>
+<aside class="callout success"><div class="callout-title">What you'll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Read a <strong>confusion matrix</strong> and derive precision, recall, and F1 from it cold.</li>
+<li>Explain the <strong>precision–recall tradeoff</strong> and how the threshold moves it.</li>
+<li>Say exactly when <strong>PR-AUC beats ROC-AUC</strong> (hint: heavy imbalance).</li>
+<li>Define <strong>calibration</strong> and why a well-ranked model can still be dishonest.</li>
 <li>Choose a <strong>cross-validation scheme</strong> that respects time and groups — no leakage.</li>
 </ul>
-<h2 id="the-confusion-matrix"><a class="anchor" href="#the-confusion-matrix">#</a>The Confusion Matrix</h2><p>Every classification metric is an arithmetic combination of four counts, so the confusion matrix is the foundation you build everything else on. For a binary problem it cross-tabulates what actually happened against what the model predicted.</p>
+</div></aside>
+<h2 id="the-confusion-matrix"><a class="anchor" href="#the-confusion-matrix">#</a>The Confusion Matrix</h2>
+<p>Every classification metric is an arithmetic combination of four counts, so the confusion matrix is the foundation you build everything else on. For a binary problem it cross-tabulates what actually happened against what the model predicted.</p>
 <p><em>Four cells, and every classification metric is just a ratio of them.</em></p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left"></th>
-<th align="left">Predicted Positive</th>
-<th align="left">Predicted Negative</th>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Predicted Positive</th>
+<th style="text-align:left">Predicted Negative</th>
 </tr>
-</thead><tbody><tr>
-<td align="left"><strong>Actually Positive</strong></td>
-<td align="left">True Positive (TP)</td>
-<td align="left">False Negative (FN) — a <em>miss</em></td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Actually Positive</strong></td>
+<td style="text-align:left">True Positive (TP)</td>
+<td style="text-align:left">False Negative (FN) — a <em>miss</em></td>
 </tr>
 <tr>
-<td align="left"><strong>Actually Negative</strong></td>
-<td align="left">False Positive (FP) — a <em>false alarm</em></td>
-<td align="left">True Negative (TN)</td>
+<td style="text-align:left"><strong>Actually Negative</strong></td>
+<td style="text-align:left">False Positive (FP) — a <em>false alarm</em></td>
+<td style="text-align:left">True Negative (TN)</td>
 </tr>
-</tbody></table></div><p>The two error types are not interchangeable, and naming them correctly matters. A <strong>False Positive (Type I error)</strong> is a false alarm — you flagged something that was fine. A <strong>False Negative (Type II error)</strong> is a miss — you let something real slip through. Which one hurts more is entirely domain-dependent, and that asymmetry is what drives every metric choice in this chapter.</p>
-<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>False Positive = “crying wolf” (Type I). False Negative = “missing the wolf” (Type II). Spam filter: a False Positive eats your real email; a False Negative just lets spam through — so you tune toward avoiding False Positives. Cancer screen: a False Negative is deadly — so you tune toward avoiding those. The cost asymmetry picks the metric.</p>
-</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Always ask, or state, <em>which error is worse here</em>. Candidates who optimize a model without distinguishing the cost of a miss from the cost of a false alarm signal they’ve never shipped anything. Tie it to the business: “in fraud, a missed fraud costs us the transaction; a false alarm costs a customer’s goodwill — those aren’t equal.”</p>
-</div></aside><h2 id="classification-metrics"><a class="anchor" href="#classification-metrics">#</a>Classification Metrics</h2><p>From those four cells come the metrics you’ll quote constantly. The danger metric is <strong>accuracy</strong> — (TP+TN)/total — because it collapses under imbalance: on a dataset that’s 99% negative, “always predict negative” scores 99% and is worthless. Precision and recall are the honest pair.</p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left">Metric</th>
-<th align="left">Formula</th>
-<th align="left">Reads as</th>
-<th align="left">Use when</th>
+</tbody>
+</table></div><p>The two error types are not interchangeable, and naming them correctly matters. A <strong>False Positive (Type I error)</strong> is a false alarm — you flagged something that was fine. A <strong>False Negative (Type II error)</strong> is a miss — you let something real slip through. Which one hurts more is entirely domain-dependent, and that asymmetry is what drives every metric choice in this chapter.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>False Positive = “crying wolf” (Type I). False Negative = “missing the wolf” (Type II). Spam filter: a False Positive eats your real email; a False Negative just lets spam through — so you tune toward avoiding False Positives. Cancer screen: a False Negative is deadly — so you tune toward avoiding those. The cost asymmetry picks the metric.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Always ask, or state, <em>which error is worse here</em>. Candidates who optimize a model without distinguishing the cost of a miss from the cost of a false alarm signal they’ve never shipped anything. Tie it to the business: “in fraud, a missed fraud costs us the transaction; a false alarm costs a customer’s goodwill — those aren’t equal.”</p>
+</div></aside>
+<h2 id="classification-metrics"><a class="anchor" href="#classification-metrics">#</a>Classification Metrics</h2>
+<p>From those four cells come the metrics you’ll quote constantly. The danger metric is <strong>accuracy</strong> — (TP+TN)/total — because it collapses under imbalance: on a dataset that’s 99% negative, “always predict negative” scores 99% and is worthless. Precision and recall are the honest pair.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Metric</th>
+<th style="text-align:left">Formula</th>
+<th style="text-align:left">Reads as</th>
+<th style="text-align:left">Use when</th>
 </tr>
-</thead><tbody><tr>
-<td align="left"><strong>Accuracy</strong></td>
-<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>T</mi><mi>N</mi></mrow><mtext>all</mtext></mfrac></mrow><annotation encoding="application/x-tex">\frac{TP+TN}{\text{all}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">all</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td align="left">Overall correctness</td>
-<td align="left">Classes are balanced</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Accuracy</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>T</mi><mi>N</mi></mrow><mtext>all</mtext></mfrac></mrow><annotation encoding="application/x-tex">\frac{TP+TN}{\text{all}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">all</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td style="text-align:left">Overall correctness</td>
+<td style="text-align:left">Classes are balanced</td>
 </tr>
 <tr>
-<td align="left"><strong>Precision</strong></td>
-<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{TP}{TP+FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td align="left">Of those I flagged, how many were right?</td>
-<td align="left">False alarms are costly</td>
+<td style="text-align:left"><strong>Precision</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{TP}{TP+FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td style="text-align:left">Of those I flagged, how many were right?</td>
+<td style="text-align:left">False alarms are costly</td>
 </tr>
 <tr>
-<td align="left"><strong>Recall (TPR)</strong></td>
-<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{TP}{TP+FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td align="left">Of the real positives, how many did I catch?</td>
-<td align="left">Misses are costly</td>
+<td style="text-align:left"><strong>Recall (TPR)</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{TP}{TP+FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td style="text-align:left">Of the real positives, how many did I catch?</td>
+<td style="text-align:left">Misses are costly</td>
 </tr>
 <tr>
-<td align="left"><strong>F1</strong></td>
-<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>P</mi><mi>R</mi></mrow><mrow><mi>P</mi><mo>+</mo><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{2PR}{P+R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td align="left">Harmonic mean of P and R</td>
-<td align="left">Imbalance, want one number</td>
+<td style="text-align:left"><strong>F1</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>P</mi><mi>R</mi></mrow><mrow><mi>P</mi><mo>+</mo><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{2PR}{P+R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td style="text-align:left">Harmonic mean of P and R</td>
+<td style="text-align:left">Imbalance, want one number</td>
 </tr>
 <tr>
-<td align="left"><strong>Specificity (TNR)</strong></td>
-<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>N</mi></mrow><mrow><mi>T</mi><mi>N</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{TN}{TN+FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
-<td align="left">Of the real negatives, how many did I clear?</td>
-<td align="left">Care about the negative class</td>
+<td style="text-align:left"><strong>Specificity (TNR)</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>T</mi><mi>N</mi></mrow><mrow><mi>T</mi><mi>N</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{TN}{TN+FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+<td style="text-align:left">Of the real negatives, how many did I clear?</td>
+<td style="text-align:left">Care about the negative class</td>
 </tr>
-</tbody></table></div><p><strong>Precision</strong> answers “when I say positive, am I right?” — it’s hurt by false alarms. <strong>Recall</strong> answers “did I find all the positives?” — it’s hurt by misses. <strong>F1</strong> is their <em>harmonic</em> mean, not the arithmetic mean, deliberately: the harmonic mean stays low unless <em>both</em> are high, so a model can’t game F1 by maxing one and tanking the other.</p>
-<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Precision = “of my alarms, how many were real?” Recall = “of the real ones, how many did I sound an alarm for?” Precision polices false alarms; recall polices misses. F1 is the harmonic mean — it refuses to be fooled by one good number.</p>
-</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Expect “precision or recall for X?” Cancer screening → recall (never miss a case; false alarms get a follow-up test). Spam → precision (never trash a real email). Search results → precision (the top results must be relevant). Say the cost of each error type out loud and the answer falls out.</p>
-</div></aside><h2 id="threshold-precision-vs-recall"><a class="anchor" href="#threshold-precision-vs-recall">#</a>Threshold: Precision vs Recall</h2><p>Here’s the idea that ties the last section together: most classifiers output a <em>probability</em>, and you turn it into a label by picking a <strong>threshold</strong> (default 0.5, but that’s just a default). Precision and recall are not fixed properties of the model — they <em>move as you slide the threshold</em>, and they move in opposite directions.</p>
+</tbody>
+</table></div><p><strong>Precision</strong> answers “when I say positive, am I right?” — it’s hurt by false alarms. <strong>Recall</strong> answers “did I find all the positives?” — it’s hurt by misses. <strong>F1</strong> is their <em>harmonic</em> mean, not the arithmetic mean, deliberately: the harmonic mean stays low unless <em>both</em> are high, so a model can’t game F1 by maxing one and tanking the other.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Precision = “of my alarms, how many were real?” Recall = “of the real ones, how many did I sound an alarm for?” Precision polices false alarms; recall polices misses. F1 is the harmonic mean — it refuses to be fooled by one good number.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Expect “precision or recall for X?” Cancer screening → recall (never miss a case; false alarms get a follow-up test). Spam → precision (never trash a real email). Search results → precision (the top results must be relevant). Say the cost of each error type out loud and the answer falls out.</p>
+</div></aside>
+<h2 id="threshold-precision-vs-recall"><a class="anchor" href="#threshold-precision-vs-recall">#</a>Threshold: Precision vs Recall</h2>
+<p>Here’s the idea that ties the last section together: most classifiers output a <em>probability</em>, and you turn it into a label by picking a <strong>threshold</strong> (default 0.5, but that’s just a default). Precision and recall are not fixed properties of the model — they <em>move as you slide the threshold</em>, and they move in opposite directions.</p>
 <p><em>Slide the threshold high for precision, low for recall — you can’t max both at once.</em></p>
 <p>Raise the threshold and you only flag the cases you’re most sure about: precision climbs, recall falls (you miss the borderline positives). Lower it and you flag aggressively: recall climbs, precision falls (more false alarms). This is the <strong>precision–recall tradeoff</strong>, and the right threshold is a <em>business decision</em>, not a default — set it by the relative cost of a miss versus a false alarm.</p>
-<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>The threshold is a dial, not a constant. Crank it up → cautious → high precision, low recall. Crank it down → trigger-happy → high recall, low precision. 0.5 is a default, not a law — set it by what an error costs.</p>
-</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“Your model’s recall is too low — what do you do?” First, cheap: <em>lower the threshold</em> (no retraining needed) and accept the precision hit. Then: resample/reweight for imbalance, add features, or change the model. Reaching for “lower the threshold” first shows you understand that precision and recall are threshold-dependent, not intrinsic.</p>
-</div></aside><h2 id="roc-auc-vs-pr-auc"><a class="anchor" href="#roc-auc-vs-pr-auc">#</a>ROC-AUC vs PR-AUC</h2><p>To judge a model <em>across all thresholds</em> at once, you use an area-under-curve summary. There are two, and knowing <em>when each one lies</em> is a classic senior question.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>The threshold is a dial, not a constant. Crank it up → cautious → high precision, low recall. Crank it down → trigger-happy → high recall, low precision. 0.5 is a default, not a law — set it by what an error costs.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“Your model’s recall is too low — what do you do?” First, cheap: <em>lower the threshold</em> (no retraining needed) and accept the precision hit. Then: resample/reweight for imbalance, add features, or change the model. Reaching for “lower the threshold” first shows you understand that precision and recall are threshold-dependent, not intrinsic.</p>
+</div></aside>
+<h2 id="roc-auc-vs-pr-auc"><a class="anchor" href="#roc-auc-vs-pr-auc">#</a>ROC-AUC vs PR-AUC</h2>
+<p>To judge a model <em>across all thresholds</em> at once, you use an area-under-curve summary. There are two, and knowing <em>when each one lies</em> is a classic senior question.</p>
 <p>The <strong>ROC curve</strong> plots True Positive Rate (recall) against False Positive Rate as the threshold sweeps. <strong>ROC-AUC</strong> is the area under it, interpretable as the probability the model ranks a random positive above a random negative. 0.5 is random, 1.0 is perfect. The <strong>PR curve</strong> plots Precision against Recall over the same sweep, and <strong>PR-AUC</strong> is its area.</p>
 <p><em>ROC can look great on imbalanced data; PR tells the truth because precision feels the flood of negatives.</em></p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left"></th>
-<th align="left">ROC-AUC</th>
-<th align="left">PR-AUC</th>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">ROC-AUC</th>
+<th style="text-align:left">PR-AUC</th>
 </tr>
-</thead><tbody><tr>
-<td align="left">Axes</td>
-<td align="left">TPR vs FPR</td>
-<td align="left">Precision vs Recall</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Axes</td>
+<td style="text-align:left">TPR vs FPR</td>
+<td style="text-align:left">Precision vs Recall</td>
 </tr>
 <tr>
-<td align="left">Baseline (random)</td>
-<td align="left">0.5 always</td>
-<td align="left">The positive class prevalence</td>
+<td style="text-align:left">Baseline (random)</td>
+<td style="text-align:left">0.5 always</td>
+<td style="text-align:left">The positive class prevalence</td>
 </tr>
 <tr>
-<td align="left">Sensitive to imbalance?</td>
-<td align="left"><strong>No — can look misleadingly good</strong></td>
-<td align="left"><strong>Yes — reflects rare-class difficulty</strong></td>
+<td style="text-align:left">Sensitive to imbalance?</td>
+<td style="text-align:left"><strong>No — can look misleadingly good</strong></td>
+<td style="text-align:left"><strong>Yes — reflects rare-class difficulty</strong></td>
 </tr>
 <tr>
-<td align="left">Use when</td>
-<td align="left">Classes roughly balanced; care about both classes</td>
-<td align="left">Positive class is rare and is what you care about</td>
+<td style="text-align:left">Use when</td>
+<td style="text-align:left">Classes roughly balanced; care about both classes</td>
+<td style="text-align:left">Positive class is rare and is what you care about</td>
 </tr>
-</tbody></table></div><p>The key insight: <strong>FPR has the huge negative count in its denominator</strong>, so on imbalanced data a flood of false positives barely moves it — ROC-AUC stays optimistically high. <strong>Precision has the false positives in its denominator without the true negatives</strong>, so it feels every false alarm. When positives are rare and they’re what you care about (fraud, disease, click prediction), <strong>PR-AUC is the honest summary</strong>.</p>
-<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>On a needle-in-a-haystack problem, ROC-AUC flatters and PR-AUC tells the truth. ROC dilutes false positives in a sea of true negatives; precision doesn’t get to hide them. Rare positive class → trust PR-AUC.</p>
-</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“You have 1% fraud and ROC-AUC is 0.95 — are you happy?” The trap is yes. Strong answer: ROC-AUC is inflated by the 99% negatives; check PR-AUC and the precision/recall at your operating threshold before celebrating. This single distinction is one of the most reliable senior-vs-junior separators in evaluation.</p>
-</div></aside><h2 id="calibration"><a class="anchor" href="#calibration">#</a>Calibration</h2><p>Ranking well and being <em>honest about probabilities</em> are different things, and the gap is calibration. A model is <strong>calibrated</strong> if, among all the times it says “0.7,” the event really happens about 70% of the time. AUC only cares about <em>order</em>; calibration cares about whether the <em>number means what it says</em>.</p>
+</tbody>
+</table></div><p>The key insight: <strong>FPR has the huge negative count in its denominator</strong>, so on imbalanced data a flood of false positives barely moves it — ROC-AUC stays optimistically high. <strong>Precision has the false positives in its denominator without the true negatives</strong>, so it feels every false alarm. When positives are rare and they’re what you care about (fraud, disease, click prediction), <strong>PR-AUC is the honest summary</strong>.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>On a needle-in-a-haystack problem, ROC-AUC flatters and PR-AUC tells the truth. ROC dilutes false positives in a sea of true negatives; precision doesn’t get to hide them. Rare positive class → trust PR-AUC.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“You have 1% fraud and ROC-AUC is 0.95 — are you happy?” The trap is yes. Strong answer: ROC-AUC is inflated by the 99% negatives; check PR-AUC and the precision/recall at your operating threshold before celebrating. This single distinction is one of the most reliable senior-vs-junior separators in evaluation.</p>
+</div></aside>
+<h2 id="calibration"><a class="anchor" href="#calibration">#</a>Calibration</h2>
+<p>Ranking well and being <em>honest about probabilities</em> are different things, and the gap is calibration. A model is <strong>calibrated</strong> if, among all the times it says “0.7,” the event really happens about 70% of the time. AUC only cares about <em>order</em>; calibration cares about whether the <em>number means what it says</em>.</p>
 <p><em>A calibrated model’s confidence matches reality; the diagonal is perfect.</em></p>
 <p>This matters whenever you <em>act on the probability itself</em> — expected-value decisions, pricing, risk thresholds, or feeding the score into downstream math. A model can have great AUC and terrible calibration: it ranks cases correctly but is systematically over- or under-confident. You diagnose it with a <strong>reliability diagram</strong> (predicted probability vs observed frequency) and fix it on held-out data with <strong>Platt scaling</strong> (fit a sigmoid) or <strong>isotonic regression</strong> (a flexible monotonic fit).</p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left">Model</th>
-<th align="left">Calibration out of the box</th>
-<th align="left">Note</th>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Model</th>
+<th style="text-align:left">Calibration out of the box</th>
+<th style="text-align:left">Note</th>
 </tr>
-</thead><tbody><tr>
-<td align="left">Logistic regression</td>
-<td align="left">Usually good</td>
-<td align="left">Trained on log-loss; can drift if heavily regularized, reweighted or misspecified</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Logistic regression</td>
+<td style="text-align:left">Usually good</td>
+<td style="text-align:left">Trained on log-loss; can drift if heavily regularized, reweighted or misspecified</td>
 </tr>
 <tr>
-<td align="left">Naive Bayes</td>
-<td align="left">Poor</td>
-<td align="left">Independence assumption pushes probs to 0/1</td>
+<td style="text-align:left">Naive Bayes</td>
+<td style="text-align:left">Poor</td>
+<td style="text-align:left">Independence assumption pushes probs to 0/1</td>
 </tr>
 <tr>
-<td align="left">SVM</td>
-<td align="left">Uncalibrated scores (no probabilities)</td>
-<td align="left">Needs Platt scaling</td>
+<td style="text-align:left">SVM</td>
+<td style="text-align:left">Uncalibrated scores (no probabilities)</td>
+<td style="text-align:left">Needs Platt scaling</td>
 </tr>
 <tr>
-<td align="left">Deep nets / boosted trees</td>
-<td align="left">Deep nets: often overconfident; boosted trees/RF: often distorted (sigmoid-shaped, underconfident)</td>
-<td align="left">Check a reliability diagram; calibrate if you act on the number</td>
+<td style="text-align:left">Deep nets / boosted trees</td>
+<td style="text-align:left">Deep nets: often overconfident; boosted trees/RF: often distorted (sigmoid-shaped, underconfident)</td>
+<td style="text-align:left">Check a reliability diagram; calibrate if you act on the number</td>
 </tr>
-</tbody></table></div><aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Calibration is honesty, not accuracy. “When I say 70%, does it happen 70% of the time?” AUC grades the <em>ranking</em>; calibration grades the <em>number</em>. A model can ace one and flunk the other.</p>
-</div></aside><aside class="callout note"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p>Don’t conflate calibration with discrimination (AUC). You can have perfect ranking and awful calibration (just squash all scores toward 0.5) or perfect calibration and poor ranking. If you only need to <em>threshold</em> or <em>rank</em>, calibration may not matter; if you <em>multiply the probability into a decision</em>, it’s essential.</p>
-</div></aside><h2 id="ranking-metrics-ndcg-vs-map-vs-mrr"><a class="anchor" href="#ranking-metrics-ndcg-vs-map-vs-mrr">#</a>Ranking Metrics: NDCG vs MAP vs MRR</h2><p>When the output is an <em>ordered list</em> — search, recommendations, retrieval — accuracy and AUC miss the point: what matters is whether the good items are near the <em>top</em>. Three metrics dominate, differing in what they reward.</p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left">Metric</th>
-<th align="left">Rewards</th>
-<th align="left">Use when</th>
+</tbody>
+</table></div><aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Calibration is honesty, not accuracy. “When I say 70%, does it happen 70% of the time?” AUC grades the <em>ranking</em>; calibration grades the <em>number</em>. A model can ace one and flunk the other.</p>
+</div></aside>
+<aside class="callout info"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p>Don’t conflate calibration with discrimination (AUC). You can have perfect ranking and awful calibration (just squash all scores toward 0.5) or perfect calibration and poor ranking. If you only need to <em>threshold</em> or <em>rank</em>, calibration may not matter; if you <em>multiply the probability into a decision</em>, it’s essential.</p>
+</div></aside>
+<h2 id="ranking-metrics-ndcg-vs-map-vs-mrr"><a class="anchor" href="#ranking-metrics-ndcg-vs-map-vs-mrr">#</a>Ranking Metrics: NDCG vs MAP vs MRR</h2>
+<p>When the output is an <em>ordered list</em> — search, recommendations, retrieval — accuracy and AUC miss the point: what matters is whether the good items are near the <em>top</em>. Three metrics dominate, differing in what they reward.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Metric</th>
+<th style="text-align:left">Rewards</th>
+<th style="text-align:left">Use when</th>
 </tr>
-</thead><tbody><tr>
-<td align="left"><strong>MRR</strong> (Mean Reciprocal Rank)</td>
-<td align="left">The rank of the <em>first</em> relevant item</td>
-<td align="left">One right answer (Q&amp;A, “I’m feeling lucky”)</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>MRR</strong> (Mean Reciprocal Rank)</td>
+<td style="text-align:left">The rank of the <em>first</em> relevant item</td>
+<td style="text-align:left">One right answer (Q&amp;A, “I’m feeling lucky”)</td>
 </tr>
 <tr>
-<td align="left"><strong>MAP</strong> (Mean Average Precision)</td>
-<td align="left">Precision across <em>all</em> relevant items, binary relevance</td>
-<td align="left">Multiple relevant items, relevant-or-not</td>
+<td style="text-align:left"><strong>MAP</strong> (Mean Average Precision)</td>
+<td style="text-align:left">Precision across <em>all</em> relevant items, binary relevance</td>
+<td style="text-align:left">Multiple relevant items, relevant-or-not</td>
 </tr>
 <tr>
-<td align="left"><strong>NDCG</strong> (Normalized Discounted Cumulative Gain)</td>
-<td align="left"><em>Graded</em> relevance, discounted by position</td>
-<td align="left">Items have degrees of relevance (star ratings)</td>
+<td style="text-align:left"><strong>NDCG</strong> (Normalized Discounted Cumulative Gain)</td>
+<td style="text-align:left"><em>Graded</em> relevance, discounted by position</td>
+<td style="text-align:left">Items have degrees of relevance (star ratings)</td>
 </tr>
-</tbody></table></div><p>All three share the <strong>position-discount</strong> instinct: a relevant result at rank 1 is worth more than the same result at rank 10. <strong>NDCG</strong> is the most general because it handles <em>graded</em> relevance (a 5-star match beats a 3-star match) and normalizes against the ideal ordering, so scores are comparable across queries. <strong>MRR</strong> is the simplest — just 1/(rank of the first hit) — and fits “single correct answer” tasks.</p>
-<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>MRR cares only about the <em>first</em> good hit. MAP cares about <em>all</em> the good hits, present-or-absent. NDCG cares about all of them <em>and how good each is</em>, discounted by position. Increasing sophistication: first → all → all-and-graded.</p>
-</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“How would you evaluate a recommender?” Don’t say accuracy. Say a ranking metric and justify it: NDCG if you have graded feedback (ratings, watch time), MAP for binary relevance with several right answers, MRR if there’s essentially one. Then mention that offline ranking metrics are a proxy — the real test is an online A/B on engagement (Chapter 14).</p>
-</div></aside><h2 id="regression-metrics"><a class="anchor" href="#regression-metrics">#</a>Regression Metrics</h2><p>For continuous targets the question shifts to <em>how far off, on average</em>, and the choice among metrics is mostly about how you want to treat large errors and whether you want a unit-free score.</p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left">Metric</th>
-<th align="left">Behavior</th>
-<th align="left">Use when</th>
+</tbody>
+</table></div><p>All three share the <strong>position-discount</strong> instinct: a relevant result at rank 1 is worth more than the same result at rank 10. <strong>NDCG</strong> is the most general because it handles <em>graded</em> relevance (a 5-star match beats a 3-star match) and normalizes against the ideal ordering, so scores are comparable across queries. <strong>MRR</strong> is the simplest — just 1/(rank of the first hit) — and fits “single correct answer” tasks.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>MRR cares only about the <em>first</em> good hit. MAP cares about <em>all</em> the good hits, present-or-absent. NDCG cares about all of them <em>and how good each is</em>, discounted by position. Increasing sophistication: first → all → all-and-graded.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“How would you evaluate a recommender?” Don’t say accuracy. Say a ranking metric and justify it: NDCG if you have graded feedback (ratings, watch time), MAP for binary relevance with several right answers, MRR if there’s essentially one. Then mention that offline ranking metrics are a proxy — the real test is an online A/B on engagement (see <a class="wikilink" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a>).</p>
+</div></aside>
+<h2 id="regression-metrics"><a class="anchor" href="#regression-metrics">#</a>Regression Metrics</h2>
+<p>For continuous targets the question shifts to <em>how far off, on average</em>, and the choice among metrics is mostly about how you want to treat large errors and whether you want a unit-free score.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Metric</th>
+<th style="text-align:left">Behavior</th>
+<th style="text-align:left">Use when</th>
 </tr>
-</thead><tbody><tr>
-<td align="left"><strong>MAE</strong></td>
-<td align="left">Mean absolute error; robust to outliers</td>
-<td align="left">Outliers shouldn’t dominate; want error in original units</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>MAE</strong></td>
+<td style="text-align:left">Mean absolute error; robust to outliers</td>
+<td style="text-align:left">Outliers shouldn’t dominate; want error in original units</td>
 </tr>
 <tr>
-<td align="left"><strong>MSE</strong></td>
-<td align="left">Mean squared error; punishes large errors hard</td>
-<td align="left">Big misses are especially bad</td>
+<td style="text-align:left"><strong>MSE</strong></td>
+<td style="text-align:left">Mean squared error; punishes large errors hard</td>
+<td style="text-align:left">Big misses are especially bad</td>
 </tr>
 <tr>
-<td align="left"><strong>RMSE</strong></td>
-<td align="left">√MSE; same units as the target, still outlier-sensitive</td>
-<td align="left">Want MSE’s penalty but readable units</td>
+<td style="text-align:left"><strong>RMSE</strong></td>
+<td style="text-align:left">√MSE; same units as the target, still outlier-sensitive</td>
+<td style="text-align:left">Want MSE’s penalty but readable units</td>
 </tr>
 <tr>
-<td align="left"><strong>R²</strong></td>
-<td align="left">Fraction of variance explained (1 = perfect, 0 = mean-baseline)</td>
-<td align="left">Want a unit-free “how much better than guessing the mean”</td>
+<td style="text-align:left"><strong>R²</strong></td>
+<td style="text-align:left">Fraction of variance explained (1 = perfect, 0 = mean-baseline)</td>
+<td style="text-align:left">Want a unit-free “how much better than guessing the mean”</td>
 </tr>
-</tbody></table></div><p>The core tradeoff is <strong>MAE vs MSE/RMSE</strong>: squaring makes MSE punish big errors disproportionately, so it’s the right choice when a single large miss is unacceptable — but that same squaring makes it <strong>sensitive to outliers</strong>, which MAE shrugs off. <strong>R²</strong> rescales error against a “predict the mean” baseline, giving a unit-free score, but it can be misleadingly high on a strong trend and even go negative when the model is worse than the mean. (Adjusted R², which penalizes adding useless features, is covered in Chapter 3.)</p>
-<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>MAE treats all errors fairly (robust). MSE/RMSE <em>square</em> the error, so it obsesses over the big misses (outlier-sensitive). R² answers “how much better than just guessing the average?” — unit-free, but can flatter you.</p>
-</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“MAE or RMSE?” Answer with the outlier story: RMSE if large errors are disproportionately costly and the data is clean; MAE if outliers exist and you don’t want a few of them to dictate the model. If asked why a model has R² of 0.0 — it’s no better than predicting the mean; negative R² means <em>worse</em> than the mean.</p>
-</div></aside><h2 id="cross-validation-how-to-split-data"><a class="anchor" href="#cross-validation-how-to-split-data">#</a>Cross-Validation: How to Split Data</h2><p>A single train/test split gives a <em>noisy</em> estimate — you got lucky or unlucky with which points landed in test. <strong>Cross-validation</strong> averages over several splits for a stabler estimate, but the <em>way</em> you split must respect the structure of your data, or you leak the future into the past and your metric becomes a fantasy.</p>
+</tbody>
+</table></div><p>The core tradeoff is <strong>MAE vs MSE/RMSE</strong>: squaring makes MSE punish big errors disproportionately, so it’s the right choice when a single large miss is unacceptable — but that same squaring makes it <strong>sensitive to outliers</strong>, which MAE shrugs off. <strong>R²</strong> rescales error against a “predict the mean” baseline, giving a unit-free score, but it can be misleadingly high on a strong trend and even go negative when the model is worse than the mean. (Adjusted <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>, which penalizes adding useless features, is covered in <a class="wikilink" href="regression-methods.html">Regression Methods</a>.)</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>MAE treats all errors fairly (robust). MSE/RMSE <em>square</em> the error, so it obsesses over the big misses (outlier-sensitive). R² answers “how much better than just guessing the average?” — unit-free, but can flatter you.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“MAE or RMSE?” Answer with the outlier story: RMSE if large errors are disproportionately costly and the data is clean; MAE if outliers exist and you don’t want a few of them to dictate the model. If asked why a model has R² of 0.0 — it’s no better than predicting the mean; negative R² means <em>worse</em> than the mean.</p>
+</div></aside>
+<h2 id="cross-validation-how-to-split-data"><a class="anchor" href="#cross-validation-how-to-split-data">#</a>Cross-Validation: How to Split Data</h2>
+<p>A single train/test split gives a <em>noisy</em> estimate — you got lucky or unlucky with which points landed in test. <strong>Cross-validation</strong> averages over several splits for a stabler estimate, but the <em>way</em> you split must respect the structure of your data, or you leak the future into the past and your metric becomes a fantasy.</p>
 <p><em>k-fold rotates the test fold; but time and groups demand special splits.</em></p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left">Scheme</th>
-<th align="left">How it works</th>
-<th align="left">Use when</th>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Scheme</th>
+<th style="text-align:left">How it works</th>
+<th style="text-align:left">Use when</th>
 </tr>
-</thead><tbody><tr>
-<td align="left"><strong>k-fold</strong></td>
-<td align="left">Split into k folds; each takes a turn as test</td>
-<td align="left">Standard i.i.d. tabular data</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>k-fold</strong></td>
+<td style="text-align:left">Split into k folds; each takes a turn as test</td>
+<td style="text-align:left">Standard i.i.d. tabular data</td>
 </tr>
 <tr>
-<td align="left"><strong>Stratified k-fold</strong></td>
-<td align="left">k-fold preserving class proportions in each fold</td>
-<td align="left">Classification, especially imbalanced</td>
+<td style="text-align:left"><strong>Stratified k-fold</strong></td>
+<td style="text-align:left">k-fold preserving class proportions in each fold</td>
+<td style="text-align:left">Classification, especially imbalanced</td>
 </tr>
 <tr>
-<td align="left"><strong>Leave-One-Out</strong></td>
-<td align="left">k = n; each point is its own test fold</td>
-<td align="left">Tiny datasets (expensive)</td>
+<td style="text-align:left"><strong>Leave-One-Out</strong></td>
+<td style="text-align:left">k = n; each point is its own test fold</td>
+<td style="text-align:left">Tiny datasets (expensive)</td>
 </tr>
 <tr>
-<td align="left"><strong>Time-series split</strong></td>
-<td align="left">Always train on past, test on future</td>
-<td align="left">Temporal data — never shuffle</td>
+<td style="text-align:left"><strong>Time-series split</strong></td>
+<td style="text-align:left">Always train on past, test on future</td>
+<td style="text-align:left">Temporal data — never shuffle</td>
 </tr>
 <tr>
-<td align="left"><strong>Group k-fold</strong></td>
-<td align="left">Keep each entity entirely in one fold</td>
-<td align="left">Repeated users/patients/docs</td>
+<td style="text-align:left"><strong>Group k-fold</strong></td>
+<td style="text-align:left">Keep each entity entirely in one fold</td>
+<td style="text-align:left">Repeated users/patients/docs</td>
 </tr>
-</tbody></table></div><p>The two splits that prevent leakage are the ones interviewers probe. <strong>Time-series CV</strong> never shuffles — you train on the past and test on the future, because random shuffling would let the model “see tomorrow” to predict today. <strong>Group CV</strong> keeps all rows of one entity (a patient, a user) together, so the model can’t memorize an individual in training and get credit for “predicting” them in test. And the golden rule from Chapter 0 still binds: <strong>fit every preprocessing step (scaling, imputation) inside the training fold only</strong>, then apply it to the validation fold.</p>
-<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>k-fold for ordinary data. <em>Stratify</em> when classes are imbalanced. Split <em>by time</em> for time series (never peek at the future). Split <em>by group</em> when the same entity repeats (never let it sit on both sides). The wrong split = silent leakage = a beautiful, lying score.</p>
-</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“How would you cross-validate a model that predicts next month’s sales?” The trap is plain k-fold. Right answer: a time-based split — train on earlier periods, validate on later ones, never shuffle — because shuffling leaks future information and inflates the score. Mention that preprocessing stats must be fit on the training fold only.</p>
-</div></aside><aside class="callout abstract"><div class="callout-title">Rapid Fire — Evaluation &amp; Validation</div><div class="callout-body"><ul>
+</tbody>
+</table></div><p>The two splits that prevent leakage are the ones interviewers probe. <strong>Time-series CV</strong> never shuffles — you train on the past and test on the future, because random shuffling would let the model “see tomorrow” to predict today. <strong>Group CV</strong> keeps all rows of one entity (a patient, a user) together, so the model can’t memorize an individual in training and get credit for “predicting” them in test. And the golden rule from <a class="wikilink" href="fundamentals.html">Fundamentals</a> still binds: <strong>fit every preprocessing step (scaling, imputation) inside the training fold only</strong>, then apply it to the validation fold.</p>
+<aside class="callout info"><div class="callout-title">Memory hook</div><div class="callout-body"><p>k-fold for ordinary data. <em>Stratify</em> when classes are imbalanced. Split <em>by time</em> for time series (never peek at the future). Split <em>by group</em> when the same entity repeats (never let it sit on both sides). The wrong split = silent leakage = a beautiful, lying score.</p>
+</div></aside>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>“How would you cross-validate a model that predicts next month’s sales?” The trap is plain k-fold. Right answer: a time-based split — train on earlier periods, validate on later ones, never shuffle — because shuffling leaks future information and inflates the score. Mention that preprocessing stats must be fit on the training fold only.</p>
+</div></aside>
+<aside class="callout abstract"><div class="callout-title">Rapid Fire — Evaluation &amp; Validation</div><div class="callout-body"><ul>
 <li>Confusion matrix: TP/FP/FN/TN. False Positive = Type I (false alarm); False Negative = Type II (miss). Cost asymmetry picks the metric. - Accuracy lies under imbalance. Precision = of my alarms how many were real; Recall = of the real ones how many I caught; F1 = harmonic mean. - Threshold slides precision vs recall in opposite directions; 0.5 is a default, set it by error costs. - ROC-AUC flatters on imbalanced data (FPR hides false positives in true negatives); PR-AUC is honest when positives are rare. - Calibration = “when I say 70% it happens 70%.” AUC grades ranking, calibration grades the number; fix with Platt/isotonic. - Ranking: MRR (first hit) → MAP (all hits, binary) → NDCG (graded + position-discounted). - Regression: MAE robust; MSE/RMSE punish big errors and feel outliers; R² = variance explained vs the mean. - Cross-validation: stratify for imbalance, split by time for temporal data, split by group for repeated entities; fit preprocessing on the train fold only.</li>
 </ul>
-</div></aside><h2 id="which-metric-when"><a class="anchor" href="#which-metric-when">#</a>Which Metric When</h2><p>The chapter in one table — match the metric to the problem, because the metric <em>is</em> the objective you’re really optimizing.</p>
-<div class="table-wrap"><table><thead><tr>
-<th align="left">Problem</th>
-<th align="left">Metric</th>
+</div></aside>
+<h2 id="which-metric-when"><a class="anchor" href="#which-metric-when">#</a>Which Metric When</h2>
+<p>The chapter in one table — match the metric to the problem, because the metric <em>is</em> the objective you’re really optimizing.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Problem</th>
+<th style="text-align:left">Metric</th>
 </tr>
-</thead><tbody><tr>
-<td align="left">Balanced classification</td>
-<td align="left">Accuracy (or AUC)</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Balanced classification</td>
+<td style="text-align:left">Accuracy (or AUC)</td>
 </tr>
 <tr>
-<td align="left">Imbalanced classification</td>
-<td align="left">PR-AUC, F1, precision/recall at threshold</td>
+<td style="text-align:left">Imbalanced classification</td>
+<td style="text-align:left">PR-AUC, F1, precision/recall at threshold</td>
 </tr>
 <tr>
-<td align="left">Cost of a miss ≫ false alarm</td>
-<td align="left">Optimize recall</td>
+<td style="text-align:left">Cost of a miss ≫ false alarm</td>
+<td style="text-align:left">Optimize recall</td>
 </tr>
 <tr>
-<td align="left">Cost of a false alarm ≫ miss</td>
-<td align="left">Optimize precision</td>
+<td style="text-align:left">Cost of a false alarm ≫ miss</td>
+<td style="text-align:left">Optimize precision</td>
 </tr>
 <tr>
-<td align="left">Acting on the probability value</td>
-<td align="left">Calibration (reliability diagram + Platt/isotonic)</td>
+<td style="text-align:left">Acting on the probability value</td>
+<td style="text-align:left">Calibration (reliability diagram + Platt/isotonic)</td>
 </tr>
 <tr>
-<td align="left">Ranking / search / recommendation</td>
-<td align="left">NDCG, MAP, or MRR</td>
+<td style="text-align:left">Ranking / search / recommendation</td>
+<td style="text-align:left">NDCG, MAP, or MRR</td>
 </tr>
 <tr>
-<td align="left">Regression, clean data, punish big errors</td>
-<td align="left">RMSE</td>
+<td style="text-align:left">Regression, clean data, punish big errors</td>
+<td style="text-align:left">RMSE</td>
 </tr>
 <tr>
-<td align="left">Regression with outliers</td>
-<td align="left">MAE</td>
+<td style="text-align:left">Regression with outliers</td>
+<td style="text-align:left">MAE</td>
 </tr>
 <tr>
-<td align="left">“How much better than the mean?”</td>
-<td align="left">R²</td>
+<td style="text-align:left">“How much better than the mean?”</td>
+<td style="text-align:left">R²</td>
 </tr>
-</tbody></table></div><p>The closing principle ties the chapter to Chapter 0: separate the <strong>offline ML metric</strong> (what you compute on held-out data) from the <strong>online business metric</strong> (what you A/B test in production). A model that wins on offline AUC can still lose on revenue or engagement — so the metric you optimize must be a faithful proxy for the value you actually care about.</p>
+</tbody>
+</table></div><p>The closing principle ties the chapter to <a class="wikilink" href="fundamentals.html">Fundamentals</a>: separate the <strong>offline ML metric</strong> (what you compute on held-out data) from the <strong>online business metric</strong> (what you A/B test in production). A model that wins on offline AUC can still lose on revenue or engagement — so the metric you optimize must be a faithful proxy for the value you actually care about.</p>
 <aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>The unifying senior insight: <em>choosing the metric is a modeling decision, made before you train.</em> For any “how would you evaluate X?” answer in two layers — the offline metric tied to the error costs, and the online metric (A/B test on the business outcome) that’s the real arbiter. Saying “I’d pick the metric from what an error costs the business” is the line that lands.</p>
-</div></aside><h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-Page Summary</h2><div class="table-wrap"><table><thead><tr>
-<th align="left">Concept</th>
-<th align="left">The one thing to remember</th>
+</div></aside>
+<h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-Page Summary</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th style="text-align:left">Concept</th>
+<th style="text-align:left">The one thing to remember</th>
 </tr>
-</thead><tbody><tr>
-<td align="left">Confusion matrix</td>
-<td align="left">TP/FP/FN/TN; FP = Type I (false alarm), FN = Type II (miss).</td>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Confusion matrix</td>
+<td style="text-align:left">TP/FP/FN/TN; FP = Type I (false alarm), FN = Type II (miss).</td>
 </tr>
 <tr>
-<td align="left">Accuracy trap</td>
-<td align="left">Useless under imbalance — “always negative” scores high and is worthless.</td>
+<td style="text-align:left">Accuracy trap</td>
+<td style="text-align:left">Useless under imbalance — “always negative” scores high and is worthless.</td>
 </tr>
 <tr>
-<td align="left">Precision vs recall</td>
-<td align="left">Precision = of my alarms how many real; recall = of the real ones how many caught.</td>
+<td style="text-align:left">Precision vs recall</td>
+<td style="text-align:left">Precision = of my alarms how many real; recall = of the real ones how many caught.</td>
 </tr>
 <tr>
-<td align="left">F1</td>
-<td align="left">Harmonic mean of precision and recall — both must be high.</td>
+<td style="text-align:left">F1</td>
+<td style="text-align:left">Harmonic mean of precision and recall — both must be high.</td>
 </tr>
 <tr>
-<td align="left">Threshold</td>
-<td align="left">A dial that trades precision against recall; 0.5 is a default, set it by error cost.</td>
+<td style="text-align:left">Threshold</td>
+<td style="text-align:left">A dial that trades precision against recall; 0.5 is a default, set it by error cost.</td>
 </tr>
 <tr>
-<td align="left">ROC vs PR AUC</td>
-<td align="left">ROC-AUC flatters on imbalance; PR-AUC is honest when positives are rare.</td>
+<td style="text-align:left">ROC vs PR AUC</td>
+<td style="text-align:left">ROC-AUC flatters on imbalance; PR-AUC is honest when positives are rare.</td>
 </tr>
 <tr>
-<td align="left">Calibration</td>
-<td align="left">“When I say 70% it happens 70%” — AUC grades ranking, calibration grades the number.</td>
+<td style="text-align:left">Calibration</td>
+<td style="text-align:left">“When I say 70% it happens 70%” — AUC grades ranking, calibration grades the number.</td>
 </tr>
 <tr>
-<td align="left">Ranking metrics</td>
-<td align="left">MRR (first hit) → MAP (all hits) → NDCG (graded, position-discounted).</td>
+<td style="text-align:left">Ranking metrics</td>
+<td style="text-align:left">MRR (first hit) → MAP (all hits) → NDCG (graded, position-discounted).</td>
 </tr>
 <tr>
-<td align="left">Regression metrics</td>
-<td align="left">MAE robust; RMSE punishes big errors / feels outliers; R² = variance explained.</td>
+<td style="text-align:left">Regression metrics</td>
+<td style="text-align:left">MAE robust; RMSE punishes big errors / feels outliers; R² = variance explained.</td>
 </tr>
 <tr>
-<td align="left">Cross-validation</td>
-<td align="left">Stratify for imbalance, split by time for temporal, by group for repeats; fit preprocessing on train fold only.</td>
+<td style="text-align:left">Cross-validation</td>
+<td style="text-align:left">Stratify for imbalance, split by time for temporal, by group for repeats; fit preprocessing on train fold only.</td>
 </tr>
 <tr>
-<td align="left">Which metric</td>
-<td align="left">Match it to error costs; separate the offline metric from the online business metric.</td>
+<td style="text-align:left">Which metric</td>
+<td style="text-align:left">Match it to error costs; separate the offline metric from the online business metric.</td>
 </tr>
-</tbody></table></div><hr>
-<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2><ul>
+</tbody>
+</table></div><hr>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
+<ul>
 <li><a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a></li>
 <li><a class="wikilink" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a></li>
 <li><a class="wikilink" href="cross-validation.html">Cross-Validation</a></li>
 <li><a class="wikilink" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a></li>
+<li><a class="wikilink" href="calibration.html">Calibration</a></li>
+<li><a class="wikilink" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a></li>
+<li><a class="wikilink" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a></li>
+<li><a class="wikilink" href="data-leakage.html">Data Leakage</a></li>
+<li><a class="wikilink" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a></li>
 </ul>
 
       <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
-      <div class="pager"><a href="moc-evaluation.html"><small>← Previous</small>Evaluation</a><a class="r" href="cross-validation.html"><small>Next →</small>Cross-Validation</a></div>
+      <div class="pager"><a href="moc-evaluation.html"><small>← Previous</small>Evaluation</a><a class="r" href="ab-testing-and-experimentation.html"><small>Next →</small>A/B Testing &amp; Online Experimentation</a></div>
     </article>
   </main>
   <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#the-confusion-matrix">The Confusion Matrix</a><a class="l2" href="#classification-metrics">Classification Metrics</a><a class="l2" href="#threshold-precision-vs-recall">Threshold: Precision vs Recall</a><a class="l2" href="#roc-auc-vs-pr-auc">ROC-AUC vs PR-AUC</a><a class="l2" href="#calibration">Calibration</a><a class="l2" href="#ranking-metrics-ndcg-vs-map-vs-mrr">Ranking Metrics: NDCG vs MAP vs MRR</a><a class="l2" href="#regression-metrics">Regression Metrics</a><a class="l2" href="#cross-validation-how-to-split-data">Cross-Validation: How to Split Data</a><a class="l2" href="#which-metric-when">Which Metric When</a><a class="l2" href="#one-page-summary">One-Page Summary</a><a class="l2" href="#related">Related</a></aside>
 </div>
 <div id="bar"></div>
-
 <script src="assets/app.js"></script>
 </body></html>
