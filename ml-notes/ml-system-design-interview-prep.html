@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ML System Design Interview Prep · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="mock-ad-click-prediction" href="mock-ad-click-prediction.html">Mock - Ad Click Prediction</a><a class="" data-slug="mock-for-you-feed-recommendations" href="mock-for-you-feed-recommendations.html">Mock - For You Feed Recommendations</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+
+<div class="grp">Chapters</div><a class=" active" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+
+</details></nav>
+  <main>
+    <article data-slug="ml-system-design-interview-prep">
+      <div class="crumb">System Design Deep Dives · chapter · 9 min read</div>
+      <h1>ML System Design Interview Prep</h1>
+      <hr>
+<h2 id="stage-1-business-objective"><a class="anchor" href="#stage-1-business-objective">#</a>Stage 1: Business Objective</h2><p>Goal: Understand WHY this system exists before touching anything technical. Interviewers want to see you think before building.</p>
+<p><strong>Questions to ask:</strong></p>
+<ul>
+<li>What is the core business goal? (revenue, safety, engagement, retention?)</li>
+<li>What is the scale? (DAU, QPS, catalog size)</li>
+<li>What latency is acceptable? (&lt;100ms real-time, &lt;1s near-real-time, batch OK?)</li>
+<li>What data freshness is needed? (model needs to reflect events from 5 min ago or 5 days ago?)</li>
+<li>Are there hard constraints? (regulatory, fairness, GDPR, COPPA, geographic)</li>
+<li>Which is worse: false positives or false negatives?</li>
+<li>Is there an existing system? What&#39;s broken about it?</li>
+</ul>
+<p><strong>Business metrics to know:</strong></p>
+<ul>
+<li>CTR, CVR (conversion rate), GMV</li>
+<li>DAU/MAU, retention, session length</li>
+<li>Map FP/FN cost to business: fraud FN = money lost, fraud FP = user friction</li>
+</ul>
+<hr>
+<h2 id="stage-2-ml-objective"><a class="anchor" href="#stage-2-ml-objective">#</a>Stage 2: ML Objective</h2><p>Goal: Translate business goal → concrete ML problem.</p>
+<p><strong>Task types:</strong></p>
+<ul>
+<li>Binary classification — spam, fraud, click prediction</li>
+<li>Multi-class — intent detection, category tagging</li>
+<li>Ranking / LTR — search, feed, recommendations</li>
+<li>Regression — price, ETA, bid value</li>
+<li>Multi-task — predict CTR + CVR jointly</li>
+<li>Generative — query rewriting, summarization</li>
+</ul>
+<p><strong>Business metric → ML proxy:</strong></p>
+<div class="table-wrap"><table><thead><tr>
+<th>Business Metric</th>
+<th>ML Proxy</th>
+</tr>
+</thead><tbody><tr>
+<td>CTR</td>
+<td>AUC-ROC, log loss</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>CVR, predicted value</td>
+</tr>
+<tr>
+<td>Relevance</td>
+<td>NDCG, MRR, MAP</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>Recall @ high precision</td>
+</tr>
+<tr>
+<td>Engagement</td>
+<td>Predicted watch time</td>
+</tr>
+</tbody></table></div><p><strong>Loss functions:</strong></p>
+<div class="table-wrap"><table><thead><tr>
+<th>Problem</th>
+<th>Loss</th>
+</tr>
+</thead><tbody><tr>
+<td>Binary classification</td>
+<td>Binary cross-entropy (log loss)</td>
+</tr>
+<tr>
+<td>Multi-class</td>
+<td>Categorical cross-entropy</td>
+</tr>
+<tr>
+<td>Imbalanced classification</td>
+<td>Focal loss</td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>MSE / MAE / Huber</td>
+</tr>
+<tr>
+<td>Ranking (pairwise)</td>
+<td>BPR loss, hinge loss</td>
+</tr>
+<tr>
+<td>Ranking (listwise)</td>
+<td>LambdaRank, ApproxNDCG</td>
+</tr>
+<tr>
+<td>Embeddings / contrastive</td>
+<td>Triplet loss, NT-Xent (SimCLR)</td>
+</tr>
+<tr>
+<td>Distillation</td>
+<td>KL divergence + task loss</td>
+</tr>
+</tbody></table></div><p><strong>Key framing decisions:</strong></p>
+<ul>
+<li>Point-wise vs. pairwise vs. listwise ranking</li>
+<li>Single-task vs. multi-task (shared bottom, mixture of experts)</li>
+<li>Do you need calibrated probabilities or just a good ranking?</li>
+</ul>
+<hr>
+<h2 id="stage-3-high-level-design"><a class="anchor" href="#stage-3-high-level-design">#</a>Stage 3: High-Level Design</h2><p>Goal: Sketch the end-to-end pipeline. Get the boxes and arrows right before going deep.</p>
+<p><strong>Standard pipeline:</strong></p>
+<pre><code class="hljs">Data sources → Feature engineering → Feature store
+                                           ↓
+                             Training pipeline → Model registry
+                                           ↓
+                             Serving layer → Prediction store / cache
+                                           ↓
+                             Logging → Feedback loop</code></pre><p><strong>Common architecture patterns:</strong></p>
+<p><strong>Two-tower (retrieval)</strong></p>
+<ul>
+<li>User tower + Item tower → dot product → ANN index</li>
+<li>Item embeddings precomputed offline</li>
+<li>Used by: YouTube, Pinterest, TikTok for candidate generation</li>
+</ul>
+<p><strong>Cascade / Funnel (retrieval → ranking → re-ranking)</strong></p>
+<ul>
+<li>Retrieval (ANN, BM25, CF) → Ranking (GBDT, DNN) → Re-ranking (business rules, diversity)</li>
+<li>Used in: search, feed ranking, ads</li>
+</ul>
+<p><strong>Sequence model (temporal)</strong></p>
+<ul>
+<li>LSTM / Transformer over user history → next-item prediction</li>
+<li>Used in: Netflix, Spotify, TikTok</li>
+</ul>
+<p><strong>Real-time + batch hybrid</strong></p>
+<ul>
+<li>Batch features (stable, cheap) + real-time features (fresh, expensive) merged at serving</li>
+</ul>
+<hr>
+<h2 id="stage-4-data-feature-engineering"><a class="anchor" href="#stage-4-data-feature-engineering">#</a>Stage 4: Data &amp; Feature Engineering</h2><p>Goal: Where does data come from, how do you label it, what features do you extract.</p>
+<p><strong>Data sources:</strong></p>
+<ul>
+<li>User interaction logs (clicks, watches, purchases, skips, dwell time)</li>
+<li>Item/entity metadata (title, category, price, content embeddings)</li>
+<li>Context (time of day, device, location, session position)</li>
+<li>Social graph (follows, co-views, shares)</li>
+<li>External signals (weather, trending topics)</li>
+</ul>
+<p><strong>Labeling strategies:</strong></p>
+<ul>
+<li>Explicit: ratings, thumbs up/down — sparse, high quality</li>
+<li>Implicit: clicks, watches, purchases — dense, noisy (click ≠ satisfaction)</li>
+<li>Proxy labels: &quot;watched &gt;50% of video&quot; as engagement positive</li>
+<li>Human annotation: content quality, safety, NLP tasks</li>
+</ul>
+<p><strong>Label leakage gotchas:</strong></p>
+<ul>
+<li>Features computed after the event (e.g., final view count when predicting CTR)</li>
+<li>Future data leaking into training window</li>
+</ul>
+<p><strong>Feature types:</strong></p>
+<ul>
+<li>User: demographics, long-term interests, embedding of ID</li>
+<li>Item: category, price, recency, popularity, content embedding</li>
+<li>User-item cross: past CTR on this category, historical spend</li>
+<li>Context: time, device, session position, query</li>
+</ul>
+<p><strong>Feature engineering techniques:</strong></p>
+<ul>
+<li>Normalization / standardization — for neural nets</li>
+<li>Log transform — heavy-tailed distributions (price, counts)</li>
+<li>Bucketization — continuous → categorical</li>
+<li>Target encoding — replace category with mean label (watch for leakage)</li>
+<li>Embeddings — for high-cardinality IDs (users, items, queries)</li>
+<li>Hashing trick — very high cardinality, reduces memory</li>
+<li>Feature crosses — jointly encode two features (A × B)</li>
+<li>Sequence aggregation — mean/sum/attention pooling over user history</li>
+</ul>
+<p><strong>Feature store:</strong></p>
+<ul>
+<li>Offline store: Hive, BigQuery, Spark — batch features, used in training</li>
+<li>Online store: Redis, DynamoDB (managed by Feast / Tecton) — low-latency features at serve time</li>
+<li>Point-in-time correctness: training features must reflect what was known AT prediction time</li>
+</ul>
+<p><strong>Class imbalance:</strong></p>
+<ul>
+<li>Downsample negatives (very common in click prediction — 1:100 or worse)</li>
+<li>Calibration correction after downsampling negatives at keep-rate w: p = p_s / (p_s + (1-p_s)/w), equivalent to adding log(w) to the logit</li>
+<li>Weighted loss</li>
+<li>Focal loss</li>
+</ul>
+<hr>
+<h2 id="stage-5-model"><a class="anchor" href="#stage-5-model">#</a>Stage 5: Model</h2><p>Goal: Choose and justify your model. Know the tradeoffs.</p>
+<p><strong>Model cheat sheet:</strong></p>
+<div class="table-wrap"><table><thead><tr>
+<th>Need</th>
+<th>Model</th>
+</tr>
+</thead><tbody><tr>
+<td>Fast baseline</td>
+<td>Logistic regression</td>
+</tr>
+<tr>
+<td>Tabular data, ranking</td>
+<td>LightGBM / XGBoost</td>
+</tr>
+<tr>
+<td>Large-scale retrieval</td>
+<td>Two-tower + FAISS ANN</td>
+</tr>
+<tr>
+<td>Dense ranking</td>
+<td>DNN / DCN (Deep &amp; Cross Network)</td>
+</tr>
+<tr>
+<td>Sequential / session</td>
+<td>Transformer (SASRec, BERT4Rec)</td>
+</tr>
+<tr>
+<td>Social graph</td>
+<td>GNN (GraphSAGE, PinSage)</td>
+</tr>
+<tr>
+<td>Multimodal (text + image)</td>
+<td>CLIP-style dual encoder</td>
+</tr>
+</tbody></table></div><p><strong>Model tradeoffs:</strong></p>
+<p><strong>Logistic Regression</strong></p>
+<ul>
+<li>Pros: fast, interpretable, calibrated, easy to debug</li>
+<li>Cons: low capacity, needs manual feature engineering</li>
+<li>When: baseline, very high QPS, features already good</li>
+</ul>
+<p><strong>GBDT (XGBoost, LightGBM)</strong></p>
+<ul>
+<li>Pros: handles tabular data extremely well, no normalization needed, built-in feature importance</li>
+<li>Cons: doesn&#39;t handle embeddings, hard to do online learning</li>
+<li>When: ranking, fraud, structured tabular data</li>
+</ul>
+<p><strong>DNN / MLP</strong></p>
+<ul>
+<li>Pros: learns feature interactions, handles embeddings end-to-end</li>
+<li>Cons: more data needed, harder to debug, slower than GBDT</li>
+<li>When: ranking with many features, multi-task setups</li>
+</ul>
+<p><strong>Two-Tower</strong></p>
+<ul>
+<li>Pros: item tower precomputed offline → fast retrieval</li>
+<li>Cons: no user-item interaction at inference time (shallow)</li>
+<li>When: retrieval at massive scale</li>
+</ul>
+<p><strong>Transformer</strong></p>
+<ul>
+<li>Pros: captures sequential context, state of the art for NLP</li>
+<li>Cons: expensive to train and serve, needs lots of data</li>
+<li>When: session modeling, NLP tasks, query understanding</li>
+</ul>
+<p><strong>GNN</strong></p>
+<ul>
+<li>Pros: captures social / graph structure natively</li>
+<li>Cons: complex to build and serve</li>
+<li>When: social feed ranking, fraud on transaction graphs</li>
+</ul>
+<p><strong>Training considerations:</strong></p>
+<ul>
+<li>Learning rate schedule: warmup + cosine decay</li>
+<li>Regularization: L1/L2, dropout, early stopping</li>
+<li>Positional bias: items shown first get more clicks — debias during training</li>
+<li>Exposure bias: model only sees items that were previously shown</li>
+</ul>
+<hr>
+<h2 id="stage-6-inference-serving"><a class="anchor" href="#stage-6-inference-serving">#</a>Stage 6: Inference &amp; Serving</h2><p>Goal: Get predictions to users at scale, efficiently.</p>
+<p><strong>Batch vs. Real-time vs. Near-real-time:</strong></p>
+<div class="table-wrap"><table><thead><tr>
+<th>Mode</th>
+<th>Latency</th>
+<th>Freshness</th>
+<th>Use case</th>
+</tr>
+</thead><tbody><tr>
+<td>Batch</td>
+<td>0ms (precomputed)</td>
+<td>Stale (hours/days)</td>
+<td>Email recs, item embeddings</td>
+</tr>
+<tr>
+<td>Near-real-time</td>
+<td>Seconds/minutes</td>
+<td>Fresh</td>
+<td>Trending, fraud streaming</td>
+</tr>
+<tr>
+<td>Real-time</td>
+<td>&lt;100ms</td>
+<td>Very fresh</td>
+<td>Feed ranking, search</td>
+</tr>
+</tbody></table></div><p><strong>Serving architectures:</strong></p>
+<ul>
+<li>Precomputed / lookup: store embeddings or scores in Redis, retrieve at serve time</li>
+<li>Online inference: feature retrieval → model scoring → post-processing in budget</li>
+<li>Cascade / multi-stage: cheap model for retrieval → expensive model on small candidate set</li>
+</ul>
+<p><strong>Latency optimization:</strong></p>
+<ul>
+<li>Quantization: FP32 → FP16 or INT8 (2-4x speedup, small accuracy loss)</li>
+<li>Distillation: train small student from large teacher</li>
+<li>Pruning: remove low-importance weights</li>
+<li>Caching: cache predictions for popular user/item pairs</li>
+<li>ANN for retrieval: FAISS, ScaNN, HNSW (millisecond-scale over billions of vectors)</li>
+<li>Batching: group requests on GPU to maximize throughput</li>
+</ul>
+<p><strong>Scalability:</strong></p>
+<ul>
+<li>Horizontal scaling: replica-based, load balanced</li>
+<li>GPU serving: large batches / transformers</li>
+<li>CPU serving: low-latency tabular / small models</li>
+<li>Feature lookup budget: Redis P99 ~1ms, DB can be 10-100ms — budget carefully</li>
+</ul>
+<p><strong>Deployment strategies:</strong></p>
+<ul>
+<li>Shadow mode: run new model in parallel, no user impact, compare offline</li>
+<li>Canary: 1-5% traffic, monitor metrics</li>
+<li>A/B test: randomized experiment, measure business metric</li>
+<li>Interleaving: blend two ranked lists, measure clicks — faster signal than A/B</li>
+<li>Multi-armed bandit: explore/exploit, useful when A/B is too slow</li>
+</ul>
+<hr>
+<h2 id="stage-7-deep-dives-improvements"><a class="anchor" href="#stage-7-deep-dives-improvements">#</a>Stage 7: Deep Dives &amp; Improvements</h2><p>Goal: Show depth by proactively naming hard problems and how you&#39;d solve them.</p>
+<p><strong>Cold Start</strong></p>
+<ul>
+<li>New user: popular items, context features (device, referral), demographic priors</li>
+<li>New item: content embeddings (image, text, metadata), zero-shot via pretrained model</li>
+<li>Exploration: epsilon-greedy, Thompson sampling, UCB</li>
+</ul>
+<p><strong>Data Freshness / Training Latency</strong></p>
+<ul>
+<li>How fast does the model react to new events?</li>
+<li>Options: real-time feature updates, online learning (SGD on stream), continuous training</li>
+<li>Tradeoff: freshness vs. stability</li>
+</ul>
+<p><strong>Model Monitoring &amp; Drift</strong></p>
+<ul>
+<li>Data drift: input distributions shift (COVID changed all user behavior overnight)</li>
+<li>Concept drift: feature-label relationship changes</li>
+<li>Detection: KL divergence, PSI (Population Stability Index), shadow scoring</li>
+<li>Response: automated retraining triggers, alerting</li>
+</ul>
+<p><strong>Bias &amp; Fairness</strong></p>
+<ul>
+<li>Selection bias: model trained on biased exposure (only seen items)</li>
+<li>Popularity bias: popular items get over-recommended, feedback loop amplifies</li>
+<li>Demographic fairness: disparate impact across groups</li>
+<li>Debiasing: inverse propensity scoring (IPS), adversarial debiasing, constrained optimization</li>
+</ul>
+<p><strong>Feedback Loops / Echo Chambers</strong></p>
+<ul>
+<li>Model recommends what it predicts users like → users only see those items → model gets reinforced</li>
+<li>Mitigations: exploration budgets, diversity constraints, counterfactual evaluation</li>
+</ul>
+<p><strong>Multi-Objective Optimization</strong></p>
+<ul>
+<li>Competing objectives: engagement vs. revenue vs. safety vs. diversity</li>
+<li>Approaches: weighted sum of losses, Pareto optimization, constrained (maximize revenue s.t. engagement ≥ threshold), mixture of experts per objective</li>
+</ul>
+<p><strong>Reranking</strong></p>
+<ul>
+<li>After ranking: diversity (no 3 consecutive same artist), freshness boost, sponsored insertion, safety filtering</li>
+</ul>
+<p><strong>Privacy</strong></p>
+<ul>
+<li>Differential privacy: calibrated noise on gradients or outputs</li>
+<li>Federated learning: train on-device, aggregate updates</li>
+<li>ID hashing = pseudonymization only; not a formal privacy guarantee</li>
+</ul>
+<hr>
+<h2 id="quick-reference-cheat-sheets"><a class="anchor" href="#quick-reference-cheat-sheets">#</a>Quick Reference Cheat Sheets</h2><h3 id="loss-functions"><a class="anchor" href="#loss-functions">#</a>Loss Functions</h3><div class="table-wrap"><table><thead><tr>
+<th>Problem</th>
+<th>Loss</th>
+</tr>
+</thead><tbody><tr>
+<td>Binary classification</td>
+<td>Binary cross-entropy</td>
+</tr>
+<tr>
+<td>Multi-class</td>
+<td>Categorical cross-entropy</td>
+</tr>
+<tr>
+<td>Imbalanced</td>
+<td>Focal loss</td>
+</tr>
+<tr>
+<td>Regression (outlier sensitive)</td>
+<td>MSE</td>
+</tr>
+<tr>
+<td>Regression (robust)</td>
+<td>MAE / Huber</td>
+</tr>
+<tr>
+<td>Ranking pairwise</td>
+<td>BPR, hinge</td>
+</tr>
+<tr>
+<td>Ranking listwise</td>
+<td>LambdaRank, ApproxNDCG</td>
+</tr>
+<tr>
+<td>Embeddings</td>
+<td>Triplet loss, NT-Xent</td>
+</tr>
+<tr>
+<td>Distillation</td>
+<td>KL divergence</td>
+</tr>
+</tbody></table></div><h3 id="models"><a class="anchor" href="#models">#</a>Models</h3><div class="table-wrap"><table><thead><tr>
+<th>Need</th>
+<th>Model</th>
+</tr>
+</thead><tbody><tr>
+<td>Baseline</td>
+<td>Logistic regression</td>
+</tr>
+<tr>
+<td>Tabular / ranking</td>
+<td>LightGBM / XGBoost</td>
+</tr>
+<tr>
+<td>Retrieval at scale</td>
+<td>Two-tower + FAISS</td>
+</tr>
+<tr>
+<td>Dense ranking</td>
+<td>DNN / DCN</td>
+</tr>
+<tr>
+<td>Session / sequential</td>
+<td>SASRec / BERT4Rec</td>
+</tr>
+<tr>
+<td>Graph signals</td>
+<td>GNN (GraphSAGE, PinSage)</td>
+</tr>
+<tr>
+<td>Multimodal</td>
+<td>CLIP-style dual encoder</td>
+</tr>
+</tbody></table></div><h3 id="inference"><a class="anchor" href="#inference">#</a>Inference</h3><div class="table-wrap"><table><thead><tr>
+<th>Need</th>
+<th>Approach</th>
+</tr>
+</thead><tbody><tr>
+<td>Sub-10ms</td>
+<td>Precomputed + Redis lookup</td>
+</tr>
+<tr>
+<td>~100ms budget</td>
+<td>Online inference, light model</td>
+</tr>
+<tr>
+<td>Stale OK</td>
+<td>Batch + feature store</td>
+</tr>
+<tr>
+<td>Real-time events</td>
+<td>Kafka + Flink streaming</td>
+</tr>
+<tr>
+<td>Large model, throughput matters</td>
+<td>Quantization + GPU batching</td>
+</tr>
+<tr>
+<td>Billion-scale retrieval</td>
+<td>ANN (FAISS, ScaNN, HNSW)</td>
+</tr>
+</tbody></table></div><h3 id="business-metric-ml-metric"><a class="anchor" href="#business-metric-ml-metric">#</a>Business Metric → ML Metric</h3><div class="table-wrap"><table><thead><tr>
+<th>Business</th>
+<th>ML</th>
+</tr>
+</thead><tbody><tr>
+<td>CTR</td>
+<td>AUC-ROC, log loss</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>CVR, predicted bid value</td>
+</tr>
+<tr>
+<td>Relevance</td>
+<td>NDCG, MRR, MAP</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>Recall @ fixed high precision</td>
+</tr>
+<tr>
+<td>Engagement</td>
+<td>Predicted watch time</td>
+</tr>
+</tbody></table></div>
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="ml-system-design-framework.html"><small>← Previous</small>ML System Design Framework</a><a class="r" href="models-and-loss-functions-reference.html"><small>Next →</small>Models and Loss Functions Reference</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#stage-1-business-objective">Stage 1: Business Objective</a><a class="l2" href="#stage-2-ml-objective">Stage 2: ML Objective</a><a class="l2" href="#stage-3-high-level-design">Stage 3: High-Level Design</a><a class="l2" href="#stage-4-data-feature-engineering">Stage 4: Data  Feature Engineering</a><a class="l2" href="#stage-5-model">Stage 5: Model</a><a class="l2" href="#stage-6-inference-serving">Stage 6: Inference  Serving</a><a class="l2" href="#stage-7-deep-dives-improvements">Stage 7: Deep Dives  Improvements</a><a class="l2" href="#quick-reference-cheat-sheets">Quick Reference Cheat Sheets</a><a class="l3" href="#loss-functions">Loss Functions</a><a class="l3" href="#models">Models</a><a class="l3" href="#inference">Inference</a><a class="l3" href="#business-metric-ml-metric">Business Metric → ML Metric</a></aside>
+</div>
+<div id="bar"></div>
+
+<script src="assets/app.js"></script>
+</body></html>

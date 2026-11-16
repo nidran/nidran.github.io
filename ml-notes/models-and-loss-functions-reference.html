@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Models and Loss Functions Reference · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="mock-ad-click-prediction" href="mock-ad-click-prediction.html">Mock - Ad Click Prediction</a><a class="" data-slug="mock-for-you-feed-recommendations" href="mock-for-you-feed-recommendations.html">Mock - For You Feed Recommendations</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class=" active" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+
+</details></nav>
+  <main>
+    <article data-slug="models-and-loss-functions-reference">
+      <div class="crumb">System Design Deep Dives · chapter · 5 min read</div>
+      <h1>Models and Loss Functions Reference</h1>
+      <hr>
+<h2 id="problem-type-baseline-advanced-model"><a class="anchor" href="#problem-type-baseline-advanced-model">#</a>Problem Type → Baseline → Advanced Model</h2><div class="table-wrap"><table><thead><tr>
+<th>Problem Type</th>
+<th>Baseline</th>
+<th>Advanced</th>
+</tr>
+</thead><tbody><tr>
+<td>Binary classification (tabular)</td>
+<td>Logistic regression</td>
+<td>LightGBM / XGBoost → DNN</td>
+</tr>
+<tr>
+<td>Click prediction / ads ranking</td>
+<td>Logistic regression</td>
+<td>Wide &amp; Deep → DCN v2</td>
+</tr>
+<tr>
+<td>Candidate retrieval (rec sys)</td>
+<td>Matrix factorization (ALS)</td>
+<td>Two-tower DNN + FAISS ANN</td>
+</tr>
+<tr>
+<td>Feed / search ranking</td>
+<td>LightGBM</td>
+<td>DCN v2, DLRM, MMoE (multi-task)</td>
+</tr>
+<tr>
+<td>Session-based recs</td>
+<td>Popularity baseline</td>
+<td>SASRec / BERT4Rec (Transformer)</td>
+</tr>
+<tr>
+<td>NLP: classification</td>
+<td>TF-IDF + LR</td>
+<td>Fine-tuned BERT / RoBERTa</td>
+</tr>
+<tr>
+<td>NLP: ranking / retrieval</td>
+<td>BM25</td>
+<td>Bi-encoder (two-tower) → Cross-encoder</td>
+</tr>
+<tr>
+<td>Fraud detection</td>
+<td>LightGBM</td>
+<td>LightGBM + GNN (transaction graph)</td>
+</tr>
+<tr>
+<td>Image classification</td>
+<td>Linear on features</td>
+<td>ResNet → ViT</td>
+</tr>
+<tr>
+<td>Multimodal (text + image)</td>
+<td>Separate models, concat features</td>
+<td>CLIP-style dual encoder</td>
+</tr>
+<tr>
+<td>Time series / forecasting</td>
+<td>ARIMA, moving average</td>
+<td>LSTM → Temporal Fusion Transformer</td>
+</tr>
+<tr>
+<td>Graph problems (social, fraud)</td>
+<td>Node degree features + LR</td>
+<td>GraphSAGE, PinSage, GNN</td>
+</tr>
+</tbody></table></div><hr>
+<h2 id="wide-deep-vs-deep-cross"><a class="anchor" href="#wide-deep-vs-deep-cross">#</a>Wide &amp; Deep vs. Deep &amp; Cross</h2><h3 id="wide-deep-google-2016"><a class="anchor" href="#wide-deep-google-2016">#</a>Wide &amp; Deep (Google, 2016)</h3><ul>
+<li><strong>Wide side</strong>: linear model on manually specified feature crosses (you write <code>user_app × search_query</code>)</li>
+<li><strong>Deep side</strong>: embedding + MLP for generalization</li>
+<li><strong>Limitation</strong>: the cross features on the wide side must be hand-engineered</li>
+<li><strong>When to use</strong>: you have strong domain knowledge about which specific interactions matter</li>
+</ul>
+<h3 id="deep-cross-network-dcn-google-2017-dcn-v2-2020"><a class="anchor" href="#deep-cross-network-dcn-google-2017-dcn-v2-2020">#</a>Deep &amp; Cross Network — DCN (Google, 2017) → DCN v2 (2020)</h3><ul>
+<li>Replaces the wide side with a <strong>cross network</strong> that automatically learns bounded-degree feature interactions</li>
+<li>DCN v2 uses a matrix-based cross layer (more expressive than the original vector-based one)</li>
+<li><strong>Reduces (not eliminates) manual cross engineering</strong></li>
+<li><strong>A strong upgrade over Wide &amp; Deep when you don&#39;t know which crosses matter</strong></li>
+<li><strong>When to use</strong>: large feature spaces, ranking problems where you don&#39;t know which crosses matter; a strong, common default for ranking, alongside DLRM/DeepFM</li>
+</ul>
+<h3 id="summary"><a class="anchor" href="#summary">#</a>Summary</h3><pre><code class="hljs">Wide &amp; Deep  →  DCN  →  DCN v2
+(manual crosses)  (auto crosses, vector)  (auto crosses, matrix — best)</code></pre><hr>
+<h2 id="all-loss-functions-you-need-to-know"><a class="anchor" href="#all-loss-functions-you-need-to-know">#</a>All Loss Functions You Need to Know</h2><h3 id="classification"><a class="anchor" href="#classification">#</a>Classification</h3><p><strong>Binary Cross-Entropy (Log Loss)</strong></p>
+<pre><code class="hljs">L = -[y·log(p) + (1-y)·log(1-p)]</code></pre><ul>
+<li>Use: click prediction, fraud, any binary label</li>
+<li>Output: sigmoid → probability</li>
+<li>Default choice for binary problems</li>
+</ul>
+<p><strong>Categorical Cross-Entropy (Softmax Loss)</strong></p>
+<pre><code class="hljs">L = -Σ y_i · log(p_i)</code></pre><ul>
+<li>Use: multi-class (mutually exclusive), intent detection, NLP classification</li>
+<li>Output: softmax → probability distribution</li>
+</ul>
+<p><strong>Focal Loss</strong></p>
+<pre><code class="hljs">L = -α_t (1-p_t)^γ · log(p_t)     (p_t = probability assigned to the true class)</code></pre><ul>
+<li>Use: severe class imbalance (fraud, safety, object detection)</li>
+<li>The <code>(1-p_t)^γ</code> term downweights easy examples (of either class), focuses training on hard examples</li>
+<li>γ=2 is typical; originated in RetinaNet</li>
+<li>Often helps when easy negatives dominate; probabilities need recalibration</li>
+</ul>
+<hr>
+<h3 id="regression"><a class="anchor" href="#regression">#</a>Regression</h3><p><strong>MSE (Mean Squared Error)</strong></p>
+<pre><code class="hljs">L = (y - ŷ)²</code></pre><ul>
+<li>Penalizes large errors heavily (squared)</li>
+<li>Sensitive to outliers</li>
+<li>Use: when large errors are disproportionately bad</li>
+</ul>
+<p><strong>MAE (Mean Absolute Error)</strong></p>
+<pre><code class="hljs">L = |y - ŷ|</code></pre><ul>
+<li>More robust to outliers than MSE</li>
+<li>Use: when outliers are common and you don&#39;t want them to dominate</li>
+</ul>
+<p><strong>Huber Loss</strong></p>
+<pre><code class="hljs">L = 0.5(y-ŷ)²           if |y-ŷ| ≤ δ
+L = δ·|y-ŷ| - 0.5δ²     otherwise</code></pre><ul>
+<li>Best of both: MSE for small errors, MAE for large ones</li>
+<li>Use: default regression loss when you&#39;re unsure (bid prediction, ETA)</li>
+</ul>
+<hr>
+<h3 id="ranking"><a class="anchor" href="#ranking">#</a>Ranking</h3><p><strong>BPR Loss (Bayesian Personalized Ranking) — pairwise</strong></p>
+<pre><code class="hljs">L = -log(σ(ŷ_pos - ŷ_neg))</code></pre><ul>
+<li>Pushes score of positive item above negative item</li>
+<li>Use: implicit feedback (clicks, watches) where you have user-item pairs</li>
+<li>Common in recommendation systems</li>
+</ul>
+<p><strong>Hinge Loss — pairwise</strong></p>
+<pre><code class="hljs">L = max(0, margin - (ŷ_pos - ŷ_neg))</code></pre><ul>
+<li>Similar to BPR but with a hard margin</li>
+<li>Use: ranking when you want a minimum score gap</li>
+</ul>
+<p><strong>LambdaRank / LambdaMART — listwise</strong></p>
+<ul>
+<li>Pairwise gradients weighted by the NDCG change from swapping the pair (a listwise-aware heuristic); LambdaMART is the GBDT version</li>
+<li>Used inside LightGBM/XGBoost for ranking (<code>objective=lambdarank</code>)</li>
+<li>Use: when you care about the full ranked list quality, not just pairwise order</li>
+</ul>
+<p><strong>ApproxNDCG / SoftNDCG — listwise</strong></p>
+<ul>
+<li>Differentiable approximation of NDCG</li>
+<li>Used in neural ranking models</li>
+<li>Use: training neural rankers end-to-end</li>
+</ul>
+<hr>
+<h3 id="embedding-contrastive"><a class="anchor" href="#embedding-contrastive">#</a>Embedding / Contrastive</h3><p><strong>Triplet Loss</strong></p>
+<pre><code class="hljs">L = max(0, d(anchor, pos) - d(anchor, neg) + margin)</code></pre><ul>
+<li>Pulls anchor closer to positive, pushes away from negative</li>
+<li>Use: face recognition, image similarity, early recommendation embedding work</li>
+<li>Problem: hard to mine good triplets</li>
+</ul>
+<p><strong>NT-Xent Loss (SimCLR / Contrastive)</strong></p>
+<pre><code class="hljs">L = -log( exp(sim(z_i, z_j)/τ) / Σ_k exp(sim(z_i, z_k)/τ) )</code></pre><ul>
+<li>In-batch negatives: all other samples in the batch are negatives</li>
+<li>τ = temperature (lower = sharper, higher = softer)</li>
+<li>Use: self-supervised pretraining, two-tower models, sentence embeddings</li>
+<li>More efficient than triplet loss (no triplet mining needed)</li>
+</ul>
+<p><strong>In-Batch Softmax (used in two-tower models)</strong></p>
+<ul>
+<li>Same idea as NT-Xent but applied to user-item retrieval</li>
+<li>All other items in batch = negatives for each user</li>
+<li>Watch out: popular items appear often as negatives → popularity bias in training, correct with logQ correction (subtract log sampling probability from the logits)</li>
+</ul>
+<hr>
+<h3 id="knowledge-distillation"><a class="anchor" href="#knowledge-distillation">#</a>Knowledge Distillation</h3><p><strong>KL Divergence</strong></p>
+<pre><code class="hljs">L = Σ p(x) · log(p(x)/q(x))</code></pre><ul>
+<li>Measures how distribution p (teacher soft labels) differs from q (student predictions)</li>
+<li>Student loss = task loss + α·KL(teacher || student)</li>
+<li>Use: compressing large models to smaller ones for serving</li>
+</ul>
+<hr>
+<h2 id="quick-lookup"><a class="anchor" href="#quick-lookup">#</a>Quick Lookup</h2><div class="table-wrap"><table><thead><tr>
+<th>Situation</th>
+<th>Loss</th>
+</tr>
+</thead><tbody><tr>
+<td>Binary, balanced</td>
+<td>Binary cross-entropy</td>
+</tr>
+<tr>
+<td>Binary, imbalanced (fraud, safety)</td>
+<td>Focal loss</td>
+</tr>
+<tr>
+<td>Multi-class</td>
+<td>Categorical cross-entropy</td>
+</tr>
+<tr>
+<td>Regression, clean data</td>
+<td>MSE</td>
+</tr>
+<tr>
+<td>Regression, noisy/outliers</td>
+<td>Huber or MAE</td>
+</tr>
+<tr>
+<td>Pairwise ranking (implicit feedback)</td>
+<td>BPR loss</td>
+</tr>
+<tr>
+<td>Listwise ranking (optimize NDCG)</td>
+<td>LambdaRank / ApproxNDCG</td>
+</tr>
+<tr>
+<td>Embedding learning</td>
+<td>NT-Xent (in-batch) or Triplet</td>
+</tr>
+<tr>
+<td>Model compression</td>
+<td>KL divergence</td>
+</tr>
+<tr>
+<td>Multi-task</td>
+<td>Weighted sum of per-task losses</td>
+</tr>
+</tbody></table></div>
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="ml-system-design-interview-prep.html"><small>← Previous</small>ML System Design Interview Prep</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#problem-type-baseline-advanced-model">Problem Type → Baseline → Advanced Model</a><a class="l2" href="#wide-deep-vs-deep-cross">Wide  Deep vs. Deep  Cross</a><a class="l3" href="#wide-deep-google-2016">Wide  Deep (Google, 2016)</a><a class="l3" href="#deep-cross-network-dcn-google-2017-dcn-v2-2020">Deep  Cross Network — DCN (Google, 2017) → DCN v2 (2020)</a><a class="l3" href="#summary">Summary</a><a class="l2" href="#all-loss-functions-you-need-to-know">All Loss Functions You Need to Know</a><a class="l3" href="#classification">Classification</a><a class="l3" href="#regression">Regression</a><a class="l3" href="#ranking">Ranking</a><a class="l3" href="#embedding-contrastive">Embedding / Contrastive</a><a class="l3" href="#knowledge-distillation">Knowledge Distillation</a><a class="l2" href="#quick-lookup">Quick Lookup</a></aside>
+</div>
+<div id="bar"></div>
+
+<script src="assets/app.js"></script>
+</body></html>

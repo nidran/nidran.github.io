@@ -1,0 +1,17 @@
+<svg viewBox="0 0 780 470" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img">
+  <rect x="0" y="0" width="780" height="470" fill="#ffffff"/>
+  <title>The RNN math: forward pass, loss, and why the gradient vanishes</title>
+  <text x="40" y="40" font-size="15" font-weight="700" fill="#1a1a1a">1 · Forward pass (every step t)</text>
+  <rect x="40" y="52" width="700" height="78" rx="10" fill="#f3f4f6" stroke="#c9c9c9"/>
+  <text x="70" y="88" font-size="18" fill="#1a1a1a">h_t  =  tanh( W_xh · x_t  +  W_hh · h_(t−1) )</text>
+  <text x="70" y="116" font-size="18" fill="#1a1a1a">ŷ_t  =  softmax( W_hy · h_t )      (same W's every step)</text>
+  <text x="40" y="166" font-size="15" font-weight="700" fill="#1a1a1a">2 · Loss (add up every step)</text>
+  <rect x="40" y="178" width="700" height="56" rx="10" fill="#f3f4f6" stroke="#c9c9c9"/>
+  <text x="70" y="213" font-size="18" fill="#1a1a1a">L  =  Σ_t  L_t ,     L_t = − log ŷ_t [correct word]</text>
+  <text x="40" y="270" font-size="15" font-weight="700" fill="#1a1a1a">3 · Backward — the vanishing term</text>
+  <rect x="40" y="282" width="700" height="120" rx="10" fill="#f3f4f6" stroke="#2f6fd0" stroke-width="2"/>
+  <text x="70" y="324" font-size="20" fill="#1a1a1a">∂h_t / ∂h_k  =  <tspan fill="#2f6fd0" font-size="24">Π</tspan> ( tanh′ · W_hh )</text>
+  <text x="70" y="356" font-size="14" font-weight="600" fill="#2f6fd0">A product of (t − k) terms, each smaller than 1.</text>
+  <text x="70" y="380" font-size="14" fill="#1a1a1a">Multiply many small numbers → result shrinks to ≈ 0. That's vanishing.</text>
+  <text x="40" y="438" font-size="12.5" fill="#5a5a5a">Softmax (exp over sum) makes probabilities; cross-entropy (−log p) measures error. Two separate steps.</text>
+</svg>

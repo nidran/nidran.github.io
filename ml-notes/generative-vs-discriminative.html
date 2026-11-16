@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generative vs Discriminative · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card active" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="mock-ad-click-prediction" href="mock-ad-click-prediction.html">Mock - Ad Click Prediction</a><a class="" data-slug="mock-for-you-feed-recommendations" href="mock-for-you-feed-recommendations.html">Mock - For You Feed Recommendations</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+
+</details></nav>
+  <main>
+    <article data-slug="generative-vs-discriminative">
+      <div class="crumb">Classical Models · quick answer · 1 min read</div>
+      <h1>Generative vs Discriminative</h1>
+      <p><strong>Say it in 30s:</strong> Discriminative models learn the boundary directly — P(y | x) — they only answer &quot;which class.&quot; Generative models learn each class&#39;s shape — P(x | y) and P(y) — then use Bayes&#39; rule to derive P(y | x), so they can also <em>generate</em> new x.</p>
+<p><strong>The canonical pair</strong></p>
+<ul>
+<li><strong>Logistic Regression</strong> (discriminative) vs <strong>Naive Bayes</strong> (generative).</li>
+<li>Discriminative usually wins with ample data (optimizes the thing you care about).</li>
+<li>Generative wins with little data or when you need to sample, detect outliers, or handle missing features.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li>Discriminative: logistic regression, SVMs, most neural net classifiers, random forests.</li>
+<li>Generative: Naive Bayes, GMMs, HMMs, and modern generative models (VAEs, diffusion, LLMs).</li>
+</ul>
+<p><strong>Trap:</strong> &quot;generative&quot; in the classic sense (models P(x,y)) is a superset idea that also covers today&#39;s generative AI — be ready to bridge both meanings.</p>
+<p>See depth: <a class="wikilink" href="classification-methods.html">Classification Methods</a> (§2), <a class="wikilink" href="fundamentals.html">Fundamentals</a> (§1). Related: <a class="wikilink" href="logistic-regression.html">Logistic Regression</a>, <a class="wikilink" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>.</p>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="bagging-vs-boosting.html"><small>← Previous</small>Bagging vs Boosting</a><a class="r" href="logistic-regression.html"><small>Next →</small>Logistic Regression</a></div>
+    </article>
+  </main>
+  <aside id="toc"></aside>
+</div>
+<div id="bar"></div>
+
+<script src="assets/app.js"></script>
+</body></html>

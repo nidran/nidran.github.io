@@ -1,0 +1,33 @@
+<svg viewBox="0 0 680 350" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img">
+  <rect x="0" y="0" width="680" height="350" fill="#ffffff"/>
+  <title>One round of message passing for node A</title>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5a5a5a"/></marker></defs>
+
+  <text x="40" y="34" font-size="14" font-weight="700" fill="#1a1a1a">step 1 · inputs</text>
+  <rect x="40" y="48" width="130" height="34" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="50" y="69" font-size="12" fill="#042C53">h_B  (neighbor)</text>
+  <rect x="40" y="92" width="130" height="34" rx="6" fill="#E6F1FB" stroke="#185FA5"/><text x="50" y="113" font-size="12" fill="#042C53">h_C  (neighbor)</text>
+  <rect x="40" y="150" width="130" height="34" rx="6" fill="#EEEDFE" stroke="#534AB7"/><text x="50" y="171" font-size="12" fill="#26215C">h_A  (itself)</text>
+
+  <text x="200" y="34" font-size="14" font-weight="700" fill="#1a1a1a">step 2 · message</text>
+  <rect x="200" y="62" width="140" height="48" rx="6" fill="#E1F5EE" stroke="#0F6E56"/><text x="210" y="82" font-size="12" fill="#04342C">transform each:</text><text x="210" y="100" font-size="12" fill="#04342C">m = W · h_u</text>
+  <line x1="170" y1="65" x2="196" y2="84" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="170" y1="109" x2="196" y2="92" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <text x="370" y="34" font-size="14" font-weight="700" fill="#1a1a1a">step 3 · aggregate</text>
+  <rect x="370" y="62" width="140" height="48" rx="6" fill="#E1F5EE" stroke="#0F6E56"/><text x="380" y="82" font-size="12" fill="#04342C">combine neighbors:</text><text x="380" y="100" font-size="12" fill="#04342C">a = sum(messages)</text>
+  <line x1="340" y1="86" x2="366" y2="86" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <text x="540" y="34" font-size="14" font-weight="700" fill="#1a1a1a">step 4 · update</text>
+  <rect x="540" y="56" width="110" height="62" rx="6" fill="#FAEEDA" stroke="#854F0B"/><text x="550" y="76" font-size="12" fill="#412402">mix a with h_A,</text><text x="550" y="92" font-size="12" fill="#412402">apply weights</text><text x="550" y="108" font-size="12" fill="#412402">+ nonlinearity</text>
+  <line x1="510" y1="86" x2="536" y2="86" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <path d="M170,167 C400,167 595,160 595,124" fill="none" stroke="#5a5a5a" stroke-width="1.3" stroke-dasharray="4 4" marker-end="url(#a)"/>
+  <rect x="500" y="170" width="150" height="38" rx="6" fill="#EEEDFE" stroke="#534AB7"/><text x="512" y="194" font-size="14" font-weight="700" fill="#26215C">h_A  (updated)</text>
+  <line x1="595" y1="120" x2="595" y2="166" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="40" y="232" width="610" height="96" rx="8" fill="#FAFAF7" stroke="#d8d6cc"/>
+  <text x="56" y="254" font-size="14" font-weight="700" fill="#1a1a1a">the one equation</text>
+  <text x="56" y="276" font-size="12" fill="#5a5a5a">h_A(new) = σ ( W · [ h_A  combined with  sum over neighbors u of  norm · h_u ] )</text>
+  <text x="56" y="298" font-size="12" fill="#5a5a5a">GCN fixes the neighbor weight by degree · GAT learns it by attention · GIN sums to stay maximally expressive</text>
+  <text x="56" y="318" font-size="12" fill="#5a5a5a">stacking k layers lets each node see k hops away</text>
+</svg>

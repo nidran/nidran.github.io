@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LLM Eval · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a>
+
+</details>
+<details class="nav-sec" open><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class=" active" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="mock-ad-click-prediction" href="mock-ad-click-prediction.html">Mock - Ad Click Prediction</a><a class="" data-slug="mock-for-you-feed-recommendations" href="mock-for-you-feed-recommendations.html">Mock - For You Feed Recommendations</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+
+</details></nav>
+  <main>
+    <article data-slug="llm-eval">
+      <div class="crumb">LLMs · chapter · 2 min read</div>
+      <h1>LLM Eval</h1>
+      <h2 id="llm-evaluation-methods"><a class="anchor" href="#llm-evaluation-methods">#</a>LLM Evaluation Methods</h2><h3 id="automated-metrics-reference-based"><a class="anchor" href="#automated-metrics-reference-based">#</a>Automated Metrics (Reference-Based)</h3><ul>
+<li><strong>Exact Match / Token F1</strong> — overlap with gold answer (e.g., SQuAD-style)  </li>
+<li><strong>BLEU</strong> — n-gram precision of generated text vs reference  </li>
+<li><strong>ROUGE</strong> — n-gram recall of generated text vs reference  </li>
+<li><strong>BERTScore</strong> — cosine similarity of contextual embeddings; captures paraphrases better than n-gram methods</li>
+</ul>
+<h3 id="automated-metrics-reference-free"><a class="anchor" href="#automated-metrics-reference-free">#</a>Automated Metrics (Reference-Free)</h3><ul>
+<li><strong>Perplexity</strong> — model&#39;s surprise at the next token; lower = more fluent, but doesn&#39;t measure correctness  </li>
+<li><strong>LLM-as-Judge</strong> — stronger model scores outputs on rubric dimensions (helpfulness, accuracy, safety); can be pointwise (rate 1-5) or pairwise (A vs B)</li>
+</ul>
+<h3 id="rag-specific-evals"><a class="anchor" href="#rag-specific-evals">#</a>RAG-Specific Evals</h3><ul>
+<li><strong>Faithfulness / Groundedness</strong> — does the answer follow from retrieved context, or is it hallucinated?  </li>
+<li><strong>Context Relevance</strong> — did the retriever pull chunks that actually contain the answer?  </li>
+<li><strong>Answer Relevance</strong> — does the response address the question asked?  </li>
+<li><strong>Retrieval Metrics</strong> — Recall@k, MRR, NDCG on the retrieval step alone</li>
+</ul>
+<h3 id="agent-specific-evals"><a class="anchor" href="#agent-specific-evals">#</a>Agent-Specific Evals</h3><ul>
+<li><strong>Task Completion Rate</strong> — did the agent accomplish the end goal?  </li>
+<li><strong>Tool Use Accuracy</strong> — right tool, right arguments?  </li>
+<li><strong>Planning Quality</strong> — sensible task decomposition vs going in circles?  </li>
+<li><strong>Failure Mode Categorization</strong> — hallucination, retrieval miss, planning failure, tool misuse (track rates of each)  </li>
+<li><strong>Step Efficiency</strong> — solved in 3 steps or 15?  </li>
+<li><strong>Trajectory Evals</strong> — evaluate the full action sequence, not just the final answer</li>
+</ul>
+<h3 id="human-evals"><a class="anchor" href="#human-evals">#</a>Human Evals</h3><ul>
+<li><strong>Side-by-Side Preference</strong> — show two outputs, pick the better one (basis for RLHF)  </li>
+<li><strong>Likert Scale Ratings</strong> — rate helpfulness, accuracy, tone on 1-5  </li>
+<li><strong>Red Teaming</strong> — adversarial probing for safety, jailbreaks, prompt injection  </li>
+<li><strong>Domain Expert Review</strong> — subject matter experts judge real-world usefulness</li>
+</ul>
+<h3 id="benchmarks"><a class="anchor" href="#benchmarks">#</a>Benchmarks</h3><ul>
+<li><strong>MMLU, HellaSwag, ARC</strong> — general knowledge and reasoning  </li>
+<li><strong>HumanEval, MBPP</strong> — code generation  </li>
+<li><strong>GSM8K</strong> — math reasoning  </li>
+<li><strong>MT-Bench</strong> — multi-turn conversation quality</li>
+</ul>
+<h3 id="evaluating-the-judge-meta-evaluation"><a class="anchor" href="#evaluating-the-judge-meta-evaluation">#</a>Evaluating the Judge (Meta-Evaluation)</h3><ul>
+<li><strong>Human Agreement</strong> — Cohen&#39;s Kappa, Spearman/Kendall rank correlation against human labels  </li>
+<li><strong>Position Bias Test</strong> — swap order of A/B; verdict should stay the same  </li>
+<li><strong>Verbosity Bias Test</strong> — does the judge prefer longer responses regardless of quality?  </li>
+<li><strong>Self-Preference Bias</strong> — does GPT-4 prefer GPT-4 outputs, Claude prefer Claude?  </li>
+<li><strong>Test-Retest Reliability</strong> — same input multiple times; score should be stable  </li>
+<li><strong>Inter-Judge Agreement</strong> — multiple LLM judges; disagreements flag hard cases for human review  </li>
+<li><strong>Adversarial Probes</strong> — known-answer pairs, injected subtle errors, rubric sensitivity checks  </li>
+<li><strong>Stratified Analysis</strong> — break down accuracy by difficulty, domain, failure type</li>
+</ul>
+<hr>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2><ul>
+<li><a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a></li>
+</ul>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="moc-llms.html"><small>← Previous</small>LLMs</a><a class="r" href="moc-time-series.html"><small>Next →</small>Time Series</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#llm-evaluation-methods">LLM Evaluation Methods</a><a class="l3" href="#automated-metrics-reference-based">Automated Metrics (Reference-Based)</a><a class="l3" href="#automated-metrics-reference-free">Automated Metrics (Reference-Free)</a><a class="l3" href="#rag-specific-evals">RAG-Specific Evals</a><a class="l3" href="#agent-specific-evals">Agent-Specific Evals</a><a class="l3" href="#human-evals">Human Evals</a><a class="l3" href="#benchmarks">Benchmarks</a><a class="l3" href="#evaluating-the-judge-meta-evaluation">Evaluating the Judge (Meta-Evaluation)</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+
+<script src="assets/app.js"></script>
+</body></html>

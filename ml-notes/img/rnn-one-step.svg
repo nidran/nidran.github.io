@@ -1,0 +1,72 @@
+<svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img">
+  <rect x="0" y="0" width="800" height="540" fill="#ffffff"/>
+  <title>One RNN step computed in slow motion, then the loop across steps</title>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5a5a5a"/></marker>
+    <marker id="arb" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f6fd0"/></marker>
+  </defs>
+  <text x="40" y="30" font-size="16" font-weight="700" fill="#1a1a1a">One step in slow motion (reading the word "cat")</text>
+  <g>
+    <rect x="30" y="120" width="118" height="46" rx="8" fill="#f3f4f6" stroke="#c9c9c9"/>
+    <text x="89" y="142" text-anchor="middle" font-size="12" fill="#5a5a5a">input word "cat"</text>
+    <text x="89" y="159" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">x = [0, 1]</text>
+    <line x1="148" y1="143" x2="196" y2="143" stroke="#5a5a5a" stroke-width="1.6" marker-end="url(#ar)"/>
+    <rect x="198" y="120" width="92" height="46" rx="8" fill="none" stroke="#5a5a5a"/>
+    <text x="244" y="148" text-anchor="middle" font-size="14" font-style="italic" fill="#1a1a1a">× W_xh</text>
+    <line x1="290" y1="143" x2="338" y2="143" stroke="#5a5a5a" stroke-width="1.6" marker-end="url(#ar)"/>
+    <text x="380" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">[0.4, −0.3]</text>
+    <text x="380" y="156" text-anchor="middle" font-size="10" fill="#5a5a5a">input's contribution</text>
+  </g>
+  <g>
+    <rect x="30" y="50" width="118" height="46" rx="8" fill="#f3f4f6" stroke="#2f6fd0"/>
+    <text x="89" y="72" text-anchor="middle" font-size="12" fill="#2f6fd0">old memory</text>
+    <text x="89" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">h_prev = [0.20, 0.10]</text>
+    <line x1="148" y1="73" x2="196" y2="73" stroke="#2f6fd0" stroke-width="1.6" marker-end="url(#arb)"/>
+    <rect x="198" y="50" width="92" height="46" rx="8" fill="none" stroke="#2f6fd0"/>
+    <text x="244" y="78" text-anchor="middle" font-size="14" font-style="italic" fill="#1a1a1a">× W_hh</text>
+    <line x1="290" y1="73" x2="338" y2="73" stroke="#2f6fd0" stroke-width="1.6" marker-end="url(#arb)"/>
+    <text x="380" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">[0.11, −0.01]</text>
+    <text x="380" y="86" text-anchor="middle" font-size="10" fill="#2f6fd0">memory's contribution</text>
+  </g>
+  <line x1="420" y1="73" x2="452" y2="100" stroke="#5a5a5a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="420" y1="143" x2="452" y2="116" stroke="#5a5a5a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <circle cx="470" cy="108" r="18" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  <text x="470" y="114" text-anchor="middle" font-size="20" fill="#1a1a1a">+</text>
+  <text x="470" y="150" text-anchor="middle" font-size="12" fill="#5a5a5a">add</text>
+  <line x1="488" y1="108" x2="528" y2="108" stroke="#5a5a5a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <text x="560" y="103" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">[0.51, −0.31]</text>
+  <line x1="600" y1="108" x2="636" y2="108" stroke="#5a5a5a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <rect x="638" y="85" width="74" height="46" rx="8" fill="none" stroke="#5a5a5a"/>
+  <text x="675" y="113" text-anchor="middle" font-size="14" fill="#1a1a1a">tanh</text>
+  <text x="675" y="150" text-anchor="middle" font-size="11" fill="#5a5a5a">squash to (−1,1)</text>
+  <line x1="712" y1="108" x2="748" y2="108" stroke="#2f6fd0" stroke-width="2" marker-end="url(#arb)"/>
+  <rect x="600" y="178" width="200" height="44" rx="8" fill="#f3f4f6" stroke="#2f6fd0" stroke-width="2"/>
+  <text x="700" y="205" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">new memory h = [0.47, −0.30]</text>
+  <path d="M752,118 C770,150 760,170 700,178" fill="none" stroke="#2f6fd0" stroke-width="2" marker-end="url(#arb)"/>
+  <text x="40" y="208" font-size="12" fill="#5a5a5a">Blue = the memory loop. The new memory becomes the "old memory" for the next word.</text>
+  <line x1="40" y1="250" x2="760" y2="250" stroke="#c9c9c9" stroke-dasharray="4 4"/>
+  <text x="40" y="284" font-size="16" font-weight="700" fill="#1a1a1a">The loop: memory carries context forward</text>
+  <g font-size="13" font-weight="600" text-anchor="middle" fill="#1a1a1a">
+    <rect x="70" y="330" width="120" height="56" rx="10" fill="#f3f4f6" stroke="#5a5a5a"/>
+    <text x="130" y="354">STEP 1</text><text x="130" y="374" font-size="11" font-weight="400" fill="#5a5a5a">reads "the"</text>
+    <rect x="340" y="330" width="120" height="56" rx="10" fill="#f3f4f6" stroke="#5a5a5a"/>
+    <text x="400" y="354">STEP 2</text><text x="400" y="374" font-size="11" font-weight="400" fill="#5a5a5a">reads "cat"</text>
+    <rect x="610" y="330" width="120" height="56" rx="10" fill="#f3f4f6" stroke="#5a5a5a"/>
+    <text x="670" y="354">STEP 3</text><text x="670" y="374" font-size="11" font-weight="400" fill="#5a5a5a">reads "sat"</text>
+  </g>
+  <g font-size="12" fill="#5a5a5a" text-anchor="middle">
+    <text x="130" y="440">word "the"</text><text x="400" y="440">word "cat"</text><text x="670" y="440">word "sat"</text>
+  </g>
+  <g stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ar)" fill="none">
+    <line x1="130" y1="426" x2="130" y2="390"/><line x1="400" y1="426" x2="400" y2="390"/><line x1="670" y1="426" x2="670" y2="390"/>
+  </g>
+  <g stroke="#2f6fd0" stroke-width="2.2" marker-end="url(#arb)" fill="none">
+    <line x1="190" y1="358" x2="338" y2="358"/><line x1="460" y1="358" x2="608" y2="358"/>
+  </g>
+  <text x="264" y="348" text-anchor="middle" font-size="11" fill="#2f6fd0">memory h1</text>
+  <text x="534" y="348" text-anchor="middle" font-size="11" fill="#2f6fd0">memory h2</text>
+  <line x1="670" y1="328" x2="670" y2="306" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="670" y="300" text-anchor="middle" font-size="12" fill="#1a1a1a">predict next word</text>
+  <text x="400" y="490" text-anchor="middle" font-size="12.5" fill="#1a1a1a">Same W_xh, W_hh, W_hy at every step. Only the memory (blue) accumulates.</text>
+  <text x="400" y="512" text-anchor="middle" font-size="12" fill="#5a5a5a">Each hop re-multiplies + re-squashes the memory, so the trace of "the" slowly fades.</text>
+</svg>

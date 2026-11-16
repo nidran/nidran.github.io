@@ -1,0 +1,31 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img">
+  <rect x="0" y="0" width="680" height="400" fill="#ffffff"/>
+  <title>Stacking GNN layers and producing outputs</title>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5a5a5a"/></marker></defs>
+
+  <text x="40" y="30" font-size="14" font-weight="700" fill="#1a1a1a">depth = how far each node sees</text>
+
+  <rect x="40" y="46" width="180" height="76" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/><text x="52" y="68" font-size="14" font-weight="700" fill="#2C2C2A">layer 0 · input</text><text x="52" y="88" font-size="12" fill="#5F5E5A">node A knows only</text><text x="52" y="104" font-size="12" fill="#5F5E5A">its own features</text>
+  <line x1="220" y1="84" x2="246" y2="84" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="248" y="46" width="180" height="76" rx="8" fill="#E6F1FB" stroke="#185FA5"/><text x="260" y="68" font-size="14" font-weight="700" fill="#042C53">layer 1 · 1-hop</text><text x="260" y="88" font-size="12" fill="#185FA5">A sees direct</text><text x="260" y="104" font-size="12" fill="#185FA5">neighbors B and C</text>
+  <line x1="428" y1="84" x2="454" y2="84" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="456" y="46" width="184" height="76" rx="8" fill="#EEEDFE" stroke="#534AB7"/><text x="468" y="68" font-size="14" font-weight="700" fill="#26215C">layer 2 · 2-hop</text><text x="468" y="88" font-size="12" fill="#534AB7">reaches neighbors</text><text x="468" y="104" font-size="12" fill="#534AB7">of neighbors (D, E)</text>
+
+  <text x="40" y="162" font-size="12" fill="#993C1D">careful: too many layers and every node blurs into the same vector (oversmoothing) — most stop at 2–4</text>
+
+  <rect x="250" y="180" width="180" height="44" rx="8" fill="#EEEDFE" stroke="#534AB7"/><text x="262" y="202" font-size="14" font-weight="700" fill="#26215C">final node embeddings</text><text x="262" y="218" font-size="12" fill="#534AB7">one rich vector per node</text>
+
+  <text x="40" y="270" font-size="14" font-weight="700" fill="#1a1a1a">three ways to read out a prediction</text>
+
+  <rect x="40" y="284" width="190" height="86" rx="8" fill="#E1F5EE" stroke="#0F6E56"/><text x="52" y="306" font-size="14" font-weight="700" fill="#04342C">node level</text><text x="52" y="326" font-size="12" fill="#0F6E56">label each node</text><text x="52" y="344" font-size="12" fill="#0F6E56">fraud user? spam page?</text><text x="52" y="362" font-size="12" fill="#0F6E56">use one node's vector</text>
+
+  <rect x="245" y="284" width="190" height="86" rx="8" fill="#E1F5EE" stroke="#0F6E56"/><text x="257" y="306" font-size="14" font-weight="700" fill="#04342C">edge level</text><text x="257" y="326" font-size="12" fill="#0F6E56">predict a link</text><text x="257" y="344" font-size="12" fill="#0F6E56">recommend, knowledge graph</text><text x="257" y="362" font-size="12" fill="#0F6E56">combine two node vectors</text>
+
+  <rect x="450" y="284" width="190" height="86" rx="8" fill="#E1F5EE" stroke="#0F6E56"/><text x="462" y="306" font-size="14" font-weight="700" fill="#04342C">graph level</text><text x="462" y="326" font-size="12" fill="#0F6E56">label the whole graph</text><text x="462" y="344" font-size="12" fill="#0F6E56">molecule property</text><text x="462" y="362" font-size="12" fill="#0F6E56">pool all node vectors</text>
+
+  <line x1="300" y1="224" x2="135" y2="280" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="340" y1="224" x2="340" y2="280" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="380" y1="224" x2="545" y2="280" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#a)"/>
+</svg>

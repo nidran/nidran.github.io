@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ML System Design Framework · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+
+</details>
+<details class="nav-sec" open><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="mock-ad-click-prediction" href="mock-ad-click-prediction.html">Mock - Ad Click Prediction</a><a class="" data-slug="mock-for-you-feed-recommendations" href="mock-for-you-feed-recommendations.html">Mock - For You Feed Recommendations</a>
+<div class="grp">Quick answers</div><a class="card active" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+
+</details></nav>
+  <main>
+    <article data-slug="ml-system-design-framework">
+      <div class="crumb">ML System Design · quick answer · 3 min read</div>
+      <h1>ML System Design Framework</h1>
+      <p>The repeatable spine for any ML system design prompt. The strongest answers spend the first third <strong>scoping</strong> and never jump straight to a model. Drive this structure yourself — don&#39;t wait to be asked.</p>
+<h2 id="the-6-steps"><a class="anchor" href="#the-6-steps">#</a>The 6 steps</h2><h3 id="1-clarify-frame-5-min"><a class="anchor" href="#1-clarify-frame-5-min">#</a>1. Clarify &amp; frame (~5 min)</h3><p>Turn the vague prompt into a concrete ML problem. Pin down:</p>
+<ul>
+<li><strong>Business goal</strong> and <strong>who the user is</strong></li>
+<li><strong>Scale</strong> — DAU, # items, QPS</li>
+<li><strong>Latency budget</strong> (e.g. ~100ms for ranking)</li>
+<li><strong>Freshness</strong> requirements</li>
+<li>What &quot;good&quot; actually means</li>
+</ul>
+<p>Open with: <em>&quot;First I&#39;ll align on the goal and success metric, then scale and latency, then ask what data we have.&quot;</em></p>
+<h3 id="2-ml-task-metrics"><a class="anchor" href="#2-ml-task-metrics">#</a>2. ML task &amp; metrics</h3><ul>
+<li>What does the model <strong>predict</strong>? Framing: ranking vs classification vs retrieval.</li>
+<li><strong>Offline metrics</strong> (AUC, NDCG, recall@k) <strong>AND</strong> online metrics (CTR, watch time, revenue) <strong>AND</strong> guardrails.</li>
+<li><strong>The key move:</strong> the proxy you optimize ≠ the thing you actually care about. Tune proxy weights against an online north-star (e.g. D7/D30 retention) via A/B tests.</li>
+</ul>
+<h3 id="3-data-features"><a class="anchor" href="#3-data-features">#</a>3. Data &amp; features</h3><ul>
+<li>Sources, labels (explicit vs implicit), leakage, cold start.</li>
+<li><strong>Feature families:</strong> user · item · user×item cross · context. The <strong>cross features</strong> are where ranking earns its keep.</li>
+<li><strong>Implicit-feedback bias — name all three:</strong><ol>
+<li><strong>Exposure / selection bias</strong> (feedback loop — you only see labels for what you showed)</li>
+<li><strong>Position bias</strong> (rank drives clicks regardless of quality)</li>
+<li><strong>Noisy negatives</strong> (a skip ≠ a confirmed dislike)</li>
+</ol>
+<ul>
+<li>Fixes: negative sampling, inverse propensity weighting / position-as-feature (zeroed at serving), <strong>exploration traffic</strong> to break the loop.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-model"><a class="anchor" href="#4-model">#</a>4. Model</h3><ul>
+<li>Start with a <strong>baseline</strong>, then justify complexity.</li>
+<li>For large scale: <strong>multistage</strong> — retrieval → ranking → re-ranking.</li>
+<li>Discuss <strong>tradeoffs</strong>, not just the fanciest option.</li>
+</ul>
+<h3 id="5-serving-scale"><a class="anchor" href="#5-serving-scale">#</a>5. Serving &amp; scale</h3><ul>
+<li><strong>Retrieval:</strong> two-tower model + <strong>ANN index</strong> (HNSW / ScaNN / FAISS). Item embeddings precomputed offline &amp; indexed; user tower runs once per request → single ANN lookup. The decoupling is the serving win.</li>
+<li>Multiple retrieval sources unioned (personalized + trending + social + fresh-exploration).</li>
+<li>Feature store, online vs batch inference, caching.</li>
+</ul>
+<h3 id="6-evaluation-iteration"><a class="anchor" href="#6-evaluation-iteration">#</a>6. Evaluation &amp; iteration</h3><ul>
+<li><strong>Offline:</strong> ranking metric (NDCG), check calibration if probs feed downstream.</li>
+<li><strong>Online:</strong> A/B test vs <strong>north-star (retention)</strong> + <strong>guardrail metrics</strong> (reports, diversity, creator health).</li>
+<li><strong>Post-launch:</strong> monitor feature &amp; prediction <strong>drift</strong>, watch online metrics decay, <strong>retrain</strong> regularly (daily/continuous for fast domains). Continuous retraining on biased logs amplifies bias → exploration matters long-term.</li>
+</ul>
+<h2 id="two-stage-architecture-cheat"><a class="anchor" href="#two-stage-architecture-cheat">#</a>Two-stage architecture cheat</h2><div class="table-wrap"><table><thead><tr>
+<th align="left">Stage</th>
+<th align="left">Catalog → out</th>
+<th align="left">Job</th>
+<th align="left">Model</th>
+</tr>
+</thead><tbody><tr>
+<td align="left">Retrieval</td>
+<td align="left">billions → thousands</td>
+<td align="left">recall, cheap</td>
+<td align="left">two-tower + ANN</td>
+</tr>
+<tr>
+<td align="left">Ranking</td>
+<td align="left">thousands → hundreds</td>
+<td align="left">precision</td>
+<td align="left">heavy multi-task (MMoE)</td>
+</tr>
+<tr>
+<td align="left">Re-rank</td>
+<td align="left">hundreds → ~10</td>
+<td align="left">diversity, policy</td>
+<td align="left">rules + light model</td>
+</tr>
+</tbody></table></div><h2 id="cold-start"><a class="anchor" href="#cold-start">#</a>Cold start</h2><ul>
+<li><strong>Item:</strong> content embeddings at upload → retrievable immediately (also = freshness story).</li>
+<li><strong>User:</strong> onboarding preferences + popular/trending prior, let real interactions take over.</li>
+</ul>
+<h2 id="common-ways-people-fail"><a class="anchor" href="#common-ways-people-fail">#</a>Common ways people fail</h2><ol>
+<li>Jump straight to the model.</li>
+<li>Never define metrics properly (or don&#39;t connect offline ↔ online).</li>
+<li>Ignore data/serving reality.</li>
+<li>Circle instead of committing — state the structured answer up front.</li>
+<li>Use generic language instead of canonical component names.</li>
+</ol>
+<p><a class="wikilink" href="moc-system-design.html">MOC - System Design</a> · <a class="wikilink" href="index.html">Home</a></p>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="mock-for-you-feed-recommendations.html"><small>← Previous</small>Mock - For You Feed Recommendations</a><a class="r" href="ml-system-design-interview-prep.html"><small>Next →</small>ML System Design Interview Prep</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#the-6-steps">The 6 steps</a><a class="l3" href="#1-clarify-frame-5-min">1. Clarify  frame (~5 min)</a><a class="l3" href="#2-ml-task-metrics">2. ML task  metrics</a><a class="l3" href="#3-data-features">3. Data  features</a><a class="l3" href="#4-model">4. Model</a><a class="l3" href="#5-serving-scale">5. Serving  scale</a><a class="l3" href="#6-evaluation-iteration">6. Evaluation  iteration</a><a class="l2" href="#two-stage-architecture-cheat">Two-stage architecture cheat</a><a class="l2" href="#cold-start">Cold start</a><a class="l2" href="#common-ways-people-fail">Common ways people fail</a></aside>
+</div>
+<div id="bar"></div>
+
+<script src="assets/app.js"></script>
+</body></html>

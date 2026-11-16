@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Classification Methods · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a><a class="" data-slug="math" href="math.html">Math</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec" open><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class=" active" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Eval</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="mock-ad-click-prediction" href="mock-ad-click-prediction.html">Mock - Ad Click Prediction</a><a class="" data-slug="mock-for-you-feed-recommendations" href="mock-for-you-feed-recommendations.html">Mock - For You Feed Recommendations</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📐</span>System Design Deep Dives</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+
+</details></nav>
+  <main>
+    <article data-slug="classification-methods">
+      <div class="crumb">Classical Models · chapter · 15 min read</div>
+      <h1>Classification Methods</h1>
+      <p>Classification — predicting a discrete label — is the single most common framing you&#39;ll be asked to reason about, and interviewers use it to probe whether you understand <em>why</em> one model beats another on a given dataset, not just how to call <code>.fit()</code>. We line every major classifier up side by side, split them into the two families that organize the whole field, then walk each one with its assumptions, strengths, and the questions it tends to attract.</p>
+<aside class="callout success"><div class="callout-title">What you&amp;#39;ll be able to say after this chapter</div><div class="callout-body"><ul>
+<li>Place any classifier in the <strong>generative vs discriminative</strong> split and say what it learns.</li>
+<li>Derive logistic regression from the <strong>log-odds</strong> and explain why it&#39;s the default baseline.</li>
+<li>Explain <strong>why Naive Bayes works despite a &quot;naive&quot; assumption that&#39;s almost always false</strong>.</li>
+<li>Contrast <strong>bagging vs boosting</strong> in one sentence and say which fights bias vs variance.</li>
+<li>Pick a classifier from the shape of the data: size, dimensionality, linearity, interpretability.</li>
+</ul>
+</div></aside><h2 id="the-master-table-every-classifier-side-by-side"><a class="anchor" href="#the-master-table-every-classifier-side-by-side">#</a>The Master Table — Every Classifier Side by Side</h2><p>Before any single method, hold the landscape in your head. The classifiers you&#39;ll be asked about differ along a few axes that actually predict their behavior: what they learn, whether the boundary is linear, how they scale, and how interpretable they are.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left">Model</th>
+<th align="left">Family</th>
+<th align="left">Boundary</th>
+<th align="left">Strengths</th>
+<th align="left">Watch out for</th>
+</tr>
+</thead><tbody><tr>
+<td align="left"><strong>Logistic regression</strong></td>
+<td align="left">Discriminative</td>
+<td align="left">Linear</td>
+<td align="left">Usually well-calibrated probabilities, interpretable, fast</td>
+<td align="left">Underfits nonlinear data</td>
+</tr>
+<tr>
+<td align="left"><strong>Naive Bayes</strong></td>
+<td align="left">Generative</td>
+<td align="left">Linear in log-space (multinomial/Bernoulli; Gaussian NB can be quadratic)</td>
+<td align="left">Tiny data, text, very fast</td>
+<td align="left">Independence assumption, poor calibration</td>
+</tr>
+<tr>
+<td align="left"><strong>k-NN</strong></td>
+<td align="left">Discriminative (lazy)</td>
+<td align="left">Nonlinear</td>
+<td align="left">No training, simple</td>
+<td align="left">Slow at predict, curse of dimensionality</td>
+</tr>
+<tr>
+<td align="left"><strong>SVM</strong></td>
+<td align="left">Discriminative</td>
+<td align="left">Linear or kernel</td>
+<td align="left">Strong in high-dim, margin-based</td>
+<td align="left">Slow on big data, no native probabilities</td>
+</tr>
+<tr>
+<td align="left"><strong>Decision tree</strong></td>
+<td align="left">Discriminative</td>
+<td align="left">Axis-aligned</td>
+<td align="left">Interpretable, handles mixed types</td>
+<td align="left">Overfits, unstable</td>
+</tr>
+<tr>
+<td align="left"><strong>Random forest</strong></td>
+<td align="left">Discriminative (bagging)</td>
+<td align="left">Nonlinear</td>
+<td align="left">Robust, low tuning, strong default</td>
+<td align="left">Larger, less interpretable</td>
+</tr>
+<tr>
+<td align="left"><strong>Gradient boosting</strong></td>
+<td align="left">Discriminative (boosting)</td>
+<td align="left">Nonlinear</td>
+<td align="left">Often best on tabular</td>
+<td align="left">Tuning-sensitive, slower to train</td>
+</tr>
+<tr>
+<td align="left"><strong>Neural network</strong></td>
+<td align="left">Discriminative</td>
+<td align="left">Arbitrary</td>
+<td align="left">Crushes vision/text/audio</td>
+<td align="left">Data-hungry, opaque, tuning</td>
+</tr>
+</tbody></table></div><aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Two questions sort almost any classifier: <em>does it model the data (generative) or just the boundary (discriminative)?</em> and <em>is the boundary a straight line or can it bend?</em> Everything else is a footnote on cost and interpretability.</p>
+</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;Walk me through which classifier you&#39;d try.&quot; Don&#39;t recite — reason from the data. The senior move: name a fast linear baseline (logistic regression), then a strong nonlinear default (gradient-boosted trees for tabular, a neural net for perceptual data), and justify each by the data&#39;s structure. Jumping straight to &quot;XGBoost&quot; without a baseline reads as junior.</p>
+</div></aside><h2 id="two-families-generative-vs-discriminative"><a class="anchor" href="#two-families-generative-vs-discriminative">#</a>Two Families: Generative vs Discriminative</h2><p>This split organizes the entire chapter, so it&#39;s worth one clean restatement. A <strong>discriminative</strong> model learns the boundary directly — <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y \mid x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>, or just where the line goes. A <strong>generative</strong> model learns how each class produces data — <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo>∣</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x \mid y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span></span></span></span> — then flips it with Bayes&#39; rule to classify.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left"></th>
+<th align="left">Discriminative</th>
+<th align="left">Generative</th>
+</tr>
+</thead><tbody><tr>
+<td align="left"><strong>Learns</strong></td>
+<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y \mid x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> — the boundary</td>
+<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo>∣</mo><mi>y</mi><mo stretchy="false">)</mo><mtext> </mtext><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x, y) = p(x \mid y)\,p(y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span></span></span></span> — the full story</td>
+</tr>
+<tr>
+<td align="left"><strong>Classifies by</strong></td>
+<td align="left">Which side of the line?</td>
+<td align="left">Which class most likely generated this <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>?</td>
+</tr>
+<tr>
+<td align="left"><strong>Can sample / detect outliers?</strong></td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left"><strong>Data appetite</strong></td>
+<td align="left">Wants more data, hits lower error</td>
+<td align="left">Works on small data if assumptions hold</td>
+</tr>
+<tr>
+<td align="left"><strong>Examples</strong></td>
+<td align="left">Logistic regression, SVM, trees, NN</td>
+<td align="left">Naive Bayes, GMM, LDA, HMM</td>
+</tr>
+</tbody></table></div><p>The practical takeaway is the Ng–Jordan result from <a class="wikilink" href="fundamentals.html">Fundamentals</a>: a generative model reaches its error floor with <em>fewer samples</em> but that floor is <em>higher</em>; the matching discriminative model is slower to converge but ends up more accurate with enough data. So generative shines in the small-data regime, discriminative in the large-data regime.</p>
+<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Discriminative asks &quot;which side?&quot; Generative asks &quot;who made this?&quot; — it learns each class&#39;s recipe and picks the most plausible cook.</p>
+</div></aside><h2 id="logistic-regression-the-must-know-baseline"><a class="anchor" href="#logistic-regression-the-must-know-baseline">#</a>Logistic Regression — The Must-Know Baseline</h2><p>Despite the name, logistic regression is a <em>classifier</em>. It&#39;s the single most important model to be able to derive from scratch, because nearly every interview that touches classification touches it.</p>
+<p>The setup: a linear model produces a score <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><msup><mi>w</mi><mi mathvariant="normal">⊤</mi></msup><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">z = w^\top x + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.9324em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">⊤</span></span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> that lives anywhere on the real line, but a probability has to sit in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>. The <strong>sigmoid</strong> squashes it: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><mstyle scriptlevel="0" displaystyle="true"><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>z</mi></mrow></msup></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\sigma(z) = \dfrac{1}{1 + e^{-z}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0908em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6973em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.044em;">z</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>. Read backwards, this says the model is linear in the <strong>log-odds</strong>:</p>
+<p><div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>log</mi><mo>⁡</mo><mfrac><mi>p</mi><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow></mfrac><mo>=</mo><msup><mi>w</mi><mi mathvariant="normal">⊤</mi></msup><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\log\frac{p}{1 - p} = w^\top x + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.988em;vertical-align:-0.8804em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">p</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.9824em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">⊤</span></span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span></div></p>
+<p>That single fact is the heart of the method — a one-unit change in a feature shifts the log-odds by its weight.</p>
+<p>It&#39;s trained by minimizing <strong>cross-entropy</strong> (log-loss), not squared error. The reason matters and gets asked: cross-entropy is the negative log-likelihood under a Bernoulli model, it&#39;s convex in the weights (so any local optimum is global; with separable data the weights diverge unless regularized), and it punishes confident wrong predictions hard. Squared error on a sigmoid is non-convex and produces vanishing gradients when the model is confidently wrong — exactly when you most need a signal.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left">Property</th>
+<th align="left">Logistic regression</th>
+<th align="left">Why it matters</th>
+</tr>
+</thead><tbody><tr>
+<td align="left">Output</td>
+<td align="left">Usually well-calibrated probability</td>
+<td align="left">Threshold it for any precision/recall tradeoff</td>
+</tr>
+<tr>
+<td align="left">Boundary</td>
+<td align="left">Linear in features</td>
+<td align="left">Add interactions/polynomials for curves</td>
+</tr>
+<tr>
+<td align="left">Loss</td>
+<td align="left">Cross-entropy (convex)</td>
+<td align="left">Global optimum, clean gradients</td>
+</tr>
+<tr>
+<td align="left">Regularization</td>
+<td align="left">L1 (sparse) or L2 (shrink)</td>
+<td align="left">Controls overfitting, L1 selects features</td>
+</tr>
+</tbody></table></div><aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Logistic regression is linear regression on the <em>log-odds</em>, then squashed by a sigmoid. &quot;Linear in log-odds, probability out.&quot;</p>
+</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>Three near-certain questions: (1) Why sigmoid? — to map a real-valued score to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> and make it linear in log-odds. (2) Why cross-entropy not MSE? — convexity + non-vanishing gradients + it&#39;s the Bernoulli MLE. (3) Is it linear? — the <em>boundary</em> is linear in features, even though the sigmoid is nonlinear. Getting (3) right separates people who memorized from people who understand.</p>
+</div></aside><aside class="callout note"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p>For multiclass, logistic regression generalizes to <strong>softmax</strong> (multinomial) regression: one weight vector per class, normalized to a distribution. Softmax + cross-entropy is exactly the output layer of most neural-net classifiers — so &quot;what&#39;s the last layer of a classifier net?&quot; is the same idea you already know.</p>
+</div></aside><h2 id="naive-bayes-fast-and-great-for-text"><a class="anchor" href="#naive-bayes-fast-and-great-for-text">#</a>Naive Bayes — Fast and Great for Text</h2><p>Naive Bayes is the canonical generative classifier and a perennial interview favorite because its central paradox is so clean: it rests on an assumption that is almost always false, and it works anyway.</p>
+<p>It applies Bayes&#39; rule — <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo><mo>∝</mo><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mtext> </mtext><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo>∣</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y \mid x) \propto p(y)\,p(x \mid y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span></span></span></span> — and makes the <strong>&quot;naive&quot; assumption</strong> that all features are conditionally independent given the class. That lets it factor <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo>∣</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x \mid y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span></span></span></span> into a product of per-feature terms, which is why it trains in a single pass and handles tens of thousands of features (every word in a vocabulary) effortlessly.</p>
+<p>The assumption is obviously wrong — in text, &quot;New&quot; and &quot;York&quot; are not independent. But Naive Bayes only needs the <em>correct class to get the highest score</em>, not accurate probabilities. The dependencies often distort all classes&#39; scores in the same direction, so the <strong>argmax survives</strong> even when the probabilities themselves are badly miscalibrated. That&#39;s the resolution to the paradox, and the answer interviewers want.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left">Variant</th>
+<th align="left">Use on</th>
+<th align="left">Models each feature as</th>
+</tr>
+</thead><tbody><tr>
+<td align="left">Multinomial NB</td>
+<td align="left">Word counts (text)</td>
+<td align="left">Count from a multinomial</td>
+</tr>
+<tr>
+<td align="left">Bernoulli NB</td>
+<td align="left">Binary presence/absence</td>
+<td align="left">0/1 per feature</td>
+</tr>
+<tr>
+<td align="left">Gaussian NB</td>
+<td align="left">Continuous features</td>
+<td align="left">A normal distribution</td>
+</tr>
+</tbody></table></div><p>Two practical notes that come up: <strong>Laplace (add-one) smoothing</strong> is essential — without it, a single unseen word gives <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> and zeroes out the whole product. And NB probabilities are <strong>poorly calibrated</strong> (pushed toward 0 or 1 by the independence assumption), so trust its ranking and labels, not its confidence numbers.</p>
+<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Naive Bayes assumes every feature votes independently. The assumption is a lie, but the <em>winner of the vote</em> is usually still right — good classification, bad probabilities.</p>
+</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;Why does Naive Bayes work if the independence assumption is false?&quot; The crisp answer: it only needs the right class to win the argmax, not calibrated probabilities; the errors are often shared across classes and cancel at the decision. Bonus points for mentioning Laplace smoothing and that it&#39;s a strong, near-free baseline for text.</p>
+</div></aside><h2 id="k-nn-and-svm-distance-vs-margin"><a class="anchor" href="#k-nn-and-svm-distance-vs-margin">#</a>k-NN and SVM — Distance vs Margin</h2><p>These two are usually taught together because they represent two opposite instincts about what makes a good boundary: <em>be like your neighbors</em> versus <em>stay as far from everyone as possible</em>.</p>
+<p><strong>k-Nearest Neighbors</strong> is the laziest model there is — it does no training, just stores the data. To classify a point, it finds the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> closest stored examples and takes a majority vote. Small <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> means a jagged, low-bias/high-variance boundary; large <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> smooths it out (higher bias, lower variance). Its weaknesses are exactly its design: prediction is slow (you compare against everything), it&#39;s memory-heavy, and it dies in high dimensions because distances become meaningless — the <strong>curse of dimensionality</strong>. It also demands feature scaling, since raw-scale features dominate the distance.</p>
+<p><strong>Support Vector Machines</strong> take the opposite stance: among all lines that separate the classes, pick the one with the widest <strong>margin</strong> — the largest gap to the nearest points (the <em>support vectors</em>). A wide margin is a built-in regularizer, which is why SVMs are strong in high-dimensional spaces like text. The <strong>kernel trick</strong> lets them draw nonlinear boundaries by implicitly mapping data to a higher-dimensional space without ever computing the coordinates — the RBF kernel is the common default.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left"></th>
+<th align="left">k-NN</th>
+<th align="left">SVM</th>
+</tr>
+</thead><tbody><tr>
+<td align="left">Training</td>
+<td align="left">None (lazy)</td>
+<td align="left">Solve a convex optimization</td>
+</tr>
+<tr>
+<td align="left">Idea</td>
+<td align="left">Vote of nearest neighbors</td>
+<td align="left">Maximize the margin</td>
+</tr>
+<tr>
+<td align="left">Boundary</td>
+<td align="left">Flexible, local</td>
+<td align="left">Linear, or kernel for nonlinear</td>
+</tr>
+<tr>
+<td align="left">Scales to big data?</td>
+<td align="left">Predict is slow</td>
+<td align="left">Training slow, predict fast</td>
+</tr>
+<tr>
+<td align="left">Key knobs</td>
+<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>, distance metric, scaling</td>
+<td align="left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> (margin softness), kernel</td>
+</tr>
+</tbody></table></div><aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>k-NN: &quot;tell me who your neighbors are.&quot; SVM: &quot;draw the boundary down the widest empty street.&quot; One is lazy and local; the other is a global optimizer obsessed with the margin.</p>
+</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>For k-NN expect &quot;what happens as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> grows?&quot; (bias up, variance down) and &quot;why does it fail in high dimensions?&quot; (distances concentrate, neighbors stop being meaningful). For SVM expect &quot;what&#39;s a support vector?&quot; (a point on or inside the margin that defines the boundary) and &quot;what does the kernel trick buy you?&quot; (nonlinear boundaries without explicit high-dimensional features).</p>
+</div></aside><aside class="callout note"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p>The SVM <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> parameter is the margin-softness knob: small <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> = wide, soft margin tolerating misclassifications (more bias, less variance); large <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> = narrow, hard margin fitting the training data tightly (less bias, more variance). It&#39;s the same bias-variance dial in margin clothing.</p>
+</div></aside><h2 id="trees-forests-boosting-bagging-vs-boosting"><a class="anchor" href="#trees-forests-boosting-bagging-vs-boosting">#</a>Trees, Forests, Boosting — Bagging vs Boosting</h2><p>Tree-based models dominate tabular data, and the progression from a single tree to forests to boosting is one of the most testable arcs in ML.</p>
+<p>A <strong>decision tree</strong> splits the feature space with a sequence of yes/no questions, choosing each split to most reduce impurity (<strong>Gini</strong> or <strong>entropy</strong> for classification). It&#39;s wonderfully interpretable and handles mixed feature types with no scaling — but a single deep tree overfits badly and is <strong>unstable</strong>: change a few points and the whole tree can rearrange. That instability is the opening for ensembles.</p>
+<p>The two ways to combine many trees are the central contrast of this section.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left"></th>
+<th align="left">Bagging (Random Forest)</th>
+<th align="left">Boosting (GBM / XGBoost)</th>
+</tr>
+</thead><tbody><tr>
+<td align="left">Trees are trained</td>
+<td align="left">In parallel, independently</td>
+<td align="left">Sequentially, each fixing the last</td>
+</tr>
+<tr>
+<td align="left">Each tree sees</td>
+<td align="left">A bootstrap sample (+ random feature subset at each split)</td>
+<td align="left">The residual errors so far</td>
+</tr>
+<tr>
+<td align="left">Primarily reduces</td>
+<td align="left"><strong>Variance</strong></td>
+<td align="left"><strong>Bias</strong></td>
+</tr>
+<tr>
+<td align="left">Failure mode</td>
+<td align="left">Slightly weaker than tuned boosting</td>
+<td align="left">Overfits if over-trained / under-regularized</td>
+</tr>
+<tr>
+<td align="left">Tuning burden</td>
+<td align="left">Low (strong out of the box)</td>
+<td align="left">Higher (learning rate, depth, rounds)</td>
+</tr>
+</tbody></table></div><p><strong>Random forests</strong> grow many deep, decorrelated trees on bootstrap samples with random feature subsets, then average them. Averaging many high-variance, low-bias trees cancels the variance — a robust, low-maintenance default. <strong>Gradient boosting</strong> instead builds shallow trees one at a time, each trained on the previous ensemble&#39;s errors, steadily driving down bias. Tuned well (XGBoost, LightGBM, CatBoost), boosting is usually the top performer on heterogeneous tabular data.</p>
+<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Bagging = a <em>committee voting in parallel</em> to cancel each other&#39;s mistakes (kills variance). Boosting = a <em>relay team</em>, each runner covering the last one&#39;s shortfall (kills bias).</p>
+</div></aside><aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>The bagging-vs-boosting contrast is asked constantly. Nail the one-liner: bagging trains independent trees in parallel to reduce variance; boosting trains dependent trees sequentially on residuals to reduce bias. Follow-ups: &quot;why are random-forest trees deep but boosting trees shallow?&quot; (deep = low-bias high-variance, perfect for averaging; shallow = weak learners boosting corrects gradually) and &quot;which overfits more easily?&quot; (boosting, since it keeps fitting residuals).</p>
+</div></aside><h2 id="ensembles-in-full"><a class="anchor" href="#ensembles-in-full">#</a>Ensembles in Full</h2><p>Zooming out, the ensembles above are three instances of one principle: combine many models so their errors cancel. Worth knowing all the named patterns.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left">Method</th>
+<th align="left">How it combines</th>
+<th align="left">Mainly helps</th>
+</tr>
+</thead><tbody><tr>
+<td align="left"><strong>Bagging</strong></td>
+<td align="left">Parallel models on bootstrap samples, then average/vote</td>
+<td align="left">Variance</td>
+</tr>
+<tr>
+<td align="left"><strong>Boosting</strong></td>
+<td align="left">Sequential models on residuals</td>
+<td align="left">Bias</td>
+</tr>
+<tr>
+<td align="left"><strong>Stacking</strong></td>
+<td align="left">A meta-model learns to blend base models&#39; predictions</td>
+<td align="left">Both (if base models are diverse)</td>
+</tr>
+<tr>
+<td align="left"><strong>Voting</strong></td>
+<td align="left">Hard (majority) or soft (average probabilities)</td>
+<td align="left">Variance</td>
+</tr>
+</tbody></table></div><p>The condition for an ensemble to help is <strong>diversity</strong>: the base models must make <em>different</em> errors. Averaging ten copies of the same model gains nothing. This is why random forests inject randomness (bootstrap rows + random feature subsets) — to decorrelate the trees so their mistakes don&#39;t line up.</p>
+<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>An ensemble only helps if its members are <em>wrong in different ways</em>. Diversity is the whole trick — identical experts add nothing; disagreeing experts cancel each other&#39;s blind spots.</p>
+</div></aside><aside class="callout note"><div class="callout-title">Go deeper (optional)</div><div class="callout-body"><p>Stacking/blending of diverse models wins many Kaggle competitions: train diverse base models (trees, linear, nets), then a meta-learner on their out-of-fold predictions. The subtlety is leakage — the meta-model must be trained on <em>held-out</em> base predictions, or it learns from data the base models already saw.</p>
+</div></aside><h2 id="which-classifier-when"><a class="anchor" href="#which-classifier-when">#</a>Which Classifier When</h2><p>The payoff of the chapter: matching a model to the data in front of you. This is the decision interviewers actually want to see you make.</p>
+<div class="table-wrap"><table><thead><tr>
+<th align="left">Situation</th>
+<th align="left">Reach for</th>
+</tr>
+</thead><tbody><tr>
+<td align="left">Need a fast, interpretable baseline</td>
+<td align="left">Logistic regression</td>
+</tr>
+<tr>
+<td align="left">Text / very high-dimensional sparse data</td>
+<td align="left">Naive Bayes or linear SVM</td>
+</tr>
+<tr>
+<td align="left">Tabular data, want top accuracy</td>
+<td align="left">Gradient boosting (XGBoost/LightGBM)</td>
+</tr>
+<tr>
+<td align="left">Tabular data, want robust + low tuning</td>
+<td align="left">Random forest</td>
+</tr>
+<tr>
+<td align="left">Images, audio, language</td>
+<td align="left">Neural network</td>
+</tr>
+<tr>
+<td align="left">Small data, low dimensions, nonlinear</td>
+<td align="left">k-NN or SVM (RBF)</td>
+</tr>
+<tr>
+<td align="left">Need calibrated probabilities</td>
+<td align="left">Logistic regression (usually well calibrated), or calibrate afterward</td>
+</tr>
+<tr>
+<td align="left">Need to explain every prediction</td>
+<td align="left">Single decision tree or logistic regression</td>
+</tr>
+</tbody></table></div><p>The meta-strategy: <strong>always start with a simple baseline</strong> (logistic regression or a shallow tree), measure it honestly, then escalate to a stronger model only if the baseline leaves accuracy on the table. The baseline also catches leakage — a too-good baseline score is a red flag, not a victory.</p>
+<aside class="callout tip"><div class="callout-title">Interview angle</div><div class="callout-body"><p>&quot;You have a tabular dataset with 50k rows and mixed feature types — what do you use?&quot; Strong answer: a logistic-regression baseline for a reference point and calibration, then gradient-boosted trees as the likely winner, justified by their fit to heterogeneous tabular data and their handling of nonlinearities and interactions without manual feature engineering. Then mention you&#39;d validate the choice empirically — No Free Lunch.</p>
+</div></aside><h2 id="cross-cutting-skills-asked-of-senior-candidates"><a class="anchor" href="#cross-cutting-skills-asked-of-senior-candidates">#</a>Cross-Cutting Skills (Asked of Senior Candidates)</h2><p>Beyond naming models, senior interviews probe a few skills that cut across all classifiers.</p>
+<p><strong>Handling class imbalance.</strong> When one class is rare (fraud, disease), accuracy is useless and most classifiers drift toward the majority. Levers: resample (SMOTE / oversample minority, undersample majority), reweight the loss to penalize minority errors more, and — most importantly — <strong>change the metric</strong> to precision/recall, F1, or PR-AUC instead of accuracy.</p>
+<p><strong>Multiclass from binary models.</strong> Models like SVM are natively binary. <strong>One-vs-Rest</strong> trains one classifier per class against all others (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> classifiers); <strong>One-vs-One</strong> trains one per pair (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">k(k-1)/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/2</span></span></span></span> classifiers, each on less data). Logistic regression and trees handle multiclass natively via softmax / multi-way splits.</p>
+<p><strong>Calibration.</strong> A model can rank well but report dishonest probabilities (Naive Bayes, SVMs, deep nets often do). If you need the <em>number</em> 0.7 to mean &quot;70% of the time,&quot; calibrate with Platt scaling or isotonic regression on held-out data (see <a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a>).</p>
+<aside class="callout note"><div class="callout-title">Memory hook</div><div class="callout-body"><p>Three senior reflexes: imbalanced data → change the <em>metric</em> first, resampling/reweighting second. Binary-only model → wrap it in One-vs-Rest. Probabilities you&#39;ll <em>act on</em> → calibrate them.</p>
+</div></aside><aside class="callout abstract"><div class="callout-title">Rapid fire — Classification</div><div class="callout-body"><ul>
+<li>Two families: discriminative learns the boundary <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y\mid x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>; generative learns <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span></span></span></span> and can sample. Generative wins small-data, discriminative wins large-data.</li>
+<li>Logistic regression: linear in log-odds, sigmoid out, trained with convex cross-entropy. The boundary is linear; use it as the baseline.</li>
+<li>Naive Bayes: assumes conditional independence (false) but wins the argmax anyway; great for text; use Laplace smoothing; poorly calibrated.</li>
+<li>k-NN: lazy, local, dies in high dimensions, needs scaling. SVM: max-margin, strong in high-dim, kernel trick for nonlinearity.</li>
+<li>Trees overfit and are unstable. Bagging (random forest) = parallel trees killing variance; boosting (XGBoost) = sequential trees killing bias.</li>
+<li>Ensembles need diverse base models (wrong in different ways) to help.</li>
+<li>Pick by data: logistic baseline → boosting for tabular, NN for perceptual, NB/linear-SVM for text.</li>
+<li>Imbalance → change the metric (PR-AUC, F1) before resampling/reweighting.</li>
+</ul>
+</div></aside><h2 id="one-page-summary"><a class="anchor" href="#one-page-summary">#</a>One-Page Summary</h2><div class="table-wrap"><table><thead><tr>
+<th align="left">Concept</th>
+<th align="left">The one thing to remember</th>
+</tr>
+</thead><tbody><tr>
+<td align="left">Two families</td>
+<td align="left">Discriminative draws the boundary <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y\mid x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>; generative models <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">)</span></span></span></span> and can sample.</td>
+</tr>
+<tr>
+<td align="left">Logistic regression</td>
+<td align="left">Linear in log-odds, sigmoid out, convex cross-entropy loss; the usually well-calibrated baseline.</td>
+</tr>
+<tr>
+<td align="left">Why not MSE</td>
+<td align="left">Cross-entropy is convex with non-vanishing gradients; it&#39;s the Bernoulli MLE.</td>
+</tr>
+<tr>
+<td align="left">Naive Bayes</td>
+<td align="left">Conditional-independence assumption is false but the argmax still wins; great, fast text baseline.</td>
+</tr>
+<tr>
+<td align="left">k-NN</td>
+<td align="left">Lazy, local, needs scaling, dies in high dimensions; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> trades bias for variance.</td>
+</tr>
+<tr>
+<td align="left">SVM</td>
+<td align="left">Maximize the margin; kernel trick for nonlinear boundaries; strong in high dimensions.</td>
+</tr>
+<tr>
+<td align="left">Trees</td>
+<td align="left">Interpretable but overfit and unstable — the reason ensembles exist.</td>
+</tr>
+<tr>
+<td align="left">Bagging vs boosting</td>
+<td align="left">Bagging = parallel trees, kills variance (random forest). Boosting = sequential trees on residuals, kills bias (XGBoost).</td>
+</tr>
+<tr>
+<td align="left">Ensembles</td>
+<td align="left">Only help when base models are wrong in different ways — diversity is the trick.</td>
+</tr>
+<tr>
+<td align="left">Which when</td>
+<td align="left">Logistic baseline → boosting for tabular, NN for perceptual, NB/linear-SVM for text.</td>
+</tr>
+<tr>
+<td align="left">Imbalance</td>
+<td align="left">Change the metric first (PR-AUC, F1), then resample/reweight.</td>
+</tr>
+</tbody></table></div><hr>
+<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2><ul>
+<li><a class="wikilink" href="logistic-regression.html">Logistic Regression</a></li>
+<li><a class="wikilink" href="generative-vs-discriminative.html">Generative vs Discriminative</a></li>
+<li><a class="wikilink" href="bagging-vs-boosting.html">Bagging vs Boosting</a></li>
+<li><a class="wikilink" href="precision-and-recall.html">Precision &amp; Recall</a></li>
+<li><a class="wikilink" href="regression-methods.html">Regression Methods</a></li>
+</ul>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="moc-models.html"><small>← Previous</small>Models</a><a class="r" href="regression-methods.html"><small>Next →</small>Regression Methods</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#the-master-table-every-classifier-side-by-side">The Master Table — Every Classifier Side by Side</a><a class="l2" href="#two-families-generative-vs-discriminative">Two Families: Generative vs Discriminative</a><a class="l2" href="#logistic-regression-the-must-know-baseline">Logistic Regression — The Must-Know Baseline</a><a class="l2" href="#naive-bayes-fast-and-great-for-text">Naive Bayes — Fast and Great for Text</a><a class="l2" href="#k-nn-and-svm-distance-vs-margin">k-NN and SVM — Distance vs Margin</a><a class="l2" href="#trees-forests-boosting-bagging-vs-boosting">Trees, Forests, Boosting — Bagging vs Boosting</a><a class="l2" href="#ensembles-in-full">Ensembles in Full</a><a class="l2" href="#which-classifier-when">Which Classifier When</a><a class="l2" href="#cross-cutting-skills-asked-of-senior-candidates">Cross-Cutting Skills (Asked of Senior Candidates)</a><a class="l2" href="#one-page-summary">One-Page Summary</a><a class="l2" href="#related">Related</a></aside>
+</div>
+<div id="bar"></div>
+
+<script src="assets/app.js"></script>
+</body></html>

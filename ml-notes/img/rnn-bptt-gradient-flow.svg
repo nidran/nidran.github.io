@@ -1,0 +1,43 @@
+<svg viewBox="0 0 780 470" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img">
+  <rect x="0" y="0" width="780" height="470" fill="#ffffff"/>
+  <title>How gradients are computed in an RNN via backpropagation through time</title>
+  <defs>
+    <marker id="fwd" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5a5a5a"/></marker>
+    <marker id="bwd" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f6fd0"/></marker>
+    <marker id="up" markerWidth="9" markerHeight="9" refX="4" refY="2" orient="auto"><path d="M0,8 L4,0 L8,8 Z" fill="#5a5a5a"/></marker>
+  </defs>
+  <text x="390" y="30" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a1a">RNN unrolled in time: forward, then backprop (BPTT)</text>
+  <g font-size="12" fill="#1a1a1a" text-anchor="middle">
+    <rect x="92" y="92" width="56" height="30" rx="6" fill="none" stroke="#c9c9c9"/><text x="120" y="111">L1</text>
+    <rect x="262" y="92" width="56" height="30" rx="6" fill="none" stroke="#c9c9c9"/><text x="290" y="111">L2</text>
+    <rect x="432" y="92" width="56" height="30" rx="6" fill="none" stroke="#c9c9c9"/><text x="460" y="111">L3</text>
+    <rect x="602" y="92" width="56" height="30" rx="6" fill="none" stroke="#2f6fd0" stroke-width="2"/><text x="630" y="111" font-weight="700">L4</text>
+  </g>
+  <g font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="600">
+    <rect x="88" y="210" width="64" height="50" rx="8" fill="#f3f4f6" stroke="#5a5a5a"/><text x="120" y="240">h1</text>
+    <rect x="258" y="210" width="64" height="50" rx="8" fill="#f3f4f6" stroke="#5a5a5a"/><text x="290" y="240">h2</text>
+    <rect x="428" y="210" width="64" height="50" rx="8" fill="#f3f4f6" stroke="#5a5a5a"/><text x="460" y="240">h3</text>
+    <rect x="598" y="210" width="64" height="50" rx="8" fill="#f3f4f6" stroke="#5a5a5a"/><text x="630" y="240">h4</text>
+  </g>
+  <g font-size="12" fill="#5a5a5a" text-anchor="middle">
+    <text x="120" y="360">x1</text><text x="290" y="360">x2</text><text x="460" y="360">x3</text><text x="630" y="360">x4</text>
+  </g>
+  <g stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#up)" fill="none">
+    <line x1="120" y1="348" x2="120" y2="264"/><line x1="290" y1="348" x2="290" y2="264"/><line x1="460" y1="348" x2="460" y2="264"/><line x1="630" y1="348" x2="630" y2="264"/>
+    <line x1="120" y1="206" x2="120" y2="126"/><line x1="290" y1="206" x2="290" y2="126"/><line x1="460" y1="206" x2="460" y2="126"/><line x1="630" y1="206" x2="630" y2="126"/>
+  </g>
+  <g stroke="#5a5a5a" stroke-width="1.8" marker-end="url(#fwd)" fill="none">
+    <line x1="152" y1="235" x2="256" y2="235"/><line x1="322" y1="235" x2="426" y2="235"/><line x1="492" y1="235" x2="596" y2="235"/>
+  </g>
+  <text x="390" y="290" text-anchor="middle" font-size="11" fill="#5a5a5a">forward pass: same weights W reused at every step →</text>
+  <g fill="none" stroke="#2f6fd0" marker-end="url(#bwd)">
+    <path d="M598,235 C545,180 375,180 326,232" stroke-width="4" opacity="0.95"/>
+    <path d="M428,237 C375,182 205,182 156,234" stroke-width="2.4" opacity="0.6"/>
+    <path d="M258,238 C205,188 95,188 90,232" stroke-width="1.1" opacity="0.32"/>
+  </g>
+  <text x="390" y="160" text-anchor="middle" font-size="11" fill="#2f6fd0">← backward: each hop multiplies by ~W, so the signal shrinks</text>
+  <text x="120" y="186" text-anchor="middle" font-size="10" fill="#2f6fd0" opacity="0.8">gradient ≈ 0</text>
+  <text x="630" y="186" text-anchor="middle" font-size="10" fill="#2f6fd0" font-weight="600">strong gradient</text>
+  <text x="390" y="420" text-anchor="middle" font-size="12.5" fill="#1a1a1a">Total loss = L1+L2+L3+L4. To fix L4, the early weights (at x1) need a gradient...</text>
+  <text x="390" y="442" text-anchor="middle" font-size="12.5" fill="#1a1a1a">...but after many multiplications it vanishes before reaching them.</text>
+</svg>
