@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sklearn Cheat Sheet</title>
+<style>
+  :root { --bg:#fafaf9; --fg:#1c1917; --muted:#78716c; --card:#fff; --line:#e7e5e4; --code:#f5f5f4; --accent:#4f46e5; --warn:#b45309;
+          --basic:#15803d; --inter:#b45309; --adv:#be123c; --basic-bg:#dcfce7; --inter-bg:#fef3c7; --adv-bg:#ffe4e6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#14120f; --fg:#f5f5f4; --muted:#a8a29e; --card:#1c1917; --line:#2e2a27; --code:#0f0d0b; --accent:#a5b4fc; --warn:#fbbf24;
+            --basic:#86efac; --inter:#fcd34d; --adv:#fda4af; --basic-bg:#14301f; --inter-bg:#33260a; --adv-bg:#3a1520; }
+  }
+  :root { --c-kw:#c026d3; --c-str:#15803d; --c-num:#c2410c; --c-fn:#2563eb; --c-cls:#b45309; --c-par:#0e7490; --c-com:#78716c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --c-kw:#f0abfc; --c-str:#86efac; --c-num:#fdba74; --c-fn:#93c5fd; --c-cls:#fcd34d; --c-par:#67e8f9; --c-com:#8a837d; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 16px 80px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 18px; }
+  #q { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--fg); font:inherit; margin-bottom:12px; }
+  .tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+  .tab { padding:6px 14px; border:1px solid var(--line); border-radius:99px; background:var(--card); color:var(--fg); cursor:pointer; font:inherit; font-size:14px; }
+  .tab[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
+  .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+  nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:22px; }
+  nav a { font-size:12.5px; padding:3px 10px; border:1px solid var(--line); border-radius:99px; color:var(--fg); text-decoration:none; background:var(--card); }
+  nav a:hover { border-color:var(--accent); color:var(--accent); }
+  .lvl { margin:30px 0 12px; padding:14px 16px; border-radius:12px; border:1px solid var(--line); background:var(--card); }
+  .lvl h2 { font-size:20px; margin:0 0 4px; display:flex; align-items:center; gap:8px; }
+  .lvl p { margin:2px 0; color:var(--muted); font-size:14px; }
+  .lvl .ready { margin-top:8px; font-size:13.5px; color:var(--fg); }
+  .lvl .ready b { color:var(--accent); }
+  section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
+  section h3 { font-size:16.5px; margin:0 0 6px; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+  .badge { font-size:11px; font-weight:600; padding:2px 8px; border-radius:99px; }
+  .b-basic { background:var(--basic-bg); color:var(--basic); } .b-inter { background:var(--inter-bg); color:var(--inter); } .b-adv { background:var(--adv-bg); color:var(--adv); }
+  .star { font-size:11px; font-weight:600; padding:2px 8px; border-radius:99px; background:var(--code); color:var(--accent); border:1px solid var(--line); }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 8px; }
+  .blk { position:relative; margin:8px 0; }
+  pre { margin:0; padding:12px; background:var(--code); border:1px solid var(--line); border-radius:8px; overflow-x:auto; font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; }
+  button.copy { position:absolute; top:6px; right:6px; font-size:11px; padding:3px 8px; border:1px solid var(--line); border-radius:6px; background:var(--card); color:var(--muted); cursor:pointer; }
+  button.copy:hover { color:var(--accent); border-color:var(--accent); }
+  ul.tips { margin:8px 0 0; padding-left:20px; font-size:14px; }
+  ul.tips li { margin:3px 0; } ul.tips li::marker { color:var(--warn); }
+  table { border-collapse:collapse; width:100%; font-size:13.5px; margin:6px 0; }
+  th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; }
+  code.i { background:var(--code); padding:1px 5px; border-radius:4px; font:12.5px ui-monospace,Menlo,monospace; }
+  .k { color:var(--c-kw); font-weight:600; } .s { color:var(--c-str); } .n { color:var(--c-num); }
+  .f { color:var(--c-fn); } .c { color:var(--c-cls); } .p { color:var(--c-par); } .m { color:var(--c-com); font-style:italic; }
+  .hide { display:none !important; }
+  .empty { color:var(--muted); text-align:center; padding:30px 0; }
+</style>
+</head>
+<body><div style="position:sticky;top:0;z-index:50;background:#4f46e5;font:600 13px system-ui;padding:7px 16px"><a href="index.html" style="color:#fff;text-decoration:none">← ML Interview Handbook</a></div>
+<div class="wrap">
+  <h1>sklearn Cheat Sheet</h1>
+  <p class="sub">Tabular data, imbalanced classification, PyTorch model · Basics → Intermediate → Advanced</p>
+  <input id="q" type="search" placeholder="Filter (e.g. threshold, imputer, calibration, GroupKFold)…" aria-label="Filter">
+  <div class="tabs" id="tabs"></div>
+  <nav id="nav"></nav>
+  <div id="root"></div>
+  <p class="empty hide" id="empty">No matches. Clear the filter or switch level.</p>
+</div>
+
+<script>
+const LEVELS = {
+  basic: { name:"Basics", color:"basic",
+    intro:"The vocabulary of every sklearn script. You must be able to write all of this from memory, with zero lookups.",
+    ready:"<b>You're ready if you can:</b> split, scale, impute and encode on train only, fit a model, call <code class='i'>predict_proba</code>, and report PR-AUC, precision, recall and a confusion matrix." },
+  inter: { name:"Intermediate", color:"inter",
+    intro:"What turns a script into a trustworthy experiment: pipelines, proper CV, imbalance, tuning, and thresholds.",
+    ready:"<b>You're ready if you can:</b> build a leak-free <code class='i'>Pipeline</code> + <code class='i'>ColumnTransformer</code>, cross-validate with the right splitter, tune on PR-AUC, and choose a threshold from a precision floor or a cost." },
+  adv: { name:"Advanced", color:"adv",
+    intro:"Production-grade judgment: calibration, leak-safe encoders, group and time validation, cost-based thresholds, drift. These separate strong candidates.",
+    ready:"<b>You're ready if you can:</b> calibrate a PyTorch model's scores, explain why target encoding leaks, validate with groups and a time gap, and tune a threshold on business cost." }
+};
+
+// lvl: basic|inter|adv · star: high-value items
+const S = [
+/* ============================== BASICS ============================== */
+{lvl:"basic", id:"imports", t:"Imports you will reuse", star:true, blocks:[`import numpy as np, pandas as pd
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
+from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (average_precision_score, roc_auc_score, precision_recall_curve,
+                             confusion_matrix, classification_report, precision_score,
+                             recall_score, f1_score)`]},
+
+{lvl:"basic", id:"api", t:"The estimator API (everything follows it)", star:true,
+ desc:"Every object is either an <b>estimator/model</b> (<code class='i'>fit</code>, <code class='i'>predict</code>) or a <b>transformer</b> (<code class='i'>fit</code>, <code class='i'>transform</code>). Learn this once and the whole library is predictable.",
+ blocks:[`model.fit(X_tr, y_tr)               # learn parameters from TRAIN
+model.predict(X_va)                   # hard labels (threshold 0.5)
+model.predict_proba(X_va)[:, 1]       # P(class 1)  <- use this for metrics
+model.decision_function(X_va)         # raw score / logit (no sigmoid)
+model.score(X_va, y_va)               # accuracy by default (rarely what you want)
+
+tf.fit(X_tr); tf.transform(X_va)      # transformers: learn on train, apply anywhere
+tf.fit_transform(X_tr)                # fit + transform in one call (TRAIN only)
+
+model.get_params(); model.set_params(C=0.1)
+from sklearn.base import clone; fresh = clone(model)   # unfitted copy, same params`],
+ tips:["Trailing underscore = learned attribute: <code class='i'>coef_</code>, <code class='i'>classes_</code>, <code class='i'>feature_importances_</code>.","Never call <code class='i'>fit</code> on validation or test data."]},
+
+{lvl:"basic", id:"load", t:"Load and inspect (pandas)", star:true, blocks:[`df = pd.read_csv("transactions.csv")
+df.shape; df.dtypes; df.head()
+df.describe(include="all").T
+df.isna().mean().sort_values(ascending=False)       # missing rate per column
+df[target].value_counts(normalize=True)             # class balance
+df.select_dtypes("object").nunique()                # categorical cardinality
+df.duplicated().sum(); df = df.drop_duplicates()
+df.corrwith(df[target], numeric_only=True).abs().sort_values(ascending=False)
+df.groupby(target)[["amount", "ip_risk"]].agg(["mean", "median"])`]},
+
+{lvl:"basic", id:"split", t:"Train / validation / test split", star:true, blocks:[
+`# random + stratified (keeps the fraud rate in each part)
+X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)`,
+`# time-ordered data: sort, then slice. NEVER shuffle.
+df = df.sort_values("timestamp"); n = len(df)
+tr, va, te = df.iloc[:int(.7*n)], df.iloc[int(.7*n):int(.85*n)], df.iloc[int(.85*n):]`],
+ tips:["Fraud drifts and adversaries adapt, so say out loud you prefer a <b>time-based split</b>."]},
+
+{lvl:"basic", id:"scale", t:"Scaling", blocks:[`sc = StandardScaler().fit(X_tr[num_cols])        # mean 0, std 1 (default for DNNs)
+X_tr[num_cols] = sc.transform(X_tr[num_cols])
+X_va[num_cols] = sc.transform(X_va[num_cols])  # reuse the TRAIN statistics
+
+from sklearn.preprocessing import MinMaxScaler, RobustScaler
+MinMaxScaler()    # squeeze into [0, 1]
+RobustScaler()    # median/IQR: safer with outliers`],
+ tips:["Trees do not need scaling; neural nets and logistic regression do."]},
+
+{lvl:"basic", id:"impute", t:"Missing values", blocks:[`imp = SimpleImputer(strategy="median").fit(X_tr[num_cols])   # mean | median | most_frequent | constant
+X_tr[num_cols] = imp.transform(X_tr[num_cols])
+
+df["ip_risk_na"] = df["ip_risk"].isna().astype(float)    # keep a missing indicator BEFORE imputing
+# or: SimpleImputer(strategy="median", add_indicator=True)`],
+ tips:["Missingness can be informative in fraud. Check the missing rate by label."]},
+
+{lvl:"basic", id:"encode", t:"Encoding categoricals", blocks:[`ohe = OneHotEncoder(handle_unknown="ignore", sparse_output=False).fit(X_tr[cat_cols])
+X_cat = ohe.transform(X_tr[cat_cols])
+ohe.get_feature_names_out()
+
+oe = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1).fit(X_tr[cat_cols])
+# for the DNN: ordinal ids + nn.Embedding(n_categories + 1, dim)
+
+from sklearn.preprocessing import LabelEncoder
+y_enc = LabelEncoder().fit_transform(y_str)               # for string TARGETS only`],
+ tips:["High-cardinality IDs (merchant, card): do not one-hot. Use an embedding, hashing, or drop them."]},
+
+{lvl:"basic", id:"first", t:"Fit a first model", star:true, blocks:[`clf = LogisticRegression(max_iter=500, class_weight="balanced")
+clf.fit(X_tr_t, y_tr)
+p_va = clf.predict_proba(X_va_t)[:, 1]
+pred = (p_va >= 0.5).astype(int)`]},
+
+{lvl:"basic", id:"metrics", t:"Classification metrics", star:true, blocks:[`average_precision_score(y, p)      # PR-AUC. Headline metric for rare positives
+roc_auc_score(y, p)                 # ranking quality; flattering under heavy imbalance
+precision_score(y, pred); recall_score(y, pred); f1_score(y, pred)
+confusion_matrix(y, pred)           # [[TN, FP], [FN, TP]]
+print(classification_report(y, pred, digits=3))`],
+ tips:["<b>Precision</b> = TP/(TP+FP): of what I flagged, how much was right. <b>Recall</b> = TP/(TP+FN): of the real fraud, how much I caught.","Accuracy is meaningless at 1-2% positives. Always compare PR-AUC to the <b>base rate</b>."]},
+
+{lvl:"basic", id:"regmetrics", t:"Regression metrics (quick reference)", blocks:[`from sklearn.metrics import mean_absolute_error, mean_squared_error, root_mean_squared_error, r2_score
+mean_absolute_error(y, p); root_mean_squared_error(y, p); r2_score(y, p)`]},
+
+{lvl:"basic", id:"cvbasic", t:"Cross-validation (quick score)", blocks:[`cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+scores = cross_val_score(clf, X_tr_t, y_tr, cv=cv, scoring="average_precision")
+scores.mean(), scores.std()`]},
+
+{lvl:"basic", id:"metrictable", t:"Which metric when", star:true, table:{
+  head:["Metric","Use it for","Watch out"],
+  rows:[["PR-AUC (<code class='i'>average_precision</code>)","Rare positives, fraud","Compare against the base rate"],
+        ["ROC-AUC","Overall ranking","Looks great even when precision is poor"],
+        ["Precision / Recall","Fixed operating point","Depend on the threshold"],
+        ["F1","One number for a threshold","Ignores business costs"],
+        ["Log loss / Brier","Probability quality","Distorted by class weights"],
+        ["Accuracy","Balanced classes only","Useless at 1-2% positives"]]}},
+
+/* ============================ INTERMEDIATE ============================ */
+{lvl:"inter", id:"pipe", t:"Pipeline + ColumnTransformer (leak-free by construction)", star:true,
+ desc:"A Pipeline refits every step on the training fold only, so cross-validation cannot leak scaler or imputer statistics.",
+ blocks:[`from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
+pre = ColumnTransformer([
+    ("num", Pipeline([("imp", SimpleImputer(strategy="median")), ("sc", StandardScaler())]), num_cols),
+    ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols),
+], remainder="drop")
+
+pipe = Pipeline([("pre", pre), ("clf", LogisticRegression(max_iter=500, class_weight="balanced"))])
+pipe.fit(X_tr, y_tr)                      # raw DataFrame in, everything handled inside
+p = pipe.predict_proba(X_va)[:, 1]
+pipe.named_steps["clf"].coef_
+
+pre.set_output(transform="pandas")        # transformer returns a DataFrame (keeps column names)`],
+ tips:["Access nested params with a double underscore: <code class='i'>clf__C</code>, <code class='i'>pre__num__imp__strategy</code>."]},
+
+{lvl:"inter", id:"cv", t:"Choosing the right splitter", star:true, blocks:[`from sklearn.model_selection import StratifiedKFold, TimeSeriesSplit, GroupKFold, StratifiedGroupKFold
+
+StratifiedKFold(5, shuffle=True, random_state=0)      # imbalanced, i.i.d. rows
+TimeSeriesSplit(n_splits=5)                           # time-ordered: train always before validate
+GroupKFold(n_splits=5)                                # same card/customer never in both train and val
+StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=0)   # groups + keeps class ratio
+
+for tr_idx, va_idx in GroupKFold(5).split(X, y, groups=df["card_id"]):
+    ...`]},
+
+{lvl:"inter", id:"cvfull", t:"cross_validate and out-of-fold predictions", blocks:[`from sklearn.model_selection import cross_validate, cross_val_predict
+
+res = cross_validate(pipe, X_tr, y_tr, cv=cv, n_jobs=-1, return_train_score=True,
+                     scoring={"ap": "average_precision", "auc": "roc_auc"})
+res["test_ap"].mean(), res["train_ap"].mean()          # big gap = overfitting
+
+oof = cross_val_predict(pipe, X_tr, y_tr, cv=cv, method="predict_proba")[:, 1]   # honest scores for every row`]},
+
+{lvl:"inter", id:"imb", t:"Handling class imbalance", star:true, blocks:[`LogisticRegression(class_weight="balanced")
+RandomForestClassifier(class_weight="balanced_subsample")
+HistGradientBoostingClassifier(class_weight="balanced")
+
+from sklearn.utils.class_weight import compute_class_weight
+w = compute_class_weight("balanced", classes=np.array([0, 1]), y=y_tr)
+pos_weight = (y_tr == 0).sum() / (y_tr == 1).sum()      # -> torch BCEWithLogitsLoss(pos_weight=...)
+
+# per-row weights (e.g. weight fraud by amount)
+clf.fit(X_tr_t, y_tr, sample_weight=np.where(y_tr == 1, 20.0, 1.0))`],
+ tips:["Resampling (SMOTE, undersampling) lives in the separate <code class='i'>imbalanced-learn</code> package, not sklearn.","Reweighting <b>distorts predicted probabilities</b>. Recalibrate if you need real probabilities."]},
+
+{lvl:"inter", id:"thresh", t:"Threshold selection (on VALIDATION, never test)", star:true, blocks:[
+`prec, rec, thr = precision_recall_curve(y_va, p_va)       # prec/rec are 1 longer than thr
+ok = prec[:-1] >= 0.90                                    # precision floor
+t = thr[ok][np.argmax(rec[:-1][ok])] if ok.any() else 0.5 # max recall under the floor
+pred = (p_te >= t).astype(int)`,
+`# best F1
+f1 = 2*prec[:-1]*rec[:-1] / (prec[:-1] + rec[:-1] + 1e-12); t = thr[f1.argmax()]`,
+`# recall at a fixed false-positive rate (e.g. block at most 1% of good customers)
+from sklearn.metrics import roc_curve
+fpr, tpr, thr2 = roc_curve(y_va, p_va); t = thr2[np.searchsorted(fpr, 0.01)]`]},
+
+{lvl:"inter", id:"tune", t:"Hyperparameter search", blocks:[`from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from scipy.stats import loguniform
+
+gs = GridSearchCV(pipe, {"clf__C": [0.01, 0.1, 1, 10]}, scoring="average_precision",
+                  cv=cv, n_jobs=-1, refit=True)
+gs.fit(X_tr, y_tr)
+gs.best_params_; gs.best_score_; gs.best_estimator_
+
+rs = RandomizedSearchCV(pipe, {"clf__C": loguniform(1e-3, 1e2)}, n_iter=30,
+                        scoring="average_precision", cv=cv, n_jobs=-1, random_state=0)`],
+ tips:["Always set <code class='i'>scoring</code> to your real metric. The default is accuracy."]},
+
+{lvl:"inter", id:"trees", t:"Tree models and boosting", blocks:[`from sklearn.ensemble import RandomForestClassifier, HistGradientBoostingClassifier
+
+RandomForestClassifier(n_estimators=300, min_samples_leaf=5, n_jobs=-1, class_weight="balanced_subsample")
+
+hgb = HistGradientBoostingClassifier(
+    max_iter=500, learning_rate=0.05, max_leaf_nodes=31, l2_regularization=1.0,
+    early_stopping=True, validation_fraction=0.1, n_iter_no_change=20,
+    categorical_features="from_dtype",    # use pandas 'category' columns natively
+    class_weight="balanced")
+hgb.fit(X_tr_df, y_tr); hgb.n_iter_`],
+ tips:["Gradient-boosted trees are the strong tabular baseline. Say so, then deliver the DNN they asked for.","Built-in early stopping uses a <b>random</b> validation split. For time-ordered data, set <code class='i'>early_stopping=False</code> and validate manually."]},
+
+{lvl:"inter", id:"feat", t:"Feature engineering transformers", blocks:[`from sklearn.preprocessing import FunctionTransformer, QuantileTransformer, PowerTransformer, KBinsDiscretizer, PolynomialFeatures
+
+FunctionTransformer(np.log1p, feature_names_out="one-to-one")        # tame skew inside a Pipeline
+QuantileTransformer(output_distribution="normal")                    # rank-based, robust to outliers
+PowerTransformer(method="yeo-johnson")
+KBinsDiscretizer(n_bins=10, encode="ordinal", strategy="quantile")
+PolynomialFeatures(2, interaction_only=True, include_bias=False)
+
+df["amount_ratio"] = df["amount"] / (df["avg_amount_30d"] + 1)       # ratio features often beat raw ones
+df["hour"] = (df["timestamp"] % 86400) // 3600`]},
+
+{lvl:"inter", id:"select", t:"Feature selection", blocks:[`from sklearn.feature_selection import VarianceThreshold, SelectKBest, mutual_info_classif, SelectFromModel
+
+VarianceThreshold(0.0)                                  # drop constant columns
+SelectKBest(mutual_info_classif, k=20)
+SelectFromModel(LogisticRegression(penalty="l1", solver="liblinear", C=0.1))   # L1 zeroes weak features`]},
+
+{lvl:"inter", id:"curves", t:"Learning curves (diagnose bias vs variance)", blocks:[`from sklearn.model_selection import learning_curve
+sizes, tr_s, va_s = learning_curve(pipe, X_tr, y_tr, cv=cv, scoring="average_precision",
+                                   train_sizes=np.linspace(0.1, 1, 5), n_jobs=-1)
+tr_s.mean(1), va_s.mean(1)   # both low = underfit; big gap = overfit / need more data`]},
+
+{lvl:"inter", id:"save", t:"Save and load", blocks:[`import joblib
+joblib.dump(pipe, "model.joblib"); pipe = joblib.load("model.joblib")`]},
+
+/* ============================== ADVANCED ============================== */
+{lvl:"adv", id:"cal", t:"Calibration (scores must mean what they say)", star:true,
+ desc:"Radar scores feed rules and thresholds, so calibrated probabilities matter. Class weighting and boosted trees often miscalibrate.",
+ blocks:[`from sklearn.calibration import CalibratedClassifierCV, CalibrationDisplay, calibration_curve
+from sklearn.metrics import brier_score_loss
+from sklearn.frozen import FrozenEstimator            # sklearn >= 1.6
+
+frac_pos, mean_pred = calibration_curve(y_va, p_va, n_bins=10, strategy="quantile")
+CalibrationDisplay.from_predictions(y_va, p_va, n_bins=10, strategy="quantile")
+brier_score_loss(y_va, p_va)
+
+# calibrate with CV
+cal = CalibratedClassifierCV(clf, method="isotonic", cv=5).fit(X_tr_t, y_tr)   # or "sigmoid" (Platt)
+
+# calibrate an ALREADY-TRAINED model on a held-out validation set
+cal = CalibratedClassifierCV(FrozenEstimator(clf), method="sigmoid").fit(X_va_t, y_va)`,
+`# calibrating a PyTorch model: Platt scaling on the logits
+logits_va = model_logits(val).reshape(-1, 1)             # raw outputs, before the sigmoid
+platt = LogisticRegression().fit(logits_va, y_va)
+p_cal = platt.predict_proba(logits_te.reshape(-1, 1))[:, 1]`],
+ tips:["Isotonic needs plenty of data (thousands of positives). Prefer sigmoid when positives are scarce.","Calibrate on data the model did not train on."]},
+
+{lvl:"adv", id:"tuned", t:"Cost-based threshold tuning (TunedThresholdClassifierCV)", star:true, blocks:[`from sklearn.metrics import make_scorer
+from sklearn.model_selection import TunedThresholdClassifierCV
+
+def cost(y, pred, fn_cost=100, fp_cost=5):             # missed fraud costs 20x a false block
+    tn, fp, fn, tp = confusion_matrix(y, pred).ravel()
+    return fn * fn_cost + fp * fp_cost
+cost_scorer = make_scorer(cost, greater_is_better=False)
+
+tuned = TunedThresholdClassifierCV(clf, scoring=cost_scorer, cv=5, thresholds=100).fit(X_tr_t, y_tr)
+tuned.best_threshold_; tuned.predict(X_te_t)`],
+ tips:["Clarify the cost ratio of a missed fraud vs a blocked good customer. It shows product sense."]},
+
+{lvl:"adv", id:"te", t:"Target encoding without leakage", star:true, blocks:[`from sklearn.preprocessing import TargetEncoder
+
+te = TargetEncoder(target_type="binary", smooth="auto", cv=5, random_state=0)
+Z_tr = te.fit_transform(X_tr[["merchant_id"]], y_tr)   # internally cross-fitted, so train rows do not see their own label
+Z_va = te.transform(X_va[["merchant_id"]])             # full-train mapping for new data`],
+ tips:["A naive <code class='i'>groupby(col)[target].mean()</code> on the full data leaks the label into the feature.","Smoothing shrinks rare categories toward the global mean."]},
+
+{lvl:"adv", id:"nested", t:"Group, time-gap, and nested validation", blocks:[`# gap between train and validation avoids label/feature leakage across the boundary
+TimeSeriesSplit(n_splits=5, gap=1000)
+
+# same card never appears on both sides
+StratifiedGroupKFold(5, shuffle=True, random_state=0).split(X, y, groups=df["card_id"])
+
+# nested CV: unbiased estimate of "tune + fit"
+inner = GridSearchCV(pipe, grid, cv=3, scoring="average_precision")
+outer = cross_val_score(inner, X, y, cv=StratifiedKFold(5, shuffle=True, random_state=0),
+                        scoring="average_precision")`]},
+
+{lvl:"adv", id:"custom", t:"Custom transformer (plugs into Pipeline)", blocks:[`from sklearn.base import BaseEstimator, TransformerMixin
+
+class AmountRatio(BaseEstimator, TransformerMixin):
+    def fit(self, X, y=None):
+        return self                                    # learn nothing; stateless
+    def transform(self, X):
+        X = X.copy()
+        X["amount_ratio"] = X["amount"] / (X["avg_amount_30d"] + 1)
+        return X`]},
+
+{lvl:"adv", id:"inspect", t:"Model inspection", blocks:[`from sklearn.inspection import permutation_importance, PartialDependenceDisplay
+
+r = permutation_importance(clf, X_va_t, y_va, scoring="average_precision", n_repeats=5, random_state=0)
+pd.Series(r.importances_mean, index=feature_names).sort_values(ascending=False)
+
+PartialDependenceDisplay.from_estimator(clf, X_va_df, ["amount", "ip_risk"])
+
+fn = X_va[(y_va == 1) & (pred == 0)]     # missed fraud: what do they share?
+fp = X_va[(y_va == 0) & (pred == 1)]     # blocked good customers: why?`],
+ tips:["Permutation importance on the validation set is more honest than impurity-based importances."]},
+
+{lvl:"adv", id:"rank", t:"Ranking-style metrics (top-k review queues)", blocks:[`k = int(0.01 * len(y)); top = np.argsort(-p)[:k]     # review the top 1% riskiest
+precision_at_k = y[top].mean(); recall_at_k = y[top].sum() / y.sum()
+
+from sklearn.metrics import ndcg_score, det_curve
+ndcg_score(y.reshape(1, -1), p.reshape(1, -1), k=k)`]},
+
+{lvl:"adv", id:"anom", t:"Unsupervised anomaly signal (fraud with few labels)", blocks:[`from sklearn.ensemble import IsolationForest
+iso = IsolationForest(n_estimators=300, contamination="auto", random_state=0).fit(X_tr_t)
+anomaly = -iso.score_samples(X_va_t)       # higher = more anomalous; can be a feature for the main model`]},
+
+{lvl:"adv", id:"ens", t:"Ensembles", blocks:[`from sklearn.ensemble import VotingClassifier, StackingClassifier
+VotingClassifier([("lr", lr), ("hgb", hgb)], voting="soft")
+StackingClassifier([("rf", rf), ("hgb", hgb)], final_estimator=LogisticRegression(), cv=5)`]},
+
+{lvl:"adv", id:"drift", t:"Drift check: Population Stability Index", blocks:[`def psi(expected, actual, bins=10):
+    qs = np.quantile(expected, np.linspace(0, 1, bins + 1)); qs[0], qs[-1] = -np.inf, np.inf
+    e = np.histogram(expected, qs)[0] / len(expected)
+    a = np.histogram(actual, qs)[0] / len(actual)
+    e, a = np.clip(e, 1e-6, None), np.clip(a, 1e-6, None)
+    return np.sum((a - e) * np.log(a / e))
+# rule of thumb: < 0.1 stable, 0.1-0.25 shifting, > 0.25 investigate`],
+ tips:["Not in sklearn, but a good production-monitoring answer for \"how would you know the model degraded?\""]},
+
+{lvl:"adv", id:"bridge", t:"Bridge to PyTorch", star:true, blocks:[`X_t = pre.fit_transform(X_tr)                         # fit on train only
+X_t = X_t.toarray() if hasattr(X_t, "toarray") else X_t   # sparse OHE -> dense
+xb = torch.tensor(X_t, dtype=torch.float32)
+yb = torch.tensor(np.asarray(y_tr), dtype=torch.float32)  # float32 labels for BCE
+
+# back to sklearn metrics
+p = torch.sigmoid(logits).detach().cpu().numpy()
+average_precision_score(y_np, p)`],
+ tips:["Use sklearn for preprocessing, baselines and metrics, and PyTorch for the DNN. That split keeps each tool doing what it does best."]},
+
+{lvl:"all", id:"gotchas", t:"Gotchas to say out loud", star:true, tips:[
+ "<code class='i'>fit</code> on train only, <code class='i'>transform</code> on val/test. Fitting on everything leaks.",
+ "<code class='i'>predict_proba(...)[:, 1]</code> for metrics; <code class='i'>predict</code> is a hard 0/1 at threshold 0.5.",
+ "<code class='i'>class_weight</code> / <code class='i'>pos_weight</code> shift predicted probabilities. Recalibrate if you need real ones.",
+ "Stratify when imbalanced. Do not shuffle time-ordered data. Group by card or customer when rows are not independent.",
+ "Choose the threshold on validation, report on test once.",
+ "<code class='i'>confusion_matrix</code> is [[TN, FP], [FN, TP]]. Do not flip precision and recall.",
+ "PyTorch needs <code class='i'>float32</code> tensors, and sparse OHE output needs <code class='i'>.toarray()</code> first."]}
+];
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const TOK = /(#.*)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|\b(import|from|as|for|in|if|else|and|or|not|is|def|return|lambda|class)\b|\b(True|False|None)\b|(\b\d+\.?\d*(?:e-?\d+)?\b)|\b([A-Z][A-Za-z0-9_]*)(?=\()|\b([a-z_][A-Za-z0-9_]*)(?=\()|\b([a-z_][A-Za-z0-9_]*)(?==(?!=))/g;
+function hl(src) {
+  let out = "", last = 0, m; TOK.lastIndex = 0;
+  while ((m = TOK.exec(src))) {
+    out += esc(src.slice(last, m.index));
+    const cls = m[1] ? "m" : m[2] ? "s" : (m[3] || m[4]) ? "k" : m[5] ? "n" : m[6] ? "c" : m[7] ? "f" : "p";
+    out += `<span class="${cls}">${esc(m[0])}</span>`; last = TOK.lastIndex;
+  }
+  return out + esc(src.slice(last));
+}
+const strip = h => h.replace(/<[^>]+>/g, " ");
+
+const root = document.getElementById("root"), nav = document.getElementById("nav"), tabsEl = document.getElementById("tabs");
+const secs = [], heads = {};
+let level = "all", query = "";
+
+// level tabs
+[["all","All levels",null],["basic","Basics","basic"],["inter","Intermediate","inter"],["adv","Advanced","adv"],["star","★ Essentials",null]].forEach(([k, label, col]) => {
+  const b = document.createElement("button"); b.className = "tab"; b.dataset.k = k; b.setAttribute("aria-pressed", k === "all");
+  b.innerHTML = (col ? `<span class="dot" style="background:var(--${LEVELS[col].color})"></span>` : "") + label;
+  b.onclick = () => { level = k; tabsEl.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-pressed", t.dataset.k === k)); apply(); };
+  tabsEl.appendChild(b);
+});
+
+function render(order) {
+  order.forEach(lv => {
+    if (lv !== "all") {
+      const L = LEVELS[lv], h = document.createElement("div"); h.className = "lvl"; h.id = "lvl-" + lv;
+      h.innerHTML = `<h2><span class="dot" style="background:var(--${L.color});width:12px;height:12px"></span>${L.name}</h2><p>${L.intro}</p><p class="ready">${L.ready}</p>`;
+      root.appendChild(h); heads[lv] = h;
+    }
+    S.filter(s => s.lvl === lv).forEach(s => {
+      const el = document.createElement("section"); el.id = s.id; el.dataset.lvl = s.lvl; el.dataset.star = s.star ? "1" : "";
+      const badge = s.lvl === "all" ? "" : `<span class="badge b-${LEVELS[s.lvl].color}">${LEVELS[s.lvl].name}</span>`;
+      let html = `<h3>${s.t}${badge}${s.star ? '<span class="star">★ key</span>' : ""}</h3>`;
+      if (s.desc) html += `<p class="desc">${s.desc}</p>`;
+      if (s.table) html += `<table><tr>${s.table.head.map(x => `<th>${x}</th>`).join("")}</tr>${s.table.rows.map(r => `<tr>${r.map(x => `<td>${x}</td>`).join("")}</tr>`).join("")}</table>`;
+      (s.blocks || []).forEach(b => html += `<div class="blk"><button class="copy">Copy</button><pre>${hl(b)}</pre></div>`);
+      if (s.tips) html += `<ul class="tips">${s.tips.map(x => `<li>${x}</li>`).join("")}</ul>`;
+      el.innerHTML = html;
+      el._text = (s.t + " " + (s.desc ? strip(s.desc) : "") + " " + (s.blocks || []).join(" ") + " " + (s.tips ? strip(s.tips.join(" ")) : "") + " " + (s.table ? strip(JSON.stringify(s.table)) : "")).toLowerCase();
+      root.appendChild(el); secs.push(el);
+      nav.insertAdjacentHTML("beforeend", `<a href="#${s.id}" data-sec="${s.id}">${s.t.split(" (")[0]}</a>`);
+    });
+  });
+}
+render(["basic", "inter", "adv", "all"]);
+
+function apply() {
+  const vis = {basic:0, inter:0, adv:0, all:0}; let total = 0;
+  secs.forEach(s => {
+    const lvOk = level === "all" || (level === "star" ? s.dataset.star === "1" : s.dataset.lvl === level || s.dataset.lvl === "all");
+    const qOk = !query || s._text.includes(query);
+    const show = lvOk && qOk; s.classList.toggle("hide", !show);
+    if (show) { vis[s.dataset.lvl]++; total++; }
+    const a = nav.querySelector(`[data-sec="${s.id}"]`); if (a) a.classList.toggle("hide", !show);
+  });
+  Object.keys(heads).forEach(k => heads[k].classList.toggle("hide", !vis[k] || (query && false)));
+  document.getElementById("empty").classList.toggle("hide", total > 0);
+}
+document.getElementById("q").addEventListener("input", e => { query = e.target.value.trim().toLowerCase(); apply(); });
+
+root.addEventListener("click", e => {
+  const b = e.target.closest("button.copy"); if (!b) return;
+  const pre = b.parentElement.querySelector("pre"), text = pre.textContent;
+  const done = m => { b.textContent = m; setTimeout(() => b.textContent = "Copy", 1200); };
+  (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(() => done("Copied")).catch(() => {
+    const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); done("Selected");
+  });
+});
+apply();
+</script>
+</body>
+</html>
