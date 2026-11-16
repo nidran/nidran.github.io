@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>scikit-learn Tutorial · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <a class="tab" href="tutorials.html">Tutorials</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec" open><summary><span class="ico">🧰</span>Tutorials</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="tutorials" href="tutorials.html">Tutorials &amp; Cheatsheets</a><a class="active" data-slug="sklearn-tutorial" href="sklearn-tutorial.html">scikit-learn Tutorial</a><a class="" data-slug="sklearn-quick-reference" href="sklearn-quick-reference.html">sklearn Quick Reference</a><a class="" data-slug="pytorch-tutorial" href="pytorch-tutorial.html">PyTorch Tutorial</a><a class="" data-slug="pytorch-cheatsheet" href="pytorch-cheatsheet.html">PyTorch Cheatsheet</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a>
+
+</details></nav>
+  <main>
+    <article data-slug="sklearn-tutorial">
+      <div class="crumb">Tutorials · chapter · 4 min read</div>
+      <h1>scikit-learn Tutorial</h1>
+      <p><em>A complete tabular-ML workflow in one pass: build a leak-free pipeline, validate it, tune it, pick a threshold, calibrate, and save it.</em></p>
+<p>The whole tutorial uses one synthetic dataset with a numeric column that has missing values, two categorical columns and a ~10% positive class, so every step mirrors a real problem.</p>
+<h2 id="0-the-mental-model"><a class="anchor" href="#0-the-mental-model">#</a>0. The mental model</h2>
+<p>scikit-learn has three kinds of objects, and almost everything is one of them:</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Object</th>
+<th>Key methods</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transformer</strong></td>
+<td><code>fit</code>, <code>transform</code></td>
+<td><code>StandardScaler</code>, <code>SimpleImputer</code>, <code>OneHotEncoder</code></td>
+</tr>
+<tr>
+<td><strong>Estimator / model</strong></td>
+<td><code>fit</code>, <code>predict</code>, <code>predict_proba</code></td>
+<td><code>LogisticRegression</code>, <code>HistGradientBoostingClassifier</code></td>
+</tr>
+<tr>
+<td><strong>Pipeline</strong></td>
+<td>the same API as its last step</td>
+<td><code>Pipeline</code>, <code>ColumnTransformer</code></td>
+</tr>
+</tbody>
+</table></div><p><strong>Golden rule:</strong> anything that <em>learns from data</em> (means, medians, category lists, a threshold) must be fit on the training portion only. A <code>Pipeline</code> enforces this automatically inside cross-validation.</p>
+<h2 id="1-make-the-data"><a class="anchor" href="#1-make-the-data">#</a>1. Make the data</h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np, pandas <span class="hljs-keyword">as</span> pd
+
+rng = np.random.default_rng(<span class="hljs-number">0</span>)
+n = <span class="hljs-number">3000</span>
+df = pd.DataFrame({
+    <span class="hljs-string">&quot;age&quot;</span>: rng.integers(<span class="hljs-number">18</span>, <span class="hljs-number">80</span>, n).astype(<span class="hljs-built_in">float</span>),
+    <span class="hljs-string">&quot;income&quot;</span>: rng.lognormal(<span class="hljs-number">10</span>, <span class="hljs-number">0.5</span>, n),
+    <span class="hljs-string">&quot;plan&quot;</span>: rng.choice([<span class="hljs-string">&quot;free&quot;</span>, <span class="hljs-string">&quot;pro&quot;</span>, <span class="hljs-string">&quot;team&quot;</span>], n, p=[<span class="hljs-number">.6</span>, <span class="hljs-number">.3</span>, <span class="hljs-number">.1</span>]),
+    <span class="hljs-string">&quot;country&quot;</span>: rng.choice([<span class="hljs-string">&quot;US&quot;</span>, <span class="hljs-string">&quot;IN&quot;</span>, <span class="hljs-string">&quot;DE&quot;</span>, <span class="hljs-string">&quot;BR&quot;</span>], n),
+})
+df.loc[rng.random(n) &lt; <span class="hljs-number">.1</span>, <span class="hljs-string">&quot;income&quot;</span>] = np.nan          <span class="hljs-comment"># inject missing values</span>
+logit = -<span class="hljs-number">3</span> + <span class="hljs-number">0.02</span> * (df.age - <span class="hljs-number">40</span>) + (df.plan == <span class="hljs-string">&quot;pro&quot;</span>) * <span class="hljs-number">.8</span> + (df.plan == <span class="hljs-string">&quot;team&quot;</span>) * <span class="hljs-number">1.2</span> + (df.country == <span class="hljs-string">&quot;BR&quot;</span>) * <span class="hljs-number">.5</span>
+y = (rng.random(n) &lt; <span class="hljs-number">1</span> / (<span class="hljs-number">1</span> + np.exp(-logit))).astype(<span class="hljs-built_in">int</span>)
+</code></pre>
+<h2 id="2-split-first-touch-nothing-before-it"><a class="anchor" href="#2-split-first-touch-nothing-before-it">#</a>2. Split first, touch nothing before it</h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    df, y, test_size=<span class="hljs-number">0.2</span>, stratify=y, random_state=<span class="hljs-number">42</span>)   <span class="hljs-comment"># stratify keeps the 10% positive rate</span>
+</code></pre>
+<p>The test set is locked away until the very end. Every decision (model, hyperparameters, threshold) is made with the training data and cross-validation.</p>
+<h2 id="3-build-the-preprocessing-model-pipeline"><a class="anchor" href="#3-build-the-preprocessing-model-pipeline">#</a>3. Build the preprocessing + model pipeline</h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.pipeline <span class="hljs-keyword">import</span> Pipeline
+<span class="hljs-keyword">from</span> sklearn.compose <span class="hljs-keyword">import</span> ColumnTransformer
+<span class="hljs-keyword">from</span> sklearn.impute <span class="hljs-keyword">import</span> SimpleImputer
+<span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> StandardScaler, OneHotEncoder
+<span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LogisticRegression
+
+num, cat = [<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;income&quot;</span>], [<span class="hljs-string">&quot;plan&quot;</span>, <span class="hljs-string">&quot;country&quot;</span>]
+
+pre = ColumnTransformer([
+    (<span class="hljs-string">&quot;num&quot;</span>, Pipeline([(<span class="hljs-string">&quot;imp&quot;</span>, SimpleImputer(strategy=<span class="hljs-string">&quot;median&quot;</span>)),
+                      (<span class="hljs-string">&quot;sc&quot;</span>, StandardScaler())]), num),
+    (<span class="hljs-string">&quot;cat&quot;</span>, OneHotEncoder(handle_unknown=<span class="hljs-string">&quot;ignore&quot;</span>), cat),   <span class="hljs-comment"># unseen category at predict time → all zeros, no crash</span>
+])
+
+clf = Pipeline([(<span class="hljs-string">&quot;pre&quot;</span>, pre),
+                (<span class="hljs-string">&quot;model&quot;</span>, LogisticRegression(max_iter=<span class="hljs-number">1000</span>, class_weight=<span class="hljs-string">&quot;balanced&quot;</span>))])
+</code></pre>
+<p>Why a pipeline? One object holds every step, so <code>clf.fit(X_train, y_train)</code> and <code>clf.predict(new_df)</code> do the same preprocessing, and cross-validation refits the imputer and scaler inside each fold. No leakage.</p>
+<h2 id="4-validate-with-cross-validation"><a class="anchor" href="#4-validate-with-cross-validation">#</a>4. Validate with cross-validation</h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> StratifiedKFold, cross_validate
+
+cv = StratifiedKFold(<span class="hljs-number">5</span>, shuffle=<span class="hljs-literal">True</span>, random_state=<span class="hljs-number">42</span>)
+res = cross_validate(clf, X_train, y_train, cv=cv,
+                     scoring=[<span class="hljs-string">&quot;roc_auc&quot;</span>, <span class="hljs-string">&quot;average_precision&quot;</span>])
+<span class="hljs-built_in">print</span>(res[<span class="hljs-string">&quot;test_roc_auc&quot;</span>].mean(), res[<span class="hljs-string">&quot;test_average_precision&quot;</span>].mean())
+</code></pre>
+<p>With a 10% positive rate, <strong>average precision (PR-AUC)</strong> is the more honest number. A random model scores about 0.10 on it, versus 0.50 for ROC-AUC. Always compare against that baseline. See <a class="wikilink" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>.</p>
+<h2 id="5-tune-hyperparameters"><a class="anchor" href="#5-tune-hyperparameters">#</a>5. Tune hyperparameters</h2>
+<p>Step names are the key: <code>model__C</code> means &quot;parameter <code>C</code> of the step named <code>model</code>&quot;.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> GridSearchCV
+
+grid = GridSearchCV(clf, {<span class="hljs-string">&quot;model__C&quot;</span>: [<span class="hljs-number">0.01</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>]},
+                    cv=cv, scoring=<span class="hljs-string">&quot;average_precision&quot;</span>, n_jobs=-<span class="hljs-number">1</span>)
+grid.fit(X_train, y_train)
+<span class="hljs-built_in">print</span>(grid.best_params_, grid.best_score_)
+best = grid.best_estimator_            <span class="hljs-comment"># already refit on all of X_train</span>
+</code></pre>
+<p>For larger spaces use <code>RandomizedSearchCV(..., n_iter=30)</code>. It is usually as good for far less compute.</p>
+<h2 id="6-try-a-stronger-model"><a class="anchor" href="#6-try-a-stronger-model">#</a>6. Try a stronger model</h2>
+<p>Gradient boosting handles missing values natively and needs no scaling, but still needs categoricals encoded in this setup.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.ensemble <span class="hljs-keyword">import</span> HistGradientBoostingClassifier
+
+gb = Pipeline([(<span class="hljs-string">&quot;pre&quot;</span>, pre), (<span class="hljs-string">&quot;model&quot;</span>, HistGradientBoostingClassifier(random_state=<span class="hljs-number">0</span>))])
+<span class="hljs-built_in">print</span>(cross_validate(gb, X_train, y_train, cv=cv, scoring=<span class="hljs-string">&quot;average_precision&quot;</span>)[<span class="hljs-string">&quot;test_score&quot;</span>].mean())
+</code></pre>
+<p>Compare it to the linear model on the <em>same folds and metric</em>. On small or mostly linear data, the simple model often wins, which is a legitimate result.</p>
+<h2 id="7-choose-the-decision-threshold-on-training-data-not-test"><a class="anchor" href="#7-choose-the-decision-threshold-on-training-data-not-test">#</a>7. Choose the decision threshold (on training data, not test)</h2>
+<p><code>predict()</code> uses 0.5, which is rarely right for imbalanced problems. Pick the threshold from out-of-fold predictions so the test set stays untouched:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> cross_val_predict
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> precision_recall_curve
+
+oof = cross_val_predict(best, X_train, y_train, cv=cv, method=<span class="hljs-string">&quot;predict_proba&quot;</span>)[:, <span class="hljs-number">1</span>]
+p, r, t = precision_recall_curve(y_train, oof)
+f1 = <span class="hljs-number">2</span> * p * r / (p + r + <span class="hljs-number">1e-12</span>)
+thr = t[np.argmax(f1[:-<span class="hljs-number">1</span>])]              <span class="hljs-comment"># or choose by business cost instead of F1</span>
+</code></pre>
+<p>If a false negative costs more than a false positive, pick the threshold that minimizes expected cost rather than maximizing F1.</p>
+<h2 id="8-final-evaluation-on-the-test-set-once"><a class="anchor" href="#8-final-evaluation-on-the-test-set-once">#</a>8. Final evaluation on the test set (once)</h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_auc_score, average_precision_score, classification_report
+
+proba = best.predict_proba(X_test)[:, <span class="hljs-number">1</span>]
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;AUC&quot;</span>, roc_auc_score(y_test, proba), <span class="hljs-string">&quot;AP&quot;</span>, average_precision_score(y_test, proba))
+<span class="hljs-built_in">print</span>(classification_report(y_test, proba &gt;= thr))
+</code></pre>
+<p>If this number is much worse than the cross-validation score, suspect leakage or a distribution shift between train and test.</p>
+<h2 id="9-calibrate-if-you-need-real-probabilities"><a class="anchor" href="#9-calibrate-if-you-need-real-probabilities">#</a>9. Calibrate if you need real probabilities</h2>
+<p><code>class_weight=&quot;balanced&quot;</code> distorts predicted probabilities. If downstream code treats the score as a probability (expected value, risk), recalibrate:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.calibration <span class="hljs-keyword">import</span> CalibratedClassifierCV
+
+cal = CalibratedClassifierCV(clf, method=<span class="hljs-string">&quot;isotonic&quot;</span>, cv=<span class="hljs-number">5</span>).fit(X_train, y_train)
+cal.predict_proba(X_test)[:<span class="hljs-number">3</span>, <span class="hljs-number">1</span>]
+</code></pre>
+<p>Use <code>method=&quot;sigmoid&quot;</code> when the data is small (isotonic overfits). See <a class="wikilink" href="calibration.html">Calibration</a>.</p>
+<h2 id="10-inspect-and-save"><a class="anchor" href="#10-inspect-and-save">#</a>10. Inspect and save</h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> joblib
+
+names = best.named_steps[<span class="hljs-string">&quot;pre&quot;</span>].get_feature_names_out()   <span class="hljs-comment"># num__age, cat__plan_pro, ...</span>
+coefs = best.named_steps[<span class="hljs-string">&quot;model&quot;</span>].coef_[<span class="hljs-number">0</span>]                <span class="hljs-comment"># linear-model feature effects</span>
+
+joblib.dump(best, <span class="hljs-string">&quot;model.joblib&quot;</span>)                          <span class="hljs-comment"># saves preprocessing + model together</span>
+model = joblib.load(<span class="hljs-string">&quot;model.joblib&quot;</span>)
+model.predict(X_test.iloc[:<span class="hljs-number">3</span>])
+</code></pre>
+<p>Because the pipeline is saved as one object, serving code cannot forget a preprocessing step. Load a saved model only from sources you trust, and with the same scikit-learn version it was saved with.</p>
+<h2 id="cheat-list-of-mistakes-this-workflow-prevents"><a class="anchor" href="#cheat-list-of-mistakes-this-workflow-prevents">#</a>Cheat list of mistakes this workflow prevents</h2>
+<ul>
+<li>Fitting a scaler or imputer on all data before splitting (leakage).</li>
+<li>Reporting accuracy on a 10% positive problem.</li>
+<li>Tuning the threshold or hyperparameters on the test set.</li>
+<li>Forgetting <code>stratify=y</code> and getting a split with almost no positives.</li>
+<li>A crash in production on an unseen category (<code>handle_unknown=&quot;ignore&quot;</code>).</li>
+</ul>
+<p><strong>Next:</strong> <a class="wikilink" href="sklearn-quick-reference.html">sklearn Quick Reference</a> for compact lookups, then the <a class="wikilink" href="pytorch-tutorial.html">PyTorch Tutorial</a>.</p>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="tutorials.html"><small>← Previous</small>Tutorials &amp; Cheatsheets</a><a class="r" href="sklearn-quick-reference.html"><small>Next →</small>sklearn Quick Reference</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#0-the-mental-model">0. The mental model</a><a class="l2" href="#1-make-the-data">1. Make the data</a><a class="l2" href="#2-split-first-touch-nothing-before-it">2. Split first, touch nothing before it</a><a class="l2" href="#3-build-the-preprocessing-model-pipeline">3. Build the preprocessing + model pipeline</a><a class="l2" href="#4-validate-with-cross-validation">4. Validate with cross-validation</a><a class="l2" href="#5-tune-hyperparameters">5. Tune hyperparameters</a><a class="l2" href="#6-try-a-stronger-model">6. Try a stronger model</a><a class="l2" href="#7-choose-the-decision-threshold-on-training-data-not-test">7. Choose the decision threshold (on training data, not test)</a><a class="l2" href="#8-final-evaluation-on-the-test-set-once">8. Final evaluation on the test set (once)</a><a class="l2" href="#9-calibrate-if-you-need-real-probabilities">9. Calibrate if you need real probabilities</a><a class="l2" href="#10-inspect-and-save">10. Inspect and save</a><a class="l2" href="#cheat-list-of-mistakes-this-workflow-prevents">Cheat list of mistakes this workflow prevents</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+</body></html>

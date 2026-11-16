@@ -8,6 +8,7 @@
 <header class="top">
   <button id="menu" aria-label="Menu">☰</button>
   <a class="brand" href="index.html">ML Interview Handbook</a>
+  <a class="tab" href="tutorials.html">Tutorials</a>
   <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
   <button id="theme" aria-label="Toggle theme">◐</button>
   <div id="results" hidden></div>
@@ -16,6 +17,11 @@
   <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
 
 <div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧰</span>Tutorials</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="tutorials" href="tutorials.html">Tutorials &amp; Cheatsheets</a><a class="" data-slug="sklearn-tutorial" href="sklearn-tutorial.html">scikit-learn Tutorial</a><a class="" data-slug="sklearn-quick-reference" href="sklearn-quick-reference.html">sklearn Quick Reference</a><a class="" data-slug="pytorch-tutorial" href="pytorch-tutorial.html">PyTorch Tutorial</a><a class="" data-slug="pytorch-cheatsheet" href="pytorch-cheatsheet.html">PyTorch Cheatsheet</a>
 
 </details>
 <details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
@@ -65,7 +71,7 @@
 </details>
 <details class="nav-sec" open><summary><span class="ico">🛠</span>Practice</summary>
 
-<div class="grp">Chapters</div><a class="active" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+<div class="grp">Chapters</div><a class="active" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a>
 
 </details></nav>
   <main>
@@ -781,7 +787,7 @@ x, w = rng.normal(size=<span class="hljs-number">20</span>), rng.normal(size=<sp
 <p><a class="wikilink" href="gradient-descent.html">Gradient Descent</a>, <a class="wikilink" href="logistic-regression.html">Logistic Regression</a>, <a class="wikilink" href="k-means-clustering.html">K-Means Clustering</a>, <a class="wikilink" href="self-attention.html">Self-Attention</a>, <a class="wikilink" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a>, <a class="wikilink" href="normalization-layers.html">Normalization Layers</a>, <a class="wikilink" href="pytorch.html">PyTorch</a>, <a class="wikilink" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a>, <a class="wikilink" href="ranking-metrics.html">Ranking Metrics</a>, <a class="wikilink" href="trees-and-ensembles.html">Trees and Ensembles</a>, <a class="wikilink" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a></p>
 
       <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
-      <div class="pager"><a href="data-drift.html"><small>← Previous</small>Data Drift vs Concept Drift</a><a class="r" href="cheatsheets.html"><small>Next →</small>Cheatsheets</a></div>
+      <div class="pager"><a href="data-drift.html"><small>← Previous</small>Data Drift vs Concept Drift</a></div>
     </article>
   </main>
   <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#how-to-run-the-round">How to run the round</a><a class="l2" href="#1-linear-regression-closed-form-and-gradient-descent">1. Linear regression: closed form and gradient descent</a><a class="l2" href="#2-logistic-regression-with-gradient-descent">2. Logistic regression with gradient descent</a><a class="l2" href="#3-softmax-and-cross-entropy">3. Softmax and cross-entropy</a><a class="l2" href="#4-k-means-with-k-means-seeding">4. k-means with k-means++ seeding</a><a class="l2" href="#5-k-nn-and-naive-bayes">5. k-NN and naive Bayes</a><a class="l2" href="#6-decision-tree-best-split-by-gini">6. Decision tree: best split by Gini</a><a class="l2" href="#7-roc-auc-and-pr-auc-with-ties">7. ROC-AUC and PR-AUC with ties</a><a class="l2" href="#8-precisionrecall-at-k-and-ndcg">8. Precision/recall at k and NDCG</a><a class="l2" href="#9-scaled-dot-product-attention-with-causal-mask-then-multi-head">9. Scaled dot-product attention with causal mask, then multi-head</a><a class="l2" href="#10-a-pytorch-training-loop">10. A PyTorch training loop</a><a class="l2" href="#11-batch-norm-forward-train-versus-eval">11. Batch norm forward: train versus eval</a><a class="l2" href="#12-pca-via-svd">12. PCA via SVD</a><a class="l2" href="#13-adamw-update-step">13. AdamW update step</a><a class="l2" href="#14-1-d-convolution-and-im2col">14. 1-D convolution and im2col</a><a class="l2" href="#one-page-summary">One-page summary</a><a class="l2" href="#related">Related</a></aside>

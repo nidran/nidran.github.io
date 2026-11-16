@@ -7,6 +7,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.7 Charter,"Iowan 
 a{color:var(--acc)}
 .top{position:sticky;top:0;z-index:20;display:flex;gap:12px;align-items:center;padding:10px 18px;background:var(--panel);border-bottom:1px solid var(--line);font-family:system-ui,sans-serif}
 .brand{font-weight:700;color:var(--fg);text-decoration:none;white-space:nowrap}
+.tab{font-size:14px;font-weight:600;color:var(--fg);text-decoration:none;padding:5px 11px;border:1px solid var(--line);border-radius:999px;white-space:nowrap}.tab:hover{background:var(--line)}
 #q{flex:1;max-width:460px;margin-left:auto;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;font-size:14px}
 #menu,#theme{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:16px}
 #menu{display:none}

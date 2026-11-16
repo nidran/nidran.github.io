@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PyTorch Tutorial · ML Interview Handbook</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="top">
+  <button id="menu" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html">ML Interview Handbook</a>
+  <a class="tab" href="tutorials.html">Tutorials</a>
+  <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
+  <button id="theme" aria-label="Toggle theme">◐</button>
+  <div id="results" hidden></div>
+</header>
+<div class="layout">
+  <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec" open><summary><span class="ico">🧰</span>Tutorials</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="tutorials" href="tutorials.html">Tutorials &amp; Cheatsheets</a><a class="" data-slug="sklearn-tutorial" href="sklearn-tutorial.html">scikit-learn Tutorial</a><a class="" data-slug="sklearn-quick-reference" href="sklearn-quick-reference.html">sklearn Quick Reference</a><a class="active" data-slug="pytorch-tutorial" href="pytorch-tutorial.html">PyTorch Tutorial</a><a class="" data-slug="pytorch-cheatsheet" href="pytorch-cheatsheet.html">PyTorch Cheatsheet</a>
+
+</details>
+<details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
+<a class="moc" data-slug="moc-foundations" href="moc-foundations.html">Overview: Foundations</a>
+<div class="grp">Chapters</div><a class="" data-slug="fundamentals" href="fundamentals.html">Fundamentals</a><a class="" data-slug="data-preparation-and-feature-engineering" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="bias-variance-tradeoff" href="bias-variance-tradeoff.html">Bias-Variance Tradeoff</a><a class="card" data-slug="empirical-risk-minimization" href="empirical-risk-minimization.html">Empirical Risk Minimization</a><a class="card" data-slug="generalization" href="generalization.html">Generalization</a><a class="card" data-slug="overfitting-and-underfitting" href="overfitting-and-underfitting.html">Overfitting &amp; Underfitting</a><a class="card" data-slug="regularization" href="regularization.html">Regularization</a><a class="card" data-slug="data-leakage" href="data-leakage.html">Data Leakage</a><a class="card" data-slug="class-imbalance" href="class-imbalance.html">Class Imbalance</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">∑</span>Math &amp; Optimization</summary>
+<a class="moc" data-slug="moc-math" href="moc-math.html">Overview: Math</a>
+<div class="grp">Chapters</div><a class="" data-slug="math" href="math.html">Math</a><a class="" data-slug="probability-and-statistics" href="probability-and-statistics.html">Probability &amp; Statistics</a><a class="" data-slug="probability-and-math-drills" href="probability-and-math-drills.html">Probability &amp; Math Drills</a><a class="" data-slug="eigenvectors-pca-and-svd" href="eigenvectors-pca-and-svd.html">Eigenvectors, PCA and SVD</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="gradient-descent" href="gradient-descent.html">Gradient Descent</a><a class="card" data-slug="maximum-likelihood-estimation" href="maximum-likelihood-estimation.html">Maximum Likelihood Estimation</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">📉</span>Objectives &amp; Losses</summary>
+<a class="moc" data-slug="moc-losses" href="moc-losses.html">Overview: Losses</a>
+<div class="grp">Chapters</div><a class="" data-slug="loss-functions" href="loss-functions.html">Loss Functions</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="cross-entropy-loss" href="cross-entropy-loss.html">Cross-Entropy Loss</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🌳</span>Classical Models</summary>
+<a class="moc" data-slug="moc-models" href="moc-models.html">Overview: Models</a>
+<div class="grp">Chapters</div><a class="" data-slug="regression-methods" href="regression-methods.html">Regression Methods</a><a class="" data-slug="classification-methods" href="classification-methods.html">Classification Methods</a><a class="" data-slug="trees-and-ensembles" href="trees-and-ensembles.html">Decision Trees, Random Forests &amp; Gradient Boosting</a><a class="" data-slug="unsupervised-learning" href="unsupervised-learning.html">Clustering, Dimensionality Reduction &amp; Anomaly Detection</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="logistic-regression" href="logistic-regression.html">Logistic Regression</a><a class="card" data-slug="generative-vs-discriminative" href="generative-vs-discriminative.html">Generative vs Discriminative</a><a class="card" data-slug="naive-bayes" href="naive-bayes.html">Naive Bayes</a><a class="card" data-slug="k-nearest-neighbors" href="k-nearest-neighbors.html">k-Nearest Neighbors</a><a class="card" data-slug="support-vector-machines" href="support-vector-machines.html">Support Vector Machines</a><a class="card" data-slug="decision-trees" href="decision-trees.html">Decision Trees</a><a class="card" data-slug="bagging-vs-boosting" href="bagging-vs-boosting.html">Bagging vs Boosting</a><a class="card" data-slug="gradient-boosting" href="gradient-boosting.html">Gradient Boosting</a><a class="card" data-slug="k-means-clustering" href="k-means-clustering.html">k-Means Clustering</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🎯</span>Evaluation &amp; Metrics</summary>
+<a class="moc" data-slug="moc-evaluation" href="moc-evaluation.html">Overview: Evaluation</a>
+<div class="grp">Chapters</div><a class="" data-slug="model-evaluation-and-validation" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a><a class="" data-slug="ab-testing-and-experimentation" href="ab-testing-and-experimentation.html">A/B Testing &amp; Online Experimentation</a><a class="" data-slug="causal-inference" href="causal-inference.html">Causal Inference for ML Engineers</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="precision-and-recall" href="precision-and-recall.html">Precision &amp; Recall</a><a class="card" data-slug="roc-auc-vs-pr-auc" href="roc-auc-vs-pr-auc.html">ROC-AUC vs PR-AUC</a><a class="card" data-slug="calibration" href="calibration.html">Calibration</a><a class="card" data-slug="ranking-metrics" href="ranking-metrics.html">Ranking Metrics: NDCG, MAP &amp; MRR</a><a class="card" data-slug="cross-validation" href="cross-validation.html">Cross-Validation</a><a class="card" data-slug="p-values-and-statistical-power" href="p-values-and-statistical-power.html">p-Values &amp; Statistical Power</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🧠</span>Deep Learning</summary>
+<a class="moc" data-slug="moc-deep-learning" href="moc-deep-learning.html">Overview: Deep Learning</a>
+<div class="grp">Chapters</div><a class="" data-slug="training-neural-networks" href="training-neural-networks.html">Training Neural Networks</a><a class="" data-slug="pytorch" href="pytorch.html">PyTorch</a><a class="" data-slug="tensorgym-study-notes" href="tensorgym-study-notes.html">TensorGym Study Notes</a><a class="" data-slug="convolutional-neural-networks" href="convolutional-neural-networks.html">Convolutional Neural Networks</a><a class="" data-slug="computer-vision-beyond-cnns" href="computer-vision-beyond-cnns.html">Computer Vision Beyond CNN Basics</a><a class="" data-slug="recurrent-neural-networks" href="recurrent-neural-networks.html">Recurrent Neural Networks</a><a class="" data-slug="long-short-term-memory" href="long-short-term-memory.html">Long Short-Term Memory</a><a class="" data-slug="gated-recurrent-unit" href="gated-recurrent-unit.html">Gated Recurrent Unit</a><a class="" data-slug="graph-neural-networks" href="graph-neural-networks.html">Graph Neural Networks</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="activation-functions" href="activation-functions.html">Activation Functions</a><a class="card" data-slug="backpropagation" href="backpropagation.html">Backpropagation</a><a class="card" data-slug="vanishing-and-exploding-gradients" href="vanishing-and-exploding-gradients.html">Vanishing &amp; Exploding Gradients</a><a class="card" data-slug="optimizers" href="optimizers.html">Optimizers: SGD, Momentum &amp; Adam</a><a class="card" data-slug="normalization-layers" href="normalization-layers.html">BatchNorm vs LayerNorm</a><a class="card" data-slug="dropout" href="dropout.html">Dropout</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">💬</span>LLMs</summary>
+<a class="moc" data-slug="moc-llms" href="moc-llms.html">Overview: LLMs</a>
+<div class="grp">Chapters</div><a class="" data-slug="transformers-and-attention" href="transformers-and-attention.html">Transformers &amp; Attention</a><a class="" data-slug="llm-training-and-alignment" href="llm-training-and-alignment.html">LLM Training: Pretraining, Fine-Tuning &amp; Alignment</a><a class="" data-slug="llm-inference" href="llm-inference.html">LLM Inference: Decoding, KV Cache &amp; Serving</a><a class="" data-slug="retrieval-augmented-generation" href="retrieval-augmented-generation.html">Retrieval-Augmented Generation (RAG)</a><a class="" data-slug="llm-eval" href="llm-eval.html">LLM Evaluation</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="self-attention" href="self-attention.html">Self-Attention</a><a class="card" data-slug="tokenization" href="tokenization.html">Tokenization: BPE, WordPiece &amp; SentencePiece</a><a class="card" data-slug="decoding-strategies" href="decoding-strategies.html">Decoding Strategies</a><a class="card" data-slug="kv-cache" href="kv-cache.html">KV Cache</a><a class="card" data-slug="lora-and-peft" href="lora-and-peft.html">LoRA &amp; Parameter-Efficient Fine-Tuning</a><a class="card" data-slug="rlhf-vs-dpo" href="rlhf-vs-dpo.html">RLHF vs DPO</a><a class="card" data-slug="embeddings-and-vector-search" href="embeddings-and-vector-search.html">Embeddings &amp; Vector Search</a><a class="card" data-slug="hallucination" href="hallucination.html">Hallucination</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">⏱</span>Time Series</summary>
+<a class="moc" data-slug="moc-time-series" href="moc-time-series.html">Overview: Time Series</a>
+<div class="grp">Chapters</div><a class="" data-slug="time-series-stationarity" href="time-series-stationarity.html">Time Series Stationarity</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="stationarity" href="stationarity.html">Stationarity</a><a class="card" data-slug="arima-and-exponential-smoothing" href="arima-and-exponential-smoothing.html">ARIMA vs Exponential Smoothing</a><a class="card" data-slug="time-series-validation" href="time-series-validation.html">Time-Series Validation &amp; Backtesting</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🏗</span>ML System Design</summary>
+<a class="moc" data-slug="moc-system-design" href="moc-system-design.html">Overview: System Design</a>
+<div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
+<div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
+</details>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a>
+
+</details></nav>
+  <main>
+    <article data-slug="pytorch-tutorial">
+      <div class="crumb">Tutorials · chapter · 3 min read</div>
+      <h1>PyTorch Tutorial</h1>
+      <p><em>From a tensor to a saved, evaluated model: one complete, runnable training workflow.</em></p>
+<p>For the theory of how weights get updated, see <a class="wikilink" href="pytorch.html">PyTorch: Weights, Gradients &amp; Backprop</a>. This page is the practical counterpart.</p>
+<h2 id="1-tensors"><a class="anchor" href="#1-tensors">#</a>1. Tensors</h2>
+<p>A tensor is an n-dimensional array that can live on a GPU and can track gradients.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> torch
+torch.manual_seed(<span class="hljs-number">0</span>)
+
+a = torch.tensor([[<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>], [<span class="hljs-number">3.</span>, <span class="hljs-number">4.</span>]])
+b = torch.randn(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>)
+a.shape, a.dtype, a.device           <span class="hljs-comment"># torch.Size([2, 2]), torch.float32, cpu</span>
+a @ b                                <span class="hljs-comment"># matrix multiply (not a * b, which is elementwise)</span>
+a.<span class="hljs-built_in">sum</span>(dim=<span class="hljs-number">0</span>)                         <span class="hljs-comment"># reduce over rows → shape [2]</span>
+a[:, <span class="hljs-number">0</span>]                              <span class="hljs-comment"># indexing works like NumPy</span>
+</code></pre>
+<p>Shapes cause most bugs. Print <code>x.shape</code> often. Convention: batch dimension first, <code>[B, features]</code>.</p>
+<h2 id="2-autograd"><a class="anchor" href="#2-autograd">#</a>2. Autograd</h2>
+<p>Mark a tensor <code>requires_grad=True</code> and PyTorch records operations so it can differentiate them.</p>
+<pre><code class="hljs language-python">x = torch.randn(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, requires_grad=<span class="hljs-literal">True</span>)
+y = (x ** <span class="hljs-number">2</span>).<span class="hljs-built_in">sum</span>()
+y.backward()                          <span class="hljs-comment"># computes dy/dx</span>
+torch.allclose(x.grad, <span class="hljs-number">2</span> * x)         <span class="hljs-comment"># True</span>
+</code></pre>
+<p>Gradients <strong>accumulate</strong> into <code>.grad</code> on every <code>backward()</code>, which is why training loops call <code>zero_grad()</code> each step.</p>
+<h2 id="3-data-dataset-and-dataloader"><a class="anchor" href="#3-data-dataset-and-dataloader">#</a>3. Data: <code>Dataset</code> and <code>DataLoader</code></h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> TensorDataset, DataLoader, random_split
+
+N = <span class="hljs-number">2000</span>
+X = torch.randn(N, <span class="hljs-number">10</span>)
+w = torch.randn(<span class="hljs-number">10</span>)
+y = ((X @ w + <span class="hljs-number">0.5</span> * torch.randn(N)) &gt; <span class="hljs-number">0</span>).<span class="hljs-built_in">float</span>()     <span class="hljs-comment"># binary labels as float for BCE</span>
+
+ds = TensorDataset(X, y)
+train_ds, val_ds = random_split(ds, [<span class="hljs-number">1600</span>, <span class="hljs-number">400</span>], generator=torch.Generator().manual_seed(<span class="hljs-number">0</span>))
+train_loader = DataLoader(train_ds, batch_size=<span class="hljs-number">64</span>, shuffle=<span class="hljs-literal">True</span>)    <span class="hljs-comment"># shuffle only for training</span>
+val_loader = DataLoader(val_ds, batch_size=<span class="hljs-number">256</span>)
+</code></pre>
+<p>For real data, subclass <code>Dataset</code> and implement <code>__len__</code> and <code>__getitem__</code>. <code>DataLoader</code> handles batching, shuffling and (with <code>num_workers</code>) parallel loading.</p>
+<h2 id="4-define-a-model"><a class="anchor" href="#4-define-a-model">#</a>4. Define a model</h2>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MLP</span>(nn.Module):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, d_in, hidden=<span class="hljs-number">32</span></span>):
+        <span class="hljs-built_in">super</span>().__init__()
+        <span class="hljs-variable language_">self</span>.net = nn.Sequential(
+            nn.Linear(d_in, hidden), nn.ReLU(), nn.Dropout(<span class="hljs-number">0.1</span>),
+            nn.Linear(hidden, <span class="hljs-number">1</span>),
+        )
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.net(x).squeeze(-<span class="hljs-number">1</span>)        <span class="hljs-comment"># raw logits, shape [B]</span>
+</code></pre>
+<p>Return <strong>logits</strong>, not probabilities. The loss below applies the sigmoid internally in a numerically stable way.</p>
+<h2 id="5-loss-optimizer-device"><a class="anchor" href="#5-loss-optimizer-device">#</a>5. Loss, optimizer, device</h2>
+<pre><code class="hljs language-python">device = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available()
+                      <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;mps&quot;</span> <span class="hljs-keyword">if</span> torch.backends.mps.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>)
+
+model = MLP(<span class="hljs-number">10</span>).to(device)
+loss_fn = nn.BCEWithLogitsLoss()
+opt = torch.optim.AdamW(model.parameters(), lr=<span class="hljs-number">1e-3</span>, weight_decay=<span class="hljs-number">1e-2</span>)
+sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=<span class="hljs-number">20</span>)
+</code></pre>
+<p>Data and model must be on the same device. Move each batch with <code>.to(device)</code>.</p>
+<h2 id="6-the-training-loop"><a class="anchor" href="#6-the-training-loop">#</a>6. The training loop</h2>
+<pre><code class="hljs language-python">best = <span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>)
+<span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">20</span>):
+    model.train()                                   <span class="hljs-comment"># enables dropout, batchnorm training mode</span>
+    <span class="hljs-keyword">for</span> xb, yb <span class="hljs-keyword">in</span> train_loader:
+        xb, yb = xb.to(device), yb.to(device)
+        opt.zero_grad(set_to_none=<span class="hljs-literal">True</span>)             <span class="hljs-comment"># 1. clear old gradients</span>
+        loss = loss_fn(model(xb), yb)               <span class="hljs-comment"># 2. forward + loss</span>
+        loss.backward()                             <span class="hljs-comment"># 3. backprop</span>
+        nn.utils.clip_grad_norm_(model.parameters(), <span class="hljs-number">1.0</span>)   <span class="hljs-comment"># optional stability</span>
+        opt.step()                                  <span class="hljs-comment"># 4. update weights</span>
+    sched.step()                                    <span class="hljs-comment"># once per epoch for this scheduler</span>
+
+    model.<span class="hljs-built_in">eval</span>()                                    <span class="hljs-comment"># disables dropout</span>
+    total, correct, n = <span class="hljs-number">0.0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
+    <span class="hljs-keyword">with</span> torch.no_grad():                           <span class="hljs-comment"># no graph, less memory</span>
+        <span class="hljs-keyword">for</span> xb, yb <span class="hljs-keyword">in</span> val_loader:
+            xb, yb = xb.to(device), yb.to(device)
+            logits = model(xb)
+            total += loss_fn(logits, yb).item() * <span class="hljs-built_in">len</span>(yb)
+            correct += ((logits &gt; <span class="hljs-number">0</span>).<span class="hljs-built_in">float</span>() == yb).<span class="hljs-built_in">sum</span>().item()
+            n += <span class="hljs-built_in">len</span>(yb)
+    val_loss = total / n
+    <span class="hljs-keyword">if</span> val_loss &lt; best:                             <span class="hljs-comment"># keep the best checkpoint</span>
+        best = val_loss
+        torch.save(model.state_dict(), <span class="hljs-string">&quot;best.pt&quot;</span>)
+    <span class="hljs-built_in">print</span>(epoch, <span class="hljs-built_in">round</span>(val_loss, <span class="hljs-number">4</span>), <span class="hljs-built_in">round</span>(correct / n, <span class="hljs-number">4</span>))
+</code></pre>
+<p>The four-line core (<code>zero_grad</code>, forward/loss, <code>backward</code>, <code>step</code>) is the same for every PyTorch model, from this MLP to a transformer.</p>
+<h2 id="7-save-and-load"><a class="anchor" href="#7-save-and-load">#</a>7. Save and load</h2>
+<pre><code class="hljs language-python">model2 = MLP(<span class="hljs-number">10</span>)
+model2.load_state_dict(torch.load(<span class="hljs-string">&quot;best.pt&quot;</span>, map_location=<span class="hljs-string">&quot;cpu&quot;</span>, weights_only=<span class="hljs-literal">True</span>))
+model2.<span class="hljs-built_in">eval</span>()
+</code></pre>
+<p>Save the <code>state_dict</code> (weights only), not the whole model object. It survives code refactors and <code>weights_only=True</code> avoids loading arbitrary pickled code.</p>
+<h2 id="8-predict"><a class="anchor" href="#8-predict">#</a>8. Predict</h2>
+<pre><code class="hljs language-python">model2.<span class="hljs-built_in">eval</span>()
+<span class="hljs-keyword">with</span> torch.no_grad():
+    probs = torch.sigmoid(model2(X[:<span class="hljs-number">5</span>]))
+</code></pre>
+<h2 id="debugging-checklist"><a class="anchor" href="#debugging-checklist">#</a>Debugging checklist</h2>
+<ol>
+<li><strong>Overfit one small batch first.</strong> If loss will not go near zero on 32 examples, the bug is in the code, not the data.</li>
+<li>Loss is NaN → learning rate too high, bad input values, or <code>log(0)</code>; try gradient clipping and a smaller <code>lr</code>.</li>
+<li>Loss does not move → forgot <code>opt.step()</code>, wrong <code>zero_grad</code> placement, or parameters not passed to the optimizer.</li>
+<li>Validation much worse than train → regularize (dropout, weight decay), get more data, stop earlier.</li>
+<li>Results differ between runs → set <code>torch.manual_seed</code>; some GPU ops stay non-deterministic.</li>
+</ol>
+<p><strong>Next:</strong> keep the <a class="wikilink" href="pytorch-cheatsheet.html">PyTorch Cheatsheet</a> open while you build.</p>
+
+      <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
+      <div class="pager"><a href="sklearn-quick-reference.html"><small>← Previous</small>sklearn Quick Reference</a><a class="r" href="pytorch-cheatsheet.html"><small>Next →</small>PyTorch Cheatsheet</a></div>
+    </article>
+  </main>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#1-tensors">1. Tensors</a><a class="l2" href="#2-autograd">2. Autograd</a><a class="l2" href="#3-data-dataset-and-dataloader">3. Data: <code>Dataset</code> and <code>DataLoader</code></a><a class="l2" href="#4-define-a-model">4. Define a model</a><a class="l2" href="#5-loss-optimizer-device">5. Loss, optimizer, device</a><a class="l2" href="#6-the-training-loop">6. The training loop</a><a class="l2" href="#7-save-and-load">7. Save and load</a><a class="l2" href="#8-predict">8. Predict</a><a class="l2" href="#debugging-checklist">Debugging checklist</a></aside>
+</div>
+<div id="bar"></div>
+<script src="assets/app.js"></script>
+</body></html>

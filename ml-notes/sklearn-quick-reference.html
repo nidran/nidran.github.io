@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cheatsheets · ML Interview Handbook</title>
+<title>sklearn Quick Reference · ML Interview Handbook</title>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/hljs.css"><link rel="stylesheet" href="assets/style.css">
 </head><body>
 <header class="top">
   <button id="menu" aria-label="Menu">☰</button>
   <a class="brand" href="index.html">ML Interview Handbook</a>
+  <a class="tab" href="tutorials.html">Tutorials</a>
   <input id="q" type="search" placeholder="Search notes…  ( / )" autocomplete="off" aria-label="Search">
   <button id="theme" aria-label="Toggle theme">◐</button>
   <div id="results" hidden></div>
@@ -16,6 +17,11 @@
   <nav id="side"><details class="nav-sec"><summary><span class="ico">🧭</span>Start Here</summary>
 
 <div class="grp">Chapters</div><a class="" data-slug="interview-study-plan" href="interview-study-plan.html">Interview Study Plan</a>
+
+</details>
+<details class="nav-sec" open><summary><span class="ico">🧰</span>Tutorials</summary>
+
+<div class="grp">Chapters</div><a class="" data-slug="tutorials" href="tutorials.html">Tutorials &amp; Cheatsheets</a><a class="" data-slug="sklearn-tutorial" href="sklearn-tutorial.html">scikit-learn Tutorial</a><a class="active" data-slug="sklearn-quick-reference" href="sklearn-quick-reference.html">sklearn Quick Reference</a><a class="" data-slug="pytorch-tutorial" href="pytorch-tutorial.html">PyTorch Tutorial</a><a class="" data-slug="pytorch-cheatsheet" href="pytorch-cheatsheet.html">PyTorch Cheatsheet</a>
 
 </details>
 <details class="nav-sec"><summary><span class="ico">🧱</span>Foundations</summary>
@@ -63,37 +69,188 @@
 <div class="grp">Chapters</div><a class="" data-slug="ml-system-design-interview-prep" href="ml-system-design-interview-prep.html">ML System Design Interview Prep</a><a class="" data-slug="recommender-systems" href="recommender-systems.html">Recommender Systems</a><a class="" data-slug="case-search-ranking" href="case-search-ranking.html">Case Study: Search Ranking</a><a class="" data-slug="case-fraud-detection" href="case-fraud-detection.html">Case Study: Fraud and Abuse Detection</a><a class="" data-slug="case-rag-assistant" href="case-rag-assistant.html">Case Study: A RAG Question-Answering Assistant</a><a class="" data-slug="bandits-and-reinforcement-learning" href="bandits-and-reinforcement-learning.html">Bandits &amp; Reinforcement Learning Basics</a><a class="" data-slug="responsible-ml" href="responsible-ml.html">Responsible ML: Fairness, Explainability &amp; Privacy</a><a class="" data-slug="ml-in-production" href="ml-in-production.html">ML in Production: Serving, Monitoring &amp; MLOps</a><a class="" data-slug="models-and-loss-functions-reference" href="models-and-loss-functions-reference.html">Models and Loss Functions Reference</a>
 <div class="grp">Quick answers</div><a class="card" data-slug="ml-system-design-framework" href="ml-system-design-framework.html">ML System Design Framework</a><a class="card" data-slug="two-tower-retrieval" href="two-tower-retrieval.html">Two-Tower Retrieval</a><a class="card" data-slug="cold-start" href="cold-start.html">Cold Start</a><a class="card" data-slug="training-serving-skew" href="training-serving-skew.html">Training-Serving Skew</a><a class="card" data-slug="data-drift" href="data-drift.html">Data Drift vs Concept Drift</a>
 </details>
-<details class="nav-sec" open><summary><span class="ico">🛠</span>Practice</summary>
+<details class="nav-sec"><summary><span class="ico">🛠</span>Practice</summary>
 
-<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a><a class="active" data-slug="cheatsheets" href="cheatsheets.html">Cheatsheets</a>
+<div class="grp">Chapters</div><a class="" data-slug="coding-ml-from-scratch" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a>
 
 </details></nav>
   <main>
-    <article data-slug="cheatsheets">
-      <div class="crumb">Practice · chapter · 1 min read</div>
-      <h1>Cheatsheets</h1>
-      <p><em>Copy-paste references for the moments you need working code, not theory.</em></p>
-<h2 id="scikit-learn-cheat-sheet"><a class="anchor" href="#scikit-learn-cheat-sheet">#</a>scikit-learn cheat sheet</h2>
-<p><a href="sklearn-cheatsheet.html">Open the sklearn cheat sheet</a> — a searchable, three-level (basics, intermediate, advanced) reference for tabular ML in scikit-learn, with copy buttons on every snippet.</p>
-<p>It covers:</p>
-<ul>
-<li>Leak-free <code>Pipeline</code> + <code>ColumnTransformer</code> construction (imputers, scalers, encoders fit on train only).</li>
-<li>Splitting and validation: stratified, grouped, and time-based splits; <code>cross_validate</code>; nested CV.</li>
-<li>Imbalanced classification: class weights, resampling, threshold tuning on business cost, PR-AUC.</li>
-<li>Calibration, target encoding without leakage, drift checks, and unsupervised anomaly signals.</li>
-</ul>
-<p>Pair it with <a class="wikilink" href="data-preparation-and-feature-engineering.html">Data Preparation &amp; Feature Engineering</a>, <a class="wikilink" href="data-leakage.html">Data Leakage</a>, <a class="wikilink" href="class-imbalance.html">Class Imbalance</a>, <a class="wikilink" href="calibration.html">Calibration</a> and <a class="wikilink" href="model-evaluation-and-validation.html">Model Evaluation &amp; Validation</a> for the reasoning behind each recipe.</p>
-<h2 id="related"><a class="anchor" href="#related">#</a>Related</h2>
-<ul>
-<li><a class="wikilink" href="coding-ml-from-scratch.html">Coding Round: ML From Scratch</a></li>
-<li><a class="wikilink" href="probability-and-math-drills.html">Probability &amp; Math Drills</a></li>
-</ul>
+    <article data-slug="sklearn-quick-reference">
+      <div class="crumb">Tutorials · chapter · 2 min read</div>
+      <h1>sklearn Quick Reference</h1>
+      <p><em>Compact lookups. For the guided walkthrough read the <a class="wikilink" href="sklearn-tutorial.html">scikit-learn Tutorial</a>; for the searchable three-level version open the <a href="sklearn-cheatsheet.html">full interactive cheat sheet</a>.</em></p>
+<h2 id="pick-the-right-tool"><a class="anchor" href="#pick-the-right-tool">#</a>Pick the right tool</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Need</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fill missing numbers</td>
+<td><code>SimpleImputer(strategy=&quot;median&quot;)</code>, or <code>KNNImputer</code></td>
+</tr>
+<tr>
+<td>Scale numeric features</td>
+<td><code>StandardScaler</code> (most models), <code>RobustScaler</code> (outliers)</td>
+</tr>
+<tr>
+<td>Encode low-cardinality categories</td>
+<td><code>OneHotEncoder(handle_unknown=&quot;ignore&quot;)</code></td>
+</tr>
+<tr>
+<td>Encode high-cardinality categories</td>
+<td><code>TargetEncoder</code> (cross-fitted internally) or hashing</td>
+</tr>
+<tr>
+<td>Different steps per column type</td>
+<td><code>ColumnTransformer</code></td>
+</tr>
+<tr>
+<td>Chain steps without leakage</td>
+<td><code>Pipeline</code> / <code>make_pipeline</code></td>
+</tr>
+<tr>
+<td>Strong tabular default</td>
+<td><code>HistGradientBoostingClassifier</code> / <code>Regressor</code></td>
+</tr>
+<tr>
+<td>Simple, interpretable baseline</td>
+<td><code>LogisticRegression</code>, <code>Ridge</code></td>
+</tr>
+</tbody>
+</table></div><h2 id="splitting"><a class="anchor" href="#splitting">#</a>Splitting</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Situation</th>
+<th>Splitter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classification, imbalanced</td>
+<td><code>StratifiedKFold(5, shuffle=True, random_state=0)</code></td>
+</tr>
+<tr>
+<td>Several rows per user/group</td>
+<td><code>GroupKFold</code> (keeps a group in one fold)</td>
+</tr>
+<tr>
+<td>Time-ordered data</td>
+<td><code>TimeSeriesSplit</code> (train always before validation)</td>
+</tr>
+<tr>
+<td>Quick holdout</td>
+<td><code>train_test_split(X, y, stratify=y, random_state=0)</code></td>
+</tr>
+</tbody>
+</table></div><h2 id="metrics"><a class="anchor" href="#metrics">#</a>Metrics</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Task</th>
+<th>Metric</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balanced classification</td>
+<td>accuracy, F1</td>
+<td><code>accuracy_score</code>, <code>f1_score</code></td>
+</tr>
+<tr>
+<td>Imbalanced classification</td>
+<td>PR-AUC</td>
+<td><code>average_precision_score</code></td>
+</tr>
+<tr>
+<td>Ranking quality</td>
+<td>ROC-AUC</td>
+<td><code>roc_auc_score</code></td>
+</tr>
+<tr>
+<td>Probability quality</td>
+<td>log loss, Brier</td>
+<td><code>log_loss</code>, <code>brier_score_loss</code></td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>MAE, RMSE, R²</td>
+<td><code>mean_absolute_error</code>, <code>root_mean_squared_error</code>, <code>r2_score</code></td>
+</tr>
+</tbody>
+</table></div><p>Scoring strings for <code>cross_validate</code>/<code>GridSearchCV</code>: <code>&quot;roc_auc&quot;</code>, <code>&quot;average_precision&quot;</code>, <code>&quot;f1&quot;</code>, <code>&quot;neg_log_loss&quot;</code>, <code>&quot;neg_mean_absolute_error&quot;</code>. Sklearn maximizes scores, so error metrics are negated.</p>
+<h2 id="snippets"><a class="anchor" href="#snippets">#</a>Snippets</h2>
+<p><strong>Pipeline with column types</strong></p>
+<pre><code class="hljs language-python">pre = ColumnTransformer([
+    (<span class="hljs-string">&quot;num&quot;</span>, make_pipeline(SimpleImputer(strategy=<span class="hljs-string">&quot;median&quot;</span>), StandardScaler()), num_cols),
+    (<span class="hljs-string">&quot;cat&quot;</span>, OneHotEncoder(handle_unknown=<span class="hljs-string">&quot;ignore&quot;</span>), cat_cols),
+])
+model = make_pipeline(pre, LogisticRegression(max_iter=<span class="hljs-number">1000</span>))
+</code></pre>
+<p><strong>Cross-validate several metrics</strong></p>
+<pre><code class="hljs language-python">cross_validate(model, X, y, cv=<span class="hljs-number">5</span>, scoring=[<span class="hljs-string">&quot;roc_auc&quot;</span>, <span class="hljs-string">&quot;average_precision&quot;</span>])
+</code></pre>
+<p><strong>Tune (step name + <code>__</code> + parameter)</strong></p>
+<pre><code class="hljs language-python">GridSearchCV(model, {<span class="hljs-string">&quot;logisticregression__C&quot;</span>: [<span class="hljs-number">0.1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>]}, cv=<span class="hljs-number">5</span>, scoring=<span class="hljs-string">&quot;average_precision&quot;</span>)
+</code></pre>
+<p><strong>Out-of-fold predictions (for threshold choice or stacking)</strong></p>
+<pre><code class="hljs language-python">cross_val_predict(model, X, y, cv=<span class="hljs-number">5</span>, method=<span class="hljs-string">&quot;predict_proba&quot;</span>)[:, <span class="hljs-number">1</span>]
+</code></pre>
+<p><strong>Class imbalance</strong></p>
+<pre><code class="hljs language-python">LogisticRegression(class_weight=<span class="hljs-string">&quot;balanced&quot;</span>)
+</code></pre>
+<p>Then tune the decision threshold and judge by PR-AUC. Resampling must happen <em>inside</em> each training fold, never before splitting.</p>
+<p><strong>Calibration</strong></p>
+<pre><code class="hljs language-python">CalibratedClassifierCV(model, method=<span class="hljs-string">&quot;isotonic&quot;</span>, cv=<span class="hljs-number">5</span>)   <span class="hljs-comment"># &quot;sigmoid&quot; for small data</span>
+</code></pre>
+<p><strong>Feature names after preprocessing</strong></p>
+<pre><code class="hljs language-python">model[:-<span class="hljs-number">1</span>].get_feature_names_out()
+</code></pre>
+<p><strong>Save and load</strong></p>
+<pre><code class="hljs language-python">joblib.dump(model, <span class="hljs-string">&quot;model.joblib&quot;</span>); model = joblib.load(<span class="hljs-string">&quot;model.joblib&quot;</span>)
+</code></pre>
+<p><strong>Permutation importance (model-agnostic)</strong></p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.inspection <span class="hljs-keyword">import</span> permutation_importance
+permutation_importance(model, X_val, y_val, n_repeats=<span class="hljs-number">10</span>, random_state=<span class="hljs-number">0</span>, scoring=<span class="hljs-string">&quot;average_precision&quot;</span>)
+</code></pre>
+<h2 id="common-errors"><a class="anchor" href="#common-errors">#</a>Common errors</h2>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test score far below CV score</td>
+<td>leakage in CV, or train/test shift</td>
+</tr>
+<tr>
+<td><code>ValueError: Found unknown categories</code></td>
+<td>forgot <code>handle_unknown=&quot;ignore&quot;</code></td>
+</tr>
+<tr>
+<td>Perfect CV score</td>
+<td>target leaked into a feature, or group split needed</td>
+</tr>
+<tr>
+<td>Scores change every run</td>
+<td>missing <code>random_state</code> or non-shuffled folds</td>
+</tr>
+<tr>
+<td><code>Invalid parameter</code> in a grid</td>
+<td>step name wrong; check <code>model.get_params().keys()</code></td>
+</tr>
+</tbody>
+</table></div><p>See also <a class="wikilink" href="data-leakage.html">Data Leakage</a>, <a class="wikilink" href="class-imbalance.html">Class Imbalance</a>, <a class="wikilink" href="cross-validation.html">Cross-Validation</a>.</p>
 
       <label class="done"><input type="checkbox" id="done"> Mark as reviewed</label>
-      <div class="pager"><a href="coding-ml-from-scratch.html"><small>← Previous</small>Coding Round: ML From Scratch</a></div>
+      <div class="pager"><a href="sklearn-tutorial.html"><small>← Previous</small>scikit-learn Tutorial</a><a class="r" href="pytorch-tutorial.html"><small>Next →</small>PyTorch Tutorial</a></div>
     </article>
   </main>
-  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#scikit-learn-cheat-sheet">scikit-learn cheat sheet</a><a class="l2" href="#related">Related</a></aside>
+  <aside id="toc"><div class="toc-h">On this page</div><a class="l2" href="#pick-the-right-tool">Pick the right tool</a><a class="l2" href="#splitting">Splitting</a><a class="l2" href="#metrics">Metrics</a><a class="l2" href="#snippets">Snippets</a><a class="l2" href="#common-errors">Common errors</a></aside>
 </div>
 <div id="bar"></div>
 <script src="assets/app.js"></script>
