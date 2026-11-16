@@ -23,10 +23,6 @@
   url: /about/
   external: false # set true if you using external link, see below
 
-- title: ML Notes
-  url: /ml-notes/
-  external: false
-
 # Example:
 # - title: github
 #   url: https://github.com/piharpi/jekyll-klise

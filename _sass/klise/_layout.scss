@@ -60,6 +60,25 @@
     }
   }
 
+  a#ml-notes {
+    float: left;
+    left: 20px;
+    top: 6px;
+    position: relative;
+    display: block;
+    line-height: 0;
+    color: $black;
+    opacity: 0.7;
+    z-index: 1;
+    &:hover {
+      opacity: 1;
+    }
+    &:active {
+      -webkit-transform: scale(0.9, 0.9);
+      transform: scale(0.9, 0.9);
+    }
+  }
+
   .trigger {
     float: right;
   }
@@ -117,6 +136,11 @@
 
     a#mode {
       left: 10px;
+      top: 12px;
+    }
+
+    a#ml-notes {
+      left: 22px;
       top: 12px;
     }
 

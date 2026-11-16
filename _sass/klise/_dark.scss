@@ -124,6 +124,10 @@ body[data-theme="dark"] {
   .navbar {
     border-color: $dark-light;
     .menu {
+      a#ml-notes {
+        color: $dark-white;
+      }
+
       a#mode {
         .mode-sunny {
           display: block;
